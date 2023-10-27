@@ -37,7 +37,7 @@
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="288"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="128"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="0"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
@@ -231,6 +231,10 @@
       <column comment="Consumption period: backward" key="false" length="3" name="VINT1" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Consumption period: forward" key="false" length="3" name="VINT2" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Scheduling Margin Key for Floats" key="false" length="3" name="FHORI" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="ZZLEGACY" nullable="true" originalLength="18" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="ZZWERCS" nullable="true" originalLength="30" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="ZZPERF" nullable="true" originalLength="40" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="ZZRAND" nullable="true" originalLength="40" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="128">
@@ -248,11 +252,11 @@
     <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:QiXNRHTQrvm4nHuYRnzCmGvtuKLrVVcdJ5Ys2TsUNd/fOKugTcgvqDDeRp7v2P2gQuikzv0="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;MARC_HANA&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
+    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_IF_EXISTS_AND_CREATE"/>
     <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="LABEL" name="NOTE" show="false" value="NOTE: batch size must be less than or equal to total number of parameter markers divided by number of columns"/>
-    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" show="false" value="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" value="false"/>
     <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="MATNR"/>
     <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
@@ -396,6 +400,26 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ZZLEGACY"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ZZWERCS"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ZZPERF"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ZZRAND"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -407,63 +431,85 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="MARC" name="tDBOutput_1">
-      <column comment="Material Number" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Flag Material for Deletion at Plant Level" key="false" length="1" name="LVORM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Valuation Category" key="false" length="1" name="BWTTY" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Type" key="false" length="2" name="DISMM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Controller" key="false" length="3" name="DISPO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Profit Center" key="false" length="10" name="PRCTR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Lot Sizing Procedure within Materials Planning" key="false" length="2" name="DISLS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Range of coverage profile" key="false" length="3" name="RWPRO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Minimum Lot Size" key="false" length="13" name="BSTMI" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="ABC Indicator" key="false" length="1" name="MAABC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Maximum Lot Size" key="false" length="13" name="BSTMA" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Safety Stock" key="false" length="13" name="EISBE" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Rounding value for purchase order quantity" key="false" length="13" name="BSTRF" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Reorder Point" key="false" length="13" name="MINBE" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Planned Delivery Time in Days" key="false" length="3" name="PLIFZ" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Fixed lot size" key="false" length="13" name="BSTFE" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="In-house production time" key="false" length="3" name="DZEIT" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Goods receipt processing time in days" key="false" length="3" name="WEBAZ" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Planning Strategy Group" key="false" length="2" name="STRGR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Consumption mode" key="false" length="1" name="VRMOD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Consumption period: backward" key="false" length="3" name="VINT1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Consumption period: forward" key="false" length="3" name="VINT2" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Scheduling Margin Key for Floats" key="false" length="3" name="FHORI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Material Number" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Flag Material for Deletion at Plant Level" key="false" length="1" name="LVORM" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Valuation Category" key="false" length="1" name="BWTTY" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="MRP Type" key="false" length="2" name="DISMM" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="MRP Controller" key="false" length="3" name="DISPO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Profit Center" key="false" length="10" name="PRCTR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Lot Sizing Procedure within Materials Planning" key="false" length="2" name="DISLS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Range of coverage profile" key="false" length="3" name="RWPRO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Minimum Lot Size" key="false" length="13" name="BSTMI" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="ABC Indicator" key="false" length="1" name="MAABC" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Maximum Lot Size" key="false" length="13" name="BSTMA" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Safety Stock" key="false" length="13" name="EISBE" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Rounding value for purchase order quantity" key="false" length="13" name="BSTRF" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Reorder Point" key="false" length="13" name="MINBE" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Planned Delivery Time in Days" key="false" length="3" name="PLIFZ" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Fixed lot size" key="false" length="13" name="BSTFE" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="In-house production time" key="false" length="3" name="DZEIT" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Goods receipt processing time in days" key="false" length="3" name="WEBAZ" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Planning Strategy Group" key="false" length="2" name="STRGR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Consumption mode" key="false" length="1" name="VRMOD" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Consumption period: backward" key="false" length="3" name="VINT1" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Consumption period: forward" key="false" length="3" name="VINT2" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Scheduling Margin Key for Floats" key="false" length="3" name="FHORI" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="ZZLEGACY" nullable="true" originalLength="18" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="ZZWERCS" nullable="true" originalLength="30" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="ZZPERF" nullable="true" originalLength="40" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="ZZRAND" nullable="true" originalLength="40" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="MARC" name="REJECT">
-      <column comment="Material Number" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Flag Material for Deletion at Plant Level" key="false" length="1" name="LVORM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Valuation Category" key="false" length="1" name="BWTTY" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Type" key="false" length="2" name="DISMM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Controller" key="false" length="3" name="DISPO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Profit Center" key="false" length="10" name="PRCTR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Lot Sizing Procedure within Materials Planning" key="false" length="2" name="DISLS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Range of coverage profile" key="false" length="3" name="RWPRO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Minimum Lot Size" key="false" length="13" name="BSTMI" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="ABC Indicator" key="false" length="1" name="MAABC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Maximum Lot Size" key="false" length="13" name="BSTMA" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Safety Stock" key="false" length="13" name="EISBE" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Rounding value for purchase order quantity" key="false" length="13" name="BSTRF" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Reorder Point" key="false" length="13" name="MINBE" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Planned Delivery Time in Days" key="false" length="3" name="PLIFZ" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Fixed lot size" key="false" length="13" name="BSTFE" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="In-house production time" key="false" length="3" name="DZEIT" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Goods receipt processing time in days" key="false" length="3" name="WEBAZ" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Planning Strategy Group" key="false" length="2" name="STRGR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Consumption mode" key="false" length="1" name="VRMOD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Consumption period: backward" key="false" length="3" name="VINT1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Consumption period: forward" key="false" length="3" name="VINT2" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Scheduling Margin Key for Floats" key="false" length="3" name="FHORI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Material Number" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Flag Material for Deletion at Plant Level" key="false" length="1" name="LVORM" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Valuation Category" key="false" length="1" name="BWTTY" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="MRP Type" key="false" length="2" name="DISMM" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="MRP Controller" key="false" length="3" name="DISPO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Profit Center" key="false" length="10" name="PRCTR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Lot Sizing Procedure within Materials Planning" key="false" length="2" name="DISLS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Range of coverage profile" key="false" length="3" name="RWPRO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Minimum Lot Size" key="false" length="13" name="BSTMI" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="ABC Indicator" key="false" length="1" name="MAABC" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Maximum Lot Size" key="false" length="13" name="BSTMA" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Safety Stock" key="false" length="13" name="EISBE" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Rounding value for purchase order quantity" key="false" length="13" name="BSTRF" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Reorder Point" key="false" length="13" name="MINBE" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Planned Delivery Time in Days" key="false" length="3" name="PLIFZ" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Fixed lot size" key="false" length="13" name="BSTFE" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="In-house production time" key="false" length="3" name="DZEIT" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Goods receipt processing time in days" key="false" length="3" name="WEBAZ" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Planning Strategy Group" key="false" length="2" name="STRGR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Consumption mode" key="false" length="1" name="VRMOD" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Consumption period: backward" key="false" length="3" name="VINT1" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Consumption period: forward" key="false" length="3" name="VINT2" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Scheduling Margin Key for Floats" key="false" length="3" name="FHORI" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="ZZLEGACY" nullable="true" originalLength="18" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="ZZWERCS" nullable="true" originalLength="30" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="ZZPERF" nullable="true" originalLength="40" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="ZZRAND" nullable="true" originalLength="40" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tDBOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="ZZLEGACY"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ZZPERF"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ZZWERCS"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ZZRAND"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
@@ -472,13 +518,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_9bea1950-43d6-4830-8289-f50e9a716e35"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>m1J7Tq4Cg2DAjPRQObXJkFJ3BTwXqJ0oa6h/+WKpoWEKDOhx6+8/ypRZugV6MrjgspXGg8PXASvY&#13;
-fzXcpJyf1A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_7c97b793-8940-45b3-9f4b-a6fb560e8c89"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>BB8mz1cL3n7WR8KHrf+TFs9+FVNjoCyPcvggwX29WFB2GJ4BkJ3XvS2GEUqKr8VG+sW7wqChtIHX&#13;
-NsMS3ViGiA==</DigestValue></Reference></SignedInfo><SignatureValue>noiY9E5n3/Bhpy8fXISHCKu/0LD5gL3Y9tRZQyyvA8GWBo5UGqAHHFnmRiTdPpfLQKVfzoaFxtGK&#13;
-x/4wQTH2A+QBNMyT0m2KiLzEzvZd3QG1beNFBQl++8d/+YpxPBJnVZVh47vcXkEahaCYSHaw1f4r&#13;
-Mb6uzmnmDz/U2h1dNPztM+5C9nlhvnh3HgI++FisLLTBLY4ARpCA1yAqAZVCEuXoIksYRDmSiJXh&#13;
-H4QghLXoPu8Vo7+DUWOYrVRzWsfYqgZVCxE5eo/kfrRZuS+xv47UVWv1Kjb9Ds//Fq7znK1l85Tb&#13;
-x4rAvCvPQ2pwQQffJeIFQqnnkwRuJoATA9ogqw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_970313e2-f9f5-41ee-9e3e-769b8114762e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RzkORQtzAaNAp8wBoZeoiCHz92TXECUzX0imMeGQ6ZB0YgoOncb1woxbi3I039QoD7Ck5AKPTZjs&#13;
+ur0Nm3mVBg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_fae7ce64-0b61-44b0-b9a7-2aba96c5c61d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>62235lvVZ4AAqXDCJWTeXRatU+09bcwE4VYywrK0TvORjbmgekBg/mzcCtvBau3FQFxfz4PZaCBF&#13;
+f/7wD9xpEw==</DigestValue></Reference></SignedInfo><SignatureValue>FTXfc58Hrtno7u53yfPFPogm84T4esFmhT0refsbSJiV0Nf2cva2kU6EJOQz9+HBuoQciBEtutWl&#13;
+mulD2gblpqR65yzkHxwu5/08KikgtGrB/SaQxqUJcL4SJeH0TWa0dbriazfL0bfh7WltFP0Xm2oP&#13;
+ElXIzauRn97gHtaJNVjJij53hQsqw7PA6rcUYHn6SpAraw2LXDU4IwkpwFHJvr/MaLWWWbzhSB9F&#13;
+ZvIYIoPHb+O5c/WduvRDoXR0kyB1FKg71IziSh1z43Zu0Mg4u26LYQvd9/ifUTl0wG8bnMd5ca8q&#13;
+Oe3TrbreGoQzPzwVssObSVOHs+ydDNv/FfCpng==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -500,4 +546,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_7c97b793-8940-45b3-9f4b-a6fb560e8c89" Target="#_9bea1950-43d6-4830-8289-f50e9a716e35"><Timestamp>2023-10-26 19:37:50</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_fae7ce64-0b61-44b0-b9a7-2aba96c5c61d" Target="#_970313e2-f9f5-41ee-9e3e-769b8114762e"><Timestamp>2023-10-27 14:41:55</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
