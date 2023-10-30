@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:TalendXMLMap="http://www.talend.org/xmlmap" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultContext="Default" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Default">
     <contextParameter comment="" internalId="_dq5xEHT0Ee6YerbJnneKxw" name="SAP_S4_HANA_PROD_1001_Client" prompt="SAP_S4_HANA_PROD_1001_Client?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_String" value="100"/>
     <contextParameter comment="" internalId="_dq5xEXT0Ee6YerbJnneKxw" name="SAP_S4_HANA_PROD_1001_Password" prompt="SAP_S4_HANA_PROD_1001_Password?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_Password" value="enc:system.encryption.key.v1:efb98vdZNT0nsWfCpSJYN0Eq2T5zPnsruaKWt2PpFmZsr2s3kcLfgQgC"/>
@@ -19,7 +19,7 @@
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="32"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="0"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" show="false" value=""/>
@@ -279,7 +279,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="256" posY="128">
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="256" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -335,7 +335,112 @@
       <column comment="" key="false" length="2" name="LANGUAGE" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tSAPBapi" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="512" posY="128">
+  <node componentName="tXMLMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="480" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tXMLMap_1"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="false"/>
+    <elementParameter field="CHECK" name="KEEP_ORDER_FOR_DOCUMENT" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="input">
+      <column comment="" key="false" length="-1" name="doc" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Document" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="TalendXMLMap:XmlMapData">
+      <inputTrees lookupMode="LOAD_ONCE" matchingMode="ALL_ROWS" name="row2">
+        <nodes name="OBJECTKEY" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.4" type="id_String" xpath="row2/OBJECTKEY"/>
+        <nodes name="OBJECTTABLE" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.5" type="id_String" xpath="row2/OBJECTTABLE"/>
+        <nodes name="CLASSNUM" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.0" type="id_String" xpath="row2/CLASSNUM"/>
+        <nodes name="CLASSTYPE" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.1" type="id_String" xpath="row2/CLASSTYPE"/>
+        <nodes name="KEYDATE" outgoingConnections="//@node.3/@nodeData/@connections.2" type="id_Date" xpath="row2/KEYDATE"/>
+        <nodes name="LANGUAGE" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.3" type="id_String" xpath="row2/LANGUAGE"/>
+      </inputTrees>
+      <outputTrees name="input">
+        <nodes expression="" name="doc" type="id_Document" xpath="input/doc">
+          <children main="true" name="BAPI_OBJCL_GETDETAIL" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL" xsi:type="TalendXMLMap:OutputTreeNode">
+            <children loop="true" main="true" name="INPUT" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT" xsi:type="TalendXMLMap:OutputTreeNode">
+              <children expression="row2.CLASSNUM" incomingConnections="//@node.3/@nodeData/@connections.0" name="CLASSNUM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/CLASSNUM" xsi:type="TalendXMLMap:OutputTreeNode"/>
+              <children expression="row2.CLASSTYPE" incomingConnections="//@node.3/@nodeData/@connections.1" name="CLASSTYPE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/CLASSTYPE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+              <children expression="row2.KEYDATE" incomingConnections="//@node.3/@nodeData/@connections.2" name="KEYDATE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/KEYDATE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+              <children expression="row2.LANGUAGE" incomingConnections="//@node.3/@nodeData/@connections.3" name="LANGUAGE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/LANGUAGE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+              <children expression="row2.OBJECTKEY" incomingConnections="//@node.3/@nodeData/@connections.4" name="OBJECTKEY" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/OBJECTKEY" xsi:type="TalendXMLMap:OutputTreeNode"/>
+              <children name="OBJECTKEY_LONG" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/OBJECTKEY_LONG" xsi:type="TalendXMLMap:OutputTreeNode"/>
+              <children expression="row2.OBJECTTABLE" incomingConnections="//@node.3/@nodeData/@connections.5" name="OBJECTTABLE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/OBJECTTABLE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+              <children name="UNVALUATED_CHARS" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/UNVALUATED_CHARS" xsi:type="TalendXMLMap:OutputTreeNode"/>
+            </children>
+            <children name="TABLES" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES" xsi:type="TalendXMLMap:OutputTreeNode">
+              <children name="ALLOCVALUESCHAR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR" xsi:type="TalendXMLMap:OutputTreeNode">
+                <children name="item" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item" xsi:type="TalendXMLMap:OutputTreeNode">
+                  <children name="CHARACT" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_CHAR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="INHERITED" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INHERITED" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="INSTANCE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INSTANCE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_NEUTRAL" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="CHARACT_DESCR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT_DESCR" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_CHAR_LONG" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR_LONG" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_NEUTRAL_LONG" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL_LONG" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                </children>
+              </children>
+              <children name="ALLOCVALUESCURR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR" xsi:type="TalendXMLMap:OutputTreeNode">
+                <children name="item" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item" xsi:type="TalendXMLMap:OutputTreeNode">
+                  <children name="CHARACT" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CHARACT" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_FROM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_FROM" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_TO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_TO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_RELATION" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_RELATION" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="CURRENCY_FROM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_FROM" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="CURRENCY_TO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_TO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="CURRENCY_FROM_ISO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_FROM_ISO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="CURRENCY_TO_ISO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_TO_ISO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="INHERITED" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/INHERITED" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="INSTANCE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/INSTANCE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="CHARACT_DESCR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CHARACT_DESCR" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                </children>
+              </children>
+              <children name="ALLOCVALUESNUM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM" xsi:type="TalendXMLMap:OutputTreeNode">
+                <children name="item" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item" xsi:type="TalendXMLMap:OutputTreeNode">
+                  <children name="CHARACT" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/CHARACT" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_FROM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_FROM" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_TO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_TO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="VALUE_RELATION" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_RELATION" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="UNIT_FROM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_FROM" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="UNIT_TO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_TO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="UNIT_FROM_ISO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_FROM_ISO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="UNIT_TO_ISO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_TO_ISO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="INHERITED" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/INHERITED" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="INSTANCE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/INSTANCE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="CHARACT_DESCR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/CHARACT_DESCR" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                </children>
+              </children>
+              <children name="RETURN" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN" xsi:type="TalendXMLMap:OutputTreeNode">
+                <children name="item" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item" xsi:type="TalendXMLMap:OutputTreeNode">
+                  <children name="TYPE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/TYPE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="ID" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/ID" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="NUMBER" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/NUMBER" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="MESSAGE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="LOG_NO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/LOG_NO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="LOG_MSG_NO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/LOG_MSG_NO" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="MESSAGE_V1" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V1" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="MESSAGE_V2" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V2" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="MESSAGE_V3" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V3" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="MESSAGE_V4" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V4" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="PARAMETER" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/PARAMETER" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="ROW" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/ROW" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="FIELD" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/FIELD" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                  <children name="SYSTEM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/SYSTEM" xsi:type="TalendXMLMap:OutputTreeNode"/>
+                </children>
+              </children>
+            </children>
+          </children>
+        </nodes>
+      </outputTrees>
+      <varTables minimized="true" name="Var"/>
+      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.2" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.0" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.3" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.1" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.4" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.2" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.5" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.3" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.0" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.4" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.1" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.6" xsi:type="TalendXMLMap:Connection"/>
+    </nodeData>
+  </node>
+  <node componentName="tSAPBapi" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSAPBapi_1"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_TNzosG9lEe6VfNVSxuXxPA"/>
@@ -344,62 +449,92 @@
     <elementParameter field="CLOSED_LIST" name="SERVERTYPE" value="ApplicationServer"/>
     <elementParameter field="TEXT" name="CLIENT" value="context.SAP_S4_HANA_PROD_1001_Client"/>
     <elementParameter field="TEXT" name="USERID" value="context.SAP_S4_HANA_PROD_1001_UserName"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:cr4oUJQjGRGfcHQZ/1p+D07mNDV3H4I21mxwivKdCvgiElqGaHkFeQVkA9TPyU3MsyFSBVIx6GMgOKgR0zpdxps3"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:fUAvr6Z8PB8WbnGp1Aad/znlS9+xih8WbvorVWDpwUEGTqoyIwQmVAvxBPk/6+W0Z+8vjfp/BnvnEZ3Mz16KEFKe"/>
     <elementParameter field="TEXT" name="LANGUAGE" value="context.SAP_S4_HANA_PROD_1001_Language"/>
     <elementParameter field="TEXT" name="HOSTNAME" value="context.SAP_S4_HANA_PROD_1001_Host"/>
     <elementParameter field="TEXT" name="SYSTEMNUMBER" value="context.SAP_S4_HANA_PROD_1001_SystemNumber"/>
     <elementParameter field="TEXT" name="SYSTEMID" show="false" value="&quot;PRD&quot;"/>
     <elementParameter field="TEXT" name="GROUPNAME" show="false" value="&quot;tGroup&quot;"/>
     <elementParameter field="TEXT" name="SAP_FUNCTION" value="&quot;BAPI_OBJCL_GETDETAIL&quot;"/>
-    <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="true"/>
-    <elementParameter field="TABLE" name="MAPPING_INPUT">
+    <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="false"/>
+    <elementParameter field="TABLE" name="MAPPING_INPUT" show="false">
       <elementValue elementRef="NAME" value="&quot;CLASSNUM&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_CLASSNUM_1"/>
-      <elementValue elementRef="PARENT_ROW" value="row2"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_CLASSNUM_2"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
       <elementValue elementRef="NAME" value="&quot;CLASSTYPE&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_CLASSTYPE_1"/>
-      <elementValue elementRef="PARENT_ROW" value="row2"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_CLASSTYPE_2"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
       <elementValue elementRef="NAME" value="&quot;KEYDATE&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_KEYDATE_1"/>
-      <elementValue elementRef="PARENT_ROW" value="row2"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_KEYDATE_2"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
       <elementValue elementRef="NAME" value="&quot;LANGUAGE&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_LANGUAGE_1"/>
-      <elementValue elementRef="PARENT_ROW" value="row2"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_LANGUAGE_2"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
       <elementValue elementRef="NAME" value="&quot;OBJECTKEY&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_OBJECTKEY_1"/>
-      <elementValue elementRef="PARENT_ROW" value="row2"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_OBJECTKEY_2"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
+      <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
+      <elementValue elementRef="NAME" value="&quot;OBJECTKEY_LONG&quot;"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_OBJECTKEY_LONG_2"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
       <elementValue elementRef="NAME" value="&quot;OBJECTTABLE&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_OBJECTTABLE_1"/>
-      <elementValue elementRef="PARENT_ROW" value="row2"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_OBJECTTABLE_2"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
-    </elementParameter>
-    <elementParameter field="TABLE" name="SCHEMAS">
-      <elementValue elementRef="NAME" value="&quot;SINGLE_PARAM&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_SINGLE_PARAM_1"/>
+      <elementValue elementRef="NAME" value="&quot;UNVALUATED_CHARS&quot;"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_UNVALUATED_CHARS_2"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
+      <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
       <elementValue elementRef="NAME" value="&quot;ALLOCVALUESCHAR&quot;"/>
       <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESCHAR_1"/>
+      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESCHAR_4"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
+      <elementValue elementRef="PARAMETER_TYPE" value="TABLES"/>
       <elementValue elementRef="NAME" value="&quot;ALLOCVALUESCURR&quot;"/>
       <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESCURR_1"/>
+      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESCURR_4"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
+      <elementValue elementRef="PARAMETER_TYPE" value="TABLES"/>
       <elementValue elementRef="NAME" value="&quot;ALLOCVALUESNUM&quot;"/>
       <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESNUM_1"/>
+      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESNUM_4"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
+      <elementValue elementRef="PARAMETER_TYPE" value="TABLES"/>
       <elementValue elementRef="NAME" value="&quot;RETURN&quot;"/>
       <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_RETURN_1"/>
+      <elementValue elementRef="SCHEMA" value="row_RETURN_4"/>
+      <elementValue elementRef="PARENT_ROW" value=""/>
+      <elementValue elementRef="PARAMETER_TYPE" value="TABLES"/>
+    </elementParameter>
+    <elementParameter field="TABLE" name="SCHEMAS" show="false">
+      <elementValue elementRef="NAME" value="&quot;SINGLE_PARAM&quot;"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" value="row_SINGLE_PARAM_2"/>
+      <elementValue elementRef="NAME" value="&quot;ALLOCVALUESCHAR&quot;"/>
+      <elementValue elementRef="TYPE" value="TABLE"/>
+      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESCHAR_3"/>
+      <elementValue elementRef="NAME" value="&quot;ALLOCVALUESCURR&quot;"/>
+      <elementValue elementRef="TYPE" value="TABLE"/>
+      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESCURR_3"/>
+      <elementValue elementRef="NAME" value="&quot;ALLOCVALUESNUM&quot;"/>
+      <elementValue elementRef="TYPE" value="TABLE"/>
+      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESNUM_3"/>
+      <elementValue elementRef="NAME" value="&quot;RETURN&quot;"/>
+      <elementValue elementRef="TYPE" value="TABLE"/>
+      <elementValue elementRef="SCHEMA" value="row_RETURN_3"/>
     </elementParameter>
     <elementParameter field="LABEL" name="NOTE_DATASOURCE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
@@ -413,12 +548,14 @@
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="BAPI_OBJCL_GETDETAIL"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tSAPBapi_1"/>
-    <metadata comment="" connector="FLOW" label="row_SINGLE_PARAM_1" name="row_SINGLE_PARAM_1" type="OUTPUT">
+    <metadata connector="FLOW" name="tSAPBapi_1">
+      <column comment="" key="false" length="-1" name="doc" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Document" usefulColumn="true"/>
+    </metadata>
+    <metadata comment="" label="row_SINGLE_PARAM_2" name="row_SINGLE_PARAM_2" type="OUTPUT">
       <column comment="" key="false" length="1" name="STANDARDCLASS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="STATUS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
     </metadata>
-    <metadata comment="" connector="FLOW" label="row_ALLOCVALUESCHAR_1" name="row_ALLOCVALUESCHAR_1" type="OUTPUT">
+    <metadata comment="" label="row_ALLOCVALUESCHAR_3" name="row_ALLOCVALUESCHAR_3" type="OUTPUT">
       <column comment="" key="false" length="30" name="CHARACT" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="30" name="VALUE_CHAR" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="INHERITED" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
@@ -428,7 +565,7 @@
       <column comment="" key="false" length="70" name="VALUE_CHAR_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="70" name="VALUE_NEUTRAL_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
     </metadata>
-    <metadata comment="" connector="FLOW" label="row_ALLOCVALUESCURR_1" name="row_ALLOCVALUESCURR_1" type="OUTPUT">
+    <metadata comment="" label="row_ALLOCVALUESCURR_3" name="row_ALLOCVALUESCURR_3" type="OUTPUT">
       <column comment="" key="false" length="30" name="CHARACT1" nullable="true" originalDbColumnName="CHARACT" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VALUE_FROM" nullable="true" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VALUE_TO" nullable="true" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
@@ -441,7 +578,7 @@
       <column comment="" key="false" length="0" name="INSTANCE1" nullable="true" originalDbColumnName="INSTANCE" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="30" name="CHARACT_DESCR1" nullable="true" originalDbColumnName="CHARACT_DESCR" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
     </metadata>
-    <metadata comment="" connector="FLOW" label="row_ALLOCVALUESNUM_1" name="row_ALLOCVALUESNUM_1" type="OUTPUT">
+    <metadata comment="" label="row_ALLOCVALUESNUM_3" name="row_ALLOCVALUESNUM_3" type="OUTPUT">
       <column comment="" key="false" length="30" name="CHARACT2" nullable="true" originalDbColumnName="CHARACT" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VALUE_FROM1" nullable="true" originalDbColumnName="VALUE_FROM" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VALUE_TO1" nullable="true" originalDbColumnName="VALUE_TO" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
@@ -454,7 +591,7 @@
       <column comment="" key="false" length="0" name="INSTANCE2" nullable="true" originalDbColumnName="INSTANCE" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="30" name="CHARACT_DESCR2" nullable="true" originalDbColumnName="CHARACT_DESCR" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
     </metadata>
-    <metadata comment="" connector="FLOW" label="row_RETURN_1" name="row_RETURN_1" type="OUTPUT">
+    <metadata comment="" label="row_RETURN_3" name="row_RETURN_3" type="OUTPUT">
       <column comment="" key="false" length="1" name="TYPE" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="20" name="ID" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="NUMBER" nullable="true" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
@@ -470,39 +607,39 @@
       <column comment="" key="false" length="30" name="FIELD" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="SYSTEM" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
     </metadata>
-    <metadata comment="" label="row_CLASSNUM_1" name="row_CLASSNUM_1" type="INPUT">
+    <metadata comment="" label="row_CLASSNUM_2" name="row_CLASSNUM_2" type="INPUT">
       <column comment="" key="false" length="18" name="CLASSNUM" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_CLASSTYPE_1" name="row_CLASSTYPE_1" type="INPUT">
+    <metadata comment="" label="row_CLASSTYPE_2" name="row_CLASSTYPE_2" type="INPUT">
       <column comment="" key="false" length="3" name="CLASSTYPE" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_KEYDATE_1" name="row_KEYDATE_1" type="INPUT">
+    <metadata comment="" label="row_KEYDATE_2" name="row_KEYDATE_2" type="INPUT">
       <column comment="" key="false" length="0" name="KEYDATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="date" type="id_Date" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_LANGUAGE_1" name="row_LANGUAGE_1" type="INPUT">
+    <metadata comment="" label="row_LANGUAGE_2" name="row_LANGUAGE_2" type="INPUT">
       <column comment="" key="false" length="1" name="LANGUAGE" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_OBJECTKEY_1" name="row_OBJECTKEY_1" type="INPUT">
+    <metadata comment="" label="row_OBJECTKEY_2" name="row_OBJECTKEY_2" type="INPUT">
       <column comment="" key="false" length="50" name="OBJECTKEY" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_OBJECTKEY_LONG_1" name="row_OBJECTKEY_LONG_1" type="INPUT">
+    <metadata comment="" label="row_OBJECTKEY_LONG_2" name="row_OBJECTKEY_LONG_2" type="INPUT">
       <column comment="" key="false" length="90" name="OBJECTKEY_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_OBJECTTABLE_1" name="row_OBJECTTABLE_1" type="INPUT">
+    <metadata comment="" label="row_OBJECTTABLE_2" name="row_OBJECTTABLE_2" type="INPUT">
       <column comment="" key="false" length="30" name="OBJECTTABLE" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_UNVALUATED_CHARS_1" name="row_UNVALUATED_CHARS_1" type="INPUT">
+    <metadata comment="" label="row_UNVALUATED_CHARS_2" name="row_UNVALUATED_CHARS_2" type="INPUT">
       <column comment="" key="false" length="1" name="UNVALUATED_CHARS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_ALLOCVALUESCHAR_2" name="row_ALLOCVALUESCHAR_2" type="INPUT">
+    <metadata comment="" label="row_ALLOCVALUESCHAR_4" name="row_ALLOCVALUESCHAR_4" type="INPUT">
       <column comment="" key="false" length="30" name="CHARACT" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="30" name="VALUE_CHAR" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="INHERITED" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
@@ -513,7 +650,7 @@
       <column comment="" key="false" length="70" name="VALUE_NEUTRAL_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_ALLOCVALUESCURR_2" name="row_ALLOCVALUESCURR_2" type="INPUT">
+    <metadata comment="" label="row_ALLOCVALUESCURR_4" name="row_ALLOCVALUESCURR_4" type="INPUT">
       <column comment="" key="false" length="30" name="CHARACT1" nullable="true" originalDbColumnName="CHARACT" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VALUE_FROM" nullable="true" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VALUE_TO" nullable="true" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
@@ -527,7 +664,7 @@
       <column comment="" key="false" length="30" name="CHARACT_DESCR1" nullable="true" originalDbColumnName="CHARACT_DESCR" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_ALLOCVALUESNUM_2" name="row_ALLOCVALUESNUM_2" type="INPUT">
+    <metadata comment="" label="row_ALLOCVALUESNUM_4" name="row_ALLOCVALUESNUM_4" type="INPUT">
       <column comment="" key="false" length="30" name="CHARACT2" nullable="true" originalDbColumnName="CHARACT" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VALUE_FROM1" nullable="true" originalDbColumnName="VALUE_FROM" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VALUE_TO1" nullable="true" originalDbColumnName="VALUE_TO" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
@@ -541,7 +678,7 @@
       <column comment="" key="false" length="30" name="CHARACT_DESCR2" nullable="true" originalDbColumnName="CHARACT_DESCR" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
-    <metadata comment="" label="row_RETURN_2" name="row_RETURN_2" type="INPUT">
+    <metadata comment="" label="row_RETURN_4" name="row_RETURN_4" type="INPUT">
       <column comment="" key="false" length="1" name="TYPE" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="20" name="ID" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="NUMBER" nullable="true" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
@@ -559,35 +696,119 @@
       <additionalProperties key="isinput" value="true"/>
     </metadata>
   </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="128">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_1"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
-    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE" show="false" value="true"/>
-    <elementParameter field="RADIO" name="PRINT_LABEL" show="false" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" show="false" value="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" show="false" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" show="false" value="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" show="false" value="false"/>
-    <elementParameter field="TABLE" name="LENGTHS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="STANDARDCLASS"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="STATUS"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="100"/>
+  <node componentName="tXMLMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="864" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tXMLMap_2"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="false"/>
+    <elementParameter field="CHECK" name="KEEP_ORDER_FOR_DOCUMENT" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="row_SINGLE_PARAM_1" name="tLogRow_1">
-      <column comment="" key="false" length="1" name="STANDARDCLASS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="STATUS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+    <metadata connector="FLOW" label="ALLOCVALUESCHAR" name="ALLOCVALUESCHAR">
+      <column comment="" key="false" length="-1" name="CHARACT" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VALUE_CHAR" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="INHERITED" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="INSTANCE" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VALUE_NEUTRAL" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="CHARACT_DESCR" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VALUE_CHAR_LONG" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VALUE_NEUTRAL_LONG" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
     </metadata>
+    <nodeData xsi:type="TalendXMLMap:XmlMapData">
+      <inputTrees lookupMode="LOAD_ONCE" matchingMode="ALL_ROWS" multiLoops="true" name="row3">
+        <nodes expression="" name="doc" type="id_Document" xpath="row3/doc">
+          <children main="true" name="BAPI_OBJCL_GETDETAIL" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL">
+            <children loop="true" main="true" name="OUTPUT" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/OUTPUT">
+              <children name="STANDARDCLASS" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/OUTPUT/STANDARDCLASS"/>
+              <children name="STATUS" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/OUTPUT/STATUS"/>
+            </children>
+            <children main="true" name="TABLES" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES">
+              <children main="true" name="ALLOCVALUESCHAR" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR">
+                <children loop="true" main="true" name="item" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item">
+                  <children name="CHARACT" outgoingConnections="//@node.5/@nodeData/@connections.0" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT"/>
+                  <children name="VALUE_CHAR" outgoingConnections="//@node.5/@nodeData/@connections.1" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR"/>
+                  <children name="INHERITED" outgoingConnections="//@node.5/@nodeData/@connections.2" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INHERITED"/>
+                  <children name="INSTANCE" outgoingConnections="//@node.5/@nodeData/@connections.3" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INSTANCE"/>
+                  <children name="VALUE_NEUTRAL" outgoingConnections="//@node.5/@nodeData/@connections.4" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL"/>
+                  <children name="CHARACT_DESCR" outgoingConnections="//@node.5/@nodeData/@connections.5" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT_DESCR"/>
+                  <children name="VALUE_CHAR_LONG" outgoingConnections="//@node.5/@nodeData/@connections.6" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR_LONG"/>
+                  <children name="VALUE_NEUTRAL_LONG" outgoingConnections="//@node.5/@nodeData/@connections.7" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL_LONG"/>
+                </children>
+              </children>
+              <children name="ALLOCVALUESCURR" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR">
+                <children name="item" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item">
+                  <children name="CHARACT" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CHARACT"/>
+                  <children name="VALUE_FROM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_FROM"/>
+                  <children name="VALUE_TO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_TO"/>
+                  <children name="VALUE_RELATION" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_RELATION"/>
+                  <children name="CURRENCY_FROM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_FROM"/>
+                  <children name="CURRENCY_TO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_TO"/>
+                  <children name="CURRENCY_FROM_ISO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_FROM_ISO"/>
+                  <children name="CURRENCY_TO_ISO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_TO_ISO"/>
+                  <children name="INHERITED" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/INHERITED"/>
+                  <children name="INSTANCE" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/INSTANCE"/>
+                  <children name="CHARACT_DESCR" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CHARACT_DESCR"/>
+                </children>
+              </children>
+              <children name="ALLOCVALUESNUM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM">
+                <children name="item" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item">
+                  <children name="CHARACT" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/CHARACT"/>
+                  <children name="VALUE_FROM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_FROM"/>
+                  <children name="VALUE_TO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_TO"/>
+                  <children name="VALUE_RELATION" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_RELATION"/>
+                  <children name="UNIT_FROM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_FROM"/>
+                  <children name="UNIT_TO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_TO"/>
+                  <children name="UNIT_FROM_ISO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_FROM_ISO"/>
+                  <children name="UNIT_TO_ISO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_TO_ISO"/>
+                  <children name="INHERITED" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/INHERITED"/>
+                  <children name="INSTANCE" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/INSTANCE"/>
+                  <children name="CHARACT_DESCR" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/CHARACT_DESCR"/>
+                </children>
+              </children>
+              <children name="RETURN" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN">
+                <children name="item" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item">
+                  <children name="TYPE" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/TYPE"/>
+                  <children name="ID" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/ID"/>
+                  <children name="NUMBER" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/NUMBER"/>
+                  <children name="MESSAGE" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE"/>
+                  <children name="LOG_NO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/LOG_NO"/>
+                  <children name="LOG_MSG_NO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/LOG_MSG_NO"/>
+                  <children name="MESSAGE_V1" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V1"/>
+                  <children name="MESSAGE_V2" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V2"/>
+                  <children name="MESSAGE_V3" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V3"/>
+                  <children name="MESSAGE_V4" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V4"/>
+                  <children name="PARAMETER" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/PARAMETER"/>
+                  <children name="ROW" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/ROW"/>
+                  <children name="FIELD" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/FIELD"/>
+                  <children name="SYSTEM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/SYSTEM"/>
+                </children>
+              </children>
+            </children>
+          </children>
+        </nodes>
+      </inputTrees>
+      <outputTrees name="ALLOCVALUESCHAR">
+        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT]" incomingConnections="//@node.5/@nodeData/@connections.0" name="CHARACT" type="id_String" xpath="ALLOCVALUESCHAR/CHARACT"/>
+        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR]" incomingConnections="//@node.5/@nodeData/@connections.1" name="VALUE_CHAR" type="id_String" xpath="ALLOCVALUESCHAR/VALUE_CHAR"/>
+        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INHERITED]" incomingConnections="//@node.5/@nodeData/@connections.2" name="INHERITED" type="id_String" xpath="ALLOCVALUESCHAR/INHERITED"/>
+        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INSTANCE]" incomingConnections="//@node.5/@nodeData/@connections.3" name="INSTANCE" type="id_String" xpath="ALLOCVALUESCHAR/INSTANCE"/>
+        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL]" incomingConnections="//@node.5/@nodeData/@connections.4" name="VALUE_NEUTRAL" type="id_String" xpath="ALLOCVALUESCHAR/VALUE_NEUTRAL"/>
+        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT_DESCR]" incomingConnections="//@node.5/@nodeData/@connections.5" name="CHARACT_DESCR" type="id_String" xpath="ALLOCVALUESCHAR/CHARACT_DESCR"/>
+        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR_LONG]" incomingConnections="//@node.5/@nodeData/@connections.6" name="VALUE_CHAR_LONG" type="id_String" xpath="ALLOCVALUESCHAR/VALUE_CHAR_LONG"/>
+        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL_LONG]" incomingConnections="//@node.5/@nodeData/@connections.7" name="VALUE_NEUTRAL_LONG" type="id_String" xpath="ALLOCVALUESCHAR/VALUE_NEUTRAL_LONG"/>
+        <inputLoopNodesTables inputloopnodes="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0"/>
+      </outputTrees>
+      <varTables minimized="true" name="Var"/>
+      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.0" target="//@node.5/@nodeData/@outputTrees.0/@nodes.0" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.1" target="//@node.5/@nodeData/@outputTrees.0/@nodes.1" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.2" target="//@node.5/@nodeData/@outputTrees.0/@nodes.2" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.3" target="//@node.5/@nodeData/@outputTrees.0/@nodes.3" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.4" target="//@node.5/@nodeData/@outputTrees.0/@nodes.4" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.5" target="//@node.5/@nodeData/@outputTrees.0/@nodes.5" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.6" target="//@node.5/@nodeData/@outputTrees.0/@nodes.6" xsi:type="TalendXMLMap:Connection"/>
+      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.7" target="//@node.5/@nodeData/@outputTrees.0/@nodes.7" xsi:type="TalendXMLMap:Connection"/>
+    </nodeData>
   </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="0">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_2"/>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_1"/>
     <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
     <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
     <elementParameter field="RADIO" name="VERTICAL" value="false"/>
@@ -620,186 +841,15 @@
     <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
     <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="100"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="row_ALLOCVALUESCHAR_1" name="tLogRow_2">
-      <column comment="" key="false" length="30" name="CHARACT" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="30" name="VALUE_CHAR" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="INHERITED" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="INSTANCE" nullable="true" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="30" name="VALUE_NEUTRAL" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="30" name="CHARACT_DESCR" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="70" name="VALUE_CHAR_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="70" name="VALUE_NEUTRAL_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="64">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_3"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
-    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE" show="false" value="true"/>
-    <elementParameter field="RADIO" name="PRINT_LABEL" show="false" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" show="false" value="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" show="false" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" show="false" value="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" show="false" value="false"/>
-    <elementParameter field="TABLE" name="LENGTHS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHARACT1"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALUE_FROM"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALUE_TO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALUE_RELATION"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CURRENCY_FROM"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CURRENCY_TO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CURRENCY_FROM_ISO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CURRENCY_TO_ISO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="INHERITED1"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="INSTANCE1"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHARACT_DESCR1"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="100"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="row_ALLOCVALUESCURR_1" name="tLogRow_3">
-      <column comment="" key="false" length="30" name="CHARACT1" nullable="true" originalDbColumnName="CHARACT" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="VALUE_FROM" nullable="true" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="VALUE_TO" nullable="true" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="VALUE_RELATION" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="5" name="CURRENCY_FROM" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="5" name="CURRENCY_TO" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="CURRENCY_FROM_ISO" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="CURRENCY_TO_ISO" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="INHERITED1" nullable="true" originalDbColumnName="INHERITED" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="INSTANCE1" nullable="true" originalDbColumnName="INSTANCE" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="30" name="CHARACT_DESCR1" nullable="true" originalDbColumnName="CHARACT_DESCR" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="192">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_4"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
-    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE" show="false" value="true"/>
-    <elementParameter field="RADIO" name="PRINT_LABEL" show="false" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" show="false" value="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" show="false" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" show="false" value="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" show="false" value="false"/>
-    <elementParameter field="TABLE" name="LENGTHS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHARACT2"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALUE_FROM1"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALUE_TO1"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALUE_RELATION1"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="UNIT_FROM"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="UNIT_TO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="UNIT_FROM_ISO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="UNIT_TO_ISO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="INHERITED2"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="INSTANCE2"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHARACT_DESCR2"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="100"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="row_ALLOCVALUESNUM_1" name="tLogRow_4">
-      <column comment="" key="false" length="30" name="CHARACT2" nullable="true" originalDbColumnName="CHARACT" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="VALUE_FROM1" nullable="true" originalDbColumnName="VALUE_FROM" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="VALUE_TO1" nullable="true" originalDbColumnName="VALUE_TO" pattern="" precision="0" sourceType="double" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="VALUE_RELATION1" nullable="true" originalDbColumnName="VALUE_RELATION" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="UNIT_FROM" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="UNIT_TO" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="UNIT_FROM_ISO" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="UNIT_TO_ISO" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="INHERITED2" nullable="true" originalDbColumnName="INHERITED" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="INSTANCE2" nullable="true" originalDbColumnName="INSTANCE" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="30" name="CHARACT_DESCR2" nullable="true" originalDbColumnName="CHARACT_DESCR" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="256">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_5"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
-    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE" show="false" value="true"/>
-    <elementParameter field="RADIO" name="PRINT_LABEL" show="false" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" show="false" value="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" show="false" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" show="false" value="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" show="false" value="false"/>
-    <elementParameter field="TABLE" name="LENGTHS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="TYPE"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ID"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NUMBER"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MESSAGE"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="LOG_NO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="LOG_MSG_NO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MESSAGE_V1"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MESSAGE_V2"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MESSAGE_V3"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MESSAGE_V4"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PARAMETER"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ROW"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FIELD"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SYSTEM"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="100"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="row_RETURN_1" name="tLogRow_5">
-      <column comment="" key="false" length="1" name="TYPE" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="ID" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="NUMBER" nullable="true" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="220" name="MESSAGE" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="LOG_NO" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="LOG_MSG_NO" nullable="true" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="50" name="MESSAGE_V1" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="50" name="MESSAGE_V2" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="50" name="MESSAGE_V3" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="50" name="MESSAGE_V4" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="32" name="PARAMETER" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="ROW" nullable="true" pattern="" precision="0" sourceType="integer" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="30" name="FIELD" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="SYSTEM" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+    <metadata connector="FLOW" label="ALLOCVALUESCHAR" name="tLogRow_1">
+      <column comment="" key="false" length="-1" name="CHARACT" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VALUE_CHAR" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="INHERITED" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="INSTANCE" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VALUE_NEUTRAL" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="CHARACT_DESCR" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VALUE_CHAR_LONG" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VALUE_NEUTRAL_LONG" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tDBOutput_1">
@@ -811,29 +861,21 @@
     <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
-  <connection connectorName="FLOW" label="row2" lineStyle="10" mergeOrder="1" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tSAPBapi_1">
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tXMLMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
-  <connection connectorName="FLOW" label="row_SINGLE_PARAM_1" lineStyle="0" metaname="row_SINGLE_PARAM_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tSAPBapi_1" target="tLogRow_1">
+  <connection connectorName="FLOW" label="input" lineStyle="10" mergeOrder="1" metaname="input" offsetLabelX="0" offsetLabelY="0" source="tXMLMap_1" target="tSAPBapi_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row_SINGLE_PARAM_1"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="input"/>
   </connection>
-  <connection connectorName="FLOW" label="row_ALLOCVALUESCHAR_1" lineStyle="0" metaname="row_ALLOCVALUESCHAR_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tSAPBapi_1" target="tLogRow_2">
+  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tSAPBapi_1" offsetLabelX="0" offsetLabelY="0" source="tSAPBapi_1" target="tXMLMap_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row_ALLOCVALUESCHAR_1"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
   </connection>
-  <connection connectorName="FLOW" label="row_ALLOCVALUESCURR_1" lineStyle="0" metaname="row_ALLOCVALUESCURR_1" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tSAPBapi_1" target="tLogRow_3">
+  <connection connectorName="FLOW" label="ALLOCVALUESCHAR" lineStyle="0" metaname="ALLOCVALUESCHAR" offsetLabelX="0" offsetLabelY="0" source="tXMLMap_2" target="tLogRow_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row_ALLOCVALUESCURR_1"/>
-  </connection>
-  <connection connectorName="FLOW" label="row_ALLOCVALUESNUM_1" lineStyle="0" metaname="row_ALLOCVALUESNUM_1" offsetLabelX="0" offsetLabelY="0" outputId="4" source="tSAPBapi_1" target="tLogRow_4">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row_ALLOCVALUESNUM_1"/>
-  </connection>
-  <connection connectorName="FLOW" label="row_RETURN_1" lineStyle="0" metaname="row_RETURN_1" offsetLabelX="0" offsetLabelY="0" outputId="5" source="tSAPBapi_1" target="tLogRow_5">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row_RETURN_1"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="ALLOCVALUESCHAR"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
@@ -845,13 +887,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_27502a7c-50ee-482c-babe-28853154a086"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>o72kz3UosWQT6rbse24Z7EEvWRaUda/kG8HIVKX1qNTbGQsU6CBJlii8WMh/u55G33mqTlfgAkjz&#13;
-gfNZLTEPIg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_e093c79c-cffd-44fd-beba-595d775620ea"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>M/+NGTF0nMuTvT+WPxRrLKKDGY1+F6HZiYmLTVDDQEkOG8rxXJz7oNYg6G2MFOZvQyigOoln6LXf&#13;
-oxo28CXKAA==</DigestValue></Reference></SignedInfo><SignatureValue>XWXRN/S1bxIKWvGuIcth91l0lsyvo7FAdZO59On0q0oiuPmyhlOsZaHD/JsEA562JvyoVyOnhKN8&#13;
-j3IlLKZyIEQBO6dV3MfnRB5wNyhSnhhH6Ne/Ve31sqzqByLXGJs4nyg258AQCp80Tvclrvl4PtS4&#13;
-gHfVu9y04yXCcu1wHveYvNa8Cz06xuEEXxxMDmCpH7S9IItYH0m4HZkrRGhcM9qBvaBXEfv2QfpZ&#13;
-+/iPwpMoF73qoZqkNifFQLv5boPaERaFWCdN62xYjr8RJl16JLN6AX+VlTvNDTTgF/Al+lHfEcDA&#13;
-+W7QBq/irjQgVobpQbCH0jomMqH/u+RnpGDtvg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_efb014f1-62e0-4cce-bc97-a3f692d56f26"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>EYO+oRAIYh9ygesUUnTW+GxYY8H0m1DLw75eeSCmtVYztXtwsNs7z4RdQ70mrfPaiubJc4afX5jB&#13;
+NNonj9CGkQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_7cd0dd05-3265-4d25-9937-e6411b9148c9"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>v5cBk+L65F8BYyb+9DO9nv6zmU1D3YXaTNe5BwoG9MJcVbgniNdTnzXft8BWc7KKtMNFIx66y02B&#13;
+7lslkXcaBQ==</DigestValue></Reference></SignedInfo><SignatureValue>KP+Xs4hnW10YAskMYbRXJz0wbBCFzlHA9AfqhIqpVZv0i2DcoMPlFKa/zueUvIbYzvRmSyFl7kgX&#13;
+lQuDl4UOY8U4WZyv71SsD+il9bJkTojUQoj5nkbETqV9tXdXWlxHLZtpeim1B7uS6MjxGhhDRKHx&#13;
+R13yx7LPUT5b94qvFZfwtBy1xfsgua0Y090de4D7x7TbRyuEj/QUq7RrbvY928rVWtTgTQOvTT/J&#13;
++eCrLMu95NeacFZq+1v2Vgc8jn3SLsyle09zh3Rsq9jBm+AHsTD2SnSL3tjYv99fDmJRD2djzwfX&#13;
+xeg381le5mLe9Hkd81WQ5RdY98YhMsKPZjvDhA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -873,4 +915,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_e093c79c-cffd-44fd-beba-595d775620ea" Target="#_27502a7c-50ee-482c-babe-28853154a086"><Timestamp>2023-10-30 17:06:59</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_7cd0dd05-3265-4d25-9937-e6411b9148c9" Target="#_efb014f1-62e0-4cce-bc97-a3f692d56f26"><Timestamp>2023-10-30 17:57:13</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
