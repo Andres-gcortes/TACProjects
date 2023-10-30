@@ -351,11 +351,11 @@
     <elementParameter field="TEXT" name="SYSTEMID" show="false" value="&quot;PRD&quot;"/>
     <elementParameter field="TEXT" name="GROUPNAME" show="false" value="&quot;tGroup&quot;"/>
     <elementParameter field="TEXT" name="SAP_FUNCTION" value="&quot;BAPI_OBJCL_GETDETAIL&quot;"/>
-    <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="true"/>
-    <elementParameter field="TABLE" name="MAPPING_INPUT">
+    <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="false"/>
+    <elementParameter field="TABLE" name="MAPPING_INPUT" show="false">
       <elementValue elementRef="NAME" value="&quot;CLASSNUM&quot;"/>
       <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_CLASSNUM_2"/>
+      <elementValue elementRef="SCHEMA" value=""/>
       <elementValue elementRef="PARENT_ROW" value="row2"/>
       <elementValue elementRef="PARAMETER_TYPE" value="CHANGING"/>
       <elementValue elementRef="NAME" value="&quot;CLASSTYPE&quot;"/>
@@ -384,10 +384,10 @@
       <elementValue elementRef="PARENT_ROW" value="row2"/>
       <elementValue elementRef="PARAMETER_TYPE" value="CHANGING"/>
     </elementParameter>
-    <elementParameter field="TABLE" name="SCHEMAS">
-      <elementValue elementRef="NAME" value="&quot;ALLOCVALUESCHAR&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
-      <elementValue elementRef="SCHEMA" value="row_ALLOCVALUESCHAR_3"/>
+    <elementParameter field="TABLE" name="SCHEMAS" show="false">
+      <elementValue elementRef="NAME" value="&quot;SINGLE_PARAM&quot;"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="SCHEMA" type="REPOSITORY" value="row_SINGLE_PARAM_3"/>
     </elementParameter>
     <elementParameter field="LABEL" name="NOTE_DATASOURCE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
@@ -418,10 +418,6 @@
       <column comment="" key="false" length="30" name="CHARACT_DESCR" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="70" name="VALUE_CHAR_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="70" name="VALUE_NEUTRAL_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-    </metadata>
-    <metadata comment="" label="row_CLASSNUM_2" name="row_CLASSNUM_2" type="INPUT">
-      <column comment="" key="false" length="18" name="CLASSNUM" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
-      <additionalProperties key="isinput" value="true"/>
     </metadata>
     <metadata comment="" label="row_CLASSTYPE_2" name="row_CLASSTYPE_2" type="INPUT">
       <column comment="" key="false" length="3" name="CLASSTYPE" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
@@ -507,6 +503,24 @@
       <column comment="" key="false" length="10" name="SYSTEM" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
+    <metadata comment="" label="ALLOCVALUESCHAR" name="row_ALLOCVALUESCHAR_5" type="OUTPUT">
+      <column comment="" key="false" length="30" name="CHARACT" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="VALUE_CHAR" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="INHERITED" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="INSTANCE" nullable="true" pattern="" precision="0" sourceType="long" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="VALUE_NEUTRAL" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="CHARACT_DESCR" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="70" name="VALUE_CHAR_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="70" name="VALUE_NEUTRAL_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+    </metadata>
+    <metadata comment="" label="row_SINGLE_PARAM_2" name="row_SINGLE_PARAM_2" type="OUTPUT">
+      <column comment="" key="false" length="1" name="STANDARDCLASS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="STATUS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+    </metadata>
+    <metadata comment="" label="row_SINGLE_PARAM_3" name="row_SINGLE_PARAM_3" type="OUTPUT">
+      <column comment="" key="false" length="1" name="STANDARDCLASS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="STATUS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+    </metadata>
   </node>
   <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="864" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_1"/>
@@ -580,13 +594,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_aee43d99-8d31-43a1-8b99-967a0b7df0ba"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>0gOA7QcJBW46wr8rSkW6K/Nk2ZMhl+LiP/aD6gjK0w2ej8+qwmToy/jgPF8QoEFBG2DqJGu9AoVT&#13;
-W3pt2M/dDw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_5dbabf51-a462-4fae-a0de-1d2c5a4cadb5"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>bz3kbZnYEwemjUgNb1g5HS8cUL/wwwhCm5TzEJGoZ3hp0BIPWu+9AUCN2AN6YZiUcqV8C8tLNQ9x&#13;
-j9TvuKkhTg==</DigestValue></Reference></SignedInfo><SignatureValue>CEQAq9KLr5eVfvtkLXtzzEqdoGLb5xhN6V3a1ZreT2OEeoopZtqG+y3qfodK0s/AWYMQ+yhQtBCN&#13;
-ymxzRtB/3+WS9qrcseFyzymE+w5W9Lo2oesAA7yYkMLmrIgnXlJNdJ+pHgsy0cDhtaGvuwjn9cNp&#13;
-rmZQ5Eha8Z6PLnooq9CjjAW5AgSJWVY451T19hipvh+6mkSL5sWdKfy6nNUGOclh7oyHIFPOFW8m&#13;
-qKVlr+gEJ7xakV5ITdbe5pxF1/V0mpYFf0oqyoUd14KeTTI29tbeCNnDx+1io2fHBBLM0SGySr/3&#13;
-ZgFIM+Hzx0uelykoB/zlxT4Aj2NTc4CJ8w3ttg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_3433d085-7241-458d-95ef-cfa1dba7e5a3"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>VxzKZpmGi/o/Kf9i7Q6r6qzzrRUO5tqJe5jMotR2QHeJuSil4T2rvXhpt2atI/UJhCxj8DlgEtcZ&#13;
+/DRqoedpSQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_e3259ae9-b8de-4ab3-bce8-fb959f6684aa"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>oiwlipQMBZMkGqym6omDW59I0P0v4V4o8EVRYp1OHf6U7BPi7QryxoFm3bVTp/WYpzXhw9bpRDr7&#13;
+L5ujqSD7bw==</DigestValue></Reference></SignedInfo><SignatureValue>asv8Zhdm/Bc8gTMgdzUAbc74ofm67WayrchobVNNxnKWiRA0US2z8pNec10r2wS6iG+qc0b81jBj&#13;
+aHe5cF4C5veDOuR/6SzToQBx4MeQhgoSjY7wo9XVBnCAKCotDlpcCCgmR+ApoFCPO77JUm/794rK&#13;
+SSNg0geVhJO9UyxYr7yOR58i2QcW2sQcqQxMB/VORJtBfrNEcUXxxuID8RfTXUM5u5Rd7ITqta89&#13;
+VkdiBgF0MjQKcQYDQZrPGsYxKUPh+qaBuEsXWT3FSkj4lGJ7wftl32KHXtQSQtp4V5mK8RCgB4cx&#13;
+VAhx6iJFkz9Hi7rqjQ4Z3itN7UW5dN3UMgyKwQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -608,4 +622,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_5dbabf51-a462-4fae-a0de-1d2c5a4cadb5" Target="#_aee43d99-8d31-43a1-8b99-967a0b7df0ba"><Timestamp>2023-10-30 18:50:34</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_e3259ae9-b8de-4ab3-bce8-fb959f6684aa" Target="#_3433d085-7241-458d-95ef-cfa1dba7e5a3"><Timestamp>2023-10-30 18:52:25</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
