@@ -281,7 +281,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -317,48 +316,7 @@
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_3">
-      <column comment="" key="false" length="8" name="KEYDATE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
-    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:6AWrMfiqZnz4F6smLdQu07fSDbmYgkZ1SRfz1jZ2sbGhwTO9MAvDdvUXicJZ7jY/0O8Uwpw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SAP_END_CUSTOMER_TEXT_INPUT_HANA&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT  [OBJECTKEY]&#13;&#10;FROM [dbo].[SAP_END_CUSTOMER_TEXT_INPUT_HANA]&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="OBJECTKEY"/>
-      <elementValue elementRef="TRIM" value="false"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_2">
-      <column comment="" key="false" length="34" name="OBJECTKEY" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="KEYDATE" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tSAPBapi" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="512" posY="160">
@@ -390,17 +348,17 @@
       <elementValue elementRef="PARENT_ROW" value=""/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
       <elementValue elementRef="NAME" value="&quot;KEYDATE&quot;"/>
-      <elementValue elementRef="TYPE" value="SINGLE"/>
+      <elementValue elementRef="TYPE" value="TABLE"/>
       <elementValue elementRef="SCHEMA" value="row_KEYDATE_1"/>
       <elementValue elementRef="PARENT_ROW" value="row2"/>
-      <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
+      <elementValue elementRef="PARAMETER_TYPE" value="CHANGING"/>
       <elementValue elementRef="NAME" value="&quot;LANGUAGE&quot;"/>
       <elementValue elementRef="TYPE" value="SINGLE"/>
       <elementValue elementRef="SCHEMA" value="row_LANGUAGE_1"/>
       <elementValue elementRef="PARENT_ROW" value=""/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
       <elementValue elementRef="NAME" value="&quot;OBJECTKEY&quot;"/>
-      <elementValue elementRef="TYPE" value="TABLE"/>
+      <elementValue elementRef="TYPE" value="SINGLE"/>
       <elementValue elementRef="SCHEMA" value="row_OBJECTKEY_1"/>
       <elementValue elementRef="PARENT_ROW" value="row3"/>
       <elementValue elementRef="PARAMETER_TYPE" value="IMPORT"/>
@@ -537,7 +495,7 @@
       <additionalProperties key="isinput" value="true"/>
     </metadata>
     <metadata comment="" label="row_KEYDATE_1" name="row_KEYDATE_1" type="INPUT">
-      <column comment="" defaultValue="&quot;20231030&quot;" key="false" length="0" name="KEYDATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="date" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="KEYDATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="date" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
     <metadata comment="" label="row_LANGUAGE_1" name="row_LANGUAGE_1" type="INPUT">
@@ -545,7 +503,7 @@
       <additionalProperties key="isinput" value="true"/>
     </metadata>
     <metadata comment="" label="row_OBJECTKEY_1" name="row_OBJECTKEY_1" type="INPUT">
-      <column comment="" key="false" length="50" name="OBJECTKEY" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="310010007000189050008804-2ZR0100LB" key="false" length="50" name="OBJECTKEY" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
       <additionalProperties key="isinput" value="true"/>
     </metadata>
     <metadata comment="" label="row_OBJECTKEY_LONG_1" name="row_OBJECTKEY_LONG_1" type="INPUT">
@@ -725,6 +683,47 @@
       <column comment="" key="false" length="70" name="VALUE_NEUTRAL_LONG" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:6AWrMfiqZnz4F6smLdQu07fSDbmYgkZ1SRfz1jZ2sbGhwTO9MAvDdvUXicJZ7jY/0O8Uwpw="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SAP_END_CUSTOMER_TEXT_INPUT_HANA&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT  [OBJECTKEY]&#13;&#10;FROM [dbo].[SAP_END_CUSTOMER_TEXT_INPUT_HANA]&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="OBJECTKEY"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_2">
+      <column comment="" key="false" length="34" name="OBJECTKEY" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tDBOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
@@ -734,9 +733,9 @@
     <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
-  <connection connectorName="FLOW" label="row3" lineStyle="10" mergeOrder="1" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tSAPBapi_1">
+  <connection connectorName="FLOW" label="row2" lineStyle="10" mergeOrder="1" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tSAPBapi_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
   <connection connectorName="FLOW" label="row_ALLOCVALUESCHAR_1" lineStyle="0" metaname="row_ALLOCVALUESCHAR_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tSAPBapi_1" target="tLogRow_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -761,13 +760,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e6d4a45c-39e9-48dd-974b-8aeea3129004"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>8UjBMMPRb73G4qLjxrRKfpqS2naUtE644z55ghjAWbIfsUv9HlxE6o8SlSHupEPhI8W4k+pF39K3&#13;
-pjdMERKszA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_0598cde7-7b64-4530-ac0c-efe6d17c1789"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>2z2nRd5TD1nV3k0z+bFtaIBzElt4tXVkxhQHc0mLwAwbUVJfiv3LV7ADHZ2BEZn9tLdUyt6rXPmn&#13;
-oVe2iopPQA==</DigestValue></Reference></SignedInfo><SignatureValue>h1glVxmum/DN/WAVObJvDL1YaLhPd4FV4XAD3DHBvygNuG7+EqIqjE8JsPPXoq9HMSag/AF1CVO0&#13;
-nfzGjZgv7up4kdH4qExPpDiN7tsLfSXf+e66J1DlmgWXdmYtVRm+pIS77/OxRUySkwvFjNBgOh65&#13;
-ZEUbQarl5GG3joGQZv7O2vA5yOja7FtS/MIxG3htzF8qs9Yppm7J4qmMuiEKv0JXU0sNNaTMRkV4&#13;
-xcUh3exUa1naS88UkmJjeytPgNOeQJUdT50lQ1bEcEQVgD4rCgMMiUGMB5d3JXG+Wdofaj7xzWCy&#13;
-pOudBz5l57Sx/er71xWM9ff6+/AGdOPbspHRXA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_19204563-e3e2-4b6e-b1ab-6d07a0a25674"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>rM5ff0KhrhSenbcMVRnKEvm5MRvbTDwt00mlyB0wKt99M5yCodQgnBGEmXwlQ2Xcli/11x1bSu5j&#13;
+t2a/ah3yzw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_6a8a4288-dee3-4689-a841-db92b06cab13"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>X07CflvSrJy5LiH6iALod6rQiOFb27UfCxwoDFvYoqZya+giQtihq+1fUgM1HT70/Bjg5Yop9Yq2&#13;
+UXNVSssIuA==</DigestValue></Reference></SignedInfo><SignatureValue>bnr5ECXJnRFoJ0+jeWO2RKCtsZZYWkLbxTAZIsJz5xPlFzowNXuAcdzHM1i/EZH6kAO/8esR4IsN&#13;
+SRk8dgfl/EVq2ohjjjHyD+1kt1ac54gJRe8LbLZS/Ak59lp3ihGmF6305ZkDcvD0odvbtryQeljC&#13;
+T7K3qAzlQIbr/IxaMrY8xHhg/O64DYUjxJLwa6+o5y4+BH4G/u7H6BD7ayNCpVLaG40sYOZJKbH7&#13;
+HyTnlRc4gPm1gK5xNeqgdMG0gSg4IggjScosZL5IKekFYqUHRLL8jHl4oMTgkw/hN+kArl/lZz5b&#13;
+3bA51SW5yjUzIsaTcRsAlSY/UJkq+BgQcD066Q==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -789,4 +788,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_0598cde7-7b64-4530-ac0c-efe6d17c1789" Target="#_e6d4a45c-39e9-48dd-974b-8aeea3129004"><Timestamp>2023-10-30 20:58:43</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_6a8a4288-dee3-4689-a841-db92b06cab13" Target="#_19204563-e3e2-4b6e-b1ab-6d07a0a25674"><Timestamp>2023-10-30 21:00:09</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
