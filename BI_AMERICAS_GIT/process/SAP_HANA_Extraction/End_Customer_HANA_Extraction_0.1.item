@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:TalendXMLMap="http://www.talend.org/xmlmap" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultContext="Default" jobType="Standard" xmi:version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Default">
     <contextParameter comment="" internalId="_dq5xEHT0Ee6YerbJnneKxw" name="SAP_S4_HANA_PROD_1001_Client" prompt="SAP_S4_HANA_PROD_1001_Client?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_String" value="100"/>
     <contextParameter comment="" internalId="_dq5xEXT0Ee6YerbJnneKxw" name="SAP_S4_HANA_PROD_1001_Password" prompt="SAP_S4_HANA_PROD_1001_Password?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_Password" value="enc:system.encryption.key.v1:efb98vdZNT0nsWfCpSJYN0Eq2T5zPnsruaKWt2PpFmZsr2s3kcLfgQgC"/>
@@ -331,114 +331,9 @@
       <column comment="" key="false" length="4" name="OBJECTTABLE" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="8" name="CLASSNUM" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="CLASSTYPE" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="KEYDATE" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="KEYDATE" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="TEXT" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="LANGUAGE" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
-  </node>
-  <node componentName="tXMLMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="480" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tXMLMap_1"/>
-    <elementParameter field="EXTERNAL" name="MAP" value=""/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="false"/>
-    <elementParameter field="CHECK" name="KEEP_ORDER_FOR_DOCUMENT" value="false"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="input">
-      <column comment="" key="false" length="-1" name="doc" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Document" usefulColumn="true"/>
-    </metadata>
-    <nodeData xsi:type="TalendXMLMap:XmlMapData">
-      <inputTrees lookupMode="LOAD_ONCE" matchingMode="ALL_ROWS" name="row2">
-        <nodes name="OBJECTKEY" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.4" type="id_String" xpath="row2/OBJECTKEY"/>
-        <nodes name="OBJECTTABLE" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.5" type="id_String" xpath="row2/OBJECTTABLE"/>
-        <nodes name="CLASSNUM" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.0" type="id_String" xpath="row2/CLASSNUM"/>
-        <nodes name="CLASSTYPE" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.1" type="id_String" xpath="row2/CLASSTYPE"/>
-        <nodes name="KEYDATE" outgoingConnections="//@node.3/@nodeData/@connections.2" pattern="&quot;yyyy-MM-dd&quot;" type="id_String" xpath="row2/KEYDATE"/>
-        <nodes name="LANGUAGE" nullable="false" outgoingConnections="//@node.3/@nodeData/@connections.3" type="id_String" xpath="row2/LANGUAGE"/>
-      </inputTrees>
-      <outputTrees name="input">
-        <nodes expression="" name="doc" type="id_Document" xpath="input/doc">
-          <children main="true" name="BAPI_OBJCL_GETDETAIL" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL" xsi:type="TalendXMLMap:OutputTreeNode">
-            <children loop="true" main="true" name="INPUT" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT" xsi:type="TalendXMLMap:OutputTreeNode">
-              <children expression="row2.CLASSNUM" incomingConnections="//@node.3/@nodeData/@connections.0" name="CLASSNUM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/CLASSNUM" xsi:type="TalendXMLMap:OutputTreeNode"/>
-              <children expression="row2.CLASSTYPE" incomingConnections="//@node.3/@nodeData/@connections.1" name="CLASSTYPE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/CLASSTYPE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-              <children expression="row2.KEYDATE" incomingConnections="//@node.3/@nodeData/@connections.2" name="KEYDATE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/KEYDATE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-              <children expression="row2.LANGUAGE" incomingConnections="//@node.3/@nodeData/@connections.3" name="LANGUAGE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/LANGUAGE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-              <children expression="row2.OBJECTKEY" incomingConnections="//@node.3/@nodeData/@connections.4" name="OBJECTKEY" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/OBJECTKEY" xsi:type="TalendXMLMap:OutputTreeNode"/>
-              <children name="OBJECTKEY_LONG" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/OBJECTKEY_LONG" xsi:type="TalendXMLMap:OutputTreeNode"/>
-              <children expression="row2.OBJECTTABLE" incomingConnections="//@node.3/@nodeData/@connections.5" name="OBJECTTABLE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/OBJECTTABLE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-              <children name="UNVALUATED_CHARS" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/INPUT/UNVALUATED_CHARS" xsi:type="TalendXMLMap:OutputTreeNode"/>
-            </children>
-            <children name="TABLES" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES" xsi:type="TalendXMLMap:OutputTreeNode">
-              <children name="ALLOCVALUESCHAR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR" xsi:type="TalendXMLMap:OutputTreeNode">
-                <children name="item" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item" xsi:type="TalendXMLMap:OutputTreeNode">
-                  <children name="CHARACT" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_CHAR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="INHERITED" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INHERITED" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="INSTANCE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INSTANCE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_NEUTRAL" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="CHARACT_DESCR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT_DESCR" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_CHAR_LONG" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR_LONG" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_NEUTRAL_LONG" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL_LONG" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                </children>
-              </children>
-              <children name="ALLOCVALUESCURR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR" xsi:type="TalendXMLMap:OutputTreeNode">
-                <children name="item" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item" xsi:type="TalendXMLMap:OutputTreeNode">
-                  <children name="CHARACT" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CHARACT" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_FROM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_FROM" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_TO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_TO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_RELATION" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_RELATION" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="CURRENCY_FROM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_FROM" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="CURRENCY_TO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_TO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="CURRENCY_FROM_ISO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_FROM_ISO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="CURRENCY_TO_ISO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_TO_ISO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="INHERITED" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/INHERITED" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="INSTANCE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/INSTANCE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="CHARACT_DESCR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CHARACT_DESCR" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                </children>
-              </children>
-              <children name="ALLOCVALUESNUM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM" xsi:type="TalendXMLMap:OutputTreeNode">
-                <children name="item" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item" xsi:type="TalendXMLMap:OutputTreeNode">
-                  <children name="CHARACT" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/CHARACT" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_FROM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_FROM" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_TO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_TO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="VALUE_RELATION" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_RELATION" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="UNIT_FROM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_FROM" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="UNIT_TO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_TO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="UNIT_FROM_ISO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_FROM_ISO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="UNIT_TO_ISO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_TO_ISO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="INHERITED" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/INHERITED" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="INSTANCE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/INSTANCE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="CHARACT_DESCR" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/CHARACT_DESCR" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                </children>
-              </children>
-              <children name="RETURN" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN" xsi:type="TalendXMLMap:OutputTreeNode">
-                <children name="item" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item" xsi:type="TalendXMLMap:OutputTreeNode">
-                  <children name="TYPE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/TYPE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="ID" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/ID" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="NUMBER" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/NUMBER" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="MESSAGE" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="LOG_NO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/LOG_NO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="LOG_MSG_NO" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/LOG_MSG_NO" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="MESSAGE_V1" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V1" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="MESSAGE_V2" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V2" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="MESSAGE_V3" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V3" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="MESSAGE_V4" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V4" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="PARAMETER" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/PARAMETER" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="ROW" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/ROW" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="FIELD" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/FIELD" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                  <children name="SYSTEM" type="id_String" xpath="input.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/SYSTEM" xsi:type="TalendXMLMap:OutputTreeNode"/>
-                </children>
-              </children>
-            </children>
-          </children>
-        </nodes>
-      </outputTrees>
-      <varTables minimized="true" name="Var"/>
-      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.2" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.0" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.3" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.1" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.4" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.2" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.5" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.3" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.0" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.4" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.3/@nodeData/@inputTrees.0/@nodes.1" target="//@node.3/@nodeData/@outputTrees.0/@nodes.0/@children.0/@children.0/@children.6" xsi:type="TalendXMLMap:Connection"/>
-    </nodeData>
   </node>
   <node componentName="tSAPBapi" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSAPBapi_1"/>
@@ -549,7 +444,12 @@
     <elementParameter field="TEXT" name="LABEL" value="BAPI_OBJCL_GETDETAIL"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tSAPBapi_1">
-      <column comment="" key="false" length="-1" name="doc" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Document" usefulColumn="true"/>
+      <column comment="" key="false" length="34" name="OBJECTKEY" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="OBJECTTABLE" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="CLASSNUM" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CLASSTYPE" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="KEYDATE" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="LANGUAGE" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata comment="" label="row_SINGLE_PARAM_2" name="row_SINGLE_PARAM_2" type="OUTPUT">
       <column comment="" key="false" length="1" name="STANDARDCLASS" nullable="true" pattern="" precision="0" sourceType="string" type="id_String" usefulColumn="true"/>
@@ -696,117 +596,6 @@
       <additionalProperties key="isinput" value="true"/>
     </metadata>
   </node>
-  <node componentName="tXMLMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="864" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tXMLMap_2"/>
-    <elementParameter field="EXTERNAL" name="MAP" value=""/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="false"/>
-    <elementParameter field="CHECK" name="KEEP_ORDER_FOR_DOCUMENT" value="false"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="ALLOCVALUESCHAR" name="ALLOCVALUESCHAR">
-      <column comment="" key="false" length="-1" name="CHARACT" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="VALUE_CHAR" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="INHERITED" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="INSTANCE" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="VALUE_NEUTRAL" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="CHARACT_DESCR" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="VALUE_CHAR_LONG" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="VALUE_NEUTRAL_LONG" nullable="true" originalLength="-1" precision="-1" sourceType="id_String" type="id_String" usefulColumn="true"/>
-    </metadata>
-    <nodeData xsi:type="TalendXMLMap:XmlMapData">
-      <inputTrees lookupMode="LOAD_ONCE" matchingMode="ALL_ROWS" multiLoops="true" name="row3">
-        <nodes expression="" name="doc" type="id_Document" xpath="row3/doc">
-          <children main="true" name="BAPI_OBJCL_GETDETAIL" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL">
-            <children loop="true" main="true" name="OUTPUT" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/OUTPUT">
-              <children name="STANDARDCLASS" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/OUTPUT/STANDARDCLASS"/>
-              <children name="STATUS" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/OUTPUT/STATUS"/>
-            </children>
-            <children main="true" name="TABLES" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES">
-              <children main="true" name="ALLOCVALUESCHAR" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR">
-                <children loop="true" main="true" name="item" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item">
-                  <children name="CHARACT" outgoingConnections="//@node.5/@nodeData/@connections.0" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT"/>
-                  <children name="VALUE_CHAR" outgoingConnections="//@node.5/@nodeData/@connections.1" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR"/>
-                  <children name="INHERITED" outgoingConnections="//@node.5/@nodeData/@connections.2" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INHERITED"/>
-                  <children name="INSTANCE" outgoingConnections="//@node.5/@nodeData/@connections.3" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INSTANCE"/>
-                  <children name="VALUE_NEUTRAL" outgoingConnections="//@node.5/@nodeData/@connections.4" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL"/>
-                  <children name="CHARACT_DESCR" outgoingConnections="//@node.5/@nodeData/@connections.5" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT_DESCR"/>
-                  <children name="VALUE_CHAR_LONG" outgoingConnections="//@node.5/@nodeData/@connections.6" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR_LONG"/>
-                  <children name="VALUE_NEUTRAL_LONG" outgoingConnections="//@node.5/@nodeData/@connections.7" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL_LONG"/>
-                </children>
-              </children>
-              <children name="ALLOCVALUESCURR" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR">
-                <children name="item" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item">
-                  <children name="CHARACT" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CHARACT"/>
-                  <children name="VALUE_FROM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_FROM"/>
-                  <children name="VALUE_TO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_TO"/>
-                  <children name="VALUE_RELATION" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/VALUE_RELATION"/>
-                  <children name="CURRENCY_FROM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_FROM"/>
-                  <children name="CURRENCY_TO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_TO"/>
-                  <children name="CURRENCY_FROM_ISO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_FROM_ISO"/>
-                  <children name="CURRENCY_TO_ISO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CURRENCY_TO_ISO"/>
-                  <children name="INHERITED" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/INHERITED"/>
-                  <children name="INSTANCE" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/INSTANCE"/>
-                  <children name="CHARACT_DESCR" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCURR/item/CHARACT_DESCR"/>
-                </children>
-              </children>
-              <children name="ALLOCVALUESNUM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM">
-                <children name="item" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item">
-                  <children name="CHARACT" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/CHARACT"/>
-                  <children name="VALUE_FROM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_FROM"/>
-                  <children name="VALUE_TO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_TO"/>
-                  <children name="VALUE_RELATION" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/VALUE_RELATION"/>
-                  <children name="UNIT_FROM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_FROM"/>
-                  <children name="UNIT_TO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_TO"/>
-                  <children name="UNIT_FROM_ISO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_FROM_ISO"/>
-                  <children name="UNIT_TO_ISO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/UNIT_TO_ISO"/>
-                  <children name="INHERITED" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/INHERITED"/>
-                  <children name="INSTANCE" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/INSTANCE"/>
-                  <children name="CHARACT_DESCR" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESNUM/item/CHARACT_DESCR"/>
-                </children>
-              </children>
-              <children name="RETURN" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN">
-                <children name="item" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item">
-                  <children name="TYPE" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/TYPE"/>
-                  <children name="ID" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/ID"/>
-                  <children name="NUMBER" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/NUMBER"/>
-                  <children name="MESSAGE" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE"/>
-                  <children name="LOG_NO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/LOG_NO"/>
-                  <children name="LOG_MSG_NO" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/LOG_MSG_NO"/>
-                  <children name="MESSAGE_V1" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V1"/>
-                  <children name="MESSAGE_V2" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V2"/>
-                  <children name="MESSAGE_V3" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V3"/>
-                  <children name="MESSAGE_V4" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/MESSAGE_V4"/>
-                  <children name="PARAMETER" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/PARAMETER"/>
-                  <children name="ROW" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/ROW"/>
-                  <children name="FIELD" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/FIELD"/>
-                  <children name="SYSTEM" type="id_String" xpath="row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/RETURN/item/SYSTEM"/>
-                </children>
-              </children>
-            </children>
-          </children>
-        </nodes>
-      </inputTrees>
-      <outputTrees name="ALLOCVALUESCHAR">
-        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT]" incomingConnections="//@node.5/@nodeData/@connections.0" name="CHARACT" type="id_String" xpath="ALLOCVALUESCHAR/CHARACT"/>
-        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR]" incomingConnections="//@node.5/@nodeData/@connections.1" name="VALUE_CHAR" type="id_String" xpath="ALLOCVALUESCHAR/VALUE_CHAR"/>
-        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INHERITED]" incomingConnections="//@node.5/@nodeData/@connections.2" name="INHERITED" type="id_String" xpath="ALLOCVALUESCHAR/INHERITED"/>
-        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/INSTANCE]" incomingConnections="//@node.5/@nodeData/@connections.3" name="INSTANCE" type="id_String" xpath="ALLOCVALUESCHAR/INSTANCE"/>
-        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL]" incomingConnections="//@node.5/@nodeData/@connections.4" name="VALUE_NEUTRAL" type="id_String" xpath="ALLOCVALUESCHAR/VALUE_NEUTRAL"/>
-        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/CHARACT_DESCR]" incomingConnections="//@node.5/@nodeData/@connections.5" name="CHARACT_DESCR" type="id_String" xpath="ALLOCVALUESCHAR/CHARACT_DESCR"/>
-        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_CHAR_LONG]" incomingConnections="//@node.5/@nodeData/@connections.6" name="VALUE_CHAR_LONG" type="id_String" xpath="ALLOCVALUESCHAR/VALUE_CHAR_LONG"/>
-        <nodes expression="[row3.doc:/BAPI_OBJCL_GETDETAIL/TABLES/ALLOCVALUESCHAR/item/VALUE_NEUTRAL_LONG]" incomingConnections="//@node.5/@nodeData/@connections.7" name="VALUE_NEUTRAL_LONG" type="id_String" xpath="ALLOCVALUESCHAR/VALUE_NEUTRAL_LONG"/>
-        <inputLoopNodesTables inputloopnodes="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0"/>
-      </outputTrees>
-      <varTables minimized="true" name="Var"/>
-      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.0" target="//@node.5/@nodeData/@outputTrees.0/@nodes.0" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.1" target="//@node.5/@nodeData/@outputTrees.0/@nodes.1" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.2" target="//@node.5/@nodeData/@outputTrees.0/@nodes.2" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.3" target="//@node.5/@nodeData/@outputTrees.0/@nodes.3" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.4" target="//@node.5/@nodeData/@outputTrees.0/@nodes.4" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.5" target="//@node.5/@nodeData/@outputTrees.0/@nodes.5" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.6" target="//@node.5/@nodeData/@outputTrees.0/@nodes.6" xsi:type="TalendXMLMap:Connection"/>
-      <connections source="//@node.5/@nodeData/@inputTrees.0/@nodes.0/@children.0/@children.1/@children.0/@children.0/@children.7" target="//@node.5/@nodeData/@outputTrees.0/@nodes.7" xsi:type="TalendXMLMap:Connection"/>
-    </nodeData>
-  </node>
   <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_1"/>
     <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
@@ -861,21 +650,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
-  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tXMLMap_1">
+  <connection connectorName="FLOW" label="row2" lineStyle="10" mergeOrder="1" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tSAPBapi_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
-  <connection connectorName="FLOW" label="input" lineStyle="10" mergeOrder="1" metaname="input" offsetLabelX="0" offsetLabelY="0" source="tXMLMap_1" target="tSAPBapi_1">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="input"/>
-  </connection>
-  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tSAPBapi_1" offsetLabelX="0" offsetLabelY="0" source="tSAPBapi_1" target="tXMLMap_2">
+  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tSAPBapi_1" offsetLabelX="0" offsetLabelY="0" source="tSAPBapi_1" target="tLogRow_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
-  </connection>
-  <connection connectorName="FLOW" label="ALLOCVALUESCHAR" lineStyle="0" metaname="ALLOCVALUESCHAR" offsetLabelX="0" offsetLabelY="0" source="tXMLMap_2" target="tLogRow_1">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="ALLOCVALUESCHAR"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
@@ -887,13 +668,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_ebad4ec0-7526-48ea-93a0-22bbd459ee00"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ACPfes2qWJRBBbNblcmdZgBnBUhBx3198Sw9evltdbQBIEaP3WbcqTM0pUMjKAebD2oVBpsiZyQ2&#13;
-2D/T36IfGg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_fe2e90a9-d460-4193-b0d9-85957d9738a4"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>a35xl27xdY/RobRf2mi9ipZueYt1HserEw7/Yq34n4ERDpOawxNr8pti18U0SMYNw+vfRgJWMbbA&#13;
-uLf4mpANqw==</DigestValue></Reference></SignedInfo><SignatureValue>ha9CdBjuGqCsV0P/hUjZnaabPgJahK9+xsXhzwVJ0sBwcy/kPkfhzG9HmJsYKr40w/Q7ODX+FBvG&#13;
-81eEaBBTEz6nKR8A0tgvLJ7dxUAVH6HvPfFdQ2sIl4N6B7V2hDmw/K1R35c0ibwVDhuDgPKYc6EP&#13;
-TFZX/XK4PVVJVI/iJhouWrVV/6AgZjbH3fZwiFTeAmQEko+92Y0iYpqlxR09D7V7JFD2xnvHa+kv&#13;
-1rAgI0/q8oyTwr6mKzdfqeJQxPZmEwdcgCSHaDuBtcmqXYSmR7maDV79ezC/SsZMFRhzbJjjuC5m&#13;
-IV6WV48PvGMhcc2Vx12TfNE62M70bQDUQGvFIw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_af295e70-d1da-40fe-8dd2-139f1cdf9210"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>51Rqj4okXNN3SwqZQUvs2mqLsWbT5pPpYKPmoG6mKj7RDRFgSV50bJkwWrgnqFXReat14roS1r6+&#13;
+Xu4uVbH7qQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_8f73b0d4-0e90-446e-be56-de4ad34661c9"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>0U/4bD+qucnr/bzEi4Y4hlb+UnvORK+y3F/YGnL6qHWgionvMr5/JuI4U2XEj7KxtVfmGaq+XY1N&#13;
+cXmlB1p9yg==</DigestValue></Reference></SignedInfo><SignatureValue>VVvczUecKlXteoJhr0pgjtywjTL3N/hB0Y4sL9wu5Y4OBR+s1CFUEQSExjackTXZ7AmHnWrgWfb8&#13;
+LNRA1EmTQA1+UWRFURyng4vtF1xj114L5GreSLdSb0Vm0Gk8AAkrRi0ULJuzcpGazNwAOmhTd2YC&#13;
+aphWynz2BP41qg3YVRmgGuByq0Gn/UoLX/WKfYESe5R+jh9OlG7xQVJMC4h1gzjh012Euue+2tFW&#13;
+/oWV/YhfjWJmJ71cBIYcGL/+DrlBzpHPIrT5NjgKFtwVqyzjU6bZ74o/+N/Dv10x77xi8tQxheRg&#13;
+qQOnD3ERwhimt/IFXsCr+R+46vrCEP1U6SabYA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -915,4 +696,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_fe2e90a9-d460-4193-b0d9-85957d9738a4" Target="#_ebad4ec0-7526-48ea-93a0-22bbd459ee00"><Timestamp>2023-10-30 17:59:37</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_8f73b0d4-0e90-446e-be56-de4ad34661c9" Target="#_af295e70-d1da-40fe-8dd2-139f1cdf9210"><Timestamp>2023-10-30 18:20:54</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
