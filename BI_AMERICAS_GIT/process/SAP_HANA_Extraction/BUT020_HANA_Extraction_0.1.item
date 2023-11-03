@@ -189,15 +189,10 @@
     <metadata connector="FLOW" label="BUT020" name="tSAPTableInput_1">
       <column comment="Business Partner Number" key="true" length="10" name="PARTNER" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Address Number" key="true" length="10" name="ADDRNUMBER" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Indicator: Address is standard address" key="false" length="1" name="XDFADR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Address number in external system" key="false" length="20" name="ADEXT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Version ID for International Addresses" key="false" length="1" name="NATION" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="UUID in character form" key="false" length="32" name="GUID" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Number of Move Target Address for Address Moves" key="false" length="10" name="MOVE_ADDR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Date Obsolete" key="false" length="8" name="DATE_FROM" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Validity Start of a Business Partner Address" key="false" length="15" name="ADDR_VALID_FROM" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Validity End of a Business Partner Address" key="false" length="15" name="ADDR_VALID_TO" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Date of Move for Address Moves" key="false" length="15" name="ADDR_MOVE_DATE" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Validity Start of a Business Partner Address" key="false" length="16" name="ADDR_VALID_FROM" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Validity End of a Business Partner Address" key="false" length="16" name="ADDR_VALID_TO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Date of Move for Address Moves" key="false" length="16" name="ADDR_MOVE_DATE" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="864" posY="192">
@@ -248,31 +243,6 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="XDFADR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ADEXT"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NATION"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="GUID"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MOVE_ADDR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="DATE_FROM"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
@@ -304,30 +274,20 @@
     <elementParameter field="TEXT" name="LABEL" value="SAP_Test"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="BUT020" name="tDBOutput_1">
-      <column comment="Business Partner Number" key="true" length="10" name="PARTNER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Address Number" key="true" length="10" name="ADDRNUMBER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicator: Address is standard address" key="false" length="1" name="XDFADR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Address number in external system" key="false" length="20" name="ADEXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Version ID for International Addresses" key="false" length="1" name="NATION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="UUID in character form" key="false" length="32" name="GUID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Number of Move Target Address for Address Moves" key="false" length="10" name="MOVE_ADDR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Business Partner Number" key="true" length="10" name="PARTNER" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Address Number" key="true" length="10" name="ADDRNUMBER" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Date Obsolete" key="false" length="8" name="DATE_FROM" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Validity Start of a Business Partner Address" key="false" length="15" name="ADDR_VALID_FROM" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Validity End of a Business Partner Address" key="false" length="15" name="ADDR_VALID_TO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Date of Move for Address Moves" key="false" length="15" name="ADDR_MOVE_DATE" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Validity Start of a Business Partner Address" key="false" length="16" name="ADDR_VALID_FROM" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Validity End of a Business Partner Address" key="false" length="16" name="ADDR_VALID_TO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Date of Move for Address Moves" key="false" length="16" name="ADDR_MOVE_DATE" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="BUT020" name="REJECT">
-      <column comment="Business Partner Number" key="true" length="10" name="PARTNER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Address Number" key="true" length="10" name="ADDRNUMBER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicator: Address is standard address" key="false" length="1" name="XDFADR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Address number in external system" key="false" length="20" name="ADEXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Version ID for International Addresses" key="false" length="1" name="NATION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="UUID in character form" key="false" length="32" name="GUID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Number of Move Target Address for Address Moves" key="false" length="10" name="MOVE_ADDR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Business Partner Number" key="true" length="10" name="PARTNER" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Address Number" key="true" length="10" name="ADDRNUMBER" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Date Obsolete" key="false" length="8" name="DATE_FROM" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Validity Start of a Business Partner Address" key="false" length="15" name="ADDR_VALID_FROM" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Validity End of a Business Partner Address" key="false" length="15" name="ADDR_VALID_TO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Date of Move for Address Moves" key="false" length="15" name="ADDR_MOVE_DATE" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Validity Start of a Business Partner Address" key="false" length="16" name="ADDR_VALID_FROM" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Validity End of a Business Partner Address" key="false" length="16" name="ADDR_VALID_TO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Date of Move for Address Moves" key="false" length="16" name="ADDR_MOVE_DATE" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -341,13 +301,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_51c52274-3f8a-4d58-bfa5-d3d9d79b791b"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ItNQpo40Tn5MlrNETG8iWlCxjsicNi1SpLSLO0MvcTPUYym73X7cekJFCmxNSnXnFJLqfQwntJM1&#13;
-pCzlmjsb3w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f2477c21-9395-416e-bc4f-1b24d0922a81"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>oNyWD3VKlBNZqd8B11QlAdkOEwZdx4x4UotoSjCVWdyWg6Owr5QkWefpRMLioGq9c52gKTkoYcNk&#13;
-WngMddYJCg==</DigestValue></Reference></SignedInfo><SignatureValue>SE4a77YHD5MTrrNp26/sH8N01q5HnZIPlv3H7z08GA8QvTNVADrHyIgjhsDG4TVE9VtlVD7geWMB&#13;
-kkU3X5wDrN0WyGwK/Gn+/FJsqU3T8KAF+zGBpBUmPTjPopwBNy62WZdTwd90bgX2POLILd1PWzfc&#13;
-sy49usnWj3vo6vUcrNzg8okeIgQARSXMFCXEA9CzY+WEAZFhadTiPbsy/qnmkgLoLGz6eoHVZoWi&#13;
-O1g/a6yvsr3cT+X6WA6gSgJNJGM7Wisl2Q/h/iGJErvY32QCHPal6qepVvoG88T+hv33IwnvLoZY&#13;
-4S177P5xppCYkmbV6PeBuK8VNdyYVu1FV4Rj4g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_2f49f08c-5f1f-432f-a2b5-71887e210334"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>datHK2kylc6LBYcMqPgOVM3R4EfitZBkJQOO3zrmq+y7OsaKvdRyvqtUoTaM/Cha+Acsz8YgDFhD&#13;
+J86eiz1vEg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_57c4bb03-9756-41f5-9500-61a448f3fc71"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>qW+btFwyQqaVg5UOiVEO6ecqp9DUb/L8RFljKpJ7BCDctCUo1529mgELhtiFH+nX84wkRItT02fP&#13;
+yNdxZa/T/g==</DigestValue></Reference></SignedInfo><SignatureValue>l+z7WKZrZsWo39cZa1VSAw64xaaq14xPyNUYx0Jpm8ZrKEgavZaw4sUmIQUOEKvdEbMfjWUjr8AG&#13;
+IHMCjw+sBBjuGZhhu1J8ZCxEtGnvQJ+ij/rMFwITJA+nuyOOlo7j7Y6tqktKC5qyMEgtygn2w0Z5&#13;
+kbeQ9a39tWPkSASs6zMy5PwiEzxzMtlnsBZqMaa4bwdeKRU7veMDIbuHZEufOpodIN23MFW31LSS&#13;
+YlAAs+KIzeDUWdJH+6WOI3Md1BbtKdzBgyIetFNQ45twM1cQ1KQ1nyXXnG61l0wOI1dZ1UXioC/b&#13;
+zEZO1Z4/jWtyGzoORNoj+MJQH6TrOTDj4NT9BA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -369,4 +329,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f2477c21-9395-416e-bc4f-1b24d0922a81" Target="#_51c52274-3f8a-4d58-bfa5-d3d9d79b791b"><Timestamp>2023-11-03 14:23:05</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_57c4bb03-9756-41f5-9500-61a448f3fc71" Target="#_2f49f08c-5f1f-432f-a2b5-71887e210334"><Timestamp>2023-11-03 14:25:38</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
