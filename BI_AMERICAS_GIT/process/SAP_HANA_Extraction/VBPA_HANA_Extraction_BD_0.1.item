@@ -245,7 +245,7 @@
     <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
     <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
     <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '101' AND VBELN BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &quot;"/>
+    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VBELN BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="CHECK" name="USE_EXISTING_DYNAMIC" show="false" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="DYNAMIC" show="false" value=""/>
     <elementParameter field="TEXT" name="START_ROW" value="-1"/>
@@ -283,9 +283,9 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="VBPA" name="tSAPTableInput_1">
-      <column comment="Sales and Distribution Document Number" key="false" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Item number of the SD document" key="false" length="6" name="POSNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Partner Function" key="false" length="2" name="PARVW" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Sales and Distribution Document Number" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Item number of the SD document" key="true" length="6" name="POSNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Partner Function" key="true" length="2" name="PARVW" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Customer Number" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Account Number of Vendor or Creditor" key="false" length="10" name="LIFNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Address" key="false" length="10" name="ADRNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
@@ -309,11 +309,11 @@
     <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ZVzDG4r05OXhWk3+H2jxIcBXHC7fAkA4d/i48sla0szyyROucd4xoTGy7/y5/tllgS3/zGk="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;VBPA_HANA&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
+    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_IF_EXISTS_AND_CREATE"/>
     <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="LABEL" name="NOTE" show="false" value="NOTE: batch size must be less than or equal to total number of parameter markers divided by number of columns"/>
-    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" show="false" value="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" value="false"/>
     <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="VBELN"/>
     <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
@@ -388,9 +388,9 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="VBPA" name="tDBOutput_1">
-      <column comment="Sales and Distribution Document Number" key="false" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Item number of the SD document" key="false" length="6" name="POSNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Partner Function" key="false" length="2" name="PARVW" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Sales and Distribution Document Number" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Item number of the SD document" key="true" length="6" name="POSNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Partner Function" key="true" length="2" name="PARVW" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Customer Number" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Account Number of Vendor or Creditor" key="false" length="10" name="LIFNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Address" key="false" length="10" name="ADRNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -399,9 +399,9 @@
       <column comment="Transportation zone to or from which the goods are delivered" key="false" length="10" name="LZONE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="VBPA" name="REJECT">
-      <column comment="Sales and Distribution Document Number" key="false" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Item number of the SD document" key="false" length="6" name="POSNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Partner Function" key="false" length="2" name="PARVW" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Sales and Distribution Document Number" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Item number of the SD document" key="true" length="6" name="POSNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Partner Function" key="true" length="2" name="PARVW" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Customer Number" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Account Number of Vendor or Creditor" key="false" length="10" name="LIFNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Address" key="false" length="10" name="ADRNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -489,13 +489,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_385ca87b-4d71-4662-9955-f5203acf6c59"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7VXBnovLWHZJsSFJdcNwbFvggYAAy24LiDsCKhWGAAVNae6knKwdyETRAaRD5tu4+tBBBs8KuV7l&#13;
-cMlXiW+Z4Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_fc1804a8-2186-4975-bc7b-02f1b8a66df3"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>NbNKZJ0EQOd+GMxMClIBxITI25wQwGF5zqjIsXdJp/DcdYzvE5R9CC7zkJAmsd2OTw81sg/RTxoU&#13;
-veOdeS6J4Q==</DigestValue></Reference></SignedInfo><SignatureValue>Zvx1+qFlv+U/e2avzDp/5sSTeZfJNGA6zClV7hpTkMX9D1upyCzXBcU0KqTxmNhb8VSqd8eUgSHv&#13;
-S/2ykHeODdFB94v+GxfPg4Sv2eIxB603n1+SvpLvl9//3S1Vu09n16r0AXXtfFf4qCJKPLnDOWwI&#13;
-JGdtUkKl2gyDW6JVTPm19C7k4xhiQb4O2XbJ/MmRxb7d1aSFaKZQhcBeVV89fxAQV/qEVXwtBdXD&#13;
-G10A/kioumTRg6qrM+zd8yNEWaIG1Qb7+nZJDieJ1KWXMgBPkQgbMbsZCCKZoKKTBujvJ8SmwwBM&#13;
-eOKntoi1P6OVzARAMYB1f/59PortWI3CUdPUDQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_0b10fb30-0722-4997-886c-90e566a323ce"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>otn2sR6CkBAw9dOZxKRJdc0srkGUBdAmK4UHcOgjuLjK3gWwD+oEFtANbnJEnzqN9K9m0Ageh9H2&#13;
+qNX0Ij7Ryw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_22ed2103-e181-4d73-b037-437834bfc5c6"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7BfbTaiCz/pbFKFjFg0W4NC96utRm9xEzf8fDLhYFU+1Ip8GDEJ263MXUL4SHrn2DKGNIiHiXbXO&#13;
+iWg0ZpSBXw==</DigestValue></Reference></SignedInfo><SignatureValue>k/eXLSsyyt0rTruUSmmYiVLTGpa5ps59LxfPoXT6BBpYYTmCZKphe21LQ+FZ8FldCYHOwhWt3qDj&#13;
+CeEiGmd7E2rWqqLCLfPeujkO+TNZaX34r0csAvL1TfJbLgrwSn2RU/mrOS9U9mBsgoB8XnOvmiiW&#13;
+CaI2m98X9YHbRKfoCS9J9ueNv1NYg5pOSRntxQhpKYSIWUoJjhg7Pnsypubdd7c8CQRpuRvJHgQc&#13;
+rd7DFL2TwNLGa+k00HPSFJhGB/zltBhXMv+7D6SSdvcBSPiY8oEofBEJ8h4Ds+mnydvLbWySUsr/&#13;
+V4NpSxQAQ6bcAGuFGewP7bk4Hn2CEeStkf9l5Q==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -517,4 +517,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_fc1804a8-2186-4975-bc7b-02f1b8a66df3" Target="#_385ca87b-4d71-4662-9955-f5203acf6c59"><Timestamp>2023-10-26 15:32:39</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_22ed2103-e181-4d73-b037-437834bfc5c6" Target="#_0b10fb30-0722-4997-886c-90e566a323ce"><Timestamp>2023-11-07 18:18:36</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
