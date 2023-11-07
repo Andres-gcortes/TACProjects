@@ -508,6 +508,10 @@
       <column comment="Tax amount in document currency" key="false" length="13" name="MWSBK" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="Billing document is canceled" key="false" length="1" name="FKSTO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Payment Reference" key="false" length="30" name="KIDNO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Overall Processing Status (Header/All Items)" key="false" length="1" name="GBSTK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Order-Related Billing Status (All Items)" key="false" length="1" name="FKSAK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Proposed billing type for an order-related billing document" key="false" length="4" name="FKARA" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Rejection Status (All Items)" key="false" length="1" name="ABSTK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="448" posY="0">
@@ -763,6 +767,26 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GBSTK"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FKSAK"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FKARA"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ABSTK"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -817,6 +841,10 @@
       <column comment="Tax amount in document currency" key="false" length="13" name="MWSBK" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="Billing document is canceled" key="false" length="1" name="FKSTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Payment Reference" key="false" length="30" name="KIDNO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Overall Processing Status (Header/All Items)" key="false" length="1" name="GBSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Order-Related Billing Status (All Items)" key="false" length="1" name="FKSAK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Proposed billing type for an order-related billing document" key="false" length="4" name="FKARA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Rejection Status (All Items)" key="false" length="1" name="ABSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="VBRK" name="REJECT">
       <column comment="Billing Document" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -862,6 +890,10 @@
       <column comment="Tax amount in document currency" key="false" length="13" name="MWSBK" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="Billing document is canceled" key="false" length="1" name="FKSTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Payment Reference" key="false" length="30" name="KIDNO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Overall Processing Status (Header/All Items)" key="false" length="1" name="GBSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Order-Related Billing Status (All Items)" key="false" length="1" name="FKSAK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Proposed billing type for an order-related billing document" key="false" length="4" name="FKARA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Rejection Status (All Items)" key="false" length="1" name="ABSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -896,13 +928,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_a2586068-550e-48ce-98c5-6b25c91119f8"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>bvvf26H7OPpIHWsGU0mu7hlz1OH/x6EvvStZgFQ2FJlOTS+JhTJdgslfBgq2tlkWl7gnTpZwfMpM&#13;
-7bL2fxD3zw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_ce8ba16b-4610-4128-8c83-ec62529c4049"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>wIVD+X3ZO7PICKOsaB2Rt+zh6uNsJh2Iz0yEk2EWa4W9GRfP3umWYk4gA+wRT2A0p4hst6FtJcfr&#13;
-naBPjQ424A==</DigestValue></Reference></SignedInfo><SignatureValue>VIIicupjjhBTtz49uRfbSWrKiZd7Ipx10vY8+rTmp59WAETqX4tQcIKaEf0foTwv1mDKTsdwIIvo&#13;
-ifurzExZlsk9dPrZDl7Iztz1RijayddDVQNx2y2LmUp5Eq2qjkuytrfWV6We++sTFvr66uG7ovIo&#13;
-zvuoAjua/YFLdvk5NIttEVYdW/6oNBQ8VR/ntuSphj2CMwNK+Lt/cgioati5MekUUByzaawUwOLS&#13;
-uPUalvXuLgXFigRjwBclQCucVQLIDGQv3xknDmzFws4NFS6/IUoEVpoJq9B2tB8TqpAHoChJkYS3&#13;
-vqID/Ei1d0CC9vuXnHeKvPJoZEgAeieAeQ+VtQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_996210a9-bb39-46a1-9798-ce464c3ad7a6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>vqvjA85bvrtfa8pZf7FQs+V0+PbVhhJ6a93C+TKLHnagmr+Bj9ysc1zZhmOVf4T20KLMigLaHMZh&#13;
+YSkf1tYTlQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_b07dfded-b178-4d43-a7b6-d3806ac34724"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>uv0PojA/QGX/nJR68LVWXgMIu63N5lDzEzzvpATKnB+ss4FswuS4OHYToM1pSUkdqzUQDHDiLZ9D&#13;
+/4893BODTg==</DigestValue></Reference></SignedInfo><SignatureValue>ceNfX5DZF9LM7eMzwwZrJeO9BJli2OzmrljnZIFjlZMntj0/g3U9Lt6IZmFobaW5bMoFKD0P8V8d&#13;
+Tx1+EAbz76UOw7Pl64nc3EtPZcOh5kvMUEPJzsvegQKJ0s6pFBx5I+IP7h2TkzobEGpZuAeMthwj&#13;
+qksbQARlAZ2jGI32rtZqrac3YRZqXJ3tYO6sND88UAPb+lQ5EOzhIcha/lSZTsrTNvV2PlQOPn28&#13;
+17D9NN6C22yuCKCCZDEJui1BzHyx3HZPsoK++61hK3O0/+1ALaD8X/byeFCtwWE6OSd6anuIJL/1&#13;
+79YzwyMovdpcYfN8ZYjs2bM8pnm/b1NJWX/vLw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -924,4 +956,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_ce8ba16b-4610-4128-8c83-ec62529c4049" Target="#_a2586068-550e-48ce-98c5-6b25c91119f8"><Timestamp>2023-11-07 15:47:53</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_b07dfded-b178-4d43-a7b6-d3806ac34724" Target="#_996210a9-bb39-46a1-9798-ce464c3ad7a6"><Timestamp>2023-11-07 17:21:47</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
