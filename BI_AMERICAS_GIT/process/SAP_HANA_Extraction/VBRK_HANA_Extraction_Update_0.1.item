@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultContext="Default" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Default">
     <contextParameter comment="" internalId="_DiR1oBqPEe6XwPvUQ1QeiA" name="SAP_HANA_Login" prompt="SAP_HANA_Login?" promptNeeded="false" repositoryContextId="_Bo06QAVSEe6y69Em2goVAg" type="id_String" value="SAP_Test_usr"/>
     <contextParameter comment="" internalId="_DiR1oRqPEe6XwPvUQ1QeiA" name="SAP_HANA_Server" prompt="SAP_HANA_Server?" promptNeeded="false" repositoryContextId="_Bo06QAVSEe6y69Em2goVAg" type="id_String" value="svr-cognos-t"/>
@@ -1070,7 +1070,166 @@
       <column comment="Condition Class" key="false" length="1" name="KOAID" nullable="true" originalLength="1" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="832" posY="576">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="736" posY="576">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMap_1"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_M2ECUBnYEe6XwPvUQ1QeiA-tMap_1-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="true"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" show="false" value="0"/>
+    <elementParameter field="TEXT" name="JACCARD" show="false" value="0"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="out1">
+      <column comment="Number of the Document Condition" key="true" length="10" name="KNUMV" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition item number" key="true" length="6" name="KPOSN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Step Number" key="true" length="3" name="STUNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition Counter" key="true" length="3" name="ZAEHK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Application" key="false" length="2" name="KAPPL" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition type" key="false" length="4" name="KSCHL" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition Pricing Date" key="false" length="14" name="KDATU" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Calculation Type for Condition" key="false" length="1" name="KRECH" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition Basis" key="false" length="15" name="KAWRT" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Condition Amount or Percentage" key="false" length="11" name="KBETR" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Currency Key" key="false" length="5" name="WAERS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition exchange rate for conversion to local currency" key="false" length="9" name="KKURS" nullable="true" pattern="" precision="5" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Condition Pricing Unit" key="false" length="5" name="KPEIN" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Condition Unit in the Document" key="false" length="3" name="KMEIN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Numerator for converting condition units to base units" key="false" length="5" name="KUMZA" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Denominator for converting condition units to base units" key="false" length="5" name="KUMNE" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Condition Category (Examples: Tax, Freight, Price, Cost)" key="false" length="1" name="KNTYP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Access sequence - Access number" key="false" length="3" name="KOLNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Number of the Condition Record" key="false" length="10" name="KNUMH" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Sequential number of the condition" key="false" length="3" name="KOPOS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Customer number (rebate recipient)" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition Value" key="false" length="13" name="KWERT" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Condition is Inactive" key="false" length="1" name="KINAK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition is used for statistics" key="false" length="1" name="KSTAT" nullable="true" originalLength="1" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Scale Type" key="false" length="1" name="KNPRS" nullable="true" originalLength="1" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Account Number of Vendor or Creditor" key="false" length="10" name="LIFNR" nullable="true" originalLength="10" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Rounding-Off Difference of the Condition" defaultValue="" key="false" length="5" name="KDIFF" nullable="true" originalLength="13" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="SD document currency" key="false" length="5" name="WAERK" nullable="true" originalLength="5" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition Control" key="false" length="1" name="KSTEU" nullable="true" originalLength="1" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Condition Class" key="false" length="1" name="KOAID" nullable="true" originalLength="1" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties shellMaximized="true"/>
+      <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
+      <outputTables activateCondensedTool="true" name="out1" sizeState="INTERMEDIATE">
+        <mapperTableEntries expression="row5.KNUMV " name="KNUMV" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KPOSN " name="KPOSN" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.STUNR " name="STUNR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.ZAEHK " name="ZAEHK" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KAPPL " name="KAPPL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KSCHL " name="KSCHL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KDATU " name="KDATU" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KRECH " name="KRECH" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KAWRT " name="KAWRT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row5.KBETR " name="KBETR" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row5.WAERS " name="WAERS" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KKURS " name="KKURS" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row5.KPEIN " name="KPEIN" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row5.KMEIN " name="KMEIN" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KUMZA " name="KUMZA" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row5.KUMNE " name="KUMNE" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row5.KNTYP " name="KNTYP" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KOLNR " name="KOLNR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KNUMH " name="KNUMH" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KOPOS " name="KOPOS" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KUNNR " name="KUNNR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KWERT " name="KWERT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row5.KINAK " name="KINAK" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KSTAT " name="KSTAT" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KNPRS " name="KNPRS" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.LIFNR " name="LIFNR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KDIFF " name="KDIFF" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row5.WAERK " name="WAERK" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KSTEU " name="KSTEU" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row5.KOAID " name="KOAID" nullable="true" type="id_String"/>
+      </outputTables>
+      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row5" sizeState="INTERMEDIATE">
+        <mapperTableEntries name="KNUMV" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KPOSN" nullable="true" type="id_String"/>
+        <mapperTableEntries name="STUNR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ZAEHK" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KAPPL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KSCHL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KDATU" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KRECH" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KAWRT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="KBETR" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="WAERS" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KKURS" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="KPEIN" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="KMEIN" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KUMZA" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="KUMNE" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="KNTYP" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KOLNR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KNUMH" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KOPOS" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KUNNR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KWERT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="KINAK" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KSTAT" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KNPRS" nullable="true" type="id_String"/>
+        <mapperTableEntries name="LIFNR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KDIFF" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="WAERK" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KSTEU" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KOAID" nullable="true" type="id_String"/>
+      </inputTables>
+      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row7" sizeState="INTERMEDIATE">
+        <mapperTableEntries expression="row5.KNUMV " name="KNUMV" nullable="true" operator="=" type="id_String"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="736" posY="704">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:26q9lW+PWLgilndTkaHzYa+85pmSA0SUlxH3NBhSZqoAio0N9K5MdsSgNlkoNwJ/WyiDLEI="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;VBRK_HANA&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [KNUMV] FROM [dbo].[VBRK_HANA]&#13;&#10;WHERE [ERDAT] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ERDAT_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ERDAT_FIN&quot;)) + &quot;'&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="KNUMV"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_3">
+      <column comment="" key="false" length="10" name="KNUMV" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="576">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_4"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
@@ -1937,33 +2096,17 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBRow_2" offsetLabelX="0" offsetLabelY="0" source="tDBRow_2" target="tSAPTableInput_3">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
   </connection>
-  <connection connectorName="FLOW" label="row7" lineStyle="0" metaname="tSAPTableInput_3" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_3" target="tDBOutput_4">
+  <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tSAPTableInput_3" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_3" target="tMap_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row5"/>
+  </connection>
+  <connection connectorName="FLOW" label="out1" lineStyle="0" metaname="out1" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tDBOutput_4">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="out1"/>
+  </connection>
+  <connection connectorName="FLOW" label="row7" lineStyle="8" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tMap_1">
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="KDIFF"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KNUMH"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KSTAT"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KOLNR"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KNPRS"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KSTEU"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="LIFNR"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="WAERK"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KOAID"/>
+      <elementValue elementRef="TRACE_COLUMN" value="KNUMV"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
@@ -2034,13 +2177,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_63e40e36-16b2-4d24-b08c-8e4f563e3545"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>4rmW8l4CqvySVArAwDAGhzalKCVNVuVbIFT+reJX9y/xelJ45+fI8gkxd9oCGQj7mjBZB+GcRwI0&#13;
-ZhsnC4e4hA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_3e22728f-a819-4500-b9f5-1ebb6286f0d5"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>p4g5KBHyF+tzHH/QVxkxEZ8iAB81O7rjW3/cb0CUvXMqaGvg1X5he157ODRQDkbpq+jN0m5zYJK9&#13;
-Wxylbz46mw==</DigestValue></Reference></SignedInfo><SignatureValue>akB1urTiL2+MZocV+PYAO06+Kt5Q9p8+ZKcHtlJDbp7ZALJRsgwtSEeIKJksElwYvmXJyPfpWz9y&#13;
-41FSGU46Z128B05SMFeSFR7M5Glw0RkqvPaU9ydXPUk1FtLgk6LiHAiD6mBM0Kh5dmP+e86lYRI+&#13;
-+c7mty5Dc1/NJmF9YjvmqfFpY+AWSJYwfh4+qOyZUOyNG/1Dk2qplycWtGqdBibHlEbvalDC6+AR&#13;
-LKejcvPmkUrGMHChjPQ0UD4ocJqGfD8zI3ahw3n8eomjXnWTyBCXS+00h5eymsKa6kgM7G8vwvn+&#13;
-7e9HwUYk9Qg3gpwCVTouyKEIl9k5U+rUcrBXqw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_602b4e59-8526-4781-b1e4-cce7deb6bb72"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7Nw5iFGUByebVWW3XK2OYceslGfKLd4k8Y73AB9R9w13UCPbhPzGBtZfNOHrRaKMV9HpkoMuEN3B&#13;
+ERaxaDGPAQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_04b8556f-7b89-41d1-915c-08bfaed9edb1"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>bWLUZQJz6VK4uANkZNyj4Ya4m1iDlAlRX1anQNzAENJTGcIMElJIToA1vIAd31al5SyCE0yHpZpu&#13;
+jnkYRyn6xQ==</DigestValue></Reference></SignedInfo><SignatureValue>ekV+8ueXxRm+TxZ30WRzNrsbtHZ1NIAnlVEiFbANklFSaihD2I/hFpe4J+Qy0qGOxsb8wSXeAQFd&#13;
+SMSpjNy0LD+h4b1FDPGPhFnBq3/t3+76IP0KSc2MoyYcYdZGlkEijof0YBu8LOd1Kw4SMdG2T7Ay&#13;
+g4iOWbhrnibew4+fkCX3n1K0gbffVUjerB0VWKt+7lxwD+PL6LRAMp4W7Btj9FlvX8e+4T9pcLvi&#13;
+0Ji//M859VTDrnLdXk6VZLdLCplKDuwG8Pyj9/D0xKPp399F9jWHlwPPRJ7eoZPKyecwB2ndis3X&#13;
+thpuz7OoA2a1awD1iuOttdUMd+TxBWhS1NXG1g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2062,4 +2205,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_3e22728f-a819-4500-b9f5-1ebb6286f0d5" Target="#_63e40e36-16b2-4d24-b08c-8e4f563e3545"><Timestamp>2023-11-09 15:41:49</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_04b8556f-7b89-41d1-915c-08bfaed9edb1" Target="#_602b4e59-8526-4781-b1e4-cce7deb6bb72"><Timestamp>2023-11-09 17:54:11</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
