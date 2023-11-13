@@ -415,7 +415,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [BUPER_INI],[BUPER_FIN]&#13;&#10;FROM [CTRL_VGIB_HL_PD_HANA]&#13;&#10;WHERE [IdEjecucion] = (SELECT MAX([IdEjecucion])&#13;&#10;FROM [CTRL_VGIB_HL_PD_HANA])&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [BUPER_INI],[BUPER_FIN]&#13;&#10;FROM [CTRL_VGIB_HL_PD_HANA]&#13;&#10;WHERE [IdEjecucion] = (SELECT MAX([IdEjecucion]) FROM [CTRL_VGIB_HL_PD_HANA])&#13;&#10;AND [ValidExecDay] = DAY(GETDATE())&#13;&#10;AND [Executed] IS NULL&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -471,7 +471,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT ((SELECT MAX([IdEjecucion]) FROM [dbo].[CTRL_VGIB_HL_PD_HANA]) + 1) [IdEjecucion] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;[VKORG] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;[VTWEG] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;[DIVISION] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;MIN([BUPER]) [BUPER_INI] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;MAX([BUPER]) [BUPER_FIN] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;CAST(GETDATE() AS DATE) [ValidDate]&#13;&#10;FROM [dbo].[ZDP_VGIB_HL_PD_HANA]&#13;&#10;WHERE [BUPER] &gt;= ( SELECT MAX([BUPER_INI]) [BUPER_INI]&#13;&#10;&#9;&#9;&#9;&#9;  FROM [dbo].[CTRL_VGIB_HL_PD_HANA] &#13;&#10;&#9;&#9;&#9;&#9;  WHERE [IdEjecucion] = (SELECT MAX([IdEjecucion]) &#13;&#10;&#9;&#9;&#9;&#9;&#9;  &#9;&#9;&#9;&#9;&#9; FROM [dbo].[CTRL_VGIB_HL_PD_HANA]))&#13;&#10;GROUP BY [VKORG],[VTWEG],[DIVISION]&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT ((SELECT MAX([IdEjecucion]) FROM [dbo].[CTRL_VGIB_HL_PD_HANA]) + 1) [IdEjecucion] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;[VKORG] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;[VTWEG] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;[DIVISION] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;MIN([BUPER]) [BUPER_INI] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;MAX([BUPER]) [BUPER_FIN] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;DAY(GETDATE()) [ValidExecDay],&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;'X' [Executed]&#13;&#10;FROM [dbo].[ZDP_VGIB_HL_PD_HANA]&#13;&#10;WHERE [BUPER] &gt;= ( SELECT MAX([BUPER_INI]) [BUPER_INI]&#13;&#10;&#9;&#9;&#9;&#9;  FROM [dbo].[CTRL_VGIB_HL_PD_HANA] &#13;&#10;&#9;&#9;&#9;&#9;  WHERE [IdEjecucion] = (SELECT MAX([IdEjecucion]) &#13;&#10;&#9;&#9;&#9;&#9;&#9;  &#9;&#9;&#9;&#9;&#9; FROM [dbo].[CTRL_VGIB_HL_PD_HANA]))&#13;&#10;GROUP BY [VKORG],[VTWEG],[DIVISION]&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -648,13 +648,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b93648f6-c95b-4ad9-89fe-257be228d976"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>MLK6bSxRz8wd+uj9jI88yi64lQn1Xp7ObDYTohIXXxehtvp+VVDp4a4PrYleqvVa2BuhPywtvom5&#13;
-UyA1fRFklA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_de1cf439-801b-40c4-a30e-bf4bc29895e6"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>tYiqLWzSF1hfQeQb5cXAu971zG+ummRp5/q6vybpFXFErelDY86z7c3Ag8Dzh+2AmIn79xp8lDHR&#13;
-h1nZSaNKvg==</DigestValue></Reference></SignedInfo><SignatureValue>Hr1uv1eM9VUp2e4TD2NvDNEJ39Y/T3hXGss2ibyCaTAdv0SX1MqhrK5GFMU+cOHD0dmONXCaqov+&#13;
-CJ0mXqLwKIZiof46W1IraYFXDeusEyjvh0MJzTDxig+UpbiobT/mO4uHDBq1BkvOs2wVWtw1/ikJ&#13;
-NE9Nq6/lasp2GKDa4gRB6WsFp8by6R6C7oONNp8FGKprtffzrIc7TOfjvmtJ2bejrmbnLfVRtkmE&#13;
-RgXBknuPRH4Bz1YvUT1KGaUqiNlMRYcSGPq3Q5UlC6kTnet9uHQEvjW2SnllZmDjgEWMRLA7k9z6&#13;
-UfT8OkUaNf+m3FVKCJoETYAzoeuXHVPDnt+wWg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_723cd9ab-4652-459d-9323-f3157acf69b4"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RagpSGXWZPiUBdtYEfzdbSbyUU4fVssRk7UaXvBezuFTw3gFzXYIDJw5h0tt7DC9R7akECvdGTai&#13;
+OCCuZI3P4w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_af85a24d-639d-468f-a35b-963a929e54a0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7Yq1SX3RvF2I+SI//6jyFXbMjxfafYUb0/uSdMQKj6+5IXFlgovCLtkz+Zebi0dcOhk3eRhyqt7/&#13;
+rnuJZYh9ZQ==</DigestValue></Reference></SignedInfo><SignatureValue>NIfSA4WnoghA0ff6XP2ncnWyDhEoRqkWiHEMo5v1pmu0+PQUBZ56q5ozkZX/vYMrKZ7DgsAFmRJO&#13;
+57nH5eDQiTfB3xKplkHaaYw3qFy465X15FYqjheUzzKYWry24PHN2QZcxpqp0DV/PdwtZHOTgL87&#13;
+cOScrgczpox9ZHCQ/5NH2wHUyz92OWfZF4u4xA6/YIgBM98wNWdqpubBk/XaobOeg8G+ts7B3zt4&#13;
+U7+QwZGEdJ2wugoASn5LTRvPWMHyOGtSOBELWix6EiyP3ycDB19Y61CEfxdsPjHJKiGDYsKRI5fC&#13;
+EPo8pn14VYKAJqQokCJWMs99BmUbnhBNnHZmKw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -676,4 +676,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_de1cf439-801b-40c4-a30e-bf4bc29895e6" Target="#_b93648f6-c95b-4ad9-89fe-257be228d976"><Timestamp>2023-11-13 20:53:56</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_af85a24d-639d-468f-a35b-963a929e54a0" Target="#_723cd9ab-4652-459d-9323-f3157acf69b4"><Timestamp>2023-11-13 22:39:14</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
