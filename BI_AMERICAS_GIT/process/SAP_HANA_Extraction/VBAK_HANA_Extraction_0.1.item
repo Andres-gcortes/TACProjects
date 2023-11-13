@@ -162,7 +162,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT ((SELECT MAX([IdEjecucion]) FROM [CTRL_VBAK_HANA])+1) [IdEjecucion]&#13;&#10;, MIN([VBELN]) [VBELN_INI]&#13;&#10;, MAX([VBELN]) [VBELN_FIN]&#13;&#10;, MIN([ERDAT]) [ERDAT_INI]&#13;&#10;, MAX([ERDAT]) [ERDAT_FIN]&#13;&#10;, GETDATE() [FECHA]&#13;&#10;, COUNT(DISTINCT [VBELN]) [TOTAL_FOLIOS]&#13;&#10;, [AUART]&#13;&#10;, [VKORG]&#13;&#10;, [VTWEG]&#13;&#10;, SUBSTRING([VBELN],1,6) [FOLIO_AGRUPADOR]&#13;&#10; FROM [dbo].[VBAK_HANA] &#13;&#10;WHERE [ERDAT] &gt; ( SELECT MAX([ERDAT_FIN]) [ERDAT_FIN] &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   FROM [dbo].[CTRL_VBAK_HANA] &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHERE [IdEjecucion] = (SELECT MAX([IdEjecucion]) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;FROM [CTRL_VBAK_HANA]) ) &#13;&#10;GROUP BY [AUART], [VKORG], [VTWEG], SUBSTRING([VBELN],1,6)&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT ((SELECT MAX([IdEjecucion]) FROM [CTRL_VBAK_HANA])+1) [IdEjecucion]&#13;&#10;, MIN([VBELN]) [VBELN_INI]&#13;&#10;, MAX([VBELN]) [VBELN_FIN]&#13;&#10;, MIN([ERDAT]) [ERDAT_INI]&#13;&#10;, MAX([ERDAT]) [ERDAT_FIN]&#13;&#10;, GETDATE() [FECHA]&#13;&#10;, COUNT(DISTINCT [VBELN]) [TOTAL_FOLIOS]&#13;&#10;, [AUART]&#13;&#10;, [VKORG]&#13;&#10;, [VTWEG]&#13;&#10;, SUBSTRING([VBELN],1,4) [FOLIO_AGRUPADOR]&#13;&#10; FROM [dbo].[VBAK_HANA] &#13;&#10;WHERE [ERDAT] &gt; ( SELECT MAX([ERDAT_FIN]) [ERDAT_FIN] &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   FROM [dbo].[CTRL_VBAK_HANA] &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHERE [IdEjecucion] = (SELECT MAX([IdEjecucion]) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;FROM [CTRL_VBAK_HANA]) ) &#13;&#10;GROUP BY [AUART], [VKORG], [VTWEG], SUBSTRING([VBELN],1,4)&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -211,7 +211,7 @@
       <column comment="" key="false" length="4" name="AUART" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="VKORG" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="VTWEG" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="6" name="FOLIO_AGRUPADOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="FOLIO_AGRUPADOR" nullable="true" originalLength="4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="320" posY="224">
@@ -328,7 +328,7 @@
       <column comment="" key="false" length="4" name="AUART" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="VKORG" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="VTWEG" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="6" name="FOLIO_AGRUPADOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="FOLIO_AGRUPADOR" nullable="true" originalLength="4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
       <column comment="" defaultValue="" key="false" length="10" name="IdEjecucion" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
@@ -341,7 +341,7 @@
       <column comment="" key="false" length="4" name="AUART" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="VKORG" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="VTWEG" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="6" name="FOLIO_AGRUPADOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="FOLIO_AGRUPADOR" nullable="true" originalLength="4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -866,13 +866,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_704b05b9-3479-4226-8158-5840d091dada"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ADUQcBcEW3kKgcVQaRVBYbLCv8+6IsV8lvxrlvmqSDA4so6qrVXWwkt/DY/jTWAybfK3QDfHAEWY&#13;
-zMIMQerNmA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_25621177-e872-4f65-9992-0e845b988181"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>tNYw+CfjBNIR5oJRuoDmL7cv3qvgqJ3asB+4jeMqsctHtE/asrUYIp2wa/gtRwaDRvGqSGSoTQX8&#13;
-GZzbkTWQgA==</DigestValue></Reference></SignedInfo><SignatureValue>Y0vlktdu7+ivn20MQ6AKlvcTCi4B0ZlmsMxDFBrv88XhAUw8XnAIJg7ARn1nstEeXx1DNdx+3rep&#13;
-TleCecLJvEePWTCtppAaCPdOrvLRbkTQdJOu5kIx4+Vf2vMVHPMLp2HAbqon9ek2VVJ60NmoqJJQ&#13;
-WCQ2hr8V5bOe/X48EuiAYWpfDKRnxxAn3SmiqAHIlFHhVNBxzYekmTKFvv/TZGfXxYjs8bIR4tLU&#13;
-TcymEWPihjLXrFrWOHc7oJlxvp7lF1VFFGiF/2xhA9gP+OlXSnzAQ5q7j+NAWw2/qGmirK/U1q/C&#13;
-N+VKwDGA/HZ/BGHRNhz4XamJBVZiyKKerobwUQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_7a6e1624-e4ef-4b77-9f78-e3e0a51d9cb1"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>tlWDwdafgxv6Gy2X4JDVpazK4BvDPGWj670qAL5B3v4Kdc7MXwpHysOFGBjZNngRB3fBnkUGXZ3q&#13;
+wkobKrZmhg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_45bc5c0b-d0a1-4b94-b8f1-55d52287736a"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>KLALN25nwLwafEYSrvcF4U2g2GqnXjocP+g1ETUppYVetCEDL5mAiYZlZI7hFMHsKyqyntY/YSm3&#13;
+LQ6+lIQlcw==</DigestValue></Reference></SignedInfo><SignatureValue>Xzs5qranjSlNT0U3uM3z/GBWPXC2LnzVhBou8hq9o55dOZR52Q620mWKdg8OFgvyac8KDMMxed64&#13;
+mtd2dLuLVOFzD3p8P2WdlcCcBnG2Ma3hceTjnig9Pkpau/rsiPQCe6Cw4ySnTC2m+Y0UgJ42dY2k&#13;
+vqssb6oRDYIVvI6AAVT/8bC3AMbogAVgQyodybRA25/pXH0xzMVIxZSwvNn3nYEDIKEKXM5+D4GG&#13;
+o8fnvvPW6q6e5MXgeWnwdLuEqD0KdfuhiU+nkXoXnplj1f/78pfrc0DKtD0UqyQd8yr5lTZsnhrA&#13;
+vaRLrGV4GqhmNFGkSLoo9NHuBu/Xcimnf9PyOw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -894,4 +894,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_25621177-e872-4f65-9992-0e845b988181" Target="#_704b05b9-3479-4226-8158-5840d091dada"><Timestamp>2023-11-06 20:52:55</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_45bc5c0b-d0a1-4b94-b8f1-55d52287736a" Target="#_7a6e1624-e4ef-4b77-9f78-e3e0a51d9cb1"><Timestamp>2023-11-12 22:32:21</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
