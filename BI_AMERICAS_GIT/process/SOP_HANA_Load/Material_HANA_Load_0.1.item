@@ -267,10 +267,11 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="4" name="Material_Group_Packaging_Materials" nullable="true" originalDbColumnName="Material Group Packaging Materials" originalLength="4" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Legacy_number" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="Materiales" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row2.MATNR " name="Material_number" type="id_String"/>
@@ -280,6 +281,7 @@
         <mapperTableEntries expression="Proceso.Process " name="Process" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.MTART " name="Material_Type" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.MAGRV " name="Material_Group_Packaging_Materials" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="Proceso.ZZLEGACY " name="Legacy_number" nullable="true" type="id_String"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
         <mapperTableEntries name="MATNR" type="id_String"/>
@@ -295,6 +297,7 @@
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="Proceso" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row2.MATNR " name="MATNR" operator="=" type="id_String"/>
         <mapperTableEntries name="Process" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ZZLEGACY" nullable="true" type="id_String"/>
       </inputTables>
     </nodeData>
   </node>
@@ -367,7 +370,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [MATNR], [WERKS], [DISPO]&#13;&#10;  FROM [dbo].[MARC_HANA]&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [MATNR], [WERKS], [DISPO], [ZZLEGACY]&#13;&#10;  FROM [dbo].[MARC_HANA]&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -384,15 +387,18 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="DISPO"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ZZLEGACY"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="&lt;b&gt;__TABLE__&lt;/b&gt;&lt;br&gt;__QUERY__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tMSSqlInput_4">
-      <column comment="" key="false" length="18" name="MATNR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="MATNR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="WERKS" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="DISPO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="ZZLEGACY" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="960" posY="512">
@@ -412,18 +418,21 @@
     <metadata connector="FLOW" name="Proceso">
       <column comment="" key="false" length="18" name="MATNR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Process" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="ZZLEGACY" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="Proceso" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row4.MATNR " name="MATNR" type="id_String"/>
         <mapperTableEntries expression="row5.DSNAM " name="Process" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row4.ZZLEGACY " name="ZZLEGACY" nullable="true" type="id_String"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row4" sizeState="INTERMEDIATE">
         <mapperTableEntries name="MATNR" type="id_String"/>
         <mapperTableEntries name="WERKS" type="id_String"/>
         <mapperTableEntries name="DISPO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ZZLEGACY" nullable="true" type="id_String"/>
       </inputTables>
       <inputTables activateCondensedTool="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row5" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row4.WERKS " name="WERKS" operator="=" type="id_String"/>
@@ -552,6 +561,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Legacy_number"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -581,7 +595,8 @@
       <column comment="" key="false" length="4" name="Material_Type" nullable="true" originalDbColumnName="Material Type" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" key="false" length="4" name="Material_Group_Packaging_Materials" nullable="true" originalDbColumnName="Material Group Packaging Materials" originalLength="4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Material_Group_Packaging_Materials" nullable="true" originalDbColumnName="Material Group Packaging Materials" originalLength="4" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Legacy_number" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
     </metadata>
     <metadata connector="REJECT" label="Material" name="REJECT">
@@ -603,7 +618,8 @@
       <column comment="" key="false" length="4" name="Material_Type" nullable="true" originalDbColumnName="Material Type" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" key="false" length="4" name="Material_Group_Packaging_Materials" nullable="true" originalDbColumnName="Material Group Packaging Materials" originalLength="4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Material_Group_Packaging_Materials" nullable="true" originalDbColumnName="Material Group Packaging Materials" originalLength="4" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Legacy_number" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
@@ -681,6 +697,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="Material_Group_Packaging_Materials"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Legacy_number"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Materiales"/>
@@ -694,6 +713,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row4"/>
   </connection>
   <connection connectorName="FLOW" label="Proceso" lineStyle="8" metaname="Proceso" offsetLabelX="0" offsetLabelY="0" source="tMap_2" target="tMap_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="ZZLEGACY"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Proceso"/>
   </connection>
@@ -716,13 +740,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_c65a4396-4ce8-43c0-bb04-c1e694bfbad3"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>8LES+9Npff1QzctCqj+GbNO7WJg4B5lRHjbOLjR8Jz/pRzJwYAZDwc7whuovRXJJDjOkDsQUcKn5&#13;
-w7RpoxtfLg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_b0dbd2aa-6a75-4544-b966-2a57b0f64f72"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>me8wYRwE52ll+q3GwjzQRu5SlyXM/9rL0bMUAZV+1uFTaH032F8r7mMTHfR1GSkGzKbKvxFQevtg&#13;
-R4LiGyIaSg==</DigestValue></Reference></SignedInfo><SignatureValue>IPZ9aqUA5g08sMZAPndcofMfgD1kDd7FeacDk5DwK6qIpTY2rbq2/IJce5mnAajTZrDIZUOqOuj8&#13;
-ElRIllbnSmdVXIXO45gLJHJ9dj74Vbi/tDKsQQeLT96euyjdmbVESvEXFi9XKPcu42A+KCl6bKFZ&#13;
-COgojuBH8IZbZ7fJSWAzUpkQmtiF83V6ebuSAJBLURH0gQPOAbzDYKtQhYcyE9fw69yu8WJiK5Uk&#13;
-rXy28mJ/8x3g9553WRcujMBITlR1dCn1oDcRccPJAz9kSNnv5NoxSV9MEDcqid8Hjoi3rDQcz2p5&#13;
-NEkFtHUw8jy5bLBnakZoIEQAhCHCrrXQxzpJoA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_c2ad35c8-bdc7-4bab-a18a-f20d5e46f7b8"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>IZ4+pLDAMdBXe3mhZLJlqXN/yNiXtQP1FKUCkqEM6o0XFtBjStpoAQSFQg5dgxnnuGSFe7Obwo8J&#13;
+0R3JeDQfWA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_8b501cfa-9f2e-48ac-9544-09bcf924f675"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>SfSKl5Z60Zgv3Cj56waqI1acBC1bRkCp3hYGEfIKQnN4KA81WVjgLA0HGasoi9V4xdPS95wIeGUW&#13;
+uLXidOozKw==</DigestValue></Reference></SignedInfo><SignatureValue>AwhfR2HKsVz5XT74NZ7bbGxuJ5xl9dOsrexZbAIetVaqV2HYVqgVUnEu4slnoTu22Kavt/2XEhno&#13;
+XDbALIgrtqGwJeyKGosQsLPbxk+a6t8U60ymVwOrB8LhisVBMkMoG0zmHc8lh8b+7iMiujkaYM18&#13;
+ovdhrv0uf8C5iuhAYW4/C6GzIOJ4g8v2jsFohr7Y2XV/elBhq9Ed2Ps/Bl0G94CZfGsj/AtP1J5i&#13;
+8fnndq4aT6zBRPNW/FrzdEEn+xFeRLpVcq2wYnpNKq9DojHTZ8Pl7h8eVjGvCotgB5HVYVkHL0/K&#13;
+k3cM5IDfDkZydj1CKzaueH6EOPi9LHMfrGzK1g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -744,4 +768,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_b0dbd2aa-6a75-4544-b966-2a57b0f64f72" Target="#_c65a4396-4ce8-43c0-bb04-c1e694bfbad3"><Timestamp>2023-11-02 19:52:36</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_8b501cfa-9f2e-48ac-9544-09bcf924f675" Target="#_c2ad35c8-bdc7-4bab-a18a-f20d5e46f7b8"><Timestamp>2023-11-14 20:28:12</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
