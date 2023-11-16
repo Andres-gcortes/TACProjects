@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultContext="Default" jobType="Standard" xmi:version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Default">
     <contextParameter comment="" internalId="_lFi6EFM8Ee6YpMg7HL04hQ" name="SAP_S4_HANA_TEST_101_Language" prompt="SAP_S4_HANA_TEST_101_Language?" promptNeeded="false" repositoryContextId="_ZeTQsAVJEe6ezbGNjMYkHQ" type="id_String" value="EN"/>
     <contextParameter comment="" internalId="_lFi6EVM8Ee6YpMg7HL04hQ" name="SAP_S4_HANA_TEST_101_UserName" prompt="SAP_S4_HANA_TEST_101_UserName?" promptNeeded="false" repositoryContextId="_ZeTQsAVJEe6ezbGNjMYkHQ" type="id_String" value="COGNOS"/>
@@ -37,7 +37,7 @@
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="96"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="32"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="0"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
@@ -949,7 +949,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="320" posY="928">
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="768" posY="832">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -1011,7 +1011,7 @@
       <column comment="" defaultValue="" key="false" length="10" name="Executed" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="928">
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="832">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_5"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
@@ -1122,7 +1122,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="704">
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -1141,7 +1141,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [FCVER]&#13;&#10;      ,[PARENT]&#13;&#10;      ,[CHILD]&#13;&#10;      ,[MATSN]&#13;&#10;      ,[VKORG]&#13;&#10;      ,[VTWEG]&#13;&#10;      ,[WERKS]&#13;&#10;      ,[PLANTNAME]&#13;&#10;      ,[KUNNR]&#13;&#10;      ,[KUSDES]&#13;&#10;      ,[ZZ_KDGRP]&#13;&#10;      ,[ZZ_KDGRP_TXT]&#13;&#10;      ,[ZZ_KAM]&#13;&#10;      ,[ZZ_KAMDESC]&#13;&#10;      ,[ZZ_PCAT]&#13;&#10;      ,[ZZ_BUS]&#13;&#10;      ,[ZZBBTEXT]&#13;&#10;      ,[MATNR]&#13;&#10;      ,[MAKTX]&#13;&#10;      ,[ZZTOM]&#13;&#10;      ,[ZZRAND]&#13;&#10;      ,[ENDCUSTOMER]&#13;&#10;      ,[DIVISION]&#13;&#10;      ,[PLSCN]&#13;&#10;      ,[VRSIO]&#13;&#10;  FROM [dbo].[ZDP_VGIB_HVMO_HI_HANA_I]&#13;&#10;  WHERE [FCVER] = '&quot; + (String)globalMap.get(&quot;FCVER&quot;) + &quot;' &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT T1.[FCVER]&#13;&#10;      ,T1.[PARENT]&#13;&#10;      ,T1.[CHILD]&#13;&#10;      ,[MATSN]&#13;&#10;      ,[VKORG]&#13;&#10;      ,[VTWEG]&#13;&#10;      ,[WERKS]&#13;&#10;      ,[PLANTNAME]&#13;&#10;      ,[KUNNR]&#13;&#10;      ,[KUSDES]&#13;&#10;      ,[ZZ_KDGRP]&#13;&#10;      ,[ZZ_KDGRP_TXT]&#13;&#10;      ,[ZZ_KAM]&#13;&#10;      ,[ZZ_KAMDESC]&#13;&#10;      ,[ZZ_PCAT]&#13;&#10;      ,[ZZ_BUS]&#13;&#10;      ,[ZZBBTEXT]&#13;&#10;      ,[MATNR]&#13;&#10;      ,[MAKTX]&#13;&#10;      ,[ZZTOM]&#13;&#10;      ,[ZZRAND]&#13;&#10;      ,[ENDCUSTOMER]&#13;&#10;      ,[DIVISION]&#13;&#10;      ,[PLSCN]&#13;&#10;      ,[VRSIO]&#13;&#10;&#9;  ,[MX00]&#13;&#10;      ,[MP01]&#13;&#10;      ,[MP02]&#13;&#10;      ,[MP03]&#13;&#10;      ,[MP04]&#13;&#10;      ,[MP05]&#13;&#10;      ,[MP06]&#13;&#10;      ,[MP07]&#13;&#10;      ,[MP08]&#13;&#10;      ,[MP09]&#13;&#10;      ,[MP10]&#13;&#10;      ,[MP11]&#13;&#10;      ,[MP12]&#13;&#10;&#9;  ,[MP13]&#13;&#10;      ,[MP14]&#13;&#10;      ,[MP15]&#13;&#10;      ,[MP16]&#13;&#10;      ,[MP17]&#13;&#10;      ,[MP18]&#13;&#10;      ,[MP19]&#13;&#10;      ,[MP20]&#13;&#10;      ,[MP21]&#13;&#10;      ,[MP22]&#13;&#10;      ,[MP23]&#13;&#10;      ,[MP24]&#13;&#10;&#9;  ,[MP25]&#13;&#10;      ,[MP26]&#13;&#10;      ,[MP27]&#13;&#10;      ,[MP28]&#13;&#10;      ,[MP29]&#13;&#10;      ,[MP30]&#13;&#10;      ,[MP31]&#13;&#10;      ,[MP32]&#13;&#10;      ,[MP33]&#13;&#10;      ,[MP34]&#13;&#10;      ,[MP35]&#13;&#10;      ,[MP36]&#13;&#10;  FROM [dbo].[ZDP_VGIB_HVMO_HI_HANA_I] T1&#13;&#10;  INNER JOIN [dbo].[ZDP_VGIB_HVMO_HI_HANA_II] T2&#13;&#10;&#9;ON T1.[FCVER] = T2.[FCVER] AND T1.[PARENT] = T2.[PARENT] AND T1.[CHILD] = T2.[CHILD]&#13;&#10;  INNER JOIN [dbo].[ZDP_VGIB_HVMO_HI_HANA_III] T3&#13;&#10;&#9;ON T1.[FCVER] = T3.[FCVER] AND T1.[PARENT] = T3.[PARENT] AND T1.[CHILD] = T3.[CHILD]&#13;&#10;  INNER JOIN [dbo].[ZDP_VGIB_HVMO_HI_HANA_IV] T4&#13;&#10;&#9;ON T1.[FCVER] = T4.[FCVER] AND T1.[PARENT] = T4.[PARENT] AND T1.[CHILD] = T4.[CHILD]&#13;&#10;  WHERE T1.[FCVER] = '&quot; + (String)globalMap.get(&quot;FCVER&quot;) + &quot;' &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -1202,301 +1202,6 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="VRSIO"/>
       <elementValue elementRef="TRIM" value="false"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_3">
-      <column comment="Forecast Version" key="true" length="6" name="FCVER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Superhierarchy" key="true" length="10" name="PARENT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Forecast" key="true" length="10" name="CHILD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Forecast material set" key="false" length="10" name="MATSN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="false" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="false" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Name" key="false" length="30" name="PLANTNAME" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Number" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Name 1" key="false" length="35" name="KUSDES" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Group" key="false" length="10" name="ZZ_KDGRP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Name 1" key="false" length="35" name="ZZ_KDGRP_TXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Key Account Manager" key="false" length="10" name="ZZ_KAM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Name 1" key="false" length="35" name="ZZ_KAMDESC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Product Status" key="false" length="1" name="ZZ_PCAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Business Bucket" key="false" length="1" name="ZZ_BUS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Short Text for Fixed Values" key="false" length="60" name="ZZBBTEXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material and Planning Level" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material Description" key="false" length="40" name="MAKTX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Targeted Operative Material" key="false" length="40" name="ZZTOM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="R&amp;D code" key="false" length="40" name="ZZRAND" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Endcustomer" key="false" length="1" name="ENDCUSTOMER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="false" length="2" name="DIVISION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Planning" key="false" length="3" name="PLSCN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Version" key="false" length="3" name="VRSIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="672" posY="704">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMap_1"/>
-    <elementParameter field="EXTERNAL" name="MAP" value=""/>
-    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
-    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
-    <elementParameter field="IMAGE" name="PREVIEW" value="_DhTHUFM8Ee6YpMg7HL04hQ-tMap_1-PREVIEW.bmp"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="true"/>
-    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" show="false" value="false"/>
-    <elementParameter field="TEXT" name="LEVENSHTEIN" show="false" value="0"/>
-    <elementParameter field="TEXT" name="JACCARD" show="false" value="0"/>
-    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" show="false" value="false"/>
-    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
-    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="out1">
-      <column comment="Forecast Version" key="true" length="6" name="FCVER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Superhierarchy" key="true" length="10" name="PARENT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Forecast" key="true" length="10" name="CHILD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Forecast material set" key="false" length="10" name="MATSN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="false" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="false" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Name" key="false" length="30" name="PLANTNAME" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Number" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Name 1" key="false" length="35" name="KUSDES" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Group" key="false" length="10" name="ZZ_KDGRP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Name 1" key="false" length="35" name="ZZ_KDGRP_TXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Key Account Manager" key="false" length="10" name="ZZ_KAM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Name 1" key="false" length="35" name="ZZ_KAMDESC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Product Status" key="false" length="1" name="ZZ_PCAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Business Bucket" key="false" length="1" name="ZZ_BUS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Short Text for Fixed Values" key="false" length="60" name="ZZBBTEXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material and Planning Level" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material Description" key="false" length="40" name="MAKTX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Targeted Operative Material" key="false" length="40" name="ZZTOM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="R&amp;D code" key="false" length="40" name="ZZRAND" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Endcustomer" key="false" length="1" name="ENDCUSTOMER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="false" length="2" name="DIVISION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Planning" key="false" length="3" name="PLSCN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Version" key="false" length="3" name="VRSIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MX00" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP01" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP02" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP03" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP04" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP05" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP06" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP07" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP08" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP09" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP10" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP11" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP12" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP13" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP14" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP15" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP16" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP17" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP18" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP19" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP20" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP21" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP22" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP23" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP24" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP25" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP26" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP27" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP28" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP29" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP30" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP31" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP32" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP33" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP34" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP35" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP36" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-    </metadata>
-    <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
-      <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
-      <outputTables name="out1" sizeState="INTERMEDIATE">
-        <mapperTableEntries expression="row7.FCVER " name="FCVER" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.PARENT " name="PARENT" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.CHILD " name="CHILD" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.MATSN " name="MATSN" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.VKORG " name="VKORG" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.VTWEG " name="VTWEG" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.WERKS " name="WERKS" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.PLANTNAME " name="PLANTNAME" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.KUNNR " name="KUNNR" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.KUSDES " name="KUSDES" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZ_KDGRP " name="ZZ_KDGRP" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZ_KDGRP_TXT " name="ZZ_KDGRP_TXT" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZ_KAM " name="ZZ_KAM" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZ_KAMDESC " name="ZZ_KAMDESC" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZ_PCAT " name="ZZ_PCAT" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZ_BUS " name="ZZ_BUS" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZBBTEXT " name="ZZBBTEXT" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.MATNR " name="MATNR" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.MAKTX " name="MAKTX" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZTOM " name="ZZTOM" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ZZRAND " name="ZZRAND" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.ENDCUSTOMER " name="ENDCUSTOMER" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.DIVISION " name="DIVISION" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.PLSCN " name="PLSCN" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row7.VRSIO " name="VRSIO" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row8.MX00 " name="MX00" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP01 " name="MP01" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP02 " name="MP02" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP03 " name="MP03" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP04 " name="MP04" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP05 " name="MP05" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP06 " name="MP06" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP07 " name="MP07" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP08 " name="MP08" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP09 " name="MP09" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP10 " name="MP10" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP11 " name="MP11" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row8.MP12 " name="MP12" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP13 " name="MP13" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP14 " name="MP14" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP15 " name="MP15" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP16 " name="MP16" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP17 " name="MP17" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP18 " name="MP18" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP19 " name="MP19" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP20 " name="MP20" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP21 " name="MP21" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP22 " name="MP22" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP23 " name="MP23" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row9.MP24 " name="MP24" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP25 " name="MP25" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP26 " name="MP26" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP27 " name="MP27" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP28 " name="MP28" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP29 " name="MP29" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP30 " name="MP30" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP31 " name="MP31" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP32 " name="MP32" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP33 " name="MP33" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP34 " name="MP34" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP35 " name="MP35" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row10.MP36 " name="MP36" type="id_BigDecimal"/>
-      </outputTables>
-      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row7" sizeState="INTERMEDIATE">
-        <mapperTableEntries name="FCVER" nullable="true" type="id_String"/>
-        <mapperTableEntries name="PARENT" nullable="true" type="id_String"/>
-        <mapperTableEntries name="CHILD" nullable="true" type="id_String"/>
-        <mapperTableEntries name="MATSN" nullable="true" type="id_String"/>
-        <mapperTableEntries name="VKORG" nullable="true" type="id_String"/>
-        <mapperTableEntries name="VTWEG" nullable="true" type="id_String"/>
-        <mapperTableEntries name="WERKS" nullable="true" type="id_String"/>
-        <mapperTableEntries name="PLANTNAME" nullable="true" type="id_String"/>
-        <mapperTableEntries name="KUNNR" nullable="true" type="id_String"/>
-        <mapperTableEntries name="KUSDES" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZ_KDGRP" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZ_KDGRP_TXT" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZ_KAM" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZ_KAMDESC" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZ_PCAT" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZ_BUS" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZBBTEXT" nullable="true" type="id_String"/>
-        <mapperTableEntries name="MATNR" nullable="true" type="id_String"/>
-        <mapperTableEntries name="MAKTX" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZTOM" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ZZRAND" nullable="true" type="id_String"/>
-        <mapperTableEntries name="ENDCUSTOMER" nullable="true" type="id_String"/>
-        <mapperTableEntries name="DIVISION" nullable="true" type="id_String"/>
-        <mapperTableEntries name="PLSCN" nullable="true" type="id_String"/>
-        <mapperTableEntries name="VRSIO" nullable="true" type="id_String"/>
-      </inputTables>
-      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row8" sizeState="INTERMEDIATE">
-        <mapperTableEntries expression="row7.FCVER " name="FCVER" operator="=" type="id_String"/>
-        <mapperTableEntries expression="row7.PARENT " name="PARENT" operator="=" type="id_String"/>
-        <mapperTableEntries expression="row7.CHILD " name="CHILD" operator="=" type="id_String"/>
-        <mapperTableEntries name="MX00" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP01" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP02" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP03" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP04" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP05" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP06" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP07" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP08" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP09" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP10" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP11" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP12" type="id_BigDecimal"/>
-      </inputTables>
-      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row9" sizeState="INTERMEDIATE">
-        <mapperTableEntries expression="row7.FCVER " name="FCVER" type="id_String"/>
-        <mapperTableEntries expression="row7.PARENT " name="PARENT" type="id_String"/>
-        <mapperTableEntries expression="row7.CHILD " name="CHILD" type="id_String"/>
-        <mapperTableEntries name="MP13" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP14" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP15" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP16" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP17" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP18" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP19" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP20" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP21" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP22" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP23" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP24" type="id_BigDecimal"/>
-      </inputTables>
-      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row10" sizeState="INTERMEDIATE">
-        <mapperTableEntries expression="row7.FCVER " name="FCVER" type="id_String"/>
-        <mapperTableEntries expression="row7.PARENT " name="PARENT" type="id_String"/>
-        <mapperTableEntries expression="row7.CHILD " name="CHILD" type="id_String"/>
-        <mapperTableEntries expression="" name="MP25" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP26" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP27" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP28" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP29" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP30" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP31" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP32" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP33" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP34" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP35" type="id_BigDecimal"/>
-        <mapperTableEntries name="MP36" type="id_BigDecimal"/>
-      </inputTables>
-    </nodeData>
-  </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="416" posY="608">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_4"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
-    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:lgq/KKhWKeWX7hcMwf6q1svsXN8U2BHcqkUDRJpK9aSGqpKmYW61pIuurQ7S0/HF3WYAGB8="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;ZDP_VGIB_HVMO_HI_HANA_II&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [FCVER]&#13;&#10;      ,[PARENT]&#13;&#10;      ,[CHILD]&#13;&#10;      ,[MX00]&#13;&#10;      ,[MP01]&#13;&#10;      ,[MP02]&#13;&#10;      ,[MP03]&#13;&#10;      ,[MP04]&#13;&#10;      ,[MP05]&#13;&#10;      ,[MP06]&#13;&#10;      ,[MP07]&#13;&#10;      ,[MP08]&#13;&#10;      ,[MP09]&#13;&#10;      ,[MP10]&#13;&#10;      ,[MP11]&#13;&#10;      ,[MP12]&#13;&#10;  FROM [dbo].[ZDP_VGIB_HVMO_HI_HANA_II]&#13;&#10;  WHERE [FCVER] = '&quot; + (String)globalMap.get(&quot;FCVER&quot;) + &quot;' &quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="FCVER"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PARENT"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHILD"/>
-      <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MX00"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MP01"/>
@@ -1523,66 +1228,6 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MP12"/>
       <elementValue elementRef="TRIM" value="false"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_4">
-      <column comment="" key="true" length="-1" name="FCVER" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="PARENT" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="CHILD" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MX00" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP01" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP02" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP03" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP04" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP05" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP06" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP07" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP08" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP09" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP10" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP11" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP12" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="672" posY="800">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_5"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
-    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:JGwEJ7axiattXbmiznBy6C1Nv71q9ZCABXQEN6z205d6VW7XJlDhjcoH2gD7OhP92ZOfy9w="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;ZDP_VGIB_HVMO_HI_HANA_III&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [FCVER]&#13;&#10;      ,[PARENT]&#13;&#10;      ,[CHILD]&#13;&#10;      ,[MP13]&#13;&#10;      ,[MP14]&#13;&#10;      ,[MP15]&#13;&#10;      ,[MP16]&#13;&#10;      ,[MP17]&#13;&#10;      ,[MP18]&#13;&#10;      ,[MP19]&#13;&#10;      ,[MP20]&#13;&#10;      ,[MP21]&#13;&#10;      ,[MP22]&#13;&#10;      ,[MP23]&#13;&#10;      ,[MP24]&#13;&#10;  FROM [dbo].[ZDP_VGIB_HVMO_HI_HANA_III]&#13;&#10;  WHERE [FCVER] = '&quot; + (String)globalMap.get(&quot;FCVER&quot;) + &quot;' &quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="FCVER"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PARENT"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHILD"/>
-      <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MP13"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MP14"/>
@@ -1606,65 +1251,6 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="MP23"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MP24"/>
-      <elementValue elementRef="TRIM" value="false"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_5">
-      <column comment="" key="true" length="-1" name="FCVER" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="PARENT" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="CHILD" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP13" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP14" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP15" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP16" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP17" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP18" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP19" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP20" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP21" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP22" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP23" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP24" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="928" posY="608">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_6"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
-    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:OyKFf4X9IrwyKR5s73LbCiUXgmKgTDJvoPFAKXp87TNgTGVMzjJQ+3+buvq/NE1nxSt6bX8="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;ZDP_VGIB_HVMO_HI_HANA_IV&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [FCVER]&#13;&#10;      ,[PARENT]&#13;&#10;      ,[CHILD]&#13;&#10;      ,[MP25]&#13;&#10;      ,[MP26]&#13;&#10;      ,[MP27]&#13;&#10;      ,[MP28]&#13;&#10;      ,[MP29]&#13;&#10;      ,[MP30]&#13;&#10;      ,[MP31]&#13;&#10;      ,[MP32]&#13;&#10;      ,[MP33]&#13;&#10;      ,[MP34]&#13;&#10;      ,[MP35]&#13;&#10;      ,[MP36]&#13;&#10;  FROM [dbo].[ZDP_VGIB_HVMO_HI_HANA_IV]&#13;&#10;  WHERE [FCVER] = '&quot; + (String)globalMap.get(&quot;FCVER&quot;) + &quot;' &quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="FCVER"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PARENT"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHILD"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MP25"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -1695,25 +1281,72 @@
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_6">
-      <column comment="" key="true" length="-1" name="FCVER" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="PARENT" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="CHILD" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP25" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP26" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP27" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP28" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP29" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP30" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP31" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP32" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP33" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP34" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP35" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MP36" nullable="false" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+    <metadata connector="FLOW" name="tDBInput_3">
+      <column comment="" key="true" length="-1" name="FCVER" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="PARENT" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="CHILD" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="MATSN" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VKORG" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VTWEG" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="WERKS" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PLANTNAME" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="KUNNR" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="KUSDES" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZ_KDGRP" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZ_KDGRP_TXT" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZ_KAM" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZ_KAMDESC" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZ_PCAT" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZ_BUS" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZBBTEXT" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="MATNR" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="MAKTX" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZTOM" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ZZRAND" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ENDCUSTOMER" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="DIVISION" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PLSCN" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VRSIO" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MX00" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP01" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP02" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP03" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP04" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP05" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP06" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP07" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP08" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP09" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP10" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP11" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP12" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP13" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP14" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP15" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP16" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP17" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP18" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP19" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP20" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP21" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP22" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP23" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP24" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP25" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP26" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP27" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP28" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP29" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP30" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP31" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP32" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP33" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP34" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP35" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="MP36" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1248" posY="704">
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="768" posY="704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_6"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
@@ -2529,7 +2162,7 @@
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="928">
+  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="832">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_1"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -3048,25 +2681,9 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row6"/>
   </connection>
-  <connection connectorName="FLOW" label="row7" lineStyle="0" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tMap_1">
+  <connection connectorName="FLOW" label="row7" lineStyle="0" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tDBOutput_6">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row7"/>
-  </connection>
-  <connection connectorName="FLOW" label="out1" lineStyle="0" metaname="out1" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tDBOutput_6">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="out1"/>
-  </connection>
-  <connection connectorName="FLOW" label="row8" lineStyle="8" metaname="tDBInput_4" offsetLabelX="0" offsetLabelY="0" source="tDBInput_4" target="tMap_1">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row8"/>
-  </connection>
-  <connection connectorName="FLOW" label="row9" lineStyle="8" metaname="tDBInput_5" offsetLabelX="0" offsetLabelY="0" source="tDBInput_5" target="tMap_1">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row9"/>
-  </connection>
-  <connection connectorName="FLOW" label="row10" lineStyle="8" metaname="tDBInput_6" offsetLabelX="0" offsetLabelY="0" source="tDBInput_6" target="tMap_1">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row10"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBOutput_6" offsetLabelX="0" offsetLabelY="0" source="tDBOutput_6" target="tDBRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
@@ -3219,13 +2836,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b1f1de3a-ea7a-45e9-b2c9-730278935d75"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>bS/K9/RA/fehmNnhOFZnn4R+fSiuxjtIceo/zvewmVNJd3QfOQjqe+JsX5qESUweh2zKMoPET7n6&#13;
-kUrpsaMvBA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_21eb9957-41ca-486b-a350-9cd40426445b"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>fD9tDInglE9inlSPLpYvlQ/WOeB02YFH1Yt6Tfag99iWtA704jwgn5XoO4/mR9d+mTjCzj9ndbaj&#13;
-Kp9ZnN45Ow==</DigestValue></Reference></SignedInfo><SignatureValue>hh7vG7kv5juYE+kwRQjjccL+FTM2h78xI00JmzevyodFKza04oUpnHGYiaIQTT2z6lCPnEaey/2v&#13;
-+GRfQKEWYcdQsOkkknJKYewOgl6FhGuHx/xD88LbjU+fQARbPYb5uiYXuZR/mTYC2xs+2Pszc9fb&#13;
-HC0sU+ASJPoKTQ6U/3cKF4iHbtCpo0I4XBMzrCcJT2l2V5bZnSnuzlR4hy5HhxA3c7tNxK/yJQnS&#13;
-Yxn3h+YUb4RWL7dyA/MvIZpIYMKWBT1jlHb/zgmqjMfu/0NGl/ojXitG3lQkAuyAzfRXB0l608Gb&#13;
-1Sx8otv8Fha6k4f0nj41NK0DuX9Otkcsf0eOcQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_6ee45698-53a3-4ca6-9c6a-04f84e9860cd"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>wINGnHknoM3K/A0nw01z+iJHJGmP6AyCa+G0W/tOM80b2+gPYJtjVyADNLvQnDJySttg+0CfWJNL&#13;
+mVmPDc37WA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_e50a58e3-ade3-4676-9f38-de8050b7408c"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>AhvHGhcgAP1knj0+1dFjGKGK+GTrExb6BOc7yyjRRSB7Fqkt9Ff/KM5PhG/GV2wo0E6ngaNpquEh&#13;
+2QYW5eULvQ==</DigestValue></Reference></SignedInfo><SignatureValue>V93QFH/Lh2MGvIuqBePNBOSs8zjt0sRvjEyo5x4mS5nmdkkPMTPcItAdoDAcF3SGwphjTYPhKSn+&#13;
+yfE5NxXRlZoKbnK9wSpdG5sasJSOCPUORnMPeBGNcqDB5JKQgsQXMZ50BBhnQvyJoMhLpamN0VGn&#13;
+ZGR7UDf+tHbLo7Ou8NliDNGUfQVruj18QkQ7HSTVoInfN10D+rH/Eun0D2BPQ8DsZ1mkGESW03XU&#13;
+/0T1bzEhlt2rvECF8XIuhMKsLtyhmv5Irk6HsOA0WmTE0J9FyiAAmaNLYUtVKZLtnc91R5+OoY/4&#13;
+jm0bzmI+pb7BLJT4dtOJGrXgoTSfRu0D+n34Fw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -3247,4 +2864,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_21eb9957-41ca-486b-a350-9cd40426445b" Target="#_b1f1de3a-ea7a-45e9-b2c9-730278935d75"><Timestamp>2023-11-16 22:07:10</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_e50a58e3-ade3-4676-9f38-de8050b7408c" Target="#_6ee45698-53a3-4ca6-9c6a-04f84e9860cd"><Timestamp>2023-11-16 22:15:52</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
