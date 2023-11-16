@@ -143,7 +143,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [BUPER_INI],[ExecDate]&#13;&#10;FROM [CTRL_VGIB_HL_PD_HANA]&#13;&#10;WHERE [ExecDate] = CONVERT(DATE,GETDATE())&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [VTWEG],[DIVISION],[BUPER_INI],[ExecDate]&#13;&#10;FROM [CTRL_VGIB_HL_PD_HANA]&#13;&#10;WHERE [ExecDate] = CONVERT(DATE,GETDATE())&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -154,6 +154,10 @@
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="VTWEG"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DIVISION"/>
+      <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="BUPER_INI"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ExecDate"/>
@@ -164,6 +168,8 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_1">
+      <column comment="" key="false" length="2" name="VTWEG" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="DIVISION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="6" name="BUPER_INI" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="ExecDate" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
     </metadata>
@@ -172,6 +178,10 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_1"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
+      <elementValue elementRef="KEY" value="&quot;VTWEG&quot;"/>
+      <elementValue elementRef="VALUE" value="VTWEG"/>
+      <elementValue elementRef="KEY" value="&quot;DIVISION&quot;"/>
+      <elementValue elementRef="VALUE" value="DIVISION"/>
       <elementValue elementRef="KEY" value="&quot;BUPER_INI&quot;"/>
       <elementValue elementRef="VALUE" value="BUPER_INI"/>
       <elementValue elementRef="KEY" value="&quot;ExecDate&quot;"/>
@@ -205,7 +215,7 @@
     <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
     <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
     <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VKORG = '3100' AND VRSIO IN ('AGK','AGV') AND BUPER &gt;= '&quot; + (String)globalMap.get(&quot;BUPER_INI&quot;) + &quot;' &quot;"/>
+    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VKORG = '3100' AND VRSIO IN ('AGK','AGV') AND VTWEG = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;' AND DIVISION = '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;' AND BUPER &gt;= '&quot; + (String)globalMap.get(&quot;BUPER_INI&quot;) + &quot;' &quot;"/>
     <elementParameter field="CHECK" name="USE_EXISTING_DYNAMIC" show="false" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="DYNAMIC" show="false" value=""/>
     <elementParameter field="TEXT" name="START_ROW" value="-1"/>
@@ -452,7 +462,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="288">
+  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_1"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -471,7 +481,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VGIB_HL_PD_HANA]&#13;&#10;SET [Inserted_Records] = (SELECT COUNT(*) FROM [dbo].[ZDP_VGIB_HL_PD_HANA]),[Executed] = 'X'&#13;&#10;WHERE [ExecDate] = '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ExecDate&quot;)) + &quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VGIB_HL_PD_HANA]&#13;&#10;SET [Inserted_Records] = (SELECT COUNT(*) FROM [dbo].[ZDP_VGIB_HL_PD_HANA]),[Executed] = 'X'&#13;&#10;WHERE [ExecDate] = '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ExecDate&quot;)) + &quot;'&#13;&#10;  AND [VTWEG] = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;' AND [DIVISION] = '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;' &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -499,9 +509,6 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tDBRow_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
-  </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_1" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_1" target="tSAPTableInput_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
@@ -510,6 +517,9 @@
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tDBOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tDBRow_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
@@ -521,13 +531,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_cd2ab15d-f0a2-4371-8347-dd8283ced3a7"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>StZH6Iug2vcrT5kZTJdPRT0Souz3fzwV44IbY1yMGGygvXHuw5deQUVks5idS/rO2VmPOsP8wS2g&#13;
-tAmN9JJYQQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_3276bea3-41f2-4afb-9809-0a974c55c5fc"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HleUGsdg8JdngznW8Q5g0AJavyLqfKiZMrTJk9QccHjJ2bFYlFLfRZ+xZ4ZiFMCCniT7carERadE&#13;
-21h4SvaTog==</DigestValue></Reference></SignedInfo><SignatureValue>hNfrByiN8bPNH+eMpHRYdCzxmGPBJ6mg8MUP7w0tXE6OUUZfUB/loKnOJZBwE5YDog+nBBnHAAUK&#13;
-cvHA0ti2FEPXyH73Ry5GinhyKzjICMQBjgf/yT/Z5X8yj31ORPkNBl9qRX7/76KKnucrS4HTQqgv&#13;
-p+QPGK1VdAHvGwxFXgHWfrIAzr+tWI/dR/UE1B0zfFjJkhWTLrHvBk8S58DibIC7U8i4ZtTqZJjD&#13;
-n68TqCXOhhJum9ULjsIntKrWWG9D0qvtPaEqqQLA1rfIc1ow9MHr1QLPxwKLBL+p/N+UZv3B8ynn&#13;
-2eWsK+WyIv+VSg/tViXO59OiS4r9evjvTPdSZg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_9f025e09-a25b-4d36-809d-09bdd9ae350c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>AZttKT9vkdr7GcWhtlxQpgBZWzdHHrPTFBjfC0R/vg4eWtWLSFsqTDAUd9H1m3LrWZcdeo+/ndQ4&#13;
+knqRuiOjlQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_def46d82-3aea-43cd-b75b-8de802c6ead9"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>vc6Iz1UR9UpejYBeqkl3Z+8Vqdb8tKeuQBeC2sMJfXcp9DJ7ngLlB+Tua2Dx5VE2ULSGZRRq7Fll&#13;
+b9Ttx5SkVg==</DigestValue></Reference></SignedInfo><SignatureValue>RZmIgJNEp83Pxfvm5aVT/8mCyBVmQ0RYta2uUdfA9r1YLIx2NqG736Px2IhUHlXsQt3z31DLjdjn&#13;
+mH96GG2VY2bYeHdMDhplEMwlMtZ0Z/ozu2hc49ufkHJ3tHrsWnlYXPl/Wk+elCF80VTUhZKQBMt7&#13;
+tgf3zNbrOp3dszXkFhKv5sJbw+vnRR8BHpXrL960n0OSE3wc4mE5OLqe733jiMn7RNpQMVpWbsO/&#13;
+cx1KIj7wO0w70ISZRs5dB4MQn9Eham6/eBwovuSfNSSs3UeT5hTtWvKzjG9v/Gu7Asp/38IdoKzR&#13;
+S7zELhQy5cMOYi2DZDOnKk4fS97B7dwRNo6aww==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -549,4 +559,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_3276bea3-41f2-4afb-9809-0a974c55c5fc" Target="#_cd2ab15d-f0a2-4371-8347-dd8283ced3a7"><Timestamp>2023-11-15 21:33:42</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_def46d82-3aea-43cd-b75b-8de802c6ead9" Target="#_9f025e09-a25b-4d36-809d-09bdd9ae350c"><Timestamp>2023-11-16 13:43:26</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
