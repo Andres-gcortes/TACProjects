@@ -222,7 +222,8 @@
     <metadata connector="FLOW" label="DeleteControl" name="DeleteControl">
       <column comment="" key="false" length="15" name="OBJECTCLAS" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="90" name="OBJECTID" nullable="true" originalLength="90" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CHANGENR" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CHANGENR_INI" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CHANGENR_FIN" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="VBELN" nullable="false" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="6" name="POSNR" nullable="false" originalLength="6" pattern="" precision="-1" sourceType="FLOAT" type="id_Double" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="VKORG" nullable="true" originalLength="4" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -239,7 +240,8 @@
       <outputTables name="DeleteControl" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="&quot;VERKBELEG&quot;" name="OBJECTCLAS" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.VBELN " name="OBJECTID" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="(String)globalMap.get(&quot;CHANGENR&quot;)" name="CHANGENR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="(String)globalMap.get(&quot;CHANGENR_INI&quot;)" name="CHANGENR_INI" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="(String)globalMap.get(&quot;CHANGENR_FIN&quot;)" name="CHANGENR_FIN" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.VBELN " name="VBELN" type="id_String"/>
         <mapperTableEntries expression="row1.POSNR " name="POSNR" type="id_Double"/>
         <mapperTableEntries expression="row1.VKORG " name="VKORG" nullable="true" type="id_String"/>
@@ -310,7 +312,12 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHANGENR"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CHANGENR_INI"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CHANGENR_FIN"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
@@ -373,7 +380,8 @@
     <metadata connector="FLOW" label="DeleteControl" name="tDBOutput_1">
       <column comment="" key="false" length="15" name="OBJECTCLAS" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="90" name="OBJECTID" nullable="true" originalLength="90" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CHANGENR" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CHANGENR_INI" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CHANGENR_FIN" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="VBELN" nullable="false" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="6" name="POSNR" nullable="false" originalLength="6" pattern="" precision="-1" sourceType="FLOAT" type="id_Double" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="VKORG" nullable="true" originalLength="4" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -387,7 +395,8 @@
     <metadata connector="REJECT" label="DeleteControl" name="REJECT">
       <column comment="" key="false" length="15" name="OBJECTCLAS" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="90" name="OBJECTID" nullable="true" originalLength="90" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CHANGENR" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CHANGENR_INI" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CHANGENR_FIN" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="VBELN" nullable="false" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="6" name="POSNR" nullable="false" originalLength="6" pattern="" precision="-1" sourceType="FLOAT" type="id_Double" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="VKORG" nullable="true" originalLength="4" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -549,7 +558,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT MIN([OBJECTID]) [OBJECTID_INI]&#13;&#10;      ,MAX([OBJECTID]) [OBJECTID_FIN]&#13;&#10;&#9;  ,SUBSTRING([OBJECTID],1,4) [FOLIO_AGRUPADOR]&#13;&#10;FROM [dbo].[CDHDR_HANA] &#13;&#10;WHERE [OBJECTCLAS] = 'VERKBELEG' &#13;&#10;AND [CHANGENR] BETWEEN '0023705611' &#13;&#10;AND '0023792844'&#13;&#10;GROUP BY SUBSTRING([OBJECTID],1,4) &#13;&#10;ORDER BY [OBJECTID_INI]&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT MIN([OBJECTID]) [OBJECTID_INI]&#13;&#10;      ,MAX([OBJECTID]) [OBJECTID_FIN]&#13;&#10;&#9;  ,SUBSTRING([OBJECTID],1,4) [FOLIO_AGRUPADOR]&#13;&#10;FROM [dbo].[CDHDR_HANA] &#13;&#10;WHERE [OBJECTCLAS] = 'VERKBELEG' &#13;&#10;AND [CHANGENR] BETWEEN '&quot; + (String)globalMap.get(&quot;CHANGENR_INI&quot;) + &quot;' &#13;&#10;AND '&quot; + (String)globalMap.get(&quot;CHANGENR_FIN&quot;) + &quot;'&#13;&#10;GROUP BY SUBSTRING([OBJECTID],1,4) &#13;&#10;ORDER BY [OBJECTID_INI]&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -2992,6 +3001,14 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
   <connection connectorName="FLOW" label="DeleteControl" lineStyle="0" metaname="DeleteControl" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tDBOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="CHANGENR_INI"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CHANGENR_FIN"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="DeleteControl"/>
   </connection>
@@ -3212,13 +3229,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_09b60d48-e9b4-4333-a2b6-9133fc0eabb6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Miwd+qHmrVjDC7m9FLFUT4PodvFSG6Z2MUnsyY2PxoQkaUyZ+tdgIVSbCK35SB9eNHXEkvP+PoU5&#13;
-r7im+lLfEw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_355842b3-5230-4c72-b636-b01bba8b0edb"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5fIYCTTrk+WsfILLWZdmc3ukh16LvL2SVMN0tCClLQF/zZVBaDQd7aRs0SJTWa0csSP+GL/2QQJV&#13;
-S/hDwV8ZYw==</DigestValue></Reference></SignedInfo><SignatureValue>JCtc/umZMlapNFod5+wD2JU8yJ9D/KPS1o1p0W7nIRId7Hm15AhbGHtzh2NlJWabQivgT4hcSHnK&#13;
-gfQle4v3Y1aiIWFrsk0ZdXQUnrKXXzScLTFpWoakSEwStrD+vAWq0PuNnEEvCG6SXx+5EeTu5vJz&#13;
-0J21BDcSrT5Ao5KdNx1VF4Bm5ZdxadLBQy0Er5+v6b/QixWXNPKLKMsmjYJ5Txi/i4qQ2Y8JLv8M&#13;
-fasUroemp6MILmTuLbEd4WVWA5SuBNQPYiFxAvutfAUNOJ4TqydSJdVT4TknoDG6FhI9HhH/iiE2&#13;
-NzNqDfVXQehBURauHzCxPR5PRfoM1iT/f8OsfQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e88f7f18-ba95-4a5f-acf8-0f7a9d5960cc"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>IXX/vuvHEC9CkU53csEUYFDjg6FwnaZrtSuQ0DykTDifMl/CoWUh6MvZYpinMgA7hPXAnTRIrzyB&#13;
+GbhSExb+0A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_c0a66b06-dd77-48a3-afce-1c7f1dc227d7"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>AvvCOhgpdgmWLvqQT/WQ/niMN0txplkuikpEdgZO3y8byU9GV709n6ypo8eFHQRppyX5w/xxzrdW&#13;
+M1cR2gPhdA==</DigestValue></Reference></SignedInfo><SignatureValue>ILcDjN1pFrx7GdN6V7HzQ2tGEO9aKge9blS9hvQinV1P4y/fN2p1YzL5IKiYze3PqEDa+wjQlDYS&#13;
+/PV7BlBZPXk30ivqXkhSSWVxyOVtwAQRv/jwpIHKt4QuuFwpTgLVotDKeojydLUCrx0bVSVD8T/7&#13;
+mXh+zJdRnXeKj2QVmAJYoo8KdfGjYcZ1zIRI/wfSiM8/nSCEg0cBlHCu+sqhtATkJM8+ZWjwTQkO&#13;
+POTTP1DHAN0oQt6FHJCTPU6dTLo2A1ODjxYwifOvhlBZbnDsKIFuQe7uDjLqWucSHoWEUy7c/k6a&#13;
+CIGkN1oOvYrvlbkz5ivkEgYh+EqjUQ9m/70oQw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -3240,4 +3257,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_355842b3-5230-4c72-b636-b01bba8b0edb" Target="#_09b60d48-e9b4-4333-a2b6-9133fc0eabb6"><Timestamp>2023-11-16 19:51:41</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_c0a66b06-dd77-48a3-afce-1c7f1dc227d7" Target="#_e88f7f18-ba95-4a5f-acf8-0f7a9d5960cc"><Timestamp>2023-11-16 20:02:15</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
