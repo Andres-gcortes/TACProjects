@@ -162,7 +162,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT VK.[VBELN] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[POSNR] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[VKORG] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[VTWEG] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[KUNNR] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[MATNR] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[AUDAT] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;CASE WHEN [VDATU] IS NOT NULL &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; THEN [VDATU] &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; ELSE [AUDAT] &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; END [VDATU] &#13;&#10;FROM [dbo].[VBAK_HANA] VK &#13;&#10;&#9;INNER JOIN [dbo].[VBAP_HANA] VP &#13;&#10;&#9;ON VK.[VBELN] = VP.[VBELN] &#13;&#10;WHERE VK.[VBELN] = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT VK.[VBELN] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[POSNR] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[VKORG] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[VTWEG] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[KUNNR] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[MATNR] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;[AUDAT] ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;CASE WHEN [VDATU] IS NOT NULL &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; THEN [VDATU] &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; ELSE [AUDAT] &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; END [VDATU] &#13;&#10;FROM [dbo].[VBAK_HANA] VK &#13;&#10;&#9;INNER JOIN [dbo].[VBAP_HANA] VP &#13;&#10;&#9;ON VK.[VBELN] = VP.[VBELN] &#13;&#10;WHERE VK.[VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -234,11 +234,11 @@
       <column comment="" key="false" length="10" name="DLT_DATE" nullable="true" originalLength="10" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_Date" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="DeleteControl" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="&quot;VERKBELEG&quot;" name="OBJECTCLAS" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="(String)globalMap.get(&quot;OBJECTID&quot;)" name="OBJECTID" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.VBELN " name="OBJECTID" nullable="true" type="id_String"/>
         <mapperTableEntries expression="(String)globalMap.get(&quot;CHANGENR&quot;)" name="CHANGENR" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.VBELN " name="VBELN" type="id_String"/>
         <mapperTableEntries expression="row1.POSNR " name="POSNR" type="id_Double"/>
@@ -420,7 +420,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[VBAK_HANA] &#13;&#10;WHERE [VBELN] = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[VBAK_HANA] &#13;&#10;WHERE [VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -463,7 +463,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[VBAP_HANA] &#13;&#10;WHERE [VBELN] = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[VBAP_HANA] &#13;&#10;WHERE [VBELN] = BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -506,7 +506,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[VBKD_HANA] &#13;&#10;WHERE [VBELN] = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[VBKD_HANA] &#13;&#10;WHERE [VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -549,7 +549,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [OBJECTID], &#13;&#10;[CHANGENR] &#13;&#10;FROM [dbo].[CDHDR_HANA] &#13;&#10;WHERE [OBJECTCLAS] = 'VERKBELEG' &#13;&#10;AND [CHANGENR] BETWEEN '&quot; + (String)globalMap.get(&quot;CHANGENR_INI&quot;) + &quot;' &#13;&#10;AND '&quot; + (String)globalMap.get(&quot;CHANGENR_FIN&quot;) + &quot;' &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT MIN([OBJECTID]) [OBJECTID_INI]&#13;&#10;      ,MAX([OBJECTID]) [OBJECTID_FIN]&#13;&#10;&#9;  ,SUBSTRING([OBJECTID],1,4) [FOLIO_AGRUPADOR]&#13;&#10;FROM [dbo].[CDHDR_HANA] &#13;&#10;WHERE [OBJECTCLAS] = 'VERKBELEG' &#13;&#10;AND [CHANGENR] BETWEEN '0023705611' &#13;&#10;AND '0023792844'&#13;&#10;GROUP BY SUBSTRING([OBJECTID],1,4) &#13;&#10;ORDER BY [OBJECTID_INI]&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -560,9 +560,11 @@
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="OBJECTID"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OBJECTID_INI"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CHANGENR"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OBJECTID_FIN"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FOLIO_AGRUPADOR"/>
       <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
@@ -570,18 +572,21 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_2">
-      <column comment="" key="false" length="-1" name="OBJECTID" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="CHANGENR" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="90" name="OBJECTID_INI" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="90" name="OBJECTID_FIN" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="FOLIO_AGRUPADOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_1"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
-      <elementValue elementRef="KEY" value="&quot;OBJECTID&quot;"/>
-      <elementValue elementRef="VALUE" value="OBJECTID"/>
-      <elementValue elementRef="KEY" value="&quot;CHANGENR&quot;"/>
-      <elementValue elementRef="VALUE" value="CHANGENR"/>
+      <elementValue elementRef="KEY" value="&quot;OBJECTID_INI&quot;"/>
+      <elementValue elementRef="VALUE" value="OBJECTID_INI"/>
+      <elementValue elementRef="KEY" value="&quot;OBJECTID_FIN&quot;"/>
+      <elementValue elementRef="VALUE" value="OBJECTID_FIN"/>
+      <elementValue elementRef="KEY" value="&quot;FOLIO_AGRUPADOR&quot;"/>
+      <elementValue elementRef="VALUE" value="FOLIO_AGRUPADOR"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFlowToIterate_1"/>
@@ -729,7 +734,7 @@
     <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
     <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
     <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VKORG = '3100' AND VBELN = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VKORG = '3100' AND VBELN BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="CHECK" name="USE_EXISTING_DYNAMIC" show="false" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="DYNAMIC" show="false" value=""/>
     <elementParameter field="TEXT" name="START_ROW" value="-1"/>
@@ -1105,7 +1110,7 @@
     <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
     <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
     <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VBELN = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VBELN BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="CHECK" name="USE_EXISTING_DYNAMIC" show="false" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="DYNAMIC" show="false" value=""/>
     <elementParameter field="TEXT" name="START_ROW" value="-1"/>
@@ -1321,7 +1326,7 @@
     <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
     <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
     <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VBELN = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VBELN BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="CHECK" name="USE_EXISTING_DYNAMIC" show="false" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="DYNAMIC" show="false" value=""/>
     <elementParameter field="TEXT" name="START_ROW" value="-1"/>
@@ -1745,7 +1750,7 @@
     <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
     <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
     <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VBELN = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VBELN BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="CHECK" name="USE_EXISTING_DYNAMIC" show="false" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="DYNAMIC" show="false" value=""/>
     <elementParameter field="TEXT" name="START_ROW" value="-1"/>
@@ -2664,7 +2669,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[VBEP_HANA] &#13;&#10;WHERE [VBELN] = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[VBEP_HANA] &#13;&#10;WHERE [VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -2713,7 +2718,7 @@
     <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
     <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
     <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FILTER" value="&quot;MANDT = '100' AND VBELN = '&quot; + (String)globalMap.get(&quot;OBJECTID&quot;) + &quot;' &quot;"/>
+    <elementParameter field="TEXT" name="FILTER" value="&quot;MANDT = '100' AND VBELN BETWEEN '&quot; + (String)globalMap.get(&quot;OBJECTID_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;OBJECTID_FIN&quot;) + &quot;' &quot;"/>
     <elementParameter field="CHECK" name="USE_EXISTING_DYNAMIC" show="false" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="DYNAMIC" show="false" value=""/>
     <elementParameter field="TEXT" name="START_ROW" value="-1"/>
@@ -3207,13 +3212,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_465f2c0f-16c4-4337-9cc6-49899ab579b2"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>6XDEfPHoopAzK/Bn4mDTn2V4VkynfRAxrD9XNXzime7lZETZgfW/d8euVZtuHIf7dqDCumJmkmjS&#13;
-lgDiSiWF0g==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_b0437797-fad5-4584-8f7b-4300bc3de88e"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>lkSLYjwpvLvKl+1CyIpDOIXsBHSoPsSp7npKdN2o2PvN1HquzcSyEnpAB5sYngktUE+LcdNhB3nj&#13;
-DTiJfOaINQ==</DigestValue></Reference></SignedInfo><SignatureValue>PvMCWHuiLAEDJHZyUzjVGq5ov2AN6w8r5txv35p9AOhpoVX6wX2GLbE+bV9etB3bsOp+viMOwnjd&#13;
-RfIKQKI2tvWQi+oDx5ny4jCuiIDR+725b2XGfs9EC29EUFDJUZyR/1wxIuIAATaACftc18TpATPO&#13;
-R/yk8cfoM2yWmQRF4KFzXHi0RWKttJ//Y+YlIW4IbFaJfHIW64ajgTMXrxicfnqR3dldq6EZKAqN&#13;
-X/cJF0OnaS1+tSDzG22Pr7kk1sWoEdHeajgUa3e2CtOBpM8Isjogv3twdM+r8KDXy/Pmc3RNoFaW&#13;
-beyjj1tAQrFYTps82ltmMvIOplomb9tcWkwKqA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_09b60d48-e9b4-4333-a2b6-9133fc0eabb6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Miwd+qHmrVjDC7m9FLFUT4PodvFSG6Z2MUnsyY2PxoQkaUyZ+tdgIVSbCK35SB9eNHXEkvP+PoU5&#13;
+r7im+lLfEw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_355842b3-5230-4c72-b636-b01bba8b0edb"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5fIYCTTrk+WsfILLWZdmc3ukh16LvL2SVMN0tCClLQF/zZVBaDQd7aRs0SJTWa0csSP+GL/2QQJV&#13;
+S/hDwV8ZYw==</DigestValue></Reference></SignedInfo><SignatureValue>JCtc/umZMlapNFod5+wD2JU8yJ9D/KPS1o1p0W7nIRId7Hm15AhbGHtzh2NlJWabQivgT4hcSHnK&#13;
+gfQle4v3Y1aiIWFrsk0ZdXQUnrKXXzScLTFpWoakSEwStrD+vAWq0PuNnEEvCG6SXx+5EeTu5vJz&#13;
+0J21BDcSrT5Ao5KdNx1VF4Bm5ZdxadLBQy0Er5+v6b/QixWXNPKLKMsmjYJ5Txi/i4qQ2Y8JLv8M&#13;
+fasUroemp6MILmTuLbEd4WVWA5SuBNQPYiFxAvutfAUNOJ4TqydSJdVT4TknoDG6FhI9HhH/iiE2&#13;
+NzNqDfVXQehBURauHzCxPR5PRfoM1iT/f8OsfQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -3235,4 +3240,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_b0437797-fad5-4584-8f7b-4300bc3de88e" Target="#_465f2c0f-16c4-4337-9cc6-49899ab579b2"><Timestamp>2023-11-16 15:25:16</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_355842b3-5230-4c72-b636-b01bba8b0edb" Target="#_09b60d48-e9b4-4333-a2b6-9133fc0eabb6"><Timestamp>2023-11-16 19:51:41</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
