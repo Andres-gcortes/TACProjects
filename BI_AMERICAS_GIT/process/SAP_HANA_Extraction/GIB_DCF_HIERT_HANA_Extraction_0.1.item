@@ -145,7 +145,7 @@
     <elementParameter field="TEXT" name="THREAD_COUNT" show="false" value="2"/>
     <elementParameter field="TEXT" name="TOPIC_PARTITION_COUNT" show="false" value="2"/>
     <elementParameter field="TEXT" name="MAX_TIME_TO_WAIT" show="false" value="60"/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;/GIB/DCF_HIERF&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="&quot;/GIB/DCF_HIERT&quot;"/>
     <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
     <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
     <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
@@ -186,30 +186,10 @@
     <elementParameter field="CHECK" name="REPLACE_CONTROL_CHARACTERS" show="false" value="true"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="_GIB_DCF_HIERF" name="tSAPTableInput_1">
+    <metadata connector="FLOW" label="_GIB_DCF_HIERT" name="tSAPTableInput_1">
       <column comment="Hierarchy Forecast" key="true" length="10" name="HIERA" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Superhierarchy" key="false" length="10" name="HIERS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Forecast material set" key="false" length="10" name="MATSN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Indicator: Entry blocked" key="false" length="1" name="LOCKD" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Collective level" key="false" length="1" name="COLLL" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy edited" key="false" length="1" name="MNTNF" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="false" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="false" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Account Number of Vendor or Creditor" key="false" length="10" name="LIFNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Number" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Controller" key="false" length="3" name="DISPO" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Business Partner Number" key="false" length="10" name="BUSPA" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Area" key="false" length="10" name="BERID" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Group" key="false" length="10" name="ZZ_KDGRP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Key Account Manager" key="false" length="10" name="ZZ_KAM" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Product Status" key="false" length="1" name="ZZ_PSTAT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="MAPE (Mean absolute percentage error)" key="false" length="10" name="ZZ_WMAPE" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="BIAS" key="false" length="10" name="ZZ_BIAS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Endcustomer" key="false" length="1" name="ZZ_ECFLG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="false" length="2" name="ZZ_SPART" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Character 100" key="false" length="100" name="ZZ_ITEM_POOL" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Material Number" key="false" length="40" name="ZZ_MATNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Language Key" key="true" length="1" name="SPRAS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Long Text" key="false" length="40" name="HTEXT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="864" posY="288">
@@ -226,12 +206,12 @@
     <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
     <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:pTc7FnCkMXO9uI+FeHtrPZl18OP309/Sw9WV6rlgfLCcpwoLMmn7N0r5CmicAjVKyh3IpQU="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;/GIB/DCF_HIERF_HANA&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;/GIB/DCF_HIERT_HANA&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_IF_EXISTS_AND_CREATE"/>
     <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="LABEL" name="NOTE" show="false" value="NOTE: batch size must be less than or equal to total number of parameter markers divided by number of columns"/>
-    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" show="false" value="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" value="false"/>
     <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="HIERA"/>
     <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
@@ -255,112 +235,12 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="HIERS"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SPRAS"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MATSN"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="LOCKD"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COLLL"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MNTNF"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VKORG"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VTWEG"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="WERKS"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="LIFNR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="KUNNR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DISPO"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="BUSPA"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="BERID"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_KDGRP"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_KAM"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_PSTAT"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_WMAPE"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_BIAS"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_ECFLG"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_SPART"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_ITEM_POOL"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZ_MATNR"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="HTEXT"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
@@ -375,55 +255,15 @@
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="_GIB_DCF_HIERF" name="tDBOutput_1">
+    <metadata connector="FLOW" label="_GIB_DCF_HIERT" name="tDBOutput_1">
       <column comment="Hierarchy Forecast" key="true" length="10" name="HIERA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Superhierarchy" key="false" length="10" name="HIERS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Forecast material set" key="false" length="10" name="MATSN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicator: Entry blocked" key="false" length="1" name="LOCKD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Collective level" key="false" length="1" name="COLLL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy edited" key="false" length="1" name="MNTNF" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="false" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="false" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Account Number of Vendor or Creditor" key="false" length="10" name="LIFNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Number" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Controller" key="false" length="3" name="DISPO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Business Partner Number" key="false" length="10" name="BUSPA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Area" key="false" length="10" name="BERID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Group" key="false" length="10" name="ZZ_KDGRP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Key Account Manager" key="false" length="10" name="ZZ_KAM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Product Status" key="false" length="1" name="ZZ_PSTAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MAPE (Mean absolute percentage error)" key="false" length="10" name="ZZ_WMAPE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="BIAS" key="false" length="10" name="ZZ_BIAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Endcustomer" key="false" length="1" name="ZZ_ECFLG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="false" length="2" name="ZZ_SPART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Character 100" key="false" length="100" name="ZZ_ITEM_POOL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material Number" key="false" length="40" name="ZZ_MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Language Key" key="true" length="1" name="SPRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Long Text" key="false" length="40" name="HTEXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
-    <metadata connector="REJECT" label="_GIB_DCF_HIERF" name="REJECT">
+    <metadata connector="REJECT" label="_GIB_DCF_HIERT" name="REJECT">
       <column comment="Hierarchy Forecast" key="true" length="10" name="HIERA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Superhierarchy" key="false" length="10" name="HIERS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Forecast material set" key="false" length="10" name="MATSN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicator: Entry blocked" key="false" length="1" name="LOCKD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Collective level" key="false" length="1" name="COLLL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy edited" key="false" length="1" name="MNTNF" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="false" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="false" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Plant" key="false" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Account Number of Vendor or Creditor" key="false" length="10" name="LIFNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Number" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Controller" key="false" length="3" name="DISPO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Business Partner Number" key="false" length="10" name="BUSPA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MRP Area" key="false" length="10" name="BERID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Group" key="false" length="10" name="ZZ_KDGRP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Key Account Manager" key="false" length="10" name="ZZ_KAM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Hierarchy Product Status" key="false" length="1" name="ZZ_PSTAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="MAPE (Mean absolute percentage error)" key="false" length="10" name="ZZ_WMAPE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="BIAS" key="false" length="10" name="ZZ_BIAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Endcustomer" key="false" length="1" name="ZZ_ECFLG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="false" length="2" name="ZZ_SPART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Character 100" key="false" length="100" name="ZZ_ITEM_POOL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material Number" key="false" length="40" name="ZZ_MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Language Key" key="true" length="1" name="SPRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Long Text" key="false" length="40" name="HTEXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -437,13 +277,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_d08c0464-850d-495a-80ed-57e033c0ecd9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>SK7+YzRVyQ1kfIKz97+K0cdkxciAav0neX29px93N4U2uwIbP/cAkr4Qxfyz2Atp+G2ErIpr4qV7&#13;
-bTAUv1p89w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_0a36e8d6-1153-43a0-a950-567336b6e8cc"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>FFINvdR+x0wv56h8/YTu2JdPmjssravOS3og/1bTs5DgdYYdyuRLDLMwSHwzrGEQ3/QO7mMOFxU0&#13;
-G95vIn0PuA==</DigestValue></Reference></SignedInfo><SignatureValue>gIJQI3DzJsl/rLrbTEPe+qTh37qxnQ6YirtAAn9O1t4MdXE6ex20mpEtm6nrC5jbIQ1vkDDVbvIK&#13;
-ELpxXioS/qqsK62QZ8n2qk6Gnm8wEN/RAS7hjKWxJBqoRKGfyF3OBxGxmHKK2zTTydskj5F3HLUk&#13;
-VBq/GIQkdRcLEWazM3z9tUaObUd3KUJlu7CRiGM5Mk0q9qkf2iteMfz3is4IaZrIlouaI14UMl7H&#13;
-x4x0Txh05/0IvGiwHU9plty+YaiMIqCLDWLACYvahrAOZVxHjheDvvKkih4OkwLZQjnpj6wod8ii&#13;
-0BkTm52BtZ6bZ8jz1Y3/fV7T74kcwseUn0SctA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_1c8e06df-57bf-4ef9-81aa-ee71d1ce46a6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Sb/mXZkOqB3F2+vLd/NiFK1YySdEbBDmQnzD/PZdWKDstkz2s3GVA6WWx1COFlI4zz06T1IZ8hRP&#13;
+7PoBMWZjYQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_aeab6544-316b-4ec3-b950-8b9b74d4f950"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>gk86xejepWbeGunrbDqZLeK5i917ipbz1pyaJXrVSih19iRA7u+t6zy1ieu6lEr53B8R0r5U7qHg&#13;
+MRVfiLWM7Q==</DigestValue></Reference></SignedInfo><SignatureValue>P8UfnBQVvPN3jdrnvEwXKEmxq5ZUK3FVUGJ6UJjQDEm4g9u/jD/zPz9P01EE6c1Ll6i///MP4yoT&#13;
+SH6lfeB0d65NTE4h6SlIQpwaoRvbBRbp5tmaC9h1Bb5N9QjJe1AM2c3jGZtdzAKZA5cp8X5zBRtZ&#13;
+Ey/Ew03nRk/iwMCumv2MBf7BbeinFRyaRPAm58oFkESM5RgpzGCl32DCeMudk4F95Y+G/WhthERj&#13;
+oXHHCwr+kvLg3KOtN8Ics1Rekgy1BBjmmnRS5OjQvY8i2qydkEf+S4hwZrfe/ZFmP4KzykwxCPP0&#13;
+qDx8UevU9wF+SINzR9SFXlGy0cRkdi3eSWE75A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -465,4 +305,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_0a36e8d6-1153-43a0-a950-567336b6e8cc" Target="#_d08c0464-850d-495a-80ed-57e033c0ecd9"><Timestamp>2023-11-17 17:12:07</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_aeab6544-316b-4ec3-b950-8b9b74d4f950" Target="#_1c8e06df-57bf-4ef9-81aa-ee71d1ce46a6"><Timestamp>2023-11-17 17:19:27</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
