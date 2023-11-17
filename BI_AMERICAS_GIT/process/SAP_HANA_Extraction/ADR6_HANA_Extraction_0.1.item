@@ -21,6 +21,13 @@
     <contextParameter comment="" internalId="_vIYUo3QwEe6bgMgZvbGMkg" name="SAP_S4_HANA_PROD_1001_Password" prompt="SAP_S4_HANA_PROD_1001_Password?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_Password" value="enc:system.encryption.key.v1:M40ncM1+hX9peNTuPwMZs7ieHa998fwA1xJXArqAdeFtRgtrUv7BI1U4"/>
     <contextParameter comment="" internalId="_vIYUpHQwEe6bgMgZvbGMkg" name="SAP_S4_HANA_PROD_1001_Client" prompt="SAP_S4_HANA_PROD_1001_Client?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_String" value="100"/>
     <contextParameter comment="" internalId="_vIYUpXQwEe6bgMgZvbGMkg" name="SAP_S4_HANA_PROD_1001_UserName" prompt="SAP_S4_HANA_PROD_1001_UserName?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_String" value="COGNOS"/>
+    <contextParameter comment="" internalId="_loD5gIWKEe6l6I1EZ936bw" name="SAP_Test_Server" prompt="SAP_Test_Server?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_String" value="svr-cognos-t"/>
+    <contextParameter comment="" internalId="_loD5gYWKEe6l6I1EZ936bw" name="SAP_Test_Database" prompt="SAP_Test_Database?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_String" value="SAP_HANA"/>
+    <contextParameter comment="" internalId="_loD5goWKEe6l6I1EZ936bw" name="SAP_Test_Schema" prompt="SAP_Test_Schema?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_String" value="dbo"/>
+    <contextParameter comment="" internalId="_loD5g4WKEe6l6I1EZ936bw" name="SAP_Test_Password" prompt="SAP_Test_Password?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_Password" value="enc:system.encryption.key.v1:eOK9d1NzRhyKGcsNXLUNclRbxOnNziB37JBVZq3i5kZXGslwqQZ/2zX4LgWPDtkpcMYWt4B/"/>
+    <contextParameter comment="" internalId="_loD5hIWKEe6l6I1EZ936bw" name="SAP_Test_Port" prompt="SAP_Test_Port?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_String" value="1433"/>
+    <contextParameter comment="" internalId="_loD5hYWKEe6l6I1EZ936bw" name="SAP_Test_Login" prompt="SAP_Test_Login?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_String" value="SAP_Test_usr"/>
+    <contextParameter comment="" internalId="_loD5hoWKEe6l6I1EZ936bw" name="SAP_Test_AdditionalParams" prompt="SAP_Test_AdditionalParams?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_String" value=""/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
@@ -217,13 +224,13 @@
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SAP_HANA_Server"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SAP_HANA_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_HANA_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_HANA_Database"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="USER" value="context.SAP_HANA_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:LW1OOhMi65omAgmUTbA5F6Jcw5iODc5ZBpkma0Xc3XW1XAdC+l4sIJR2TAemPUzMK32sDyw="/>
+    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:IsOiT2Fb1lfx3JWscYhUE1QkbUh39fn4CCOrl63iUUtFwsnzh2QgBRLdJTqzM3r7O++2c4w="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;ADR6_HANA&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
     <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
@@ -238,7 +245,7 @@
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_HANA_AdditionalParams"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
     <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
     <elementParameter field="CHECK" name="USE_ALTERNATE_SCHEMA" show="false" value="false"/>
     <elementParameter field="TEXT" name="ALTERNATE_SCHEMA" show="false" value="&quot;&quot;"/>
@@ -379,13 +386,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_4f25b90a-d7c0-4f3f-b821-cb43645f0920"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>j/UwsvHGXiaCXL4DhpaYeuRyDzVXXNZ+h900rCYxkSpulq4CnCh4VAeUpOjhADKdGN7hNx8q9n54&#13;
-EBzLE1UTwA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_621af9c2-0b5b-41f5-bf4c-3bafebe321e6"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>shk6sMQ3gFZ9zrinQ1mSTulSZcsc82H3P76FoKNbraCB6D3jTk1mkW41gTPLhdrNetJvN/1ZxUmn&#13;
-qqHsE29R8w==</DigestValue></Reference></SignedInfo><SignatureValue>MUSLmusn96bpbaPWeOf8S059Wsk7+sIJmXNso3dfyRpQptNuSrVDIPC3CY5R0noPAMHlgxzPv1a8&#13;
-0J7bwX8W1cMmAPtqCV35+qkGjjbuDj3lgfr47IreT6MaNDSl3jB6w+YDsC2Wfrt2ukGFu2PDafN6&#13;
-c2hEDDl0db52Ij58mPn4gXxdEbcuj0Bk7x9LNpFPtsTVLP1NPVtkco0UbWi5EFQBa97RX/JKKHMi&#13;
-JiNwUJcoO3e4w6ehPmqcuw3wTu9IZvuvEQh+Y8uzO8BgEayaMc5mxsOPPFAQnj8sTj3GVzwCUAXL&#13;
-BG+P0STlTgxuEoxqkp1d7vOzD8YpsgdzNE34ew==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_022c85d8-ba17-4894-9a80-141b78bd0013"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>OMg4V0d++A+d7ToUgkGLhvWq5d2QMbqjRItDNJ0GFEtF9Vqus+QPRvMcP+2KOM0orXRQR4kJGtwo&#13;
+Dx0i13ctCA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_06691ab2-a9e9-4ff1-a3a2-85998c8cd8c8"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>lsaRwKtXSEZkg/b6fGoDHwn6tEuMycudWvhCmdQvjNwt75ZZQ4cX8ffAX6QezkpDiDMZpjgKMgkS&#13;
+FhVa+GJA9A==</DigestValue></Reference></SignedInfo><SignatureValue>Jy1PyBmk7+3fTWDtNEBg3wsRO+Nugd/JsHzBA5FE5n4ekHwFoFWkzhtu6lA8Ph0WJBBsT5naDD/B&#13;
+0pFi869Km4/IMdmy+xtz7eDeQvnbaBTHCixPjVikeXvUYi8unJzFPggwyODb0Jg2o07+ii8lGnP9&#13;
+DNJOdMfmAvv1MxE0VT5/TdfCz+h61ZbZmmGokloa3l0BzTSHxQOZpmB9tSfsoB8yc9UcNXSfC8QK&#13;
++Gu9Q+5iZ94vFkdcl+j1ryCEpV+kBSSl6L6+ZgTEsUiHpBF9rjGoenXQJKUomFSYUWRtUZVjG7FK&#13;
+huvgVQ+9GeBLh+o4VUk2uU7/VU4LInVs0zuTkw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -407,4 +414,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_621af9c2-0b5b-41f5-bf4c-3bafebe321e6" Target="#_4f25b90a-d7c0-4f3f-b821-cb43645f0920"><Timestamp>2023-11-17 20:46:08</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_06691ab2-a9e9-4ff1-a3a2-85998c8cd8c8" Target="#_022c85d8-ba17-4894-9a80-141b78bd0013"><Timestamp>2023-11-17 20:47:57</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
