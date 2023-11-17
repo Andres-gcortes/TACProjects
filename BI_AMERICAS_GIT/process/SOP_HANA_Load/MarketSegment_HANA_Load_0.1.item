@@ -156,7 +156,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT T.[PRODH] [Product Hierarchy]&#13;&#10;      ,T2.[VTEXT] [Division Segment]&#13;&#10;      ,T3.[VTEXT] [Segment]&#13;&#10;      ,T1.[VTEXT] [Sub Segment]&#13;&#10;  FROM [dbo].[T179T_HANA] T&#13;&#10;    LEFT JOIN [dbo].[T179T_HANA] T1 &#13;&#10;&#9;  ON T.[PRODH] = T1.[PRODH]&#13;&#10;&#9;  AND T1.[SPRAS] = 'E'&#13;&#10;&#9;LEFT JOIN [dbo].[T179T_HANA] T2&#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,5) = T2.[PRODH] &#13;&#10;&#9;  AND T2.[SPRAS] = 'E'&#13;&#10;&#9;LEFT JOIN [dbo].[T179T_HANA] T3&#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,10) = T3.[PRODH]&#13;&#10;&#9;  AND T3.[SPRAS] = 'E'&#13;&#10;WHERE T.[SPRAS] = 'E'&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT T.[PRODH] [Product Hierarchy]&#13;&#10;      ,T1.[VTEXT] [Division Segment]&#13;&#10;      ,T2.[VTEXT] [Segment]&#13;&#10;      ,T3.[VTEXT] [Sub Segment]&#13;&#10;      ,NULL [Level 4]&#13;&#10;  FROM [dbo].[T179T_HANA] T&#13;&#10;    LEFT JOIN [dbo].[T179T_HANA] T1 &#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,2) = T1.[PRODH]&#13;&#10;&#9;  AND T1.[SPRAS] = 'E'&#13;&#10;&#9;LEFT JOIN [dbo].[T179T_HANA] T2&#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,4) = T2.[PRODH] &#13;&#10;&#9;  AND T2.[SPRAS] = 'E'&#13;&#10;&#9;LEFT JOIN [dbo].[T179T_HANA] T3&#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,6) = T3.[PRODH]&#13;&#10;&#9;  AND T3.[SPRAS] = 'E'&#13;&#10;WHERE T.[SPRAS] = 'E'&#13;&#10;AND (T.[PRODH] LIKE '01%' OR T.[PRODH] LIKE '03%') -- Flavors &amp; Aroma Ingredients&#13;&#10;UNION&#13;&#10;SELECT T.[PRODH] [Product Hierarchy]&#13;&#10;      ,T1.[VTEXT] [Division Segment]&#13;&#10;      ,T2.[VTEXT] [Segment]&#13;&#10;      ,T3.[VTEXT] [Sub Segment]&#13;&#10;      ,T4.[VTEXT] [Level 4]&#13;&#10;  FROM [dbo].[T179T_HANA] T&#13;&#10;    LEFT JOIN [dbo].[T179T_HANA] T1 &#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,2) = T1.[PRODH]&#13;&#10;&#9;  AND T1.[SPRAS] = 'E'&#13;&#10;&#9;LEFT JOIN [dbo].[T179T_HANA] T2&#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,4) = T2.[PRODH] &#13;&#10;&#9;  AND T2.[SPRAS] = 'E'&#13;&#10;&#9;LEFT JOIN [dbo].[T179T_HANA] T3&#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,6) = T3.[PRODH]&#13;&#10;&#9;  AND T3.[SPRAS] = 'E'&#13;&#10;&#9;LEFT JOIN [dbo].[T179T_HANA] T4&#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,9) = T4.[PRODH]&#13;&#10;&#9;  AND T4.[SPRAS] = 'E'&#13;&#10;WHERE T.[SPRAS] = 'E'&#13;&#10;AND T.[PRODH] LIKE '02%'  -- Fragrance&#13;&#10;UNION&#13;&#10;SELECT T.[PRODH] [Product Hierarchy]&#13;&#10;      ,T1.[VTEXT] [Division Segment]&#13;&#10;      ,T2.[VTEXT] [Segment]&#13;&#10;      ,NULL [Sub Segment]&#13;&#10;      ,NULL [Level 4]&#13;&#10;  FROM [dbo].[T179T_HANA] T&#13;&#10;    LEFT JOIN [dbo].[T179T_HANA] T1 &#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,2) = T1.[PRODH]&#13;&#10;&#9;  AND T1.[SPRAS] = 'E'&#13;&#10;&#9;LEFT JOIN [dbo].[T179T_HANA] T2&#13;&#10;&#9;  ON SUBSTRING(T.[PRODH],1,4) = T2.[PRODH] &#13;&#10;&#9;  AND T2.[SPRAS] = 'E'&#13;&#10;WHERE T.[SPRAS] = 'E'&#13;&#10;AND (T.[PRODH] LIKE '04%')  -- Fine Chemicals&#13;&#10;&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -175,6 +175,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sub_Segment"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Level_4"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
@@ -185,6 +187,7 @@
       <column comment="" key="false" length="40" name="Division_Segment" nullable="true" originalDbColumnName="Division Segment" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="Segment" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="Sub_Segment" nullable="true" originalDbColumnName="Sub Segment" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Level_4" nullable="true" originalDbColumnName="Level 4" originalLength="40" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="544" posY="352">
@@ -214,6 +217,9 @@
       <column comment="" key="false" length="40" name="Sub_Segment" nullable="true" originalDbColumnName="Sub Segment" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="40" name="Level_4" nullable="true" originalDbColumnName="Level 4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
     </metadata>
     <metadata connector="FLOW" label="Market_Segment" name="UpdateMarketSegment">
       <column comment="" key="true" length="18" name="Product_Hierarchy" nullable="false" originalDbColumnName="Product Hierarchy" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -228,38 +234,45 @@
       <column comment="" key="false" length="40" name="Sub_Segment" nullable="true" originalDbColumnName="Sub Segment" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="40" name="Level_4" nullable="true" originalDbColumnName="Level 4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables activateCondensedTool="true" name="NewMarketSegment" rejectInnerJoin="true" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Product_Hierarchy " name="Product_Hierarchy" type="id_String"/>
         <mapperTableEntries expression="row1.Division_Segment " name="Division_Segment" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Segment " name="Segment" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Sub_Segment " name="Sub_Segment" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.Level_4 " name="Level_4" nullable="true" type="id_String"/>
       </outputTables>
-      <outputTables activateExpressionFilter="true" expressionFilter="((Relational.ISNULL(row1.Division_Segment) &amp;&amp; Relational.ISNULL(row2.Division_Segment)) ? false : ((!Relational.ISNULL(row1.Division_Segment) &amp;&amp; !Relational.ISNULL(row2.Division_Segment)) ? (!row1.Division_Segment.equals(row2.Division_Segment)) : true )) || &#10;((Relational.ISNULL(row1.Segment) &amp;&amp; Relational.ISNULL(row2.Segment)) ? false : ((!Relational.ISNULL(row1.Segment) &amp;&amp; !Relational.ISNULL(row2.Segment)) ? (!row1.Segment.equals(row2.Segment)) : true )) || &#10;((Relational.ISNULL(row1.Sub_Segment) &amp;&amp; Relational.ISNULL(row2.Sub_Segment)) ? false : ((!Relational.ISNULL(row1.Sub_Segment) &amp;&amp; !Relational.ISNULL(row2.Sub_Segment)) ? (!row1.Sub_Segment.equals(row2.Sub_Segment)) : true ))" name="UpdateMarketSegment" sizeState="INTERMEDIATE">
+      <outputTables activateExpressionFilter="true" expressionFilter="((Relational.ISNULL(row1.Division_Segment) &amp;&amp; Relational.ISNULL(row2.Division_Segment)) ? false : ((!Relational.ISNULL(row1.Division_Segment) &amp;&amp; !Relational.ISNULL(row2.Division_Segment)) ? (!row1.Division_Segment.equals(row2.Division_Segment)) : true )) || &#10;((Relational.ISNULL(row1.Segment) &amp;&amp; Relational.ISNULL(row2.Segment)) ? false : ((!Relational.ISNULL(row1.Segment) &amp;&amp; !Relational.ISNULL(row2.Segment)) ? (!row1.Segment.equals(row2.Segment)) : true )) || &#10;((Relational.ISNULL(row1.Sub_Segment) &amp;&amp; Relational.ISNULL(row2.Sub_Segment)) ? false : ((!Relational.ISNULL(row1.Sub_Segment) &amp;&amp; !Relational.ISNULL(row2.Sub_Segment)) ? (!row1.Sub_Segment.equals(row2.Sub_Segment)) : true )) ||&#10;((Relational.ISNULL(row1.Level_4) &amp;&amp; Relational.ISNULL(row2.Level_4)) ? false : ((!Relational.ISNULL(row1.Level_4) &amp;&amp; !Relational.ISNULL(row2.Level_4)) ? (!row1.Level_4.equals(row2.Level_4)) : true ))" name="UpdateMarketSegment" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Product_Hierarchy " name="Product_Hierarchy" type="id_String"/>
         <mapperTableEntries expression="row1.Division_Segment " name="Division_Segment" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Segment " name="Segment" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Sub_Segment " name="Sub_Segment" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.Level_4 " name="Level_4" nullable="true" type="id_String"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row1" sizeState="INTERMEDIATE">
         <mapperTableEntries name="Product_Hierarchy" type="id_String"/>
         <mapperTableEntries name="Division_Segment" nullable="true" type="id_String"/>
         <mapperTableEntries name="Segment" nullable="true" type="id_String"/>
         <mapperTableEntries name="Sub_Segment" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Level_4" nullable="true" type="id_String"/>
       </inputTables>
       <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Product_Hierarchy " name="Product_Hierarchy" operator="=" type="id_String"/>
         <mapperTableEntries name="Division_Segment" nullable="true" type="id_String"/>
         <mapperTableEntries name="Segment" nullable="true" type="id_String"/>
         <mapperTableEntries name="Sub_Segment" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Level_4" nullable="true" type="id_String"/>
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="192">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_2"/>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="128">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -271,15 +284,15 @@
     <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SOP_AmericasBI_Schema"/>
     <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
     <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:GsELdozaSZYUR+RWr696vI3S/qfZi6yCTDNj0l1xw7T1ac/dOXj90VTdqReutZ9foXzylKpUzaI2QK8="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:iQOgM+RVoyYMjjuz5S+ZOKueKAXh0w/8RmGBa+FFLiGBJ5dbxvnH5HqfrLKOQtftJ2xDAWKCbI7rbxQ="/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_615b0ApfEeez1Kus8LAijg - Market_Segment"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w - Market_Segment"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Market Segment&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.SOP_TDM_MXBI01_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.\&quot;Product Hierarchy\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SOP_TDM_MXBI01_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.\&quot;Division Segment\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SOP_TDM_MXBI01_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.Segment,&#10;&#9;&#9;\&quot;&quot;+context.SOP_TDM_MXBI01_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.\&quot;Sub Segment\&quot;&quot;&#10;+&quot;&#10;FROM&#9;\&quot;&quot;+context.SOP_TDM_MXBI01_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.SOP_AmericasBI_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.\&quot;Product Hierarchy\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SOP_AmericasBI_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.\&quot;Division Segment\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SOP_AmericasBI_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.Segment,&#10;&#9;&#9;\&quot;&quot;+context.SOP_AmericasBI_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.\&quot;Sub Segment\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SOP_AmericasBI_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;.\&quot;Level 4\&quot;&quot;&#10;+&quot;&#10;FROM&#9;\&quot;&quot;+context.SOP_AmericasBI_Schema+&quot;\&quot;.\&quot;Market Segment\&quot;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -298,12 +311,14 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sub_Segment"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Level_4"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="Market_Segment" name="tMSSqlInput_2">
+    <metadata connector="FLOW" label="Market_Segment" name="tDBInput_1">
       <column comment="" key="true" length="18" name="Product_Hierarchy" nullable="false" originalDbColumnName="Product Hierarchy" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -316,10 +331,13 @@
       <column comment="" key="false" length="40" name="Sub_Segment" nullable="true" originalDbColumnName="Sub Segment" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="40" name="Level_4" nullable="true" originalDbColumnName="Level 4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="352">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlOutput_1"/>
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -331,7 +349,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
     <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Ahi0IQwth3IySNtUSLqJew+Y0uapeKgOpq+ulDFFOke+yvPDqD59y73/6t690WhGy+dbCjP7xyQrGg8="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Rhc/hId+i7e5iF93jw1Yv03LWr0/AZwcwl6IP1Y5kUD3SRo846RrImGhOFCnBFQllDXDj7Aq2YSu/w4="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Market Segment&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
     <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
@@ -342,7 +360,7 @@
     <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
     <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" show="false" value="_615b0ApfEeez1Kus8LAijg - Market_Segment"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w - Market_Segment"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -378,6 +396,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Level_4"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -388,7 +411,7 @@
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="Market_Segment" name="tMSSqlOutput_1">
+    <metadata connector="FLOW" label="Market_Segment" name="tDBOutput_1">
       <column comment="" key="true" length="18" name="Product_Hierarchy" nullable="false" originalDbColumnName="Product Hierarchy" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -399,6 +422,9 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="40" name="Sub_Segment" nullable="true" originalDbColumnName="Sub Segment" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="40" name="Level_4" nullable="true" originalDbColumnName="Level 4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
     </metadata>
@@ -415,12 +441,15 @@
       <column comment="" key="false" length="40" name="Sub_Segment" nullable="true" originalDbColumnName="Sub Segment" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="40" name="Level_4" nullable="true" originalDbColumnName="Level 4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="512">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlOutput_2"/>
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="544">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_2"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -432,7 +461,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
     <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Il9Tmv7WgrYf9O7d2yH8kmUyqRxrVWicKvnh90qhHEJSLC2E0dNwoWGuyqxmU+vAPYJ6G1TFdHqsxBU="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ZJVBDS9dJ7OqetkAkA8xeqsvy+s0J/arAvYbivL8HwheaDqjCT5ntuWESrUe7hR9WWdIypUSk6GHBk8="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Market Segment&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
     <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
@@ -443,7 +472,7 @@
     <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
     <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" show="false" value="_615b0ApfEeez1Kus8LAijg - Market_Segment"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w - Market_Segment"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -479,6 +508,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Level_4"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -489,7 +523,7 @@
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="Market_Segment" name="tMSSqlOutput_2">
+    <metadata connector="FLOW" label="Market_Segment" name="tDBOutput_2">
       <column comment="" key="true" length="18" name="Product_Hierarchy" nullable="false" originalDbColumnName="Product Hierarchy" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -500,6 +534,9 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="40" name="Sub_Segment" nullable="true" originalDbColumnName="Sub Segment" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="40" name="Level_4" nullable="true" originalDbColumnName="Level 4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
     </metadata>
@@ -516,6 +553,9 @@
       <column comment="" key="false" length="40" name="Sub_Segment" nullable="true" originalDbColumnName="Sub Segment" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="40" name="Level_4" nullable="true" originalDbColumnName="Level 4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -524,15 +564,15 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
-  <connection connectorName="FLOW" label="NewMarketSegment" lineStyle="0" metaname="NewMarketSegment" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_1" target="tMSSqlOutput_1">
+  <connection connectorName="FLOW" label="NewMarketSegment" lineStyle="0" metaname="NewMarketSegment" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_1" target="tDBOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="NewMarketSegment"/>
   </connection>
-  <connection connectorName="FLOW" label="UpdateMarketSegment" lineStyle="0" metaname="UpdateMarketSegment" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tMap_1" target="tMSSqlOutput_2">
+  <connection connectorName="FLOW" label="UpdateMarketSegment" lineStyle="0" metaname="UpdateMarketSegment" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tMap_1" target="tDBOutput_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="UpdateMarketSegment"/>
   </connection>
-  <connection connectorName="FLOW" label="row2" lineStyle="8" metaname="tMSSqlInput_2" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_2" target="tMap_1">
+  <connection connectorName="FLOW" label="row2" lineStyle="8" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
@@ -541,13 +581,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_af996af4-43ef-4418-b574-6ecee98a85ae"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ov64nd/GY+wItDdGfSsOimmNehioM5uH9jwmGSyLnDiZ2cvoVcaa3UW6jyuYyiTlf3gZf6DPq5IR&#13;
-WjeX/S9HOQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f7e896dd-77dc-4707-b052-4950e84b4c54"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>oBF0dKhgPOwjrl5IELiZPTtfYwPTcDGCVDjtQMcHPlitDyRMXGMhZj6ujzMuohOPxM6E5H0Ez0w4&#13;
-iD7Vm7h0Sw==</DigestValue></Reference></SignedInfo><SignatureValue>Wgi9ydpJI1X45dJ/wirNlVY+z/XuMhBX7jo9s2bCtW8+uzfiU7JEKzZ8RQXoedVzSCFEC2qrVq3C&#13;
-cQwKIJBe5pXq9YLfk7m40gS4TWj1TBOohW71HmNqpV6bG4uUbaAUQXsJv0pwprXCOMK6hxAkDdOe&#13;
-zPSgLmM5XOnvEDf16h7sQDf6fp7N/K0llk+wuNhEfAvFdo8jWnPPVSbhxQMaXLbYVc0W9M+ZtRja&#13;
-+912VTXjH2hi0cNovuw+NZbW9LOKE4gZIvQFGkYu4uylpGjBRk5DL1Bf3gKOr90a6j0ucPZGCNUe&#13;
-3Ww0XqLFgnqSiOVpBY0cXrkE4IBLTDazhtp1hA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_8a80b172-9e71-4e3b-8dd8-97d92e30b435"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>+EG1mxY7YYJzHBc+4fRQd1R2Eje/to6U3s0+DZpFj0PPjlupZDZw4von3ojCVX9c8k6d+0rZOqxo&#13;
+HxOFbmUqIw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_e3c4b392-b294-4b56-b1df-c4e47011efae"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>pyCHB/72u0NWM9Lp5BwLLSTCKSUzwGVRE9kHRrDU1r1KyD3owaj7kA5DxHLz78JWJUW7PwzqykQ1&#13;
+mV6DNvPRdQ==</DigestValue></Reference></SignedInfo><SignatureValue>YssWROxMlNBVLqwMSyt5gtyn+Sz3BJ0EkzN3nBrQs5HQ6ZAAhbsRsY+wHmaBrzjU1l0cCFNPrzkn&#13;
+5l62oDJFIGf3/Dno5WWIx7qq5Q6fiKxfU2rW8TMbkDrdDuS/rwXATpHy7858xVEuzRM4oD1dj0HF&#13;
+cEsFK+kMRWjlKuItxSvNG/KpCp+3Hwd5dg7Ew/AxIQyTwPFeWYbeV4HzpsSk6GNfXyryp4G5JFZe&#13;
+MpgKPN024r2Tebg6wxWiJ21XmBHN2usKYOjoUjBXLplt2KKTUY0m82WxDO/E6ketZjFItqyQwvlw&#13;
+NjKM4WpLGhtLzP/bgaF4AsC12SRfFU+cwSd/Dg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -569,4 +609,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f7e896dd-77dc-4707-b052-4950e84b4c54" Target="#_af996af4-43ef-4418-b574-6ecee98a85ae"><Timestamp>2023-11-17 21:26:32</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_e3c4b392-b294-4b56-b1df-c4e47011efae" Target="#_8a80b172-9e71-4e3b-8dd8-97d92e30b435"><Timestamp>2023-11-17 21:58:56</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
