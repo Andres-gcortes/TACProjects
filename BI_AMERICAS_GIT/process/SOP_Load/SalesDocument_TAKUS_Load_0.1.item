@@ -280,8 +280,6 @@
     <elementParameter field="TABLE" name="TRIM_COLUMN">
       <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Document"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
-      <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Date_on_Which_Record_Was_Created"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Document_Date__Date_Received_Sent"/>
@@ -342,6 +340,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Net_Value_of_the_Sales_Order_in_Local_Currency"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
@@ -349,7 +349,6 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tMSSqlInput_2">
       <column comment="" key="false" length="10" name="Sales_Document" nullable="false" originalDbColumnName="Sales Document" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Date_on_Which_Record_Was_Created" nullable="true" originalDbColumnName="Date on Which Record Was Created" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Document_Date__Date_Received_Sent" nullable="true" originalDbColumnName="Document Date (Date Received/Sent)" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="SD_document_category" nullable="true" originalDbColumnName="SD document category" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -380,6 +379,7 @@
       <column comment="" key="false" length="5" name="SD_Document_Currency_Original" nullable="true" originalDbColumnName="SD Document Currency Original" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="Sales_Document_has_been_invoiced" nullable="true" originalDbColumnName="Sales Document has been invoiced" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="17" name="Net_Value_of_the_Sales_Order_in_Local_Currency" nullable="true" originalDbColumnName="Net Value of the Sales Order in Local Currency" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
@@ -435,11 +435,6 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Date_on_Which_Record_Was_Created"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
@@ -590,6 +585,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -602,7 +602,6 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tMSSqlOutput_1">
       <column comment="" key="false" length="10" name="Sales_Document" nullable="false" originalDbColumnName="Sales Document" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Date_on_Which_Record_Was_Created" nullable="true" originalDbColumnName="Date on Which Record Was Created" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Document_Date__Date_Received_Sent" nullable="true" originalDbColumnName="Document Date (Date Received/Sent)" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="SD_document_category" nullable="true" originalDbColumnName="SD document category" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -633,11 +632,11 @@
       <column comment="" key="false" length="5" name="SD_Document_Currency_Original" nullable="true" originalDbColumnName="SD Document Currency Original" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="Sales_Document_has_been_invoiced" nullable="true" originalDbColumnName="Sales Document has been invoiced" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="17" name="Net_Value_of_the_Sales_Order_in_Local_Currency" nullable="true" originalDbColumnName="Net Value of the Sales Order in Local Currency" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" length="10" name="Sales_Document" nullable="false" originalDbColumnName="Sales Document" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Date_on_Which_Record_Was_Created" nullable="true" originalDbColumnName="Date on Which Record Was Created" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Document_Date__Date_Received_Sent" nullable="true" originalDbColumnName="Document Date (Date Received/Sent)" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="SD_document_category" nullable="true" originalDbColumnName="SD document category" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -668,6 +667,7 @@
       <column comment="" key="false" length="5" name="SD_Document_Currency_Original" nullable="true" originalDbColumnName="SD Document Currency Original" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="Sales_Document_has_been_invoiced" nullable="true" originalDbColumnName="Sales Document has been invoiced" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="17" name="Net_Value_of_the_Sales_Order_in_Local_Currency" nullable="true" originalDbColumnName="Net Value of the Sales Order in Local Currency" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
@@ -1811,13 +1811,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_6f5977f1-de3c-4d28-890e-14d5b31a2a78"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Jf0VZmatrfDZi6N7GiBFzmfA98Hw7rY3m5Bho5+zwRUm8alAo3yX32JgaMGEgrLr3Zk8xbASVm78&#13;
-9MddQvOzXw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_ddbd0d6c-6eb6-4f89-ad10-3063d06e9bdd"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>jCwk3FD4ny+EaUg1hBGmW3j3NTSns+C2enDPHMCIIxNpiFzKppV48CntKRY6asm6HAmf6UKwaC9M&#13;
-LnXLV7koSQ==</DigestValue></Reference></SignedInfo><SignatureValue>T53fCXRZfaX4BQxBOn7ICp9+5dPiRPq53bqetJnNFzV5y8+0BAvr2nYaCAFg0b9GRbwxZjISTNxS&#13;
-NSHDpjB0HLVYcusXW/LEBz++YVqkO4RO9Kb3pno8Wj6DUinzIglooLOeqnW6qa3kiVvqTiIaYP07&#13;
-yBYqnZ6y5Qw2hovq5HQkYWRVmBr43kywyqXxliHbp0ryFHyCVraEodiYK8OIJhc5hN6dCeprs6zb&#13;
-ovxW5Xt3YKOsLXO6/k1jywhJwE2cu3UDsu7eQzREWfPi0x42QA6FVVTnXP/bAOdNkdDsrzufAn7P&#13;
-MeaQtA6VYFbOtGFHbdmFIups79ac8Kc+7KW61w==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_1bfe7f9a-a69b-40c8-858b-ed68522df76a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HeAa8JTntaHULbBI4lklnjsP8ToJqn6013B01vj77Oh7M846ryHux0JcGgomTLYTTer3AVqlHzk+&#13;
+cvb/FL8r8A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_2adb18c4-7613-43ac-a127-3405cb4e8bf3"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>as+Gwkyxfbqsw3IH6LeIme8y/dX5imzF2Rp1/dcmOCho0M93j6KMmYq//smwTo7dE/LuWhTapia/&#13;
+Zg6HbHiVrQ==</DigestValue></Reference></SignedInfo><SignatureValue>QuHHMnR8UB2vxnWibNgESw/N2wPr0kav133vnITE+5EubQZDXDAi/wB9fdAHdfilDLCeWwk6Z+6+&#13;
+CRnyo8Fi909Ax7B9gOqdyczi5MCCHAf8KtH3vwQseIqje1gbDiBNX0flXPw4PLHDty0Rm/aELcb5&#13;
+HHmGW8fQdmCyXmTIg2TrKoNosMNASnpDuU/UMkqQdP4Vl+4sSa9xK+4+LPMQzZVbY8riNtcQPCT0&#13;
+tZ6BdYqk7+ls21TnVx2doTpGpZ/SH3Y2q3elxqXa6r9WuQNLhNgUOBEtf8O4SlTwjm7JUtOw+yHi&#13;
+CJ+MhB6lfyhvWYbfMR6xm5JSFK9ihMVYxs/asA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1839,4 +1839,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_ddbd0d6c-6eb6-4f89-ad10-3063d06e9bdd" Target="#_6f5977f1-de3c-4d28-890e-14d5b31a2a78"><Timestamp>2023-11-23 19:06:58</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_2adb18c4-7613-43ac-a127-3405cb4e8bf3" Target="#_1bfe7f9a-a69b-40c8-858b-ed68522df76a"><Timestamp>2023-11-23 19:13:25</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
