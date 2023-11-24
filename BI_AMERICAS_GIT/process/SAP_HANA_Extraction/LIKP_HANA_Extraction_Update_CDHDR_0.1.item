@@ -78,7 +78,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" show="false" value="enc:system.encryption.key.v1:aIt3FZGAbRVq/CyiMD3wfwjxgYJTftnxiAwvDSUZ"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" show="false" value="enc:system.encryption.key.v1:+oIx1Sjy7NLuW5fJ1Cxh+ebGgvOlkmlEqswgpmaf"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
@@ -93,7 +93,7 @@
     <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
     <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" show="false" value="false"/>
     <elementParameter field="CHECK" name="ON_FILES_FLAG" show="false" value="false"/>
-    <elementParameter field="DIRECTORY" name="FILE_PATH" show="false" value="&quot;F:/TalendWorkspaces/.metadata&quot;"/>
+    <elementParameter field="DIRECTORY" name="FILE_PATH" show="false" value="&quot;C:/Users/carlos_valle/workspace/.metadata&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_STATS" show="false" value="&quot;stats_file.txt&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_LOGS" show="false" value="&quot;logs_file.txt&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_METTER" show="false" value="&quot;meter_file.txt&quot;"/>
@@ -113,7 +113,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" show="false" value="enc:system.encryption.key.v1:bsJKj3RBH7voL8p8LbSmrUOTm+qTjyfJgsWDDbDf"/>
+    <elementParameter field="PASSWORD" name="PASS" show="false" value="enc:system.encryption.key.v1:ENtaC3kxgH+9eK8cILMQlgtFGUeChpTkTlfPxG70"/>
     <elementParameter field="FILE" name="DBFILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" show="false" value="&quot;&quot;"/>
@@ -895,6 +895,7 @@
       <column comment="Returns Item" key="false" length="1" name="SHKZG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Document No. of a Reference Document" key="false" length="10" name="LFBNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Item of a Reference Document" key="false" length="4" name="LFPOS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Goods Movement Status (Item)" key="false" length="1" name="WBSTA" nullable="true" originalLength="1" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="1088" posY="480">
@@ -960,9 +961,10 @@
       <column comment="Returns Item" key="false" length="1" name="SHKZG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Document No. of a Reference Document" key="false" length="10" name="LFBNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Item of a Reference Document" key="false" length="4" name="LFPOS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Goods Movement Status (Item)" key="false" length="1" name="WBSTA" nullable="true" originalLength="1" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="New_LIPS" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row4.VBELN" name="VBELN" nullable="true" type="id_String"/>
@@ -1013,6 +1015,7 @@
         <mapperTableEntries expression="row4.SHKZG" name="SHKZG" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row4.LFBNR" name="LFBNR" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row4.LFPOS" name="LFPOS" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row4.WBSTA " name="WBSTA" nullable="true" type="id_String"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row4" sizeState="INTERMEDIATE">
         <mapperTableEntries name="VBELN" nullable="true" type="id_String"/>
@@ -1063,6 +1066,7 @@
         <mapperTableEntries name="SHKZG" nullable="true" type="id_String"/>
         <mapperTableEntries name="LFBNR" nullable="true" type="id_String"/>
         <mapperTableEntries name="LFPOS" nullable="true" type="id_String"/>
+        <mapperTableEntries name="WBSTA" nullable="true" type="id_String"/>
       </inputTables>
     </nodeData>
   </node>
@@ -1344,6 +1348,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="WBSTA"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -1403,6 +1412,7 @@
       <column comment="Returns Item" key="false" length="1" name="SHKZG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Document No. of a Reference Document" key="false" length="10" name="LFBNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Item of a Reference Document" key="false" length="4" name="LFPOS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Goods Movement Status (Item)" key="false" length="1" name="WBSTA" nullable="true" originalLength="1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="LIPS" name="REJECT">
       <column comment="Delivery" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -1453,6 +1463,7 @@
       <column comment="Returns Item" key="false" length="1" name="SHKZG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Document No. of a Reference Document" key="false" length="10" name="LFBNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Item of a Reference Document" key="false" length="4" name="LFPOS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Goods Movement Status (Item)" key="false" length="1" name="WBSTA" nullable="true" originalLength="1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -1498,10 +1509,20 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk4"/>
   </connection>
   <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tSAPTableInput_2" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_2" target="tMap_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="WBSTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row4"/>
   </connection>
   <connection connectorName="FLOW" label="New_LIPS" lineStyle="0" metaname="New_LIPS" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tDBOutput_2">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="WBSTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="New_LIPS"/>
   </connection>
@@ -1540,13 +1561,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_46e87333-a916-486a-9b38-3dbef8967d3b"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>qrI84QvrrGxU1PQzNzXGCAMPG+kxoSNGU8BovvF+PsEtIXPGQbtr/KoPhF/0nKikcJpeJs8l7/fW&#13;
-sKDGLOPXYg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_a2edc2f2-202c-4b43-bf66-e0d9dabb0767"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RTlJZV7AQB4fYQtilWwbh0gdBPve5xhKts4IogribOMPYeMJpJPw9Dbk7m1+govgLVU2XnCQKdpS&#13;
-skcxTOC/LQ==</DigestValue></Reference></SignedInfo><SignatureValue>YTgPpQ08v2E5jhxsfx12G55t8fgcv9kYqGCNQJE9Sjx9mV/VPvFo9Bh7M4m0RNR1mmxWiS4WWubv&#13;
-SBO9NKZfkVwVEfLJF4uPNjh8f+dbgqB450mdywvP6aCqlDg5Xy+wTD2bftNxUdNIuPrzaTr4DXJ8&#13;
-QwbeApOwY8w3hsfGn+PxnLCaS00oxLUChEHhfZLZdH0fyfH1/iyD109SayCwMGvdV9NQmO1Gx0dn&#13;
-T0D9km2RR87Z62sbLlF2inSKN5ZfZDUiTay0tQflg1uB2lkqNZN1u8KPIntXpn2PulXN6Zi+AVkv&#13;
-NctVR0Wi3DI1b2CIvR9vOhZ+nPEQ96gzDtZj4A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b6c049d3-d2bf-4aa2-8b0e-8b5c1649248a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>R2iOVPVVtcxORwV9siBaLInf/XVv3TE077MqYVzGWi14KBIWeu67x+1URmfBZKFCp1OdK9TeYv/8&#13;
+RzioaRYrHQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_10e426c7-7d41-4804-b036-90bfe8e46e66"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>9yFmEQ5DBzQztkHtSqTznONSb7sg31lHB9CPB8opguJ8O5eowEAl7XEPqhxw3rVglE0hPbY6D1H/&#13;
+mwWh2vAgfA==</DigestValue></Reference></SignedInfo><SignatureValue>GNajxbe0UzNCB8Mlridjcu9wz+rlbryxPs26LgqBg6Ti9GK5wB41e4uLA1Fo4UBjXIFrkt8y+YiF&#13;
+lfEcwuwuLDJwwJ7KVkduJeMWydj48amzo77gJzxxc7ni++w7UEZNHvYNMTpenyvh/9wb09dDk/n5&#13;
+tlB5MEEB3H/e7OYVpEk6rgmNS4IB48u5S692GT6IJl4M4LIqBo2o+M/60TDm71CWGuJpx7SDfDJI&#13;
+Vvypg73lzJOYJphl+lliER/2kB0/Wz4bVzymbDeS6vTxSAxvVmW2bwutE/UohgGLhWADAA3/ZEqt&#13;
+wwQ8iWND78RnhjwvI71g0eCsklqJE/eWmPWItQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1568,4 +1589,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_a2edc2f2-202c-4b43-bf66-e0d9dabb0767" Target="#_46e87333-a916-486a-9b38-3dbef8967d3b"><Timestamp>2023-11-23 17:08:43</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_10e426c7-7d41-4804-b036-90bfe8e46e66" Target="#_b6c049d3-d2bf-4aa2-8b0e-8b5c1649248a"><Timestamp>2023-11-24 17:15:45</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
