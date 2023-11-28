@@ -72,7 +72,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" show="false" value="enc:system.encryption.key.v1:aIt3FZGAbRVq/CyiMD3wfwjxgYJTftnxiAwvDSUZ"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" show="false" value="enc:system.encryption.key.v1:+oIx1Sjy7NLuW5fJ1Cxh+ebGgvOlkmlEqswgpmaf"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
@@ -87,7 +87,7 @@
     <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
     <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" show="false" value="false"/>
     <elementParameter field="CHECK" name="ON_FILES_FLAG" show="false" value="false"/>
-    <elementParameter field="DIRECTORY" name="FILE_PATH" show="false" value="&quot;F:/TalendWorkspaces/.metadata&quot;"/>
+    <elementParameter field="DIRECTORY" name="FILE_PATH" show="false" value="&quot;C:/Users/carlos_valle/workspace/.metadata&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_STATS" show="false" value="&quot;stats_file.txt&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_LOGS" show="false" value="&quot;logs_file.txt&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_METTER" show="false" value="&quot;meter_file.txt&quot;"/>
@@ -107,7 +107,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" show="false" value="enc:system.encryption.key.v1:bsJKj3RBH7voL8p8LbSmrUOTm+qTjyfJgsWDDbDf"/>
+    <elementParameter field="PASSWORD" name="PASS" show="false" value="enc:system.encryption.key.v1:ENtaC3kxgH+9eK8cILMQlgtFGUeChpTkTlfPxG70"/>
     <elementParameter field="FILE" name="DBFILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" show="false" value="&quot;&quot;"/>
@@ -156,7 +156,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT BT1.[PARTNER] [KUNNR], [COUNTRY], [NAME_ORG1] [NAME1], [BU_SORT2] [LEGACY]&#13;&#10;  FROM [dbo].[BUT000_HANA] BT1&#13;&#10;&#9;LEFT JOIN [dbo].[BUT020_HANA] BT2&#13;&#10;&#9;  ON BT1.[PARTNER] = BT2.[PARTNER]&#13;&#10;&#9;  AND SUBSTRING([ADDR_VALID_FROM],1,8) &lt;= CONVERT(VARCHAR(8),GETDATE(),112)&#13;&#10;&#9;  AND SUBSTRING([ADDR_VALID_TO],1,8) &gt;= CONVERT(VARCHAR(8),GETDATE(),112)&#13;&#10;&#9;LEFT JOIN [dbo].[ADRC_HANA] AD&#13;&#10;&#9;  ON BT2.[ADDRNUMBER] = AD.[ADDRNUMBER]&#13;&#10;WHERE [BU_GROUP] = 'Z012'&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT BT1.[PARTNER] [KUNNR], [COUNTRY], CASE WHEN [BU_GROUP] = 'Z005' THEN [NAME_GRP1] ELSE [NAME_ORG1] END [NAME1], [BU_SORT2] [LEGACY]&#13;&#10;  FROM [dbo].[BUT000_HANA] BT1&#13;&#10;&#9;LEFT JOIN [dbo].[BUT020_HANA] BT2&#13;&#10;&#9;  ON BT1.[PARTNER] = BT2.[PARTNER]&#13;&#10;&#9;  AND SUBSTRING([ADDR_VALID_FROM],1,8) &lt;= CONVERT(VARCHAR(8),GETDATE(),112)&#13;&#10;&#9;  AND SUBSTRING([ADDR_VALID_TO],1,8) &gt;= CONVERT(VARCHAR(8),GETDATE(),112)&#13;&#10;&#9;LEFT JOIN [dbo].[ADRC_HANA] AD&#13;&#10;&#9;  ON BT2.[ADDRNUMBER] = AD.[ADDRNUMBER]&#13;&#10;WHERE [BU_GROUP] IN ('Z005', 'Z012')&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -232,7 +232,7 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables activateCondensedTool="true" name="NewParentAccount" rejectInnerJoin="true" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.KUNNR " name="Parent_Account_number" type="id_String"/>
@@ -547,13 +547,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_2d06d3bd-a1c2-4ddb-b329-d58e4584078b"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>QT+ZcZrPtAkOxfc+9GlPKYTyeA8T7u/RrSxZltVubynMA09O44ZuqEo6jZEuO+UWyDndeKYbXmx0&#13;
-u2L7nyGxgw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_66289d62-71be-472b-9ebb-393a99b479f0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>1y+I47KWBoLGezpie1ddY0tX9Oz75PjsRHZ5j8MDUef+6O7UoU2eV1hcqP//g8WEXWvwCZ+AC/vV&#13;
-pvLEVCzVPQ==</DigestValue></Reference></SignedInfo><SignatureValue>CUJOmkc1PvpcgYmjzPYWxWMkcwEe7qiD4W+8LHeQEU6tjS1Pu8NMu5Rh/Jq/moAPWO8+KYmlye1h&#13;
-clzecdb3tkcAZDGQSWIpmHqD3+4kosfmCXNrURXOpv/WroQDhp3oh5r5CJdiFZMKzuMoYOgrwA/t&#13;
-YlrGQ/nokp55I7LSw0eGZPWNGJfjQ/TukELrJMJljkgRZFIxh4o1OgbeG6NJsLq5oIZ28NBmfW+M&#13;
-ENhaPn9meIg09eq3YDoka7cAoYtT+i4CEf71qF8Km5F12dpBvARi0G5ZQiuNcKgg30c8NQpTlIIX&#13;
-CIA2fn/sQxzy35mCA3YW28C1anr+5V/COrdj7Q==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_58e2c6a3-ed41-413e-86de-442671fe69fd"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>cQiPM/mDmppvXyM9wt9kNciJm0nn2vjQAgA2I+Jdzw4pFJ2ry+wtWvrWK4rgiFAjLIUuITd1pX3b&#13;
+8FlaJ+C1wg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_6fb1064f-e57b-4fea-ab82-4a10c1546b46"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>oCHMeDgdDTrerj6zMrPzzs/QZQai70yA2TtwYtfzGiSyvEIv4DQYrXCg3d48W+UmuOStWvAOfvDH&#13;
+pnpy5my6qA==</DigestValue></Reference></SignedInfo><SignatureValue>bgP3MxUadI19ssR0J4WnZwYvfBDRC9JkgCL/Zv0ocibh+gQLd8CxVDvdFmd6PuI2G0+pytMVkK5S&#13;
+P6v/9iLwEoW44t1XsRbiG970l8q9eYdQw7hx/7/RsGCv6kEkvkZH2SPFfxscqKrfuvKeCk9WeEsz&#13;
+7Q/xNSje9LrBCwT6AgRJM9Bz67Zv4IQPnrfPg8OC0J3W2MTmdLfFuhgI5O/LNEO+/HR/V4wcmQo2&#13;
+r7d7OiEyT8nrglVmRtouw++WxFRAYvIZiZ/lA0/y+uFYSjjorpEDqXjgVLMrvPQnvWjdSsQISwCe&#13;
+qNDvSKtI+QDhLQr7HwN+GYWsTRQJrxXSosS12g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -575,4 +575,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_66289d62-71be-472b-9ebb-393a99b479f0" Target="#_2d06d3bd-a1c2-4ddb-b329-d58e4584078b"><Timestamp>2023-11-23 17:08:56</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_6fb1064f-e57b-4fea-ab82-4a10c1546b46" Target="#_58e2c6a3-ed41-413e-86de-442671fe69fd"><Timestamp>2023-11-28 22:49:25</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
