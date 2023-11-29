@@ -372,6 +372,7 @@
       <column comment="" key="false" length="6" name="Delivery_Item" nullable="false" originalDbColumnName="Delivery Item" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="false" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="SK_Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
@@ -384,7 +385,7 @@
       <column comment="" defaultValue="" key="false" length="13" name="Actual_quantity_delivered_in_stockkeeping_units" nullable="true" originalDbColumnName="Actual quantity delivered in stockkeeping units" originalLength="-1" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="SK_Delivery" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row2.Delivery " name="Delivery" type="id_String"/>
@@ -404,6 +405,7 @@
         <mapperTableEntries expression="row2.Delivery_Item " name="Delivery_Item" type="id_String"/>
         <mapperTableEntries expression="row2.Sales_Organization " name="Sales_Organization" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.Distribution_Channel " name="Distribution_Channel" type="id_String"/>
+        <mapperTableEntries expression="row2.Division " name="Division" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.Sold_to_party " name="Sold_to_party" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.Material_Number " name="Material_Number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.SK_Plant " name="SK_Plant" nullable="true" type="id_Integer"/>
@@ -489,7 +491,7 @@
         <mapperTableEntries name="Grandparent_Company_Name" nullable="true" type="id_String"/>
         <mapperTableEntries name="Grandparent_Company_Country" nullable="true" type="id_String"/>
         <mapperTableEntries name="PA_Type" nullable="true" type="id_String"/>
-        <mapperTableEntries name="Division" type="id_String"/>
+        <mapperTableEntries expression="row2.Division " name="Division" operator="=" type="id_String"/>
         <mapperTableEntries name="Cust_Mat_Category_Lvl_4" nullable="true" type="id_String"/>
         <mapperTableEntries name="Bulk_material" nullable="true" type="id_String"/>
         <mapperTableEntries name="Plant" nullable="true" type="id_String"/>
@@ -920,6 +922,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sold_to_party"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
@@ -985,6 +992,7 @@
       <column comment="" key="false" length="6" name="Delivery_Item" nullable="false" originalDbColumnName="Delivery Item" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="false" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="SK_Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
@@ -1001,6 +1009,7 @@
       <column comment="" key="false" length="6" name="Delivery_Item" nullable="false" originalDbColumnName="Delivery Item" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="false" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="SK_Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
@@ -1902,6 +1911,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="SK_Delivery"/>
   </connection>
   <connection connectorName="FLOW" label="No_SK_Delivery" lineStyle="0" metaname="No_SK_Delivery" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tMap_1" target="tMSSqlOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="Division"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="No_SK_Delivery"/>
   </connection>
@@ -1956,13 +1970,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_08aaffdb-f416-438e-9929-bf84fcae8f03"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Jk627XvphoZNuZ8trseTYVNzt3GpoQwa7HFdkYmfR7sjEnxmrifQA/0pVBgg/BR5e7vG6hng5vUx&#13;
-Mk/3JAaBrw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_d3bc8b9b-08b1-4a2f-b8a2-9b492cc620f8"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>STR0bSCHKUMQTx0ha+adJb+bahPjxX9nm6zv/pAQfej++4olvzO5UxFpWjxgWdckSU1pSkTDhUwl&#13;
-Kesg+STd1A==</DigestValue></Reference></SignedInfo><SignatureValue>g/Y1QKeW5wJt++TXmtUesH+6V/kYIqJVLcezpJQZiYYmaTYnCoRG1wuGR1Zn8ZbkAR3uE4AhsXvv&#13;
-IqvpQnY6nPsK/rfNgUf0qNSfe1fvZmlj7PsFQfS0JDkAoXxtnMqqyAajB1zHkc6nBmROuTImA1h3&#13;
-OaOfhHT79tI/hjUgTT79FOlksyo36kP82/Ox4TOwctHl5q5c7/fcrF+48hQw9UCJdbagEg2QD/Kg&#13;
-5Kop0N/La8XBSunA7266XqKRu0lnsWsmDSVTkUaBsI/JV5oGsVCaKifuAe+B3X1REVwaf/ldgFdn&#13;
-nQF68jPeTLFyMbhaDbn2FUdlWoI8v1tdKWX8pA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_bdff71a1-ed18-4ef4-8e16-6d844a25156d"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>oC8WiWmv1UnwmNF3YI38xehCexeZhjK1GCmDKsHzVt55aTjM/B8dpoOa3WABZC+SwNt2obb5EBQV&#13;
+MX3yZs108A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_0faf9809-fae9-407e-a081-a4cc779e834a"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RZIPjs2VOyklNDK2gcQhMVKuu59L3LW64M9wFUukwE5XSD+aW7vUydZ/+nKbOXSJnRL/0Oe/ac2X&#13;
+ZY3NHGa4qQ==</DigestValue></Reference></SignedInfo><SignatureValue>WGorn1/ib1+OvFKEc1sbCABHePxoOUZbC8LChN6Q6spYqYBr1Dt/UbPhsNNkr2PoWNyycf9+GKp3&#13;
+j82+A5XFbxbOWIytXXz4cHgX5YKHan1P3szM2SSpynifU9tRbPqxjq5g2WnJhDFeZQym48yhYEV/&#13;
+TPiBqm0Wv1iqwSH1og23Wwtt/CZDC4k4MIox4dpDxjApvYtdkL2pCSOw2UW6+7jmTDXtu8YbbBLg&#13;
+U8oPOtvEo7qvyvSl3FZwGrt/86F8JCTvslKvpX9Bz+WYicY7DSOp9TufryVnBQhFTOOwX8D4WKGm&#13;
+jnqwjLnw14sjYmlts3EnhTjO89TZFN57Td1Vew==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1984,4 +1998,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_d3bc8b9b-08b1-4a2f-b8a2-9b492cc620f8" Target="#_08aaffdb-f416-438e-9929-bf84fcae8f03"><Timestamp>2023-11-29 20:16:09</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_0faf9809-fae9-407e-a081-a4cc779e834a" Target="#_bdff71a1-ed18-4ef4-8e16-6d844a25156d"><Timestamp>2023-11-29 20:18:14</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
