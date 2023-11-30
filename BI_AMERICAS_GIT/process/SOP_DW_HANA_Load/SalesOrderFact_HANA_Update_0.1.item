@@ -746,6 +746,7 @@
       <column comment="" key="false" length="4" name="Sales_Document_Type" nullable="true" originalDbColumnName="Sales Document Type" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="SK_CreateDate" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
@@ -768,7 +769,7 @@
       <column comment="" key="false" length="2" name="Reason_for_rejection_of_quotations_and_sales_orders" nullable="true" originalDbColumnName="Reason for rejection of quotations and sales orders" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="SK_SalesOrder" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row3.Sales_Document  " name="Sales_Document" type="id_String"/>
@@ -801,6 +802,7 @@
         <mapperTableEntries expression="row3.Sales_Document_Type  " name="Sales_Document_Type" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row3.Sales_Organization  " name="Sales_Organization" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row3.Distribution_Channel  " name="Distribution_Channel" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row3.Division " name="Division" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row3.Sold_to_party  " name="Sold_to_party" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row3.Material_Number  " name="Material_Number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row3.SK_CreateDate " name="SK_CreateDate" nullable="true" type="id_Integer"/>
@@ -851,11 +853,11 @@
         <mapperTableEntries name="Reason_for_rejection_of_quotations_and_sales_orders" nullable="true" type="id_String"/>
         <mapperTableEntries name="Billing_Status_for_Order_Related_Billing_Documents" nullable="true" type="id_String"/>
       </inputTables>
-      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row8" sizeState="INTERMEDIATE">
+      <inputTables activateCondensedTool="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row8" sizeState="INTERMEDIATE">
         <mapperTableEntries name="SK_Base_Unit_of_Measure" type="id_Integer"/>
         <mapperTableEntries expression="row3.Base_Unit_of_Measure " name="Base_Unit_of_Measure" nullable="true" operator="=" type="id_String"/>
       </inputTables>
-      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row4" sizeState="INTERMEDIATE">
+      <inputTables innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row4" sizeState="INTERMEDIATE">
         <mapperTableEntries name="SK_Customer_Material" type="id_Integer"/>
         <mapperTableEntries expression="row3.Sales_Organization " name="Sales_Organization" operator="=" type="id_String"/>
         <mapperTableEntries expression="row3.Distribution_Channel " name="Distribution_Channel" operator="=" type="id_String"/>
@@ -897,12 +899,12 @@
         <mapperTableEntries name="Grandparent_Company_Name" nullable="true" type="id_String"/>
         <mapperTableEntries name="Grandparent_Company_Country" nullable="true" type="id_String"/>
         <mapperTableEntries name="PA_Type" nullable="true" type="id_String"/>
-        <mapperTableEntries name="Division" type="id_String"/>
+        <mapperTableEntries expression="row3.Division " name="Division" operator="=" type="id_String"/>
         <mapperTableEntries name="Tolling" nullable="true" type="id_String"/>
         <mapperTableEntries name="Bulk_material" nullable="true" type="id_String"/>
         <mapperTableEntries name="Plant" nullable="true" type="id_String"/>
       </inputTables>
-      <inputTables activateCondensedTool="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row5" sizeState="INTERMEDIATE">
+      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row5" sizeState="INTERMEDIATE">
         <mapperTableEntries name="SK_Product_Hierarchy" type="id_Integer"/>
         <mapperTableEntries expression="row3.Product_hierarchy " name="Product_Hierarchy" operator="=" type="id_String"/>
         <mapperTableEntries name="Division_Segment" nullable="true" type="id_String"/>
@@ -910,11 +912,11 @@
         <mapperTableEntries name="Sub_Segment" nullable="true" type="id_String"/>
         <mapperTableEntries name="Level_4" nullable="true" type="id_String"/>
       </inputTables>
-      <inputTables activateCondensedTool="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row6" sizeState="INTERMEDIATE">
+      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row6" sizeState="INTERMEDIATE">
         <mapperTableEntries name="SK_Currency" type="id_Integer"/>
         <mapperTableEntries expression="row3.SD_Document_Currency  " name="Currency" nullable="true" operator="=" type="id_String"/>
       </inputTables>
-      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row7" sizeState="INTERMEDIATE">
+      <inputTables innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" minimized="true" name="row7" sizeState="INTERMEDIATE">
         <mapperTableEntries name="SK_Customer_number" type="id_Integer"/>
         <mapperTableEntries expression="row3.Ship_to_party  " name="Customer_number" operator="=" type="id_String"/>
         <mapperTableEntries name="Name" nullable="true" type="id_String"/>
@@ -1480,7 +1482,7 @@
       <column comment="" key="false" length="1" name="Billing_Status_for_Order_Related_Billing_Documents" nullable="true" originalDbColumnName="Billing Status for Order-Related Billing Documents" originalLength="1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="ValidDeliveryDate" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="SK_SalesOrder.Sales_Document " name="Sales_Document" type="id_String"/>
@@ -2003,6 +2005,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sold_to_party"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
@@ -2119,6 +2126,7 @@
       <column comment="" key="false" length="4" name="Sales_Document_Type" nullable="true" originalDbColumnName="Sales Document Type" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="SK_CreateDate" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
@@ -2146,6 +2154,7 @@
       <column comment="" key="false" length="4" name="Sales_Document_Type" nullable="true" originalDbColumnName="Sales Document Type" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="SK_CreateDate" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
@@ -2931,6 +2940,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="Reason_for_rejection_of_quotations_and_sales_orders"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Division"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="NoSK_SalesOrder"/>
@@ -3023,13 +3035,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_08c0ddf3-7ea1-48e6-8864-414dd4816a8e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>SfjF6xTaGoPRGPOtDddjkDcINMmA1JzqPdN7ubSzRJn0stSiVXcEJEZ4TYQUEYvkVGt+YLXG8RcB&#13;
-cZinQA9rzg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_d70d4d03-2c38-4bc2-a370-946d0343e1fa"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>nzqFYqmZHZb2GKqWxIwEIqD8HUOn/r5QNZI3qF+CyLLLTJZYKDPonBMYJdUs8idJ5+XFuaIuxaMV&#13;
-pk7E5YST7g==</DigestValue></Reference></SignedInfo><SignatureValue>cjrKBLITUtJllNdOFI1HIHFm68hGkSE7Ct63slk5Rbe3A7Qv/3Zup8pU3jHeQD3+5D4ZK1SjimJR&#13;
-u7W8/WOXIu7yqhbFHjcMoIGRj34JM+Q49I2TQDlE1czz2mtHlC1/Z2ZKCvPcKg4S78Vf7vivkten&#13;
-udplj42ByyU1knITfj6IdapPLLsscRQKmAVDMAq4OSAuCB7toLvUoG+dQ2i2hDNdN4+pczAwiT8q&#13;
-NPG4w3gZdZqm/IkTUp5UcVX4NtMBCczF9S8oKBtzNTfkv+9jKjQdXelr4jxLApZ8ekYKs074MVth&#13;
-dP/0IVqIHNP0TOcm0+4ZMLqCXFfBJUP38gVyqw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e19a560e-b65c-4870-ae1e-c94eeac0c309"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>1qDep95IATLBHzg4sp1YdBnhMPI/RxjXhubviqSC1jceOIUOVbfsJt8THQo7I6FozWr+VPhRM+LC&#13;
+XqV3bwr+9Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_7b0a9bd4-9f49-413c-ae87-c92bf2571e2c"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>A7z1nwUWOHlKVSDOp35IbCjSKIlgMg4wTkmHxICPBIv+JN5v+FoxiR8YcX2vvpnGW+hrdWxXJmlz&#13;
+SEGjtun96A==</DigestValue></Reference></SignedInfo><SignatureValue>aVWVAUI66C9IAxuxRy7j79JtM9Tjgy2jOk/9AN+PsRrpOz++v5TYvq55XE2YePL640TVNqdN5A/2&#13;
+vnSF24DH3nbQr5/dLOCjWAdULIUtWq9OS6UGPhlpSe4McUf+GpK6RdzUdNYRgcAvRz+6KkJ7iA34&#13;
+g7Mx5kqeghb6db8nSfIZYFKqtEaz+K0caAmHR/ClQd14LSX6za2EVf44rJP4YfinKNqoyQ4fg8L/&#13;
+MvLoOVAXO2cz/F4Q1Wa6TuMKMNSmsq22Igo8dIxL47TEY1cdr0IG+fc7HbggNVgwgKdp1H3JmzSF&#13;
+JubklFBjyymIp4OGehk5zvMnhNGrTKN0ONC7tw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -3051,4 +3063,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_d70d4d03-2c38-4bc2-a370-946d0343e1fa" Target="#_08c0ddf3-7ea1-48e6-8864-414dd4816a8e"><Timestamp>2023-11-30 22:58:29</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_7b0a9bd4-9f49-413c-ae87-c92bf2571e2c" Target="#_e19a560e-b65c-4870-ae1e-c94eeac0c309"><Timestamp>2023-11-30 23:02:26</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
