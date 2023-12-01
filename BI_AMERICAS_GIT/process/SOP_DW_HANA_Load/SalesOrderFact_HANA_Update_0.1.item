@@ -153,16 +153,6 @@
   </parameters>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="64" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_2"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -175,12 +165,12 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
     <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:9N8Xjk6T3qFwkKcwyJQ/q9JKF7jyhr+doE7E9jN9oNDpst8APwcUwdqqaqZD+btSQND7EYM="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;CTRL_VBFA_HANA&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;CTRL_VBAK_HANA&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [IdEjecucion]&#13;&#10;      ,[VBELV_INI]&#13;&#10;      ,[VBELV_FIN]&#13;&#10;      ,[ERDAT_INI]&#13;&#10;      ,[ERDAT_FIN]&#13;&#10;  FROM [dbo].[CTRL_VBFA_HANA]&#13;&#10;WHERE [SOP_DW Sales Order TAKUS] IS NULL&#13;&#10;--AND [SOP_DW Sales Order TBR] IS NULL&#13;&#10;--AND [SOP_DW Sales Order TDM] IS NULL&#13;&#10;AND [SOP Sales Document TAKUS] IS NOT NULL&#13;&#10;--AND [SOP Sales Document TBR] IS NOT NULL&#13;&#10;--AND [SOP Sales Document TDM] IS NOT NULL&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [IdEjecucion]&#13;&#10;      ,[VBELN_INI]&#13;&#10;      ,[VBELN_FIN]&#13;&#10;      ,[ERDAT_INI]&#13;&#10;      ,[ERDAT_FIN]&#13;&#10;  FROM [dbo].[CTRL_VBAK_HANA]&#13;&#10;WHERE [SOP_DW Sales Document TAKUS] IS NULL&#13;&#10;--AND [SOP_DW Sales Document TBR] IS NULL&#13;&#10;--AND [SOP_DW Sales Document TDM] IS NULL&#13;&#10;AND [SOP Sales Document TAKUS] IS NOT NULL&#13;&#10;--AND [SOP Sales Document TBR] IS NOT NULL&#13;&#10;--AND [SOP Sales Document TDM] IS NOT NULL&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -193,9 +183,9 @@
     <elementParameter field="TABLE" name="TRIM_COLUMN">
       <elementValue elementRef="SCHEMA_COLUMN" value="IdEjecucion"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VBELV_INI"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VBELN_INI"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VBELV_FIN"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VBELN_FIN"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ERDAT_INI"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -208,10 +198,10 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tMSSqlInput_2">
       <column comment="" defaultValue="" key="false" length="10" name="IdEjecucion" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="VBELV_INI" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="VBELV_FIN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="ERDAT_INI" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="ERDAT_FIN" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="VBELN_INI" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="VBELN_FIN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="ERDAT_INI" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="ERDAT_FIN" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="192">
@@ -220,10 +210,10 @@
     <elementParameter field="TABLE" name="MAP">
       <elementValue elementRef="KEY" value="&quot;IdEjecucion&quot;"/>
       <elementValue elementRef="VALUE" value="IdEjecucion"/>
-      <elementValue elementRef="KEY" value="&quot;VBELV_INI&quot;"/>
-      <elementValue elementRef="VALUE" value="VBELV_INI"/>
-      <elementValue elementRef="KEY" value="&quot;VBELV_FIN&quot;"/>
-      <elementValue elementRef="VALUE" value="VBELV_FIN"/>
+      <elementValue elementRef="KEY" value="&quot;VBELN_INI&quot;"/>
+      <elementValue elementRef="VALUE" value="VBELN_INI"/>
+      <elementValue elementRef="KEY" value="&quot;VBELN_FIN&quot;"/>
+      <elementValue elementRef="VALUE" value="VBELN_FIN"/>
       <elementValue elementRef="KEY" value="&quot;ERDAT_INI&quot;"/>
       <elementValue elementRef="VALUE" value="ERDAT_INI"/>
       <elementValue elementRef="KEY" value="&quot;ERDAT_FIN&quot;"/>
@@ -241,16 +231,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_3"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -268,7 +248,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT MIN([VBELV]) [VBELV_INI_2] &#13;&#10;      ,MAX([VBELV]) [VBELV_FIN_2] &#13;&#10;      ,SUBSTRING([VBELV],1,4) [FOLIO_AGRUPADOR]&#13;&#10;  FROM [dbo].[VBFA_HANA]&#13;&#10;WHERE [VBELV] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELV_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELV_FIN&quot;) + &quot;'&#13;&#10;AND [ERDAT] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,(Date)globalMap.get(&quot;ERDAT_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,(Date)globalMap.get(&quot;ERDAT_FIN&quot;)) + &quot;'&#13;&#10;GROUP BY SUBSTRING([VBELV],1,4)&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT MIN([VBELN]) [VBELN_INI_2] &#13;&#10;      ,MAX([VBELN]) [VBELN_FIN_2] &#13;&#10;      ,SUBSTRING([VBELN],1,4) [FOLIO_AGRUPADOR]&#13;&#10;  FROM [dbo].[VBAK_HANA]&#13;&#10;WHERE [VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELV_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELV_FIN&quot;) + &quot;'&#13;&#10;AND [ERDAT] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,(Date)globalMap.get(&quot;ERDAT_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,(Date)globalMap.get(&quot;ERDAT_FIN&quot;)) + &quot;'&#13;&#10;GROUP BY SUBSTRING([VBELN],1,4)&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -279,9 +259,9 @@
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="VBELV_INI_2"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VBELN_INI_2"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VBELV_FIN_2"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VBELN_FIN_2"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="FOLIO_AGRUPADOR"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -291,8 +271,8 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tMSSqlInput_3">
-      <column comment="" key="false" length="10" name="VBELV_INI_2" nullable="true" originalLength="10" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="VBELV_FIN_2" nullable="true" originalLength="10" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="VBELN_INI_2" nullable="true" originalLength="10" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="VBELN_FIN_2" nullable="true" originalLength="10" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="FOLIO_AGRUPADOR" nullable="true" originalLength="4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
@@ -300,10 +280,10 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_3"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
-      <elementValue elementRef="KEY" value="&quot;VBELV_INI_2&quot;"/>
-      <elementValue elementRef="VALUE" value="VBELV_INI_2"/>
-      <elementValue elementRef="KEY" value="&quot;VBELV_FIN_2&quot;"/>
-      <elementValue elementRef="VALUE" value="VBELV_FIN_2"/>
+      <elementValue elementRef="KEY" value="&quot;VBELN_INI_2&quot;"/>
+      <elementValue elementRef="VALUE" value="VBELN_INI_2"/>
+      <elementValue elementRef="KEY" value="&quot;VBELN_FIN_2&quot;"/>
+      <elementValue elementRef="VALUE" value="VBELN_FIN_2"/>
       <elementValue elementRef="KEY" value="&quot;FOLIO_AGRUPADOR&quot;"/>
       <elementValue elementRef="VALUE" value="FOLIO_AGRUPADOR"/>
     </elementParameter>
@@ -319,16 +299,6 @@
   </node>
   <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1216" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlRow_2"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlRow"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlRow"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -346,7 +316,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[Fact Sales Order]&#13;&#10;WHERE [Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELV_INI_2&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELV_FIN_2&quot;) + &quot;'&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[Fact Sales Order]&#13;&#10;WHERE [Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI_2&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELN_FIN_2&quot;) + &quot;'&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -372,16 +342,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1216" posY="608">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_4"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -399,7 +359,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT SD.[Sales Document]&#13;&#10;      ,[Sales Document Item]&#13;&#10;      ,[Sales Document Type]&#13;&#10;      ,[Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;&#9;  ,[Division]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,CAST(CONVERT(VARCHAR(8),SD.[Date on Which Record Was Created],112) AS INT) [SK_CreateDate]&#13;&#10;      ,CAST(CONVERT(VARCHAR(8),[Document Date (Date Received/Sent)],112) AS INT) [SK_Date]&#13;&#10;      ,CASE WHEN [Requested delivery date] IS NOT NULL THEN CAST(CONVERT(VARCHAR(8),[Requested delivery date],112) AS INT) ELSE CAST(CONVERT(VARCHAR(8),[Document Date (Date Received/Sent)],112) AS INT) END [SK_DeliveryDate]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SD.[SD Document Currency]&#13;&#10;      ,ISNULL([Ship-to party],'NA') [Ship-to party]&#13;&#10;      ,ISNULL([Product hierarchy],'NA') [Product hierarchy]&#13;&#10;      ,CASE WHEN [Next date] IS NOT NULL THEN CAST(CONVERT(VARCHAR(8),[Next date],112) AS INT) ELSE 19000101 END [SK_NextDate]&#13;&#10;      ,[Net value of the order item in document currency]&#13;&#10;      ,[Cumulative Order Quantity in Sales Units]&#13;&#10;      ,[Cumulative confirmed quantity in base unit]&#13;&#10;      ,[Returns Item]&#13;&#10;      ,SDI.[Delivery status]&#13;&#10;      ,[Overall delivery status of the item]&#13;&#10;      ,[Sales Document has been invoiced]&#13;&#10;      ,[Net Value of the Sales Order in Local Currency]&#13;&#10;      ,[Sales document item category]&#13;&#10;      ,SDI.[Reason for rejection of quotations and sales orders]&#13;&#10;      ,SDI.[Billing Status for Order-Related Billing Documents]&#13;&#10;  FROM [dbo].[Sales Document] SD&#13;&#10;    INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;WHERE SD.[Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELV_INI_2&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELV_FIN_2&quot;) + &quot;'&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT SD.[Sales Document]&#13;&#10;      ,[Sales Document Item]&#13;&#10;      ,[Sales Document Type]&#13;&#10;      ,[Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;&#9;  ,[Division]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,CAST(CONVERT(VARCHAR(8),SD.[Date on Which Record Was Created],112) AS INT) [SK_CreateDate]&#13;&#10;      ,CAST(CONVERT(VARCHAR(8),[Document Date (Date Received/Sent)],112) AS INT) [SK_Date]&#13;&#10;      ,CASE WHEN [Requested delivery date] IS NOT NULL THEN CAST(CONVERT(VARCHAR(8),[Requested delivery date],112) AS INT) ELSE CAST(CONVERT(VARCHAR(8),[Document Date (Date Received/Sent)],112) AS INT) END [SK_DeliveryDate]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SD.[SD Document Currency]&#13;&#10;      ,ISNULL([Ship-to party],'NA') [Ship-to party]&#13;&#10;      ,ISNULL([Product hierarchy],'NA') [Product hierarchy]&#13;&#10;      ,CASE WHEN [Next date] IS NOT NULL THEN CAST(CONVERT(VARCHAR(8),[Next date],112) AS INT) ELSE 19000101 END [SK_NextDate]&#13;&#10;      ,[Net value of the order item in document currency]&#13;&#10;      ,[Cumulative Order Quantity in Sales Units]&#13;&#10;      ,[Cumulative confirmed quantity in base unit]&#13;&#10;      ,[Returns Item]&#13;&#10;      ,SDI.[Delivery status]&#13;&#10;      ,[Overall delivery status of the item]&#13;&#10;      ,[Sales Document has been invoiced]&#13;&#10;      ,[Net Value of the Sales Order in Local Currency]&#13;&#10;      ,[Sales document item category]&#13;&#10;      ,SDI.[Reason for rejection of quotations and sales orders]&#13;&#10;      ,SDI.[Billing Status for Order-Related Billing Documents]&#13;&#10;  FROM [dbo].[Sales Document] SD&#13;&#10;    INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;WHERE SD.[Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI_2&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELN_FIN_2&quot;) + &quot;'&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -501,16 +461,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1440" posY="448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_5"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -559,7 +509,7 @@
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
     <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
     <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
-    <elementParameter field="IMAGE" name="PREVIEW" value="_RDuh0JBWEe6dOuz93oJTtg-tMap_1-PREVIEW.bmp"/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_jRt1EJB-Ee6dOuz93oJTtg-tMap_1-PREVIEW.bmp"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="true"/>
     <elementParameter field="CHECK" name="LKUP_PARALLELIZE" show="false" value="false"/>
     <elementParameter field="TEXT" name="LEVENSHTEIN" show="false" value="0"/>
@@ -650,7 +600,7 @@
       <column comment="" key="false" length="2" name="Reason_for_rejection_of_quotations_and_sales_orders" nullable="true" originalDbColumnName="Reason for rejection of quotations and sales orders" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="SK_SalesOrder" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row3.Sales_Document  " name="Sales_Document" type="id_String"/>
@@ -808,16 +758,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1440" posY="768">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_6"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -992,16 +932,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1632" posY="768">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_7"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -1058,16 +988,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1824" posY="448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_8"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -1121,16 +1041,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1824" posY="768">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_9"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -1176,16 +1086,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1952" posY="448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_10"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -1300,7 +1200,7 @@
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
     <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
     <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
-    <elementParameter field="IMAGE" name="PREVIEW" value="_RDuh0JBWEe6dOuz93oJTtg-tMap_2-PREVIEW.bmp"/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_jRt1EJB-Ee6dOuz93oJTtg-tMap_2-PREVIEW.bmp"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="true"/>
     <elementParameter field="CHECK" name="LKUP_PARALLELIZE" show="false" value="false"/>
     <elementParameter field="TEXT" name="LEVENSHTEIN" show="false" value="0"/>
@@ -1445,16 +1345,6 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2144" posY="448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_11"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -1565,7 +1455,7 @@
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
     <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
     <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
-    <elementParameter field="IMAGE" name="PREVIEW" value="_RDuh0JBWEe6dOuz93oJTtg-tMap_3-PREVIEW.bmp"/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_jRt1EJB-Ee6dOuz93oJTtg-tMap_3-PREVIEW.bmp"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="true"/>
     <elementParameter field="CHECK" name="LKUP_PARALLELIZE" show="false" value="false"/>
     <elementParameter field="TEXT" name="LEVENSHTEIN" show="false" value="0"/>
@@ -1816,15 +1706,6 @@
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2176" posY="768">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlOutput_2"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlOutput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlOutput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -2062,15 +1943,6 @@
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2400" posY="608">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlOutput_3"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlOutput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlOutput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -2371,15 +2243,6 @@
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2400" posY="768">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlOutput_4"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlOutput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlOutput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -2682,16 +2545,6 @@
   </node>
   <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlRow_3"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlRow"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlRow"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -2709,7 +2562,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VBFA_HANA]&#13;&#10;SET [SOP_DW Sales Order TAKUS] = 'X'&#13;&#10;--,[SOP_DW Sales Order TBR] = 'X'&#13;&#10;--,[SOP_DW Sales Order TDM] = 'X'&#13;&#10;WHERE [IdEjecucion] = &quot; + (Integer)globalMap.get(&quot;IdEjecucion&quot;) + &quot; &#13;&#10;AND [VBELV_INI] = '&quot; + (String)globalMap.get(&quot;VBELV_INI&quot;) + &quot;'&#13;&#10;AND [VBELV_FIN] = '&quot; + (String)globalMap.get(&quot;VBELV_FIN&quot;) + &quot;'&#13;&#10;AND [ERDAT_INI] = '&quot; + TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,(Date)globalMap.get(&quot;ERDAT_INI&quot;)) + &quot;'&#13;&#10;AND [ERDAT_FIN] = '&quot; + TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,(Date)globalMap.get(&quot;ERDAT_FIN&quot;)) + &quot;'&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VBAK_HANA]&#13;&#10;SET [SOP_DW Sales Document TAKUS] = 'X'&#13;&#10;--,[SOP_DW Sales Document TBR] = 'X'&#13;&#10;--,[SOP_DW Sales Document TDM] = 'X'&#13;&#10;WHERE [IdEjecucion] = &quot; + (Integer)globalMap.get(&quot;IdEjecucion&quot;) + &quot; &#13;&#10;AND [VBELN_INI] = '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;'&#13;&#10;AND [VBELN_FIN] = '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;'&#13;&#10;AND [ERDAT_INI] = '&quot; + TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,(Date)globalMap.get(&quot;ERDAT_INI&quot;)) + &quot;'&#13;&#10;AND [ERDAT_FIN] = '&quot; + TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,(Date)globalMap.get(&quot;ERDAT_FIN&quot;)) + &quot;'&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -2747,13 +2600,13 @@
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tMSSqlInput_3" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_3" target="tFlowToIterate_3">
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="VBELV_INI_2"/>
+      <elementValue elementRef="TRACE_COLUMN" value="VBELN_INI_2"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="FOLIO_AGRUPADOR"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VBELV_FIN_2"/>
+      <elementValue elementRef="TRACE_COLUMN" value="VBELN_FIN_2"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
@@ -2971,13 +2824,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_64851090-d702-4798-86f5-14b15b636318"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>CtcPBG2A/up5fL5l6SajdLM317WX7vSnxs/2d4zPLsKehCuQhUpHN4t6uZcv07Cyf02jt8O5mLXo&#13;
-9SqB5H02ew==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f5805198-7677-4aab-93a5-cfce103413b0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>LDuY6JFWwz/C3Ba0J6NEmT07n8+/2Bxh5gWK53nb0ozAqEIffrzYFc91/KVHgcSvGghoOH607I3d&#13;
-YCTaVCIm8Q==</DigestValue></Reference></SignedInfo><SignatureValue>BtlwUM+yn1E51Krv/Jms5lGppVmBBZS+B3sXodudi8dcOXA6kdp7MWlqazberpkKB7YhZUU4iTZE&#13;
-9Xq15snBtW8Yi+8j+4LvdGSYxVcgOBgeUIh6QZ4GF6CJXzK5vXP9wq8RkOz66dl1oDAhXdUBIv4g&#13;
-Bx8lF3+3UmNHN5tfODWC0do42BnnANA5Jzj1X8/SiUPiRv+GdPEdAuj0MfzWaBJU8GsmGzSFHsPq&#13;
-O9ZBSV9R3eHUIFGU/+qWHYp5hZiB4olwZKRy8nAcP+5VYTaxRBQO/X1TMYVbPVIlsPW8krxm3I9B&#13;
-POMDlBAnuCINg48B13kedwVcKAkt5EXVGjdV8A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_c886f6d2-1d88-4cae-b874-3b689618aad5"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>4D108748ja+eps+N1jjn/4jon0NebfnHM//ura7jiJXkCu1E7x84N1FB5XBvytDapvu2v9dvpazk&#13;
++ZbNlFBKDA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f4948047-2caa-45fe-9dff-ae295f70cbfc"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>fttNPmxziCTsdSOs5cXWGX6VF4Q5YaYLUST/tfIteB6zX6DK1Z++vC4LWslbRAkW/JXQJ29OrT/V&#13;
+6TcgTopptg==</DigestValue></Reference></SignedInfo><SignatureValue>izxxUxkWlYS7b7qBHzGT4KcXD/C8eyTGMd9oG164Eoefzi0CHDMrs5LGUJ+mNs8FMTgQZuuC85nQ&#13;
+I7xfeZHszgyzGA7VtECoH1/6zY50OtJnN+qOShg8oB8izO/jNmUZ9p/mvVtSmNtHQQFgiaxVjL8F&#13;
+PjFnq/CmurF/bB+jmkogMA0rjpr4uFCyO0CBWmYr8891AUyZuNevf4e0ciXVXcN0Xd+LIhbP9Hi1&#13;
+fdyWfY8zPiF0Hbu0k6QrAj3nNGyChkKgVInGyi04V+f2Gmxtw2PjLFVp3If+RM1zJ4384bmGdbJs&#13;
+6eQmZvRKpUW5+4JjUlSQnpcAv8MpeEcR8i3+yQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2999,4 +2852,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f5805198-7677-4aab-93a5-cfce103413b0" Target="#_64851090-d702-4798-86f5-14b15b636318"><Timestamp>2023-12-01 19:19:31</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f4948047-2caa-45fe-9dff-ae295f70cbfc" Target="#_c886f6d2-1d88-4cae-b874-3b689618aad5"><Timestamp>2023-12-01 19:30:10</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
