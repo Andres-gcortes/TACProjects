@@ -1049,7 +1049,7 @@
       <column comment="Condition Basis" key="false" length="15" name="KAWRT" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="Condition Amount or Percentage" key="false" length="11" name="KBETR" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="Currency Key" key="false" length="5" name="WAERS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Condition exchange rate for conversion to local currency" key="false" length="9" name="KKURS" nullable="true" pattern="" precision="5" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Condition exchange rate for conversion to local currency" key="false" length="9" name="KKURS" nullable="true" pattern="" precision="5" sourceType="BIG_DECIMAL" type="id_String" usefulColumn="true"/>
       <column comment="Condition Pricing Unit" key="false" length="5" name="KPEIN" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="Condition Unit in the Document" key="false" length="3" name="KMEIN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Numerator for converting condition units to base units" key="false" length="5" name="KUMZA" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
@@ -1131,7 +1131,7 @@
         <mapperTableEntries expression="row5.KAWRT " name="KAWRT" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries expression="row5.KBETR " name="KBETR" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries expression="row5.WAERS " name="WAERS" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row5.KKURS " name="KKURS" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="!Relational.ISNULL(row1.KKURS) ? new BigDecimal(row1.KKURS.replace(&quot;*&quot;, &quot;&quot;)) : null " name="KKURS" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries expression="row5.KPEIN " name="KPEIN" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries expression="row5.KMEIN " name="KMEIN" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row5.KUMZA " name="KUMZA" nullable="true" type="id_BigDecimal"/>
@@ -1163,7 +1163,7 @@
         <mapperTableEntries name="KAWRT" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries name="KBETR" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries name="WAERS" nullable="true" type="id_String"/>
-        <mapperTableEntries name="KKURS" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="KKURS" nullable="true" type="id_String"/>
         <mapperTableEntries name="KPEIN" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries name="KMEIN" nullable="true" type="id_String"/>
         <mapperTableEntries name="KUMZA" nullable="true" type="id_BigDecimal"/>
@@ -2177,13 +2177,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_2c74972e-4eab-4e65-a14b-d3dc603623ae"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>3Eiuha06QNCdnPv835OoQdW1BlDwdX5hc2wfj+do+d/NXeYh793/YKZASLTSj4zmNZLIvyOvajpI&#13;
-IfsWETGg3Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_e2c4b3e4-8bda-4e1b-9490-c7198e815783"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>joz0/XpEcbhiusarQhVAH039ysx7ex0vbko+lAOZgNmUtsLi2tHIEQXwM//0Y6tGLWNbyj0mDOh5&#13;
-p0CwkLPfqQ==</DigestValue></Reference></SignedInfo><SignatureValue>A/E2J45yIK18jjnJwr7joe5jM8WA7deuNV+DtWEAocxwVb4LaT9YNnAkGy6YTS9i9BMiCIZjlmUi&#13;
-2WsdOvNYowM3F0tWix0XszaQYMRE5lYW1TYZPssKVkBu5zpLCdks9Hcra2jvdu+IvFvZ+BPklXsG&#13;
-xpE1NNqp/fz0TKqVgIcxYSV9jIODb7DnKq6JbB3rEIft39xEbmVdPquQXMkXg4FSsoq24/p9o+Dx&#13;
-DvemeWFonD+KKVD800n/Oi6W6isVE3APd6EaqfeDe07ybu4dmyvyT1DiAQqf9gW8oT+Jtv1ENtri&#13;
-Z4WpcXHzaQ4amet7yMiwtKI+w7OQB4qzWdBQcw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_82210d70-742a-4c8c-94f4-3d8b5bf7bb06"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>TWh3KQfIJC/Xc7XCBcO8lpErxrjyAFCOEPIINfF8Jomj/NNSmIlwnh/Oh6kWkCiFFlSjSnw9T1K7&#13;
+GA57zvNmwg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_ecaad704-bb09-48ce-b5e9-ed151cad96d3"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>954fCxfE+bpEbwrK9IUSyH79QukkSL3JEe/R+adVMMSIRUISsRLuXc3rsY12vX/3fGOYpU34ZKa0&#13;
+2QVrvzlc0g==</DigestValue></Reference></SignedInfo><SignatureValue>jj+qdHt4EuEEiysQvCyoY+MKTvDRv60r8Qrgl35Cdj1xm3f+wiymednW/+HFuSi1ZU4y0BLbWCZY&#13;
+BN2ypwfP2HhK+zLu8wr9Gxe/TdQ+ZLwJhCo+KlEtvlX3Y6mX1Qcej4EEtvhbZ3UJxAmqijFALBgQ&#13;
+NGq9bkLketinc0yVdoL2h7u9oB3OFC9rngRsZhJJJyS2YVd1axi7Be4tNAJezUolayCk1/Xws6Gf&#13;
+k0Hy44UPWZ7S01l1UMesI5uwb6SG+1Nzw8A0i4L9nhotsyV06oQ7p7iWhnvx00l5R+ubdPfE6quu&#13;
+G8tdj515KADqqX3wv/eepCvJmITxMMX15j/nmA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2205,4 +2205,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_e2c4b3e4-8bda-4e1b-9490-c7198e815783" Target="#_2c74972e-4eab-4e65-a14b-d3dc603623ae"><Timestamp>2023-12-04 18:59:25</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_ecaad704-bb09-48ce-b5e9-ed151cad96d3" Target="#_82210d70-742a-4c8c-94f4-3d8b5bf7bb06"><Timestamp>2023-12-04 21:04:31</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
