@@ -162,7 +162,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [VTWEG],[DIVISION],[VRSIO],[FCVER],[ExecDate]&#13;&#10;FROM [CTRL_VGIB_HVMO_HI_HANA]&#13;&#10;WHERE [IdEjecucion] = (SELECT MAX([IdEjecucion]) FROM [CTRL_VGIB_HVMO_HI_HANA])&#13;&#10;AND [ExecDate] = CONVERT(DATE,GETDATE())&#13;&#10;AND [Executed] IS NULL&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [VTWEG],[DIVISION],[VRSIO],[FCVER],[ExecDate]&#13;&#10;FROM [CTRL_VGIB_HVMO_HI_HANA]&#13;&#10;WHERE [IdEjecucion] = (SELECT MAX([IdEjecucion]) FROM [CTRL_VGIB_HVMO_HI_HANA])&#13;&#10;AND [ExecDate] &lt;= CONVERT(DATE,GETDATE())&#13;&#10;AND [Executed] IS NULL&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -2383,7 +2383,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VGIB_HVMO_HI_HANA]&#13;&#10;SET [Inserted_Records] = (SELECT COUNT(*) FROM [dbo].[ZDP_VGIB_HVMO_HI_HANA] WHERE [VTWEG] = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;' AND [DIVISION] = '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;' AND [VRSIO] = '&quot; + (String)globalMap.get(&quot;VRSIO&quot;) + &quot;'),[Executed] = 'X'&#13;&#10;WHERE [VTWEG] = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;'&#13;&#10;  AND [DIVISION] = '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;'&#13;&#10;  AND [VRSIO] = '&quot; + (String)globalMap.get(&quot;VRSIO&quot;) + &quot;'&#13;&#10;  AND [ExecDate] = '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ExecDate&quot;)) + &quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VGIB_HVMO_HI_HANA]&#13;&#10;SET [Inserted_Records] = (SELECT COUNT(*) FROM [dbo].[ZDP_VGIB_HVMO_HI_HANA] WHERE [VTWEG] = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;' AND [DIVISION] = '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;' AND [VRSIO] = '&quot; + (String)globalMap.get(&quot;VRSIO&quot;) + &quot;')&#13;&#10;   ,[Executed] = 'X'&#13;&#10;   ,[RealExecDate] = CONVERT(DATE,GETDATE())&#13;&#10;WHERE [VTWEG] = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;'&#13;&#10;  AND [DIVISION] = '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;'&#13;&#10;  AND [VRSIO] = '&quot; + (String)globalMap.get(&quot;VRSIO&quot;) + &quot;'&#13;&#10;  AND [ExecDate] = '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ExecDate&quot;)) + &quot;'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -2745,13 +2745,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_6ec139eb-5b35-4b51-a189-47f08b16ec08"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>U9oJqcHONTbAD6lO88Pq/udNiKBgrSW/BOIXXD8qRhpGQ6SnK2qK3e68YshigOUJWGvL+/PTP43k&#13;
-u6MBsggiOA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_a68af61a-4c23-476a-a05e-6026edcf709a"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>iUU73EZR3OuyYfG/gRgAyr7smNjxXxfDVvA8+2TxUKCda4KqgJvR1+OHwK8kELp5kbWdzE0wPRcW&#13;
-4tDT/mpiVw==</DigestValue></Reference></SignedInfo><SignatureValue>LTKnmhWAOhvjpbnzWJ922OQM4ZgiGWqhOTZyvhYMI8pWp41czIMJpXr8WayhIKXbpIaVeXrn6reB&#13;
-1SQKL4reWtJ7BvnyRWdH3AZAZTl6+cjmEC/ETlwhiFyr+OyL5hw8gAk6vxMD3uGaL3aq+EhbvYAX&#13;
-myvP4pi3ym6U41dJnu4CttnFfe+zVUZM5V8860kgEViL52l2YjPOvcPPQLetzFKfTRsjr4lArH4K&#13;
-vIQWydNj4VgFJoeQiJbTeaT3GEHSwfwSb2j1gl4PaRzj3GgvZWLY2TtdokQCFY0hXGw8EwqHsEyC&#13;
-JPbxZiMGG+QRe/Kq17fSClEGPV5vUdnjrnFl3w==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_39da342d-5cd8-4903-afe8-77b0148910d0"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>S/RZO6er387S4kN0XH1jvIU7et0eCjN7yLjRxSTH6mEXHQb2TaZslf7jwMtbR0g2rL3ncQRDc9MR&#13;
+pvNrWT4SwQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_186f7db7-4c36-4cc0-b2cd-fcdc627fce44"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>rY6nhW/EiWjzxZHykrtOO0kyq18gD/d8CG6saEvrW5+Q4JE3ZZfMXvYMQ24lhS8DpkCbpwxZEg17&#13;
+Morrzrb11Q==</DigestValue></Reference></SignedInfo><SignatureValue>Z0s19lfMaHq3wn6XP8xwkVLuf5GqcenaE/GQCXloN+maSIKzcV3nvkKe07PgYzhAMGkBjMIyBZwl&#13;
+/Qv3Ab5TlUtXRA3D8fbU5Nd4Pt+BYPyULDqq17TKSlULcrO+mFvX5cAr7zfUYpobHQh1Ja9q4srW&#13;
+rxUyEYpO4mUHlUX0C8Pbqy/LgjVq7VJ0K1/ZrI0WnuhTX3ZLSIv6GDzK+KO37sVu5wcG+j2oKysb&#13;
+JbPSEkssXa7gUn+47bP745trKLbvloj+T7214o7/3ej5UrRneZU+3ELvskhtYMTTOuERbCLa+/yU&#13;
+AcHo1OwgclSOsZC/lOKDLRjfSozaee4QTvzJKQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2773,4 +2773,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_a68af61a-4c23-476a-a05e-6026edcf709a" Target="#_6ec139eb-5b35-4b51-a189-47f08b16ec08"><Timestamp>2023-12-05 19:35:55</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_186f7db7-4c36-4cc0-b2cd-fcdc627fce44" Target="#_39da342d-5cd8-4903-afe8-77b0148910d0"><Timestamp>2023-12-07 19:12:34</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
