@@ -123,8 +123,8 @@
     <routinesParameter id="_mRQJ4G60Ee6C8KFjr_RzHg" name="TalendStringUtil"/>
     <routinesParameter id="_mRLRYG60Ee6C8KFjr_RzHg" name="TalendString"/>
   </parameters>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="192" posY="64">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -136,13 +136,13 @@
     <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
     <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
     <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:3MtVmCJJwpYwptV+phLnUDU6J6oMxXxL8hYquv4Q6UbRlSzJfjH5Z/2TaBYwj9DBWnVkB14="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;CTRL_VGIB_HVMO_HI_HANA&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:e0x1X+EEWh8INpLzYQjJ3jSuX7m9kS0tAzO1cdpF+9k1J4NOA/rvM7+Eqn1sYfhaSZUfwQg="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;CTRL_VGIB_HL_PD_HANA&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [FCVER],[VKORG],[DIVISION]&#13;&#10;FROM [CTRL_VGIB_HVMO_HI_HANA]&#13;&#10;WHERE [RealExecDate] IS NOT NULL&#13;&#10;AND [ExecDate] &lt;= CONVERT(DATE,GETDATE())&#13;&#10;AND [Executed] IS NOT NULL&#13;&#10;AND [SOP Forecast Info] IS NULL&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [BUPER_INI],[VKORG],[DIVISION]&#13;&#10;FROM [CTRL_VGIB_HL_PD_HANA]&#13;&#10;WHERE [RealExecDate] IS NOT NULL&#13;&#10;AND [ExecDate] &lt;= CONVERT(DATE,GETDATE())&#13;&#10;AND [Executed] IS NOT NULL&#13;&#10;AND [SOP Forecast Info] IS NULL&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -153,7 +153,7 @@
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="FCVER"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="BUPER_INI"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="VKORG"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -164,35 +164,35 @@
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_1">
-      <column comment="" key="false" length="6" name="FCVER" nullable="true" originalLength="6" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="4" name="VKORG" nullable="true" originalLength="4" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="DIVISION" nullable="true" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    <metadata connector="FLOW" name="tDBInput_2">
+      <column comment="" key="false" length="-1" name="BUPER_INI" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="VKORG" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="DIVISION" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="64">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_1"/>
+  <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_2"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
-      <elementValue elementRef="KEY" value="&quot;FCVER&quot;"/>
-      <elementValue elementRef="VALUE" value="FCVER"/>
+      <elementValue elementRef="KEY" value="&quot;BUPER_INI&quot;"/>
+      <elementValue elementRef="VALUE" value="BUPER_INI"/>
       <elementValue elementRef="KEY" value="&quot;VKORG&quot;"/>
       <elementValue elementRef="VALUE" value="VKORG"/>
       <elementValue elementRef="KEY" value="&quot;DIVISION&quot;"/>
       <elementValue elementRef="VALUE" value="DIVISION"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tFlowToIterate_1"/>
+    <metadata connector="FLOW" name="tFlowToIterate_2"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="64">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="416" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJava_1"/>
+    <metadata connector="FLOW" name="tJava_2"/>
   </node>
-  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="192">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_1"/>
+  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_3"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -204,13 +204,13 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
     <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:m9K9HH+KKPNyuUQvDKsi+8ZO+IQOFWT9FV6AAPkRaab1QbRd6vBOkCAjIfU+jOuFzt+IG6COC9VzqOM="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Ph7KhzIWdcLmVvwDvHfa2hSuPRfpqli2Bk21//E7H+5tBR4Hv9DkKR3YSd4UUbsR8gBIAUO32BFjOQc="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Forecast Info&quot;"/>
     <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;EXEC [GeneraForecastInfo_HI_HANA] '&quot; + (String)globalMap.get(&quot;FCVER&quot;) + &quot;', '&quot; + (String)globalMap.get(&quot;VKORG&quot;) + &quot;', '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;EXEC [GeneraForecastInfo_HL_HANA] '&quot; + (String)globalMap.get(&quot;BUPER_INI&quot;) + &quot;', '&quot; + (String)globalMap.get(&quot;VKORG&quot;) + &quot;', '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -226,16 +226,16 @@
     <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="EXEC [GeneraForecastInfo_HI_HANA]"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBRow_1"/>
+    <metadata connector="FLOW" name="tDBRow_3"/>
     <metadata connector="REJECT" name="REJECT">
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="928" posY="192">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_2"/>
+  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="992" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_4"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -247,13 +247,13 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
     <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:5bu7L1g8//52efwpNRiQEwmIMVUoZAZxgSDphgHlPTThnemnZ6LQCG83hvU7CzorpSeV8VQ="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Je1Ph8Zx3y7CS9Ff+8q2BKLgq7S7SNbCQ0NQLcVyJO14u+T3C2kOofo83pz6T0DVzMW45Y0="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;CTRL_VGIB_HL_PD_HANA&quot;"/>
     <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VGIB_HVMO_HI_HANA]&#13;&#10;SET [SOP Forecast Info] = 'X'&#13;&#10;WHERE [FCVER] = '&quot; + (String)globalMap.get(&quot;FCVER&quot;) + &quot;'&#13;&#10;  AND [VKORG] = '&quot; + (String)globalMap.get(&quot;VKORG&quot;) + &quot;'&#13;&#10;  AND [DIVISION] = '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VGIB_HL_PD_HANA]&#13;&#10;SET [SOP Forecast Info] = 'X'&#13;&#10;WHERE [BUPER_INI] = '&quot; + (String)globalMap.get(&quot;BUPER_INI&quot;) + &quot;'&#13;&#10;  AND [VKORG] = '&quot; + (String)globalMap.get(&quot;VKORG&quot;) + &quot;'&#13;&#10;  AND [DIVISION] = '&quot; + (String)globalMap.get(&quot;DIVISION&quot;) + &quot;'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -271,49 +271,49 @@
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBRow_2"/>
+    <metadata connector="FLOW" name="tDBRow_4"/>
     <metadata connector="REJECT" name="REJECT">
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <connection connectorName="FLOW" label="row8" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFlowToIterate_1">
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tFlowToIterate_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row8"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_1" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_1" target="tJava_1">
+  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_2" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_2" target="tJava_2">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate1"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate2"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tDBRow_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tDBRow_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBRow_1" offsetLabelX="0" offsetLabelY="0" source="tDBRow_1" target="tDBRow_2">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBRow_3" offsetLabelX="0" offsetLabelY="0" source="tDBRow_3" target="tDBRow_4">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
   </connection>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_1"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_3"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_2"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_4"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e8456671-1110-4798-96f7-b5d5863b2ece"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>KdaHNkpepdaJmo7WlibjQ5HOah4J3gRmLjJyidmN2ieZ79d79Bc8nU4yNWhyJuAVlLUlTlS6oHUD&#13;
-u4vJkrJOng==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_55ec0599-03fc-407c-be15-88b5665b9469"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>18L0xEWLXZVZDSNWY3WIw7hVUCiwMtTv9PQTeuENkoqZP10n3n3r8m+nSuiin2EbWBeSR3W7ErCU&#13;
-DYV/evWLEw==</DigestValue></Reference></SignedInfo><SignatureValue>SIL6hTgMn3I/U3El4JzsgM8/MBucya9wG1+wDY4Rgl711Xyz9Sbtp3u6UT/TFZ4zS1hBMuzuAPOb&#13;
-cAfq/Yl/Ra4XDapBAPyk9PToiz4nZ69iXV5JokTMZVoTGZWCbsQlmdPdvUV3+0WGyvmyKwoIzDkk&#13;
-Q74PytDH96Lf7SRvBqNgaelGYiut0AVM3lXV8cdjdxRW2Q1RwIcUNzczb4bs24VE/eo5bT54o/GJ&#13;
-LW4tLQehlcdzSqgsItSkFJTEH5Ut5og8sG6Ax9Ccu4Z+3irvyNXh2jRr6750B3f5nYS3T/opGDkW&#13;
-GYZXItnLTUS+Hb/CP4ygsZ1cA/uv8/RyK5tsWQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_68ab72f3-e0ba-4816-ada5-78a51218295f"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HrwACkpNlVROPt2YC73YGppyh83/UG1yKuDShYpUwQBXyebOCO6Fr9GBW+68alokuHYe8thcfaVL&#13;
+DEhblEtfLA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_db612cb5-c2e9-49b1-b7dd-8056158701fd"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>+kvIKbpiDPtyOv14fW1T+sBbFBPGhXpGVzT3O9UlV/FimbG7qHf5ByiI9IfS7B7A22noEdgdHKSD&#13;
+5pv5qmXzLA==</DigestValue></Reference></SignedInfo><SignatureValue>Htccaj3279bIjxGOVcNcHfTq+V6fpmGRoVlGvt+tkGtD7loZMMI8bxWTp/ovrv9oTXkBIV+a+X8u&#13;
+cxg3t5nSxMapXdzIAQ0hi4A+lmpp559mGDl/ZqxJ1n5Fp06uyq+D34LdCA6eXidOMAtEydvQ2ivT&#13;
+jRa09RESidJ10BCCZfSB78RCXCgAgdh4e2wippCCQunagfUC6bX6lCWDa9buW8jKBYvT868r+hOq&#13;
+FMlJ8A4Kd143ITf1V2GMRDpjCKMFuMzwK3WUfwOAtGd/lFKoO7hBz2SJySNSItLcRFgtirLN8+CD&#13;
+wGfRj/3oSS2eoD+v64rvM6M7QhLD86rJj1PGDw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -335,4 +335,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_55ec0599-03fc-407c-be15-88b5665b9469" Target="#_e8456671-1110-4798-96f7-b5d5863b2ece"><Timestamp>2023-12-13 13:50:57</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_db612cb5-c2e9-49b1-b7dd-8056158701fd" Target="#_68ab72f3-e0ba-4816-ada5-78a51218295f"><Timestamp>2023-12-13 13:52:31</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
