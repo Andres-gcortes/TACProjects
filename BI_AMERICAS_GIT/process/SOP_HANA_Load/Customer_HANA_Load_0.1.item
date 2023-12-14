@@ -156,7 +156,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT BT1.[PARTNER] [KUNNR], [COUNTRY], [NAME_ORG1] [NAME1], [BU_SORT2] [LEGACY]&#13;&#10;  FROM [dbo].[BUT000_HANA] BT1&#13;&#10;&#9;LEFT JOIN [dbo].[BUT020_HANA] BT2&#13;&#10;&#9;  ON BT1.[PARTNER] = BT2.[PARTNER]&#13;&#10;&#9;  AND SUBSTRING([ADDR_VALID_FROM],1,8) &lt;= CONVERT(VARCHAR(8),GETDATE(),112)&#13;&#10;&#9;  AND SUBSTRING([ADDR_VALID_TO],1,8) &gt;= CONVERT(VARCHAR(8),GETDATE(),112)&#13;&#10;&#9;LEFT JOIN [dbo].[ADRC_HANA] AD&#13;&#10;&#9;  ON BT2.[ADDRNUMBER] = AD.[ADDRNUMBER]&#13;&#10;WHERE [TYPE] = 2&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT BT1.[PARTNER] [KUNNR], [COUNTRY], [NAME_ORG1] [NAME1], [BU_SORT2] [LEGACY]&#13;&#10;  FROM [dbo].[BUT000_HANA] BT1&#13;&#10;&#9;LEFT JOIN [dbo].[BUT020_HANA] BT2&#13;&#10;&#9;  ON BT1.[PARTNER] = BT2.[PARTNER]&#13;&#10;&#9;  AND SUBSTRING([ADDR_VALID_FROM],1,8) &lt;= CONVERT(VARCHAR(8),GETDATE(),112)&#13;&#10;&#9;  AND SUBSTRING([ADDR_VALID_TO],1,8) &gt;= CONVERT(VARCHAR(8),GETDATE(),112)&#13;&#10;&#9;LEFT JOIN [dbo].[ADRC_HANA] AD&#13;&#10;&#9;  ON BT2.[ADDRNUMBER] = AD.[ADDRNUMBER]&#13;&#10;WHERE [TYPE] = 2&#13;&#10;UNION &#13;&#10;SELECT 'NA#0000000' [KUNNR], NULL [COUNTRY], 'NA' [NAME1], NULL [LEGACY]&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -313,15 +313,6 @@
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlOutput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlOutput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -423,15 +414,6 @@
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_2"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlOutput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlOutput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -552,13 +534,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_d701118c-956f-48f2-82e9-40584ce5f222"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Kf3cDOlXlXrPp4aofiYvx4KuWuvXMwhgkR/qvl+0sqT0Jtj6hz9tiNLklfA7GoC0vZYESPRbCS/P&#13;
-86V/d2KsCw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_ed02fdac-8bd8-4024-8ee2-aa79a3aa0f6d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7LBdFzIqXuIy+yhKiZ/89CGZYdInvKquDWIiXmlv5rT/KVmVEc+1+11XUnzxsTZZFB+8ek9Usl68&#13;
-aCrdDV0Ykg==</DigestValue></Reference></SignedInfo><SignatureValue>cK0naXcubnmW70/lfT8WVEta+FZaQRjTAWKgMZGJG4bSCgjoMgcOK15pl0FPvnznASHPXt48G4kN&#13;
-hia93XG1F4QXvXpLhAYed/skqM5CPMHqYsO/KkWGSvzYsbrEU24g3+8nLcj+rwvIZFhRLTEh7ryv&#13;
-1DWbgvRjwSvTMWrHYIE1PwtMSimzkaicxWq6z2SRJSvc/jHku9eHd1kN+Ym1SNyicltl9nXmfRMJ&#13;
-OCAiAN+nHjbyENY39gZuvrA3gO302OPVQf2686hoXYX4zeoOcg+kVHzHLil2YkUSBaT1pbnbEZHd&#13;
-sEmxv95+5zroAe+FMQ9UrPotce/7a15xo+TAXg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_247785e2-f4eb-4902-ae53-e376dda967e7"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>eKvPgiSspZQVCz5LKBX56FK170QHp82zOw/1qG5JxY1VaDFmgQevj+jNOhMEl2mi4pn5m4sCN1vR&#13;
+BxCu8pgZkA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_c5577509-8142-4c8a-8fdd-e01e8ece69e5"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RaYMTKJscB18PBBO6JySBaG2LbNY31gL0N02bA4PatpGCiDLJ/MBx18BSRQmyRQb3JviL5lSF0fo&#13;
+TimlBBdEyQ==</DigestValue></Reference></SignedInfo><SignatureValue>IncghS+ql3S1aumZu3xkWyu3wpLE8A+A20G8wkj06pQ64aEjdy4zXfKD3KY2tjropYO8NUVMtSNc&#13;
+KW11wgapeOQJMZaZenJLUnEOzdouFlmz20g9utPJD/paSneE7r1xSiVZXkxvTrytUIq+ZklrM2q6&#13;
+GFbJe6Zh44Q/tXwpsKdgsebGX+N3WuKbw/nMj/Aeek/D1dHd84cLNO+zgYK8KEc5COhyvdFYNLvi&#13;
+nNm30S7FWklSEJ00L5l1S2iyRZKHGllIbeXtSob1IJvungZlxqLQ/TOZAs7D9ZDFLpMj8zvszsCJ&#13;
+8EdtB44LG2mx1y/2S06GGwU7PRZdD9yP/9U59g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -580,4 +562,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_ed02fdac-8bd8-4024-8ee2-aa79a3aa0f6d" Target="#_d701118c-956f-48f2-82e9-40584ce5f222"><Timestamp>2023-12-07 16:38:20</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_c5577509-8142-4c8a-8fdd-e01e8ece69e5" Target="#_247785e2-f4eb-4902-ae53-e376dda967e7"><Timestamp>2023-12-14 23:09:50</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
