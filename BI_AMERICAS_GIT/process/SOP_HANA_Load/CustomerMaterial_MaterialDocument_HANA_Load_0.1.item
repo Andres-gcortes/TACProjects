@@ -145,7 +145,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT TV.[VKORG] [Sales Organization]&#13;&#10;      ,TV.[VTWEG] [Distribution Channel]&#13;&#10;&#9;  ,TV.[SPART] [Division]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Plant]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVTA_HANA] TV&#13;&#10;&#9;  ON MD.[Plant] = TV.[KKBER]&#13;&#10;EXCEPT&#13;&#10;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Division]&#13;&#10;      ,[Customer number]&#13;&#10;      ,[Material number]&#13;&#10;      ,[Plant]&#13;&#10;  FROM [dbo].[Customer Material]&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;SELECT TV.[VKORG] [Sales Organization]&#13;&#10;      ,TV.[VTWEG] [Distribution Channel]&#13;&#10;&#9;  ,TV.[SPART] [Division]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,CASE WHEN CHARINDEX('-',MD.[Material number],1) != 0 THEN SUBSTRING(MD.[Material number],1,CHARINDEX('-',MD.[Material number],1)-1) ELSE MD.[Material number] END [Bulk material]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVTA_HANA] TV&#13;&#10;&#9;  ON MD.[Plant] = TV.[KKBER]&#13;&#10;EXCEPT&#13;&#10;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Division]&#13;&#10;      ,[Customer number]&#13;&#10;      ,[Material number]&#13;&#10;      ,[Plant]&#13;&#10;&#9;  ,[Bulk material]&#13;&#10;  FROM [dbo].[Customer Material]&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -168,6 +168,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Plant"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Bulk_material"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
@@ -180,6 +182,7 @@
       <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Bulk_material" nullable="true" originalDbColumnName="Bulk material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="224">
@@ -259,6 +262,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Bulk_material"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -276,6 +284,7 @@
       <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Bulk_material" nullable="true" originalDbColumnName="Bulk material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="false" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -284,6 +293,7 @@
       <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Bulk_material" nullable="true" originalDbColumnName="Bulk material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -297,13 +307,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e4bfda12-4a2f-4808-82d1-a409aac93f2c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>bkM/0nesRh0BcKIsvKhSbuwrquwaELN6cxX3HtlqHsQITDupUvTBZx1y7+qwyAIE5zsnrzqiZaKg&#13;
-WDGrKxZfwA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_930deac6-f937-493d-af1f-6581fbd2f138"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>nKMGVnMdxtl302va1roBrFnnjO99Pv/lWTaHOI/53XtHBh9wi2slzwDSX6pzMUphVz78GEyphREr&#13;
-hg7r+YKjCQ==</DigestValue></Reference></SignedInfo><SignatureValue>fkjYMfF01oAUeg11YZLpXB47DqNtUcxIE9h3LS1s+DS1TJE6qnyOACwur+EVrws0EzDOPO6cr4pi&#13;
-AyNsQbafgbjkDrQE4p8A0dxUZquxSbu9JB3UMOvTGusUsLRr+5TsiudrONh9rOqbgK1ADdqQg8je&#13;
-BKErzBfsvgmZUZ7nJK3QIAUq+P7lkrbH2wv9dXM83PD5Mihbo7Kr7uwGgQCs6Amk9b1xLXBZnsrO&#13;
-qCsUdWZS2D9TCYkq5I2Z7vSy5dolLdqjrCEa1szc9f+js7rPjUgaBgtGFK4h2bWHlkU/HPlRdXqz&#13;
-QYPYUPUbyp2ZtkSOj0YU+7W9IjdEXuAMm7VYWQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_4f16041d-96db-4ea3-8491-4b10dd202c19"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Yx59vUzRj3fY9keX9VdNdYlzma5KRzXTznfazNIL31ZLnWpokK6gZ7viQF51cwUpSzKA+9KpBfc8&#13;
+kdix9sDEGw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_d5171406-6599-4abb-9b66-9a6d33e66bc9"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>DJx0OfBOLhQ2+vAsaYTv9tSBFYrrDC9lZbbALJgQa756AxfnJT0uKjeAX+5Mj7UaiBG7KDGBb5z3&#13;
+BTVw0G/Bsw==</DigestValue></Reference></SignedInfo><SignatureValue>YJonhTEaFXA8eGC3IYGz6l0LzU7kGT3zkxXwnouKb29tNNTziVcwaL4SelWZstQ7O/ZGV/Cv4AYY&#13;
+VmAK6zOzN7FfK0zCnAYM0eYaRoxfNRNoowWYqFHf69+xCgecu76Sa0EXJO9dGHKel09MRRKSiSnS&#13;
+B2cVJHWywWL0yACRYyerwOaWIk3FpyEzUYi9a7q70kroPvz0p3+T+73UI9cfI9ba7XlwRutZkCoj&#13;
+wEeSx90LIvACptfazI4nLlkfTMwHWnK0ogyBDUde+RGhfgOBTDNZZAzsuieAcoJrGSboZvff7rmn&#13;
+9vccM27vExk21gbdDq4FfQ8KOZjkR+aoMj/vjQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -325,4 +335,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_930deac6-f937-493d-af1f-6581fbd2f138" Target="#_e4bfda12-4a2f-4808-82d1-a409aac93f2c"><Timestamp>2023-12-14 21:40:57</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_d5171406-6599-4abb-9b66-9a6d33e66bc9" Target="#_4f16041d-96db-4ea3-8491-4b10dd202c19"><Timestamp>2023-12-14 23:04:40</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
