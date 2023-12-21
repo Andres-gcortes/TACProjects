@@ -170,7 +170,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [IdEjecucion]&#13;&#10;      ,[VBELN_INI]&#13;&#10;      ,[VBELN_FIN]&#13;&#10;      ,CONVERT(VARCHAR(8),[ERDAT_INI],112) [ERDAT_INI]&#13;&#10;      ,CONVERT(VARCHAR(8),[ERDAT_FIN],112) [ERDAT_FIN]&#13;&#10;      ,[AUART]&#13;&#10;      ,[VKORG]&#13;&#10;      ,[VTWEG]&#13;&#10;      ,[FOLIO_AGRUPADOR]&#13;&#10;  FROM [dbo].[CTRL_VBAK_HANA]&#13;&#10;WHERE (&#13;&#10;([SOP Sales Document TAKUS] IS NOT NULL AND [SOP_DW Sales Order TAKUS] IS NULL) &#13;&#10;OR ([SOP Sales Document TDM] IS NOT NULL AND [SOP_DW Sales Order TDM] IS NULL) &#13;&#10;OR ([SOP Sales Document TBR] IS NOT NULL AND [SOP_DW Sales Order TBR] IS NULL)&#13;&#10;)&#13;&#10;ORDER BY [IdEjecucion]&#13;&#10;      ,[ERDAT_INI]&#13;&#10;      ,[ERDAT_FIN]&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [IdEjecucion]&#13;&#10;      ,[VBELN_INI]&#13;&#10;      ,[VBELN_FIN]&#13;&#10;      ,CONVERT(VARCHAR(8),[ERDAT_INI],112) [ERDAT_INI]&#13;&#10;      ,CONVERT(VARCHAR(8),[ERDAT_FIN],112) [ERDAT_FIN]&#13;&#10;      ,[AUART]&#13;&#10;      ,[VKORG]&#13;&#10;      ,[VTWEG]&#13;&#10;      ,[FOLIO_AGRUPADOR]&#13;&#10;  FROM [dbo].[CTRL_VBAK_HANA]&#13;&#10;WHERE (&#13;&#10;([SOP Sales Document TAKUS] IS NOT NULL AND [SOP_DW Sales Order TAKUS] IS NULL) &#13;&#10;--OR ([SOP Sales Document TDM] IS NOT NULL AND [SOP_DW Sales Order TDM] IS NULL) &#13;&#10;--OR ([SOP Sales Document TBR] IS NOT NULL AND [SOP_DW Sales Order TBR] IS NULL)&#13;&#10;)&#13;&#10;ORDER BY [IdEjecucion]&#13;&#10;      ,[ERDAT_INI]&#13;&#10;      ,[ERDAT_FIN]&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -463,7 +463,7 @@
       <column comment="" key="false" length="4" name="Sales_document_item_category" nullable="true" originalDbColumnName="Sales document item category" originalLength="4" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="SK_SalesOrder" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row2.Sales_Document  " name="Sales_Document" type="id_String"/>
@@ -2462,7 +2462,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VBAK_HANA]&#13;&#10;SET [SOP_DW Sales Order TAKUS] = 'X'&#13;&#10;,[SOP_DW Sales Order TDM] = 'X'&#13;&#10;,[SOP_DW Sales Order TBR] = 'X'&#13;&#10;WHERE [IdEjecucion] = &quot; + (Integer)globalMap.get(&quot;IdEjecucion&quot;) + &quot; &#13;&#10;AND [VBELN_INI] = '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;'&#13;&#10;AND [VBELN_FIN] = '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;'&#13;&#10;AND [AUART] = '&quot; + (String)globalMap.get(&quot;AUART&quot;) + &quot;'&#13;&#10;AND [VKORG] = '&quot; + (String)globalMap.get(&quot;VKORG&quot;) + &quot;'&#13;&#10;AND [VTWEG] = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;' &#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;UPDATE [dbo].[CTRL_VBAK_HANA]&#13;&#10;SET [SOP_DW Sales Order TAKUS] = 'X'&#13;&#10;--,[SOP_DW Sales Order TDM] = 'X'&#13;&#10;--,[SOP_DW Sales Order TBR] = 'X'&#13;&#10;WHERE [IdEjecucion] = &quot; + (Integer)globalMap.get(&quot;IdEjecucion&quot;) + &quot; &#13;&#10;AND [VBELN_INI] = '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;'&#13;&#10;AND [VBELN_FIN] = '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;'&#13;&#10;AND [AUART] = '&quot; + (String)globalMap.get(&quot;AUART&quot;) + &quot;'&#13;&#10;AND [VKORG] = '&quot; + (String)globalMap.get(&quot;VKORG&quot;) + &quot;'&#13;&#10;AND [VTWEG] = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;' &#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -2688,13 +2688,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_4a4165ef-0eb1-4aa5-baa1-f09c96f95d0a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>wZPbPbGrfpBRviALHE4f9cX+99sfZJggXAJMlbP0FV5RjfFwqnwHQEEBDoDJSgC3PnkWnibCHYzn&#13;
-ctpMVnMZqg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_09f32246-f60d-4537-8543-67ed505ffeda"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>MUoBFHMWQkkpQKJISMyogQkqTlILq8f8Hlbd17V0njS7adp08pqyfGyLVbY2SO0mBu2YaSx4OZvI&#13;
-g6YBpVWkyw==</DigestValue></Reference></SignedInfo><SignatureValue>jZSIQvfE5RlqleDBIMrSSKDWC3kATksiqbZwQQWmkXExoHlRc/mNrzwq0vDE0ONKVoN5fW+yuVtE&#13;
-3uYnaQ9LysrGiXhURDJnOAghVUJjOz+roOgZcS+EEPip6plkGQxw+r/xf3cQUHcvec3l3ord11XJ&#13;
-sQkYsdkpHo9eSBCzfl0kUiXHJMdG9kQe0XHEz33lxqBxRhoI4MFWYbW3IBjKIBFfhb+VAiBGioWK&#13;
-hALepqk3Tp0DATfC2oA8X5lOcU1Kft1fOH7JODA7Y8+SIJfB6ZyOi8vXeJKWDYmrSebcbgIF6XLl&#13;
-MbARd1k0SH76KojUX0nrn04eoMVhEWIAgWE6mw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_bdf73e8e-c932-4d40-92e1-17c5af483df0"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ixGgNe9sCLoeh4Hmn3lJkFWwUoSYmmrGxOyKXpBYfawcgFune/S2iR5CEMGP/IhAA5JSmWJ59+QX&#13;
+m66tuVuJrA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_cdaf8b1e-b8cc-4ed7-b05c-2cbe1997383e"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5H08ACed+kgua4mJ3Ym87vkd8ig057Gxis+WuNM7oehuFZgBRf2u4aYbEVbt2/MX/sIvHy7NvArw&#13;
+4WhWdno78Q==</DigestValue></Reference></SignedInfo><SignatureValue>Hy8Dm59uZlwfaizDhll82ErM3YJCcicOJGOqNka2WeayfJ1ErtIZemOZ6AvPbfObuUhoOlqD90Fd&#13;
+DZTAMilSf6lUmFNIaEKoppbhpxZKiyer4aXaUMquX4yCSoRzRI7R5msDHRB/mLJrptlDqaZJe/Mm&#13;
+mWiC6/fUUX1hB9BqskYO24554fXZIvhS4YceVpvRyuOK6DMnWPCogwTQWU3ZGA2bnOKfmHae2rKc&#13;
+eAuf1HLES0OaZRX1BSgV7wsrU+U93+9QN+PMdlyNJY+MhKQXYAnjYTYnWtW0eXgKLzjZp1sKaQAS&#13;
+I0cNp2FhbLbXS4Hy37wFE7P7ZF17bdyc0vWHqA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2716,4 +2716,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_09f32246-f60d-4537-8543-67ed505ffeda" Target="#_4a4165ef-0eb1-4aa5-baa1-f09c96f95d0a"><Timestamp>2023-11-30 22:56:00</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_cdaf8b1e-b8cc-4ed7-b05c-2cbe1997383e" Target="#_bdf73e8e-c932-4d40-92e1-17c5af483df0"><Timestamp>2023-12-21 15:45:54</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
