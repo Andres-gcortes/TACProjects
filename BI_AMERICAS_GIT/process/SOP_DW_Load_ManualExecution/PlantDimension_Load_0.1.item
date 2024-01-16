@@ -147,8 +147,6 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
     <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:w3P7Wk77iBdlHo750a9CoAHYVUp6Ygn+xJYp2G4SHGr6Axvg8DY+rNW9rn62FKqplVprb+kIMzzc25Q="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_615b0ApfEeez1Kus8LAijg - Plant"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Plant&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
@@ -238,6 +236,9 @@
       <column comment="" key="true" length="10" name="SK_Plant" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="4" name="Plant" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
       <column comment="" key="false" length="30" name="Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -253,7 +254,7 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables activateCondensedTool="true" name="NewPlants" rejectInnerJoin="true" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="Integer.parseInt(row1.Plant)" name="SK_Plant" type="id_Integer"/>
@@ -265,6 +266,7 @@
       </outputTables>
       <outputTables activateExpressionFilter="true" expressionFilter="!row1.Name.equals(row2.Name) || &#10;!row1.Valuation_Area.equals(row2.Valuation_Area) ||&#10;!row1.Purchasing_Organization.equals(row2.Purchasing_Organization) ||&#10;!row1.Country.equals(row2.Country)" name="UpdatedPlants" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row2.SK_Plant " name="SK_Plant" type="id_Integer"/>
+        <mapperTableEntries expression="row1.Plant " name="Plant" type="id_String"/>
         <mapperTableEntries expression="row1.Name " name="Name" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Valuation_Area " name="Valuation_Area" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Purchasing_Organization " name="Purchasing_Organization" nullable="true" type="id_String"/>
@@ -311,8 +313,6 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SOP_DW_AmericasBI_Database"/>
     <elementParameter field="TEXT" name="USER" value="context.SOP_DW_AmericasBI_Login"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Z8QNxPgCkx6rx8UM9pkMC0K694uv+GYNEfTpkqkmwK4tI1uSiC9+xuKtBLY5+qQw4TYITVF5MmhOM2AXemY="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_y2NrcBQCEeeCOb3cs4hsyQ - Plant"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Plant&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
@@ -400,6 +400,8 @@
     <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="SK_Plant"/>
     <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw - Plant"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -416,6 +418,11 @@
     <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
     <elementParameter field="TABLE" name="FIELD_OPTIONS" show="false">
       <elementValue elementRef="SCHEMA_COLUMN" value="SK_Plant"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Plant"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
@@ -454,6 +461,9 @@
       <column comment="" key="true" length="10" name="SK_Plant" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="4" name="Plant" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
       <column comment="" key="false" length="30" name="Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -470,6 +480,9 @@
     </metadata>
     <metadata connector="REJECT" label="Plant" name="REJECT">
       <column comment="" key="true" length="10" name="SK_Plant" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="4" name="Plant" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="30" name="Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -522,7 +535,7 @@
     <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
     <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" show="false" value="_y2NrcBQCEeeCOb3cs4hsyQ - Plant"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw - Plant"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -600,22 +613,22 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
     <metadata connector="REJECT" label="Plant" name="REJECT">
-      <column key="true" length="10" name="SK_Plant" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+      <column comment="" key="true" length="10" name="SK_Plant" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column key="false" length="4" name="Plant" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="" key="false" length="4" name="Plant" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column key="false" length="30" name="Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="" key="false" length="30" name="Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column key="false" length="4" name="Valuation_Area" nullable="true" originalDbColumnName="Valuation Area" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="" key="false" length="4" name="Valuation_Area" nullable="true" originalDbColumnName="Valuation Area" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column key="false" length="4" name="Purchasing_Organization" nullable="true" originalDbColumnName="Purchasing Organization" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="" key="false" length="4" name="Purchasing_Organization" nullable="true" originalDbColumnName="Purchasing Organization" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column key="false" length="3" name="Country" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="" key="false" length="3" name="Country" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -632,6 +645,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="NewPlants"/>
   </connection>
   <connection connectorName="FLOW" label="UpdatedPlants" lineStyle="0" metaname="UpdatedPlants" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tMap_1" target="tMSSqlOutput_2">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="Plant"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="UpdatedPlants"/>
   </connection>
@@ -644,13 +662,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_4e894d4b-343e-4260-b391-409e3b64535e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>lwwUdnQb0s7AoUQxCv+eYCUi6KrvhiOguWaw83jxLGo/Xly5eXBKuTxy3zBcBvg/Bn4trdZ8QTe7&#13;
-bC3gBnEqQw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_a28ea4bc-7b82-4589-b412-99c23705d88d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>DOmH4FzMb/DPaFzEhdwEcyDHqz2C0rA5CLHWF5jgexUsNhnCSDmCjuQKTSzitcsL89wBvYZhKc/K&#13;
-7oBFHHWULg==</DigestValue></Reference></SignedInfo><SignatureValue>Xofuc2oK4eRE8VwvnVzsrzetjmPpAVfwnt19++d4Q3FdEp/vlYPUGBXB+blOKKC5906u3ClBjYSy&#13;
-LYasFoPICmH/z16jBlzAS/bv2vG/A2LCByFrZxFnP774epnsuiKkR1fcQp2JILAok+XTnEOblA8O&#13;
-PLQfiHkUmTdeRcHgsI4SWodfStDh5BKZvAcLl7nZJ0YDf61Roo/Dq2l3fq54pwGxsupQLp1rdU2O&#13;
-/+2QjNFXk+xe5jYnkEacyeaSyhicV/7U+c2YzAv6OAXyliSByyncHh7zwxfwohkBCULG9h1QNiQ0&#13;
-dnZSFcQXGNl+riy2cdiP8od+VoBphCsmbv1eWA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_31f42f95-7137-4e38-8b91-2f147fbd3f3d"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>i6Xpu8nDfgsMU3KTRSF7UXY3bY28WSkXbJKOkXW6Ro3oF1VdZp6/LgwDm0hEtcqT5+N0IiJXbHCM&#13;
+2nSu9Wu7jw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_19f45e7d-dfeb-479d-a1ab-6eb356e2bcb1"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>rwTN0DPD27AHZaR40QQlDp0OMqNVu9YY7POYJ2icLlLXflGLmBnjwVSddlyIVBvf3wa1P0NnkZoO&#13;
+l0Ujr3ewxw==</DigestValue></Reference></SignedInfo><SignatureValue>SxnuJD9OLxPHLmuBzVPl9p3FC1r+hIhxXPOGZAB8Yv+TxDJlwGs6q5g29Ef16l6f2gKVu4UmWepm&#13;
+dwPTfEIb/ll7Xe/SC0nvInSgWInxSDvmL0bEInTkM7AXUjAYbkSrwnQ0KmtwU4N3GRlMFTFS8XSn&#13;
+grUuy5sWbXnn1PhAObW+ErjQDjsd0SkHCdLKLe4l9O7xjXuCmI7FlRhZt9lzjkiy+UXaLZKuz/Ge&#13;
+s124bQ9HmNFhSru+kFiXvIZauwUPrnmmnLoiwRM1yR0gj7JqTY/ek87bzl5Pxu42xX5leu/c9LH1&#13;
+paoU+eOu2DuG5zUKdDinjHhI/XBe59bs79MJfQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -672,4 +690,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_a28ea4bc-7b82-4589-b412-99c23705d88d" Target="#_4e894d4b-343e-4260-b391-409e3b64535e"><Timestamp>2024-01-16 16:11:41</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_19f45e7d-dfeb-479d-a1ab-6eb356e2bcb1" Target="#_31f42f95-7137-4e38-8b91-2f147fbd3f3d"><Timestamp>2024-01-16 16:18:29</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
