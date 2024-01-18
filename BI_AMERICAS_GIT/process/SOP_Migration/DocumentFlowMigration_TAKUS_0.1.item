@@ -43,7 +43,7 @@
     <elementParameter field="TEXT" name="OOZIE_END_POINT" show="false" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" show="false" value="true"/>
     <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" show="false" value="true"/>
-    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="true"/>
     <elementParameter field="TEXT" name="PARALLELIZE_UNIT_SIZE" value="25000"/>
     <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
     <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" show="false" value="false"/>
@@ -130,7 +130,7 @@
     <routinesParameter id="_mRQJ4G60Ee6C8KFjr_RzHg" name="TalendStringUtil"/>
     <routinesParameter id="_mRLRYG60Ee6C8KFjr_RzHg" name="TalendString"/>
   </parameters>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="256">
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -230,7 +230,7 @@
       </column>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="256">
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="832" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlOutput"/>
     <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
@@ -428,22 +428,347 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="288">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_615b0ApfEeez1Kus8LAijg"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SOP_TDM_MXBI01_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="JTDS"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SOP_TDM_MXBI01_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SOP_TDM_MXBI01_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SOP_TDM_MXBI01_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.SOP_TDM_MXBI01_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:+OZLPHVzGy+8cJH+9Cj3lwnFpjb42g37FeIDB28QY8wqN/IYaT3A9yvU1ehA/RumnVToI9NEdhuR2ag="/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w - Document_Flow_II"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Document Flow II&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Sales Document]&#13;&#10;      ,[Sales Document Item]&#13;&#10;      ,[Delivery]&#13;&#10;      ,[Delivery Item]&#13;&#10;      ,[Goods Movement]&#13;&#10;      ,[Goods Movement Item]&#13;&#10;      ,[Date on Which Delivery Was Created]&#13;&#10;      ,[Date on Which Goods Movement Was Created]&#13;&#10;      ,[Delivered Qty]&#13;&#10;      ,[DQ Unit of Measure]&#13;&#10;      ,[Goods Movement Qty]&#13;&#10;      ,[GM Unit of Measure]&#13;&#10;  FROM [dbo].[Document Flow II TM]&#13;&#10;  WHERE [Sales Document] NOT IN (&#13;&#10;'0000385376'&#13;&#10;,'0000386161'&#13;&#10;,'0000395487'&#13;&#10;,'0000397454'&#13;&#10;,'0000402106'&#13;&#10;,'0000404732'&#13;&#10;,'0000405426'&#13;&#10;,'0000405490'&#13;&#10;,'0000408087'&#13;&#10;,'0000409538'&#13;&#10;,'0000409553'&#13;&#10;,'0000410504'&#13;&#10;,'0000411362'&#13;&#10;,'0000412427'&#13;&#10;,'0000412454'&#13;&#10;,'0000412472'&#13;&#10;,'0000412765'&#13;&#10;,'0000412838'&#13;&#10;,'0000413282'&#13;&#10;,'0000413558'&#13;&#10;,'0000414105'&#13;&#10;,'0000414400'&#13;&#10;,'0000415676'&#13;&#10;,'0000415678'&#13;&#10;,'0000415680'&#13;&#10;,'0000415682'&#13;&#10;,'0000415684'&#13;&#10;,'0000416056'&#13;&#10;,'0000416714'&#13;&#10;,'0000417195'&#13;&#10;,'0000417255'&#13;&#10;,'0000417258'&#13;&#10;,'0000417260'&#13;&#10;,'0000417263'&#13;&#10;,'0000417267'&#13;&#10;,'0000417269'&#13;&#10;,'0000417270'&#13;&#10;,'0000417274'&#13;&#10;,'0000417275'&#13;&#10;,'0000417277'&#13;&#10;,'0000417279'&#13;&#10;,'0000417284'&#13;&#10;,'0000417286'&#13;&#10;,'0000417287'&#13;&#10;,'0000417291'&#13;&#10;,'0000417292'&#13;&#10;,'0000417297'&#13;&#10;,'0000417307'&#13;&#10;,'0000417310'&#13;&#10;,'0000417314'&#13;&#10;,'0000417317'&#13;&#10;,'0000417323'&#13;&#10;,'0000417324'&#13;&#10;,'0000417328'&#13;&#10;,'0000417329'&#13;&#10;,'0000417331'&#13;&#10;,'0000417376'&#13;&#10;,'0000417385'&#13;&#10;,'0000417394'&#13;&#10;,'0000417422'&#13;&#10;,'0000417424'&#13;&#10;,'0000417428'&#13;&#10;,'0000417464'&#13;&#10;,'0000417465'&#13;&#10;,'0000417517'&#13;&#10;,'0000417674'&#13;&#10;,'0000417694'&#13;&#10;,'0000417695'&#13;&#10;,'0000417696'&#13;&#10;,'0000417697'&#13;&#10;,'0000417698'&#13;&#10;,'0000417699'&#13;&#10;,'0000417702'&#13;&#10;,'0000417704'&#13;&#10;,'0000417705'&#13;&#10;,'0000417707'&#13;&#10;,'0000417708'&#13;&#10;,'0000417710'&#13;&#10;,'0000417713'&#13;&#10;,'0000417735'&#13;&#10;,'0000417792'&#13;&#10;,'0000417793'&#13;&#10;,'0000417796'&#13;&#10;,'0000417797'&#13;&#10;,'0000417802'&#13;&#10;,'0000417803'&#13;&#10;,'0000417804'&#13;&#10;,'0000417807'&#13;&#10;,'0000417812'&#13;&#10;,'0000417813'&#13;&#10;,'0000417818'&#13;&#10;,'0000417823'&#13;&#10;,'0000417825'&#13;&#10;,'0000417828'&#13;&#10;,'0000417855'&#13;&#10;,'0000417893'&#13;&#10;,'0000417931'&#13;&#10;,'0000417969'&#13;&#10;,'0000417970'&#13;&#10;,'0000417973'&#13;&#10;,'0000417975'&#13;&#10;,'0000417988'&#13;&#10;,'0000417989'&#13;&#10;,'0000417990'&#13;&#10;,'0000417991'&#13;&#10;,'0000417994'&#13;&#10;,'0000418081'&#13;&#10;,'0000418083'&#13;&#10;,'0000418085'&#13;&#10;,'0000418086'&#13;&#10;,'0000418089'&#13;&#10;,'0000418090'&#13;&#10;,'0000418091'&#13;&#10;,'0000418092'&#13;&#10;,'0000418094'&#13;&#10;,'0000418114'&#13;&#10;,'0000418168'&#13;&#10;,'0000418172'&#13;&#10;,'0000418177'&#13;&#10;,'0000418178'&#13;&#10;,'0000418180'&#13;&#10;,'0000418183'&#13;&#10;,'0000418184'&#13;&#10;,'0000418186'&#13;&#10;,'0000418187'&#13;&#10;,'0000418188'&#13;&#10;,'0000418192'&#13;&#10;,'0000418193'&#13;&#10;,'0000418194'&#13;&#10;,'0000418195'&#13;&#10;,'0000418196'&#13;&#10;,'0000418197'&#13;&#10;,'0000418199'&#13;&#10;,'0000418200'&#13;&#10;,'0000418201'&#13;&#10;,'0000418202'&#13;&#10;,'0000418232'&#13;&#10;,'0000418278'&#13;&#10;,'0000418316'&#13;&#10;,'0000418319'&#13;&#10;,'0000418320'&#13;&#10;,'0000418321'&#13;&#10;,'0000418425'&#13;&#10;,'0000418429'&#13;&#10;,'0000418431'&#13;&#10;,'0000418432'&#13;&#10;,'0000418433'&#13;&#10;,'0000418435'&#13;&#10;,'0000418451'&#13;&#10;,'0000418452'&#13;&#10;,'0000418454'&#13;&#10;,'0000418455'&#13;&#10;,'0000418532'&#13;&#10;,'0000418571'&#13;&#10;,'0000418611'&#13;&#10;,'0000418621'&#13;&#10;,'0000418650'&#13;&#10;,'0000418651'&#13;&#10;,'0000418660'&#13;&#10;,'0000418662'&#13;&#10;,'0000418663'&#13;&#10;,'0000418668'&#13;&#10;,'0000418670'&#13;&#10;,'0000418681'&#13;&#10;,'0000418682'&#13;&#10;,'0000418687'&#13;&#10;,'0000418688'&#13;&#10;,'0000418689'&#13;&#10;,'0000418690'&#13;&#10;,'0000418692'&#13;&#10;,'0000418701'&#13;&#10;,'0000418706'&#13;&#10;,'0000418708'&#13;&#10;,'0000418709'&#13;&#10;,'0000418710'&#13;&#10;,'0000418711'&#13;&#10;,'0000418714'&#13;&#10;,'0000418716'&#13;&#10;,'0000418717'&#13;&#10;,'0000418719'&#13;&#10;,'0000418723'&#13;&#10;,'0000418724'&#13;&#10;,'0000418726'&#13;&#10;,'0000418727'&#13;&#10;,'0000418729'&#13;&#10;,'0000418730'&#13;&#10;,'0000418731'&#13;&#10;,'0000418732'&#13;&#10;,'0000418733'&#13;&#10;,'0000418840'&#13;&#10;,'0000418873'&#13;&#10;,'0000418953'&#13;&#10;,'0000419080'&#13;&#10;,'0000419087'&#13;&#10;,'0000419179'&#13;&#10;,'0000419243'&#13;&#10;,'0000419244'&#13;&#10;,'0000419265'&#13;&#10;,'0000419272'&#13;&#10;,'0000419318'&#13;&#10;,'0000419340'&#13;&#10;,'0000419349'&#13;&#10;,'0000419358'&#13;&#10;,'0000419374'&#13;&#10;,'0000419375'&#13;&#10;,'0000419377'&#13;&#10;,'0000419378'&#13;&#10;,'0000419379'&#13;&#10;,'0000419380'&#13;&#10;,'0000419381'&#13;&#10;,'0000419517'&#13;&#10;,'0000419621'&#13;&#10;,'0000419648'&#13;&#10;,'0000419683'&#13;&#10;,'0000419715'&#13;&#10;,'0000419733'&#13;&#10;,'0000419734'&#13;&#10;,'0000419775'&#13;&#10;,'0000419779'&#13;&#10;,'0000419784'&#13;&#10;,'0000419798'&#13;&#10;,'0000419814'&#13;&#10;,'0000419830'&#13;&#10;,'0000419851'&#13;&#10;,'0000419852'&#13;&#10;,'0000419876'&#13;&#10;,'0000419878'&#13;&#10;,'0000419879'&#13;&#10;,'0000419882'&#13;&#10;,'0000419887'&#13;&#10;,'0000419888'&#13;&#10;,'0000419889'&#13;&#10;,'0000419890'&#13;&#10;,'0000419924'&#13;&#10;,'0000419927'&#13;&#10;,'0000419929'&#13;&#10;,'0000419930'&#13;&#10;,'0000419948'&#13;&#10;,'0000419949'&#13;&#10;,'0000419951'&#13;&#10;,'0000419952'&#13;&#10;,'0000419954'&#13;&#10;,'0000419981'&#13;&#10;,'0000419982'&#13;&#10;,'0000419999'&#13;&#10;,'0000420007'&#13;&#10;,'0000420008'&#13;&#10;,'0000420024'&#13;&#10;,'0000420055'&#13;&#10;,'0000420058'&#13;&#10;,'0000420064'&#13;&#10;,'0000420069'&#13;&#10;,'0000420083'&#13;&#10;,'0000420084'&#13;&#10;,'0000420085'&#13;&#10;,'0000420086'&#13;&#10;,'0000420087'&#13;&#10;,'0000420095'&#13;&#10;,'0000420096'&#13;&#10;,'0000420098'&#13;&#10;,'0000420099'&#13;&#10;,'0000420100'&#13;&#10;,'0000420101'&#13;&#10;,'0000420102'&#13;&#10;,'0000420104'&#13;&#10;,'0000420105'&#13;&#10;,'0000420107'&#13;&#10;,'0000420108'&#13;&#10;,'0000420109'&#13;&#10;,'0000420110'&#13;&#10;,'0000420111'&#13;&#10;,'0000420112'&#13;&#10;,'0000420113'&#13;&#10;,'0000420118'&#13;&#10;,'0000420119'&#13;&#10;,'0000420120'&#13;&#10;,'0000420123'&#13;&#10;,'0000420138'&#13;&#10;,'0000420145'&#13;&#10;,'0000420147'&#13;&#10;,'0000420151'&#13;&#10;,'0000420153'&#13;&#10;,'0000420195'&#13;&#10;,'0000420203'&#13;&#10;,'0000420214'&#13;&#10;,'0000420234'&#13;&#10;,'0000420240'&#13;&#10;,'0000420255'&#13;&#10;,'0000420264'&#13;&#10;,'0000420265'&#13;&#10;,'0000420267'&#13;&#10;,'0000420268'&#13;&#10;,'0000420269'&#13;&#10;,'0000420304'&#13;&#10;,'0000420305'&#13;&#10;,'0000420306'&#13;&#10;,'0000420307'&#13;&#10;,'0000420309'&#13;&#10;,'0000420310'&#13;&#10;,'0000420312'&#13;&#10;,'0000420313'&#13;&#10;,'0000420314'&#13;&#10;,'0000420322'&#13;&#10;,'0000420326'&#13;&#10;,'0000420327'&#13;&#10;,'0000420338'&#13;&#10;,'0000420409'&#13;&#10;,'0000420410'&#13;&#10;,'0000420419'&#13;&#10;,'0000420421'&#13;&#10;,'0000420442'&#13;&#10;,'0000420443'&#13;&#10;,'0000420444'&#13;&#10;,'0000420445'&#13;&#10;,'0000420446'&#13;&#10;,'0000420447'&#13;&#10;,'0000420448'&#13;&#10;,'0000420449'&#13;&#10;,'0000420450'&#13;&#10;,'0000420481'&#13;&#10;,'0000420484'&#13;&#10;,'0000420506'&#13;&#10;,'0000420513'&#13;&#10;,'0000420520'&#13;&#10;,'0000420521'&#13;&#10;,'0000420525'&#13;&#10;,'0000420529'&#13;&#10;,'0000420531'&#13;&#10;,'0000420534'&#13;&#10;,'0000420536'&#13;&#10;,'0000420537'&#13;&#10;,'0000420538'&#13;&#10;,'0000420539'&#13;&#10;,'0000420540'&#13;&#10;,'0000420542'&#13;&#10;,'0000420543'&#13;&#10;,'0000420549'&#13;&#10;,'0000420551'&#13;&#10;,'0000420644'&#13;&#10;,'0000420645'&#13;&#10;,'0000420646'&#13;&#10;,'0000420647'&#13;&#10;,'0000420650'&#13;&#10;,'0000420672'&#13;&#10;,'0000420673'&#13;&#10;,'0000420675'&#13;&#10;,'0000420676'&#13;&#10;,'0000420678'&#13;&#10;,'0000420681'&#13;&#10;,'0000420682'&#13;&#10;,'0000420683'&#13;&#10;,'0000420686'&#13;&#10;,'0000420702'&#13;&#10;,'0000420705'&#13;&#10;,'0000420721'&#13;&#10;,'0000420723'&#13;&#10;,'0000420724'&#13;&#10;,'0000420725'&#13;&#10;,'0000420726'&#13;&#10;,'0000420740'&#13;&#10;,'0000420755'&#13;&#10;,'0000420761'&#13;&#10;,'0000420762'&#13;&#10;,'0000420764'&#13;&#10;,'0000420765'&#13;&#10;,'0000420766'&#13;&#10;,'0000420767'&#13;&#10;,'0000420776'&#13;&#10;,'0000420779'&#13;&#10;,'0000420800'&#13;&#10;,'0000420802'&#13;&#10;,'0000420805'&#13;&#10;,'0000420806'&#13;&#10;,'0000420817'&#13;&#10;,'0000420819'&#13;&#10;,'0000420827'&#13;&#10;,'0000420829'&#13;&#10;,'0000420841'&#13;&#10;,'0000420846'&#13;&#10;,'0000420847'&#13;&#10;,'0000420848'&#13;&#10;,'0000420849'&#13;&#10;,'0000420850'&#13;&#10;,'0000420851'&#13;&#10;,'0000420852'&#13;&#10;,'0000420853'&#13;&#10;,'0000420854'&#13;&#10;,'0000420855'&#13;&#10;,'0000420856'&#13;&#10;,'0000420857'&#13;&#10;,'0000420858'&#13;&#10;,'0000420859'&#13;&#10;,'0000420860'&#13;&#10;,'0000420861'&#13;&#10;,'0000420862'&#13;&#10;,'0000420863'&#13;&#10;,'0000420864'&#13;&#10;,'0000420865'&#13;&#10;,'0000420877'&#13;&#10;,'0000420880'&#13;&#10;,'0000420883'&#13;&#10;,'0000420885'&#13;&#10;,'0000420886'&#13;&#10;,'0000420887'&#13;&#10;,'0000420888'&#13;&#10;,'0000420889'&#13;&#10;,'0000420890'&#13;&#10;,'0000420891'&#13;&#10;,'0000420892'&#13;&#10;,'0000420893'&#13;&#10;,'0000420894'&#13;&#10;,'0000420895'&#13;&#10;,'0000420896'&#13;&#10;,'0000420897'&#13;&#10;,'0000420903'&#13;&#10;,'0000420904'&#13;&#10;,'0000420913'&#13;&#10;,'0000420915'&#13;&#10;,'0000420917'&#13;&#10;,'0000420919'&#13;&#10;,'0000420921'&#13;&#10;,'0000420925'&#13;&#10;,'0000420931'&#13;&#10;,'0000420944'&#13;&#10;,'0000420948'&#13;&#10;,'0000420952'&#13;&#10;,'0000420953'&#13;&#10;,'0000420956'&#13;&#10;,'0000420957'&#13;&#10;,'0000420962'&#13;&#10;,'0000420963'&#13;&#10;,'0000420964'&#13;&#10;,'0000420965'&#13;&#10;,'0000420993'&#13;&#10;,'0000420998'&#13;&#10;,'0000421001'&#13;&#10;,'0000421004'&#13;&#10;,'0000421005'&#13;&#10;,'0000421006'&#13;&#10;,'0000421010'&#13;&#10;,'0000421012'&#13;&#10;,'0000421019'&#13;&#10;,'0000421020'&#13;&#10;,'0000421021'&#13;&#10;,'0000421023'&#13;&#10;,'0000421035'&#13;&#10;,'0000421036'&#13;&#10;,'0000421037'&#13;&#10;,'0000421038'&#13;&#10;,'0000421039'&#13;&#10;,'0000421040'&#13;&#10;,'0000421041'&#13;&#10;,'0000421043'&#13;&#10;,'0000421048'&#13;&#10;,'0000421051'&#13;&#10;,'0000421053'&#13;&#10;,'0000421054'&#13;&#10;,'0000421057'&#13;&#10;,'0000421058'&#13;&#10;,'0000421059'&#13;&#10;,'0000421060'&#13;&#10;,'0000421061'&#13;&#10;,'0000421063'&#13;&#10;,'0000421066'&#13;&#10;,'0000421071'&#13;&#10;,'0000421077'&#13;&#10;,'0000421078'&#13;&#10;,'0000421088'&#13;&#10;,'0000421091'&#13;&#10;,'0000421092'&#13;&#10;,'0000421097'&#13;&#10;,'0000421108'&#13;&#10;,'0000421116'&#13;&#10;,'0000421132'&#13;&#10;,'0000421151'&#13;&#10;,'0000421158'&#13;&#10;,'0000421160'&#13;&#10;,'0000421162'&#13;&#10;,'0000421163'&#13;&#10;,'0000421164'&#13;&#10;,'0000421166'&#13;&#10;,'0000421169'&#13;&#10;,'0000421171'&#13;&#10;,'0000421172'&#13;&#10;,'0000421174'&#13;&#10;,'0000421176'&#13;&#10;,'0000421178'&#13;&#10;,'0000421179'&#13;&#10;,'0000421180'&#13;&#10;,'0000421181'&#13;&#10;,'0000421182'&#13;&#10;,'0000421183'&#13;&#10;,'0000421185'&#13;&#10;,'0000421187'&#13;&#10;,'0000421193'&#13;&#10;,'0000421194'&#13;&#10;,'0000421195'&#13;&#10;,'0000421196'&#13;&#10;,'0000421197'&#13;&#10;,'0000421198'&#13;&#10;,'0000421200'&#13;&#10;,'0000421201'&#13;&#10;,'0000421202'&#13;&#10;,'0000421203'&#13;&#10;,'0000421204'&#13;&#10;,'0000421206'&#13;&#10;,'0000421208'&#13;&#10;,'0000421213'&#13;&#10;,'0000421219'&#13;&#10;,'0000421220'&#13;&#10;,'0000421221'&#13;&#10;,'0000421222'&#13;&#10;,'0000421223'&#13;&#10;,'0000421224'&#13;&#10;,'0000421225'&#13;&#10;,'0000421226'&#13;&#10;,'0000421227'&#13;&#10;,'0000421228'&#13;&#10;,'0000421232'&#13;&#10;,'0000421233'&#13;&#10;,'0000421234'&#13;&#10;,'0000421239'&#13;&#10;,'0000421252'&#13;&#10;,'0000421260'&#13;&#10;,'0000421262'&#13;&#10;,'0000421263'&#13;&#10;,'0000421264'&#13;&#10;,'0000421265'&#13;&#10;,'0000421266'&#13;&#10;,'0000421273'&#13;&#10;,'0000421274'&#13;&#10;,'0000421275'&#13;&#10;,'0000421278'&#13;&#10;,'0000421279'&#13;&#10;,'0000421280'&#13;&#10;,'0000421282'&#13;&#10;,'0000421283'&#13;&#10;,'0000421285'&#13;&#10;,'0000421286'&#13;&#10;,'0000421287'&#13;&#10;,'0000421288'&#13;&#10;,'0000421289'&#13;&#10;,'0000421290'&#13;&#10;,'0000421292'&#13;&#10;,'0000421293'&#13;&#10;,'0000421294'&#13;&#10;,'0000421298'&#13;&#10;,'0000421303'&#13;&#10;,'0000421304'&#13;&#10;,'0000421305'&#13;&#10;,'0000421306'&#13;&#10;,'0000421310'&#13;&#10;,'0000421311'&#13;&#10;,'0000421312'&#13;&#10;,'0000421317'&#13;&#10;,'0000421318'&#13;&#10;,'0000421320'&#13;&#10;,'0000421321'&#13;&#10;,'0000421325'&#13;&#10;,'0000421326'&#13;&#10;,'0000421333'&#13;&#10;,'0000421337'&#13;&#10;,'0000421353'&#13;&#10;,'0000421354'&#13;&#10;,'0000421356'&#13;&#10;,'0000421372'&#13;&#10;,'0000421373'&#13;&#10;,'0000421374'&#13;&#10;,'0000421375'&#13;&#10;,'0000421377'&#13;&#10;,'0000421378'&#13;&#10;,'0000421379'&#13;&#10;,'0000421380'&#13;&#10;,'0000421383'&#13;&#10;,'0000421384'&#13;&#10;,'0000421388'&#13;&#10;,'0000421389'&#13;&#10;,'0000421390'&#13;&#10;,'0000421392'&#13;&#10;,'0000421393'&#13;&#10;,'0000421395'&#13;&#10;,'0000421399'&#13;&#10;,'0000421400'&#13;&#10;,'0000421402'&#13;&#10;,'0000421403'&#13;&#10;,'0000421404'&#13;&#10;,'0000421405'&#13;&#10;,'0000421407'&#13;&#10;,'0000421409'&#13;&#10;,'0000421410'&#13;&#10;,'0000421411'&#13;&#10;,'0000421412'&#13;&#10;,'0000421418'&#13;&#10;,'0000421419'&#13;&#10;,'0000421420'&#13;&#10;,'0000421421'&#13;&#10;,'0000421422'&#13;&#10;,'0000421425'&#13;&#10;,'0000421426'&#13;&#10;,'0000421427'&#13;&#10;,'0000421428'&#13;&#10;,'0000421429'&#13;&#10;,'0000421430'&#13;&#10;,'0000421432'&#13;&#10;,'0000421433'&#13;&#10;,'0000421435'&#13;&#10;,'0000421436'&#13;&#10;,'0000421437'&#13;&#10;,'0000421438'&#13;&#10;,'0000421440'&#13;&#10;,'0000421441'&#13;&#10;,'0000421442'&#13;&#10;,'0000421444'&#13;&#10;,'0000421445'&#13;&#10;,'0000421446'&#13;&#10;,'0000421447'&#13;&#10;,'0000421450'&#13;&#10;,'0000421451'&#13;&#10;,'0000421453'&#13;&#10;,'0000421454'&#13;&#10;,'0000421456'&#13;&#10;,'0000421457'&#13;&#10;,'0000421458'&#13;&#10;,'0000421459'&#13;&#10;,'0000421460'&#13;&#10;,'0000421461'&#13;&#10;,'0000421462'&#13;&#10;,'0000421463'&#13;&#10;,'0000421464'&#13;&#10;,'0000421465'&#13;&#10;,'0000421466'&#13;&#10;,'0000421467'&#13;&#10;,'0000421468'&#13;&#10;,'0000421469'&#13;&#10;,'0000421470'&#13;&#10;,'0000421471'&#13;&#10;,'0000421472'&#13;&#10;,'0000421473'&#13;&#10;,'0000421474'&#13;&#10;,'0000421475'&#13;&#10;,'0000421476'&#13;&#10;,'0000421477'&#13;&#10;,'0000421478'&#13;&#10;,'0000421479'&#13;&#10;,'0000421480'&#13;&#10;,'0000421481'&#13;&#10;,'0000421482'&#13;&#10;,'0000421483'&#13;&#10;,'0000421484'&#13;&#10;,'0000421485'&#13;&#10;,'0000421486'&#13;&#10;,'0000421487'&#13;&#10;,'0000421488'&#13;&#10;,'0000421489'&#13;&#10;,'0000421490'&#13;&#10;,'0000421492'&#13;&#10;,'0000421494'&#13;&#10;,'0000421495'&#13;&#10;,'0000421496'&#13;&#10;,'0000421497'&#13;&#10;,'0000421498'&#13;&#10;,'0000421499'&#13;&#10;,'0000421500'&#13;&#10;,'0000421501'&#13;&#10;,'0000421503'&#13;&#10;,'0000421504'&#13;&#10;,'0000421505'&#13;&#10;,'0000421506'&#13;&#10;,'0000421507'&#13;&#10;,'0000421508'&#13;&#10;,'0000421509'&#13;&#10;,'0000421510'&#13;&#10;,'0000421511'&#13;&#10;,'0000421512'&#13;&#10;,'0000421514'&#13;&#10;,'0000421515'&#13;&#10;,'0000421516'&#13;&#10;,'0000421518'&#13;&#10;,'0000421519'&#13;&#10;,'0000421520'&#13;&#10;,'0000421521'&#13;&#10;,'0000421522'&#13;&#10;,'0000421523'&#13;&#10;,'0000421529'&#13;&#10;,'0000421530'&#13;&#10;,'0000421533'&#13;&#10;,'0000421535'&#13;&#10;,'0000421536'&#13;&#10;,'0000421538'&#13;&#10;,'0000421540'&#13;&#10;,'0000421541'&#13;&#10;,'0000421543'&#13;&#10;,'0000421544'&#13;&#10;,'0000421546'&#13;&#10;,'0000421548'&#13;&#10;,'0000421549'&#13;&#10;,'0000421554'&#13;&#10;,'0000421557'&#13;&#10;,'0000421558'&#13;&#10;,'0000421559'&#13;&#10;,'0000421560'&#13;&#10;,'0000421561'&#13;&#10;,'0000421562'&#13;&#10;,'0000421564'&#13;&#10;,'0000421565'&#13;&#10;,'0000421566'&#13;&#10;,'0000421567'&#13;&#10;,'0000421568'&#13;&#10;,'0000421569'&#13;&#10;,'0000421570'&#13;&#10;,'0000421571'&#13;&#10;,'0000421572'&#13;&#10;,'0000421576'&#13;&#10;,'0000421577'&#13;&#10;,'0000421578'&#13;&#10;,'0000421579'&#13;&#10;,'0000421580'&#13;&#10;,'0000421581'&#13;&#10;,'0000421584'&#13;&#10;,'0000421586'&#13;&#10;,'0000421587'&#13;&#10;,'0000421588'&#13;&#10;,'0000421589'&#13;&#10;,'0000421590'&#13;&#10;,'0000421594'&#13;&#10;,'0000421607'&#13;&#10;,'0000421613'&#13;&#10;,'0000421619'&#13;&#10;,'0000421621'&#13;&#10;,'0000421622'&#13;&#10;,'0000421623'&#13;&#10;,'0000421624'&#13;&#10;,'0000421627'&#13;&#10;,'0000421628'&#13;&#10;,'0000421630'&#13;&#10;,'0000421631'&#13;&#10;,'0000421632'&#13;&#10;,'0000421633'&#13;&#10;,'0000421634'&#13;&#10;,'0000421635'&#13;&#10;,'0000421636'&#13;&#10;,'0000421637'&#13;&#10;,'0000421638'&#13;&#10;,'0000421639'&#13;&#10;,'0000421640'&#13;&#10;,'0000421641'&#13;&#10;,'0000421642'&#13;&#10;,'0000421643'&#13;&#10;,'0000421644'&#13;&#10;,'0000421645'&#13;&#10;,'0000421646'&#13;&#10;,'0000421648'&#13;&#10;,'0000421649'&#13;&#10;,'0000421650'&#13;&#10;,'0000421651'&#13;&#10;,'0000421652'&#13;&#10;,'0000421653'&#13;&#10;,'0000421654'&#13;&#10;,'0000421655'&#13;&#10;,'0000421656'&#13;&#10;,'0000421657'&#13;&#10;,'0000421658'&#13;&#10;,'0000421659'&#13;&#10;,'0000421660'&#13;&#10;,'0000421661'&#13;&#10;,'0000421663'&#13;&#10;,'0000421664'&#13;&#10;,'0000421665'&#13;&#10;,'0000421666'&#13;&#10;,'0000421667'&#13;&#10;,'0000421668'&#13;&#10;,'0000421669'&#13;&#10;,'0000421670'&#13;&#10;,'0000421671'&#13;&#10;,'0000421672'&#13;&#10;,'0000421673'&#13;&#10;,'0000421674'&#13;&#10;,'0000421675'&#13;&#10;,'0000421676'&#13;&#10;,'0000421677'&#13;&#10;,'0000421678'&#13;&#10;,'0000421679'&#13;&#10;,'0000421680'&#13;&#10;,'0000421682'&#13;&#10;,'0000421683'&#13;&#10;,'0000421684'&#13;&#10;,'0000421685'&#13;&#10;,'0000421686'&#13;&#10;,'0000421687'&#13;&#10;,'0000421688'&#13;&#10;,'0000421689'&#13;&#10;,'0000421690'&#13;&#10;,'0000421691'&#13;&#10;,'0000421692'&#13;&#10;,'0000421695'&#13;&#10;,'0000421696'&#13;&#10;,'0000421699'&#13;&#10;,'0000421700'&#13;&#10;,'0000421701'&#13;&#10;,'0000421702'&#13;&#10;,'0000421703'&#13;&#10;,'0000421704'&#13;&#10;,'0000421705'&#13;&#10;,'0000421706'&#13;&#10;,'0000421712'&#13;&#10;,'0000421718'&#13;&#10;,'0000421722'&#13;&#10;,'0000421723'&#13;&#10;,'0000421725'&#13;&#10;,'0000421726'&#13;&#10;,'0000421727'&#13;&#10;,'0000421728'&#13;&#10;,'0000421734'&#13;&#10;,'0000421736'&#13;&#10;,'0000421737'&#13;&#10;,'0000421738'&#13;&#10;,'0000421739'&#13;&#10;,'0000421740'&#13;&#10;,'0000421741'&#13;&#10;,'0000421742'&#13;&#10;,'0000421743'&#13;&#10;,'0000421744'&#13;&#10;,'0000421745'&#13;&#10;,'0000421747'&#13;&#10;,'0000421748'&#13;&#10;,'0000421749'&#13;&#10;,'0000421750'&#13;&#10;,'0000421753'&#13;&#10;,'0000421754'&#13;&#10;,'0000421755'&#13;&#10;,'0000421758'&#13;&#10;,'0000421759'&#13;&#10;,'0000421760'&#13;&#10;,'0000421761'&#13;&#10;,'0000413963'&#13;&#10;,'0000413967'&#13;&#10;,'0000416441'&#13;&#10;,'0000418103'&#13;&#10;,'0000418105'&#13;&#10;,'0000419281'&#13;&#10;,'0000419282'&#13;&#10;,'0000419283'&#13;&#10;,'0000420470'&#13;&#10;,'0000420717'&#13;&#10;,'0000420718'&#13;&#10;,'0000421093'&#13;&#10;,'0000421110'&#13;&#10;,'0000421211'&#13;&#10;,'0000421243'&#13;&#10;,'0000421295'&#13;&#10;,'0000421296'&#13;&#10;,'0000421297'&#13;&#10;,'0000421300'&#13;&#10;,'0000421301'&#13;&#10;,'0000421302'&#13;&#10;,'0000421327'&#13;&#10;,'0000421362'&#13;&#10;,'0000421391'&#13;&#10;,'0000421414'&#13;&#10;,'0000421416'&#13;&#10;,'0000421417'&#13;&#10;,'0000421551'&#13;&#10;,'0000421573'&#13;&#10;,'0000421574'&#13;&#10;,'0000421693'&#13;&#10;,'0000421746'&#13;&#10;,'0000421762'&#13;&#10;)&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SOP_TDM_MXBI01_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" show="false" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Document"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Document_Item"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Delivery"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Delivery_Item"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Goods_Movement"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Goods_Movement_Item"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Date_on_Which_Delivery_Was_Created"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Date_on_Which_Goods_Movement_Was_Created"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Delivered_Qty"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DQ_Unit_of_Measure"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Goods_Movement_Qty"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GM_Unit_of_Measure"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="Document_Flow_II" name="tDBInput_2">
+      <column comment="" key="false" length="10" name="Sales_Document" nullable="true" originalDbColumnName="Sales Document" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Sales_Document_Item" nullable="true" originalDbColumnName="Sales Document Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Delivery" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Delivery_Item" nullable="true" originalDbColumnName="Delivery Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Goods_Movement" nullable="true" originalDbColumnName="Goods Movement" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Goods_Movement_Item" nullable="true" originalDbColumnName="Goods Movement Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Date_on_Which_Delivery_Was_Created" nullable="true" originalDbColumnName="Date on Which Delivery Was Created" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Date_on_Which_Goods_Movement_Was_Created" nullable="true" originalDbColumnName="Date on Which Goods Movement Was Created" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="15" name="Delivered_Qty" nullable="true" originalDbColumnName="Delivered Qty" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="3" name="DQ_Unit_of_Measure" nullable="true" originalDbColumnName="DQ Unit of Measure" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="15" name="Goods_Movement_Qty" nullable="true" originalDbColumnName="Goods Movement Qty" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="3" name="GM_Unit_of_Measure" nullable="true" originalDbColumnName="GM Unit of Measure" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+    </metadata>
+  </node>
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="832" posY="288">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_2"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlOutput"/>
+    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
+    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
+    <elementParameter field="CHECK" name="STARTABLE" show="false" value="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
+    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlOutput"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SOP_AmericasBI_Server"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SOP_AmericasBI_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SOP_AmericasBI_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:2iYZawaQLJ7T/Q24vgTgRHAQ4bL1+h1yW8OJz9LtfuM5gT7+jot8S5rTU0ic3/g9MKuanyqcZh2JmRA="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Document Flow II&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
+    <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
+    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
+    <elementParameter field="LABEL" name="NOTE" show="false" value="NOTE: batch size must be less than or equal to total number of parameter markers divided by number of columns"/>
+    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" show="false" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="Sales_Document"/>
+    <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
+    <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w - Document_Flow_II"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SOP_AmericasBI_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="CHECK" name="USE_ALTERNATE_SCHEMA" show="false" value="false"/>
+    <elementParameter field="TEXT" name="ALTERNATE_SCHEMA" show="false" value="&quot;&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TABLE" name="ADD_COLS"/>
+    <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
+    <elementParameter field="TABLE" name="FIELD_OPTIONS" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Document"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Document_Item"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Delivery"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Delivery_Item"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Goods_Movement"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Goods_Movement_Item"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Date_on_Which_Delivery_Was_Created"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Date_on_Which_Goods_Movement_Was_Created"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Delivered_Qty"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DQ_Unit_of_Measure"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Goods_Movement_Qty"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GM_Unit_of_Measure"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
+    <elementParameter field="CHECK" name="SUPPORT_NULL_WHERE" value="false"/>
+    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
+    <elementParameter field="TEXT" name="BATCH_SIZE" value="10000"/>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="Document_Flow_II" name="tDBOutput_2">
+      <column comment="" key="false" length="10" name="Sales_Document" nullable="true" originalDbColumnName="Sales Document" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Sales_Document_Item" nullable="true" originalDbColumnName="Sales Document Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Delivery" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Delivery_Item" nullable="true" originalDbColumnName="Delivery Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Goods_Movement" nullable="true" originalDbColumnName="Goods Movement" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Goods_Movement_Item" nullable="true" originalDbColumnName="Goods Movement Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Date_on_Which_Delivery_Was_Created" nullable="true" originalDbColumnName="Date on Which Delivery Was Created" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Date_on_Which_Goods_Movement_Was_Created" nullable="true" originalDbColumnName="Date on Which Goods Movement Was Created" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="15" name="Delivered_Qty" nullable="true" originalDbColumnName="Delivered Qty" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="3" name="DQ_Unit_of_Measure" nullable="true" originalDbColumnName="DQ Unit of Measure" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="15" name="Goods_Movement_Qty" nullable="true" originalDbColumnName="Goods Movement Qty" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="3" name="GM_Unit_of_Measure" nullable="true" originalDbColumnName="GM Unit of Measure" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+    </metadata>
+    <metadata connector="REJECT" label="Document_Flow_II" name="REJECT">
+      <column comment="" key="false" length="10" name="Sales_Document" nullable="true" originalDbColumnName="Sales Document" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Sales_Document_Item" nullable="true" originalDbColumnName="Sales Document Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Delivery" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Delivery_Item" nullable="true" originalDbColumnName="Delivery Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Goods_Movement" nullable="true" originalDbColumnName="Goods Movement" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="6" name="Goods_Movement_Item" nullable="true" originalDbColumnName="Goods Movement Item" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Date_on_Which_Delivery_Was_Created" nullable="true" originalDbColumnName="Date on Which Delivery Was Created" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Date_on_Which_Goods_Movement_Was_Created" nullable="true" originalDbColumnName="Date on Which Goods Movement Was Created" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="15" name="Delivered_Qty" nullable="true" originalDbColumnName="Delivered Qty" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="3" name="DQ_Unit_of_Measure" nullable="true" originalDbColumnName="DQ Unit of Measure" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="15" name="Goods_Movement_Qty" nullable="true" originalDbColumnName="Goods Movement Qty" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="3" name="GM_Unit_of_Measure" nullable="true" originalDbColumnName="GM Unit of Measure" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tParallelize" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tParallelize_1"/>
+    <elementParameter field="CLOSED_LIST" name="WAIT_FOR" value="All"/>
+    <elementParameter field="TEXT" name="SLEEPTIME" value="100"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tDBOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
+  </connection>
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tDBOutput_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tParallelize_1" target="tDBInput_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tParallelize_1" target="tDBInput_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_fbf87c25-0c50-451a-845b-b4ce58565011"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RTwty9dbHc000ndcmXRnNYLP+UQbCDP1JNr68+FZN6V43drT0F4ozruGqlv4MpCsRsIYogzFHaTg&#13;
-W3FrUrFhWA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_610cc0d1-88c4-47f0-ae03-035ed116e11d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>PxIeIIso8bK4ogPhxKzkR/Mx9jJ9N/2zzqUyYRISDhg8cuxzphI7MkNU9lVoQ7sAkVTGuXseHltx&#13;
-BtOQSJ0GIg==</DigestValue></Reference></SignedInfo><SignatureValue>pJbBYysvl67T6cKAXy3ch+cGO09hUJ55wnNPG2cwjIwIQFoMLspEnuQSrV4B2CbnvZO0WEkvfLTn&#13;
-JpwN0aSgQgyUuCGa1iMNP3XNelD6yEH0qlx/bH1uapB7+iukAf90iHMKul3kR+0k2ADuntHxSePO&#13;
-fbER2cwwzyC+oJarju5pf7iWNwlfqFrUOME9rzurVorgD88QVYjSoGmqGQa6eOJRtQfTY2ayn+mN&#13;
-+c4+3pvQ8fbVwicF4JWQwvTcXLnW3Rtjvcd57r/Ii6x1Vpr8oy49+tJe4whxj/VQ6xr6CFucY6XO&#13;
-7nOZsJXQGLRLFMCiQXaaWq5jAjrbxftTvdQ3Sw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tParallelize_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_c5345c7b-f091-4359-b664-0d6597dbd73f"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>KdC/biffP3Gz+QRMA4rC95ZYEnBN313F3be0UqnB/PWNPmt8KK+WQD9zM13Rfp9O+qhgt2V/YXNw&#13;
+VBk/tDC11Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_268912bb-6dff-4c70-a7f2-b9d0a6c3530c"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>EIUmh5jfF7IloeTW9JMY9h9oUvHI22SNme/+iYnTjhuO4DEtTiN424YnNVk3HbKJpCwtWquIlwxU&#13;
+RUGi1kA2nA==</DigestValue></Reference></SignedInfo><SignatureValue>eFre1qNN7HmdWRZwVzTSDfGprB+Raj2gf60lOXJNpz7xh6WlWgPBvxt2fpEoB2O06S9bhyzsUXIG&#13;
+tos+aK8UD/thMmk0XtXu1LA2dDeO5QI8BWFoULYBvcjAwXgFQlWdd6qFrfGV6WBOdZ+w1m6t1a+N&#13;
+5/RfJKfNSb/MzHrLYcHqA3vHqtA+02aDFC4lZsQLcI3ZQ1lVKqbNYMdrJmXCpeEwqyDU2I31KvSf&#13;
+0rhxPpg6dxp6RNQ9W3ABBEpvA16zg7nYuUnsoFNTVavA7fiLOEuyaF+adtrzPrSx18Yxyi2vIYDK&#13;
+91DHxEIriVHLiW/uxRtLl42hU0k8u1Cke1qSJw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -465,4 +790,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_610cc0d1-88c4-47f0-ae03-035ed116e11d" Target="#_fbf87c25-0c50-451a-845b-b4ce58565011"><Timestamp>2024-01-18 20:44:37</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_268912bb-6dff-4c70-a7f2-b9d0a6c3530c" Target="#_c5345c7b-f091-4359-b664-0d6597dbd73f"><Timestamp>2024-01-18 20:47:37</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
