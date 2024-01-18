@@ -407,7 +407,7 @@
         <mapperTableEntries expression="row1.Delete_Target" name="Delete_Target" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.SOP_DW" name="SOP_DW" nullable="true" type="id_String"/>
         <mapperTableEntries expression="!Relational.ISNULL(row3.New_Hierarchies) ? row3.New_Hierarchies : row1.Product_Hierarchy " name="Product_Hierarchy" type="id_String"/>
-        <mapperTableEntries expression="row1.Ship_to_party" name="Ship_to_party" type="id_String"/>
+        <mapperTableEntries expression="!Relational.ISNULL(row4.GSAP) ? row4.GSAP : row1.Ship_to_party " name="Ship_to_party" type="id_String"/>
         <mapperTableEntries expression="row1.Freight_costs" name="Freight_costs" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries expression="row1.Type" name="Type" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Exchange_Rate" name="Exchange_Rate" nullable="true" type="id_BigDecimal"/>
@@ -495,6 +495,10 @@
         <mapperTableEntries name="Segment" nullable="true" type="id_String"/>
         <mapperTableEntries name="Subsegment" nullable="true" type="id_String"/>
         <mapperTableEntries name="New_Hierarchies" nullable="true" type="id_String"/>
+      </inputTables>
+      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row4" sizeState="INTERMEDIATE">
+        <mapperTableEntries name="GSAP" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.Ship_to_party " name="Customer_old" nullable="true" operator="=" type="id_String"/>
       </inputTables>
     </nodeData>
   </node>
@@ -1249,6 +1253,50 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="736" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:LoygOgmsv8061nEXlG/D3QJDv6rY4QP0xBQI2Z/dYeXiLS9fN7KxDHxBY6BEJem3H6F8rpw="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Customer_Mapping&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [GSAP]&#13;&#10;      ,[Customer old]&#13;&#10;  FROM [dbo].[Customer_Mapping]&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="GSAP"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Customer_old"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_3">
+      <column comment="" key="false" length="255" name="GSAP" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Customer_old" nullable="true" originalDbColumnName="Customer old" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
@@ -1269,18 +1317,22 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
   </connection>
+  <connection connectorName="FLOW" label="row4" lineStyle="8" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tMap_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row4"/>
+  </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_37646bd8-fbba-4251-8c53-3d1c9c9a339d"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>6JlrOtP5mv6tZf4OdvIqp1QFHkRNG+zlcDO3L3Yv7yfmWuyPIPcmQwAapmDcc7RPY7Fi5MIb3Vif&#13;
-+ILY1Lct+A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_4be27c8d-e5d4-4c94-ab60-0e4c06ee0b0c"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>CPb+IAIPEkyw3LDoTfPTWTlhZgVD03xRSXM/NxAXnjwzH9717CTEIf3BM5G7wMHNStTM/CAI5j8U&#13;
-oTgJ3NRliw==</DigestValue></Reference></SignedInfo><SignatureValue>NZAB4EI+uoiVxveupC/TJCLrYTC0rgPNqwcyITppdhgCVQMZbp0kiJFBGYC3Ccarl/FuxmTxW5kY&#13;
-NPsDpKFRM5EOssw8GLxNUBbHusVKlX9fi+vmaX0F1a+uWPWqIStM6ZIV5SpnS+3uzwbZ19S/QAyV&#13;
-1YDn1FbMZYG+mkbVo6WrkcQ1rJS4gA6mdxXLB/XGr+bFK7MtvPQBwth0MTpg8y/Do/uZy/V6eci2&#13;
-u/Nh5XMDRLVYYgRow0kQjkctklcWxaJVSgWYw523sjHQERgZdhbFNaF4DdxWbzfgnGg+vWKsWiab&#13;
-WVFbbCSGxO5Ach57TDEObzRwzQgHT0kbu7YtUA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_51fe1bad-af64-4d42-aba7-2f435677e89a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>mMpJlv+56WDflPOyO4pzhj5xiiOWamSlv0H37/SiG80UKv3vSFMJtx7N9UbsDGrQduIB8PweC1jU&#13;
+nsS8LnZDpQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_3a2d9746-10d7-4922-bb4a-5e35dd810d8d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ns14FwRuZELgqS4Fh6IONRPlQuzQ0Eb02Cuo6rPaN/rOy8n7CCp/xOT7x8j69dbxSc5rEtV2zF2D&#13;
+7kteRTOGfg==</DigestValue></Reference></SignedInfo><SignatureValue>CSApmmEnCuUXbZj2ZYNHzmlztFFibR72mzC8sWUPxuSuswgcv71r63h1xCDyd5wrySOqE8lICRn5&#13;
+jPdFRs//yraKNV94bzmi9rYXGrQdcoSD9wz1ANLVs1XAgdnAMQhfaARK1T9a40mO/oEwlNo791II&#13;
+q/YriN8Wug8ptsPThY5/PPKzMUTBx1g+CAKPtM/jHiVc9PL5Vil6DmLVgMrXqxLrqAqQ6V4gUxdW&#13;
+NdCjIX8IidYgFQ0z8Pg97ihOSl5U3pJxIUwkxOxrWUQMBGkw2sHgNFokZ1k22FTxl/64vQwAdU5a&#13;
+1OhJ9yf3SAhUFbjHLSnM+rB0W02kv5V+xii5Gg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1302,4 +1354,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_4be27c8d-e5d4-4c94-ab60-0e4c06ee0b0c" Target="#_37646bd8-fbba-4251-8c53-3d1c9c9a339d"><Timestamp>2023-12-20 19:10:53</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_3a2d9746-10d7-4922-bb4a-5e35dd810d8d" Target="#_51fe1bad-af64-4d42-aba7-2f435677e89a"><Timestamp>2024-01-18 16:59:28</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
