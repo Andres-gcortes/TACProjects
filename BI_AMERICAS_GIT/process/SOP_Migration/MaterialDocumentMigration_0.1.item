@@ -151,14 +151,12 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SOP_TDM_MXBI01_Database"/>
     <elementParameter field="TEXT" name="USER" value="context.SOP_TDM_MXBI01_Login"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:IcyqKat8daj9duZ6d63xzuRQEGog6v24zQVGfdQnNh/DZ/HY9UzAvvZovub3KPw9t7yKJqwtyL0D7BU="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_615b0ApfEeez1Kus8LAijg - Material_Document"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Material Document&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Number of Material Document]&#13;&#10;      ,[Material Document Year]&#13;&#10;      ,[Line number]&#13;&#10;      ,[Document date]&#13;&#10;      ,[Posting date]&#13;&#10;      ,[Accounting date]&#13;&#10;      ,[Reference]&#13;&#10;      ,[Delivery]&#13;&#10;      ,[Movement type]&#13;&#10;      ,[Material number]&#13;&#10;      ,CASE WHEN [Plant] = '1000' THEN '3101' &#13;&#10;&#9;&#9;&#9;&#9;&#9;WHEN [Plant] = '2000' THEN '3102' &#13;&#10;&#9;&#9;&#9;&#9;    WHEN [Plant] = '3000' THEN '3103'&#13;&#10;&#9;&#9;END [Plant]&#13;&#10;      ,[Storage Location]&#13;&#10;      ,[Batch Number]&#13;&#10;      ,[Special Stock Indicator]&#13;&#10;      ,[Customer number]&#13;&#10;      ,[Sales Order Number]&#13;&#10;      ,[Item Number in Sales Order]&#13;&#10;      ,[Debit/Credit Indicator]&#13;&#10;      ,[Currency Key]&#13;&#10;      ,[Amount]&#13;&#10;      ,[Quantity]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,[Purchase Order Number]&#13;&#10;      ,[Item Number of Purchasing Document]&#13;&#10;      ,[Order Number]&#13;&#10;      ,[Order Item Number]&#13;&#10;      ,[Amount in Local Currency]&#13;&#10;      ,[Currency Key Original]&#13;&#10;  FROM [dbo].[Material Document] M&#13;&#10;&#9;INNER JOIN [SAP].[dbo].[TVKWZ] T&#13;&#10;&#9;&#9;ON M.[Plant] = T.[WERKS]&#13;&#10;WHERE T.[VKORG] = '0001'&#13;&#10;AND M.[Plant] IN ('1000', '2000', '3000')&#13;&#10;AND [Posting Date] BETWEEN '20220101' AND '20220131'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Number of Material Document]&#13;&#10;      ,[Material Document Year]&#13;&#10;      ,[Line number]&#13;&#10;      ,[Document date]&#13;&#10;      ,[Posting date]&#13;&#10;      ,[Accounting date]&#13;&#10;      ,[Reference]&#13;&#10;      ,[Delivery]&#13;&#10;      ,[Movement type]&#13;&#10;      ,[Material number]&#13;&#10;      ,CASE WHEN [Plant] = '1000' THEN '3101' &#13;&#10;&#9;&#9;&#9;&#9;&#9;WHEN [Plant] = '2000' THEN '3102' &#13;&#10;&#9;&#9;&#9;&#9;    WHEN [Plant] = '3000' THEN '3103'&#13;&#10;&#9;&#9;END [Plant]&#13;&#10;      ,[Storage Location]&#13;&#10;      ,[Batch Number]&#13;&#10;      ,[Special Stock Indicator]&#13;&#10;      ,[Customer number]&#13;&#10;      ,[Sales Order Number]&#13;&#10;      ,[Item Number in Sales Order]&#13;&#10;      ,[Debit/Credit Indicator]&#13;&#10;      ,[Currency Key]&#13;&#10;      ,[Amount]&#13;&#10;      ,[Quantity]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,[Purchase Order Number]&#13;&#10;      ,[Item Number of Purchasing Document]&#13;&#10;      ,[Order Number]&#13;&#10;      ,[Order Item Number]&#13;&#10;      ,[Amount in Local Currency]&#13;&#10;      ,[Currency Key Original]&#13;&#10;&#9;  ,CASE WHEN [Plant] = '1000' THEN 'FL' &#13;&#10;&#9;&#9;&#9;&#9;&#9;WHEN [Plant] = '2000' THEN 'FR' &#13;&#10;&#9;&#9;&#9;&#9;    WHEN [Plant] = '3000' THEN 'AI'&#13;&#10;&#9;&#9;END [Division]&#13;&#10;      ,T.[VKORG] [Sales Organization]&#13;&#10;  FROM [dbo].[Material Document] M&#13;&#10;&#9;INNER JOIN [SAP].[dbo].[TVKWZ] T&#13;&#10;&#9;&#9;ON M.[Plant] = T.[WERKS]&#13;&#10;WHERE T.[VKORG] = '0001'&#13;&#10;AND M.[Plant] IN ('1000', '2000', '3000')&#13;&#10;AND [Posting Date] BETWEEN '20220101' AND '20220131'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -225,96 +223,46 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Currency_Key_Original"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Organization"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__ old SOP"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="Material_Document" name="tDBInput_1">
-      <column comment="" key="true" length="10" name="Number_of_Material_Document" nullable="false" originalDbColumnName="Number of Material Document" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="true" length="4" name="Material_Document_Year" nullable="false" originalDbColumnName="Material Document Year" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="true" length="4" name="Line_number" nullable="false" originalDbColumnName="Line number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Document_date" nullable="true" originalDbColumnName="Document date" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Posting_date" nullable="true" originalDbColumnName="Posting date" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Accounting_date" nullable="true" originalDbColumnName="Accounting date" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="16" name="Reference" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Delivery" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="3" name="Movement_type" nullable="true" originalDbColumnName="Movement type" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="4" name="Plant" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="4" name="Storage_Location" nullable="true" originalDbColumnName="Storage Location" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Batch_Number" nullable="true" originalDbColumnName="Batch Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="1" name="Special_Stock_Indicator" nullable="true" originalDbColumnName="Special Stock Indicator" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Sales_Order_Number" nullable="true" originalDbColumnName="Sales Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="6" name="Item_Number_in_Sales_Order" nullable="true" originalDbColumnName="Item Number in Sales Order" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="1" name="Debit_Credit_Indicator" nullable="true" originalDbColumnName="Debit/Credit Indicator" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="5" name="Currency_Key" nullable="true" originalDbColumnName="Currency Key" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="13" name="Amount" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="13" name="Quantity" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="3" name="Base_Unit_of_Measure" nullable="true" originalDbColumnName="Base Unit of Measure" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Purchase_Order_Number" nullable="true" originalDbColumnName="Purchase Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="5" name="Item_Number_of_Purchasing_Document" nullable="true" originalDbColumnName="Item Number of Purchasing Document" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="12" name="Order_Number" nullable="true" originalDbColumnName="Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="4" name="Order_Item_Number" nullable="true" originalDbColumnName="Order Item Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="13" name="Amount_in_Local_Currency" nullable="true" originalDbColumnName="Amount in Local Currency" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="5" name="Currency_Key_Original" nullable="true" originalDbColumnName="Currency Key Original" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
+    <metadata connector="FLOW" name="tDBInput_1">
+      <column comment="" key="false" length="10" name="Number_of_Material_Document" nullable="false" originalDbColumnName="Number of Material Document" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Material_Document_Year" nullable="false" originalDbColumnName="Material Document Year" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Line_number" nullable="false" originalDbColumnName="Line number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Document_date" nullable="true" originalDbColumnName="Document date" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Posting_date" nullable="true" originalDbColumnName="Posting date" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Accounting_date" nullable="true" originalDbColumnName="Accounting date" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="16" name="Reference" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Delivery" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="Movement_type" nullable="true" originalDbColumnName="Movement type" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Storage_Location" nullable="true" originalDbColumnName="Storage Location" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="Batch_Number" nullable="true" originalDbColumnName="Batch Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="1" name="Special_Stock_Indicator" nullable="true" originalDbColumnName="Special Stock Indicator" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="Sales_Order_Number" nullable="true" originalDbColumnName="Sales Order Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="6" name="Item_Number_in_Sales_Order" nullable="true" originalDbColumnName="Item Number in Sales Order" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="1" name="Debit_Credit_Indicator" nullable="true" originalDbColumnName="Debit/Credit Indicator" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="Currency_Key" nullable="true" originalDbColumnName="Currency Key" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="Amount" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="Quantity" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="Base_Unit_of_Measure" nullable="true" originalDbColumnName="Base Unit of Measure" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Purchase_Order_Number" nullable="true" originalDbColumnName="Purchase Order Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="Item_Number_of_Purchasing_Document" nullable="true" originalDbColumnName="Item Number of Purchasing Document" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="12" name="Order_Number" nullable="true" originalDbColumnName="Order Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Order_Item_Number" nullable="true" originalDbColumnName="Order Item Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="Amount_in_Local_Currency" nullable="true" originalDbColumnName="Amount in Local Currency" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="Currency_Key_Original" nullable="true" originalDbColumnName="Currency Key Original" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Sales_Organization" nullable="false" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
@@ -418,92 +366,6 @@
         <additionalField key="Comment" value=""/>
       </column>
     </metadata>
-    <metadata connector="FLOW" name="out1">
-      <column comment="" key="true" length="10" name="Number_of_Material_Document" nullable="false" originalDbColumnName="Number of Material Document" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="true" length="4" name="Material_Document_Year" nullable="false" originalDbColumnName="Material Document Year" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="true" length="4" name="Line_number" nullable="false" originalDbColumnName="Line number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Document_date" nullable="true" originalDbColumnName="Document date" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Posting_date" nullable="true" originalDbColumnName="Posting date" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Accounting_date" nullable="true" originalDbColumnName="Accounting date" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="16" name="Reference" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Delivery" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="3" name="Movement_type" nullable="true" originalDbColumnName="Movement type" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="4" name="Plant" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="4" name="Storage_Location" nullable="true" originalDbColumnName="Storage Location" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Batch_Number" nullable="true" originalDbColumnName="Batch Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="1" name="Special_Stock_Indicator" nullable="true" originalDbColumnName="Special Stock Indicator" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Sales_Order_Number" nullable="true" originalDbColumnName="Sales Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="6" name="Item_Number_in_Sales_Order" nullable="true" originalDbColumnName="Item Number in Sales Order" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="1" name="Debit_Credit_Indicator" nullable="true" originalDbColumnName="Debit/Credit Indicator" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="5" name="Currency_Key" nullable="true" originalDbColumnName="Currency Key" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="13" name="Amount" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="13" name="Quantity" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="3" name="Base_Unit_of_Measure" nullable="true" originalDbColumnName="Base Unit of Measure" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Purchase_Order_Number" nullable="true" originalDbColumnName="Purchase Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="5" name="Item_Number_of_Purchasing_Document" nullable="true" originalDbColumnName="Item Number of Purchasing Document" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="12" name="Order_Number" nullable="true" originalDbColumnName="Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="4" name="Order_Item_Number" nullable="true" originalDbColumnName="Order Item Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="13" name="Amount_in_Local_Currency" nullable="true" originalDbColumnName="Amount in Local Currency" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="5" name="Currency_Key_Original" nullable="true" originalDbColumnName="Currency Key Original" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-    </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
       <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
@@ -517,12 +379,12 @@
         <mapperTableEntries expression="row1.Reference " name="Reference" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Delivery " name="Delivery" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Movement_type " name="Movement_type" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row3.KEY_TO " name="Material_number" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row2.Mat_final " name="Material_number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Plant " name="Plant" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Storage_Location " name="Storage_Location" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Batch_Number " name="Batch_Number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Special_Stock_Indicator " name="Special_Stock_Indicator" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row2.GSAP " name="Customer_number" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row2.Cust_final " name="Customer_number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Sales_Order_Number " name="Sales_Order_Number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Item_Number_in_Sales_Order " name="Item_Number_in_Sales_Order" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Debit_Credit_Indicator " name="Debit_Credit_Indicator" nullable="true" type="id_String"/>
@@ -536,44 +398,14 @@
         <mapperTableEntries expression="row1.Order_Item_Number " name="Order_Item_Number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Amount_in_Local_Currency " name="Amount_in_Local_Currency" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries expression="row1.Currency_Key_Original " name="Currency_Key_Original" nullable="true" type="id_String"/>
-      </outputTables>
-      <outputTables activateCondensedTool="true" name="out1" rejectInnerJoin="true" sizeState="INTERMEDIATE">
-        <mapperTableEntries expression="row1.Number_of_Material_Document " name="Number_of_Material_Document" type="id_String"/>
-        <mapperTableEntries expression="row1.Material_Document_Year " name="Material_Document_Year" type="id_String"/>
-        <mapperTableEntries expression="row1.Line_number " name="Line_number" type="id_String"/>
-        <mapperTableEntries expression="row1.Document_date " name="Document_date" nullable="true" type="id_Date"/>
-        <mapperTableEntries expression="row1.Posting_date " name="Posting_date" nullable="true" type="id_Date"/>
-        <mapperTableEntries expression="row1.Accounting_date " name="Accounting_date" nullable="true" type="id_Date"/>
-        <mapperTableEntries expression="row1.Reference " name="Reference" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Delivery " name="Delivery" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Movement_type " name="Movement_type" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Plant " name="Plant" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Storage_Location " name="Storage_Location" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Batch_Number " name="Batch_Number" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Special_Stock_Indicator " name="Special_Stock_Indicator" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Sales_Order_Number " name="Sales_Order_Number" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Item_Number_in_Sales_Order " name="Item_Number_in_Sales_Order" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Debit_Credit_Indicator " name="Debit_Credit_Indicator" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Currency_Key " name="Currency_Key" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Amount " name="Amount" nullable="true" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row1.Quantity " name="Quantity" nullable="true" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row1.Base_Unit_of_Measure " name="Base_Unit_of_Measure" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Purchase_Order_Number " name="Purchase_Order_Number" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Item_Number_of_Purchasing_Document " name="Item_Number_of_Purchasing_Document" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Order_Number " name="Order_Number" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Order_Item_Number " name="Order_Item_Number" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Amount_in_Local_Currency " name="Amount_in_Local_Currency" nullable="true" type="id_BigDecimal"/>
-        <mapperTableEntries expression="row1.Currency_Key_Original " name="Currency_Key_Original" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Material_number " name="Material_number" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Customer_number " name="Customer_number" nullable="true" type="id_String"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row1" sizeState="INTERMEDIATE">
         <mapperTableEntries name="Number_of_Material_Document" type="id_String"/>
         <mapperTableEntries name="Material_Document_Year" type="id_String"/>
         <mapperTableEntries name="Line_number" type="id_String"/>
-        <mapperTableEntries name="Document_date" nullable="true" type="id_Date"/>
-        <mapperTableEntries name="Posting_date" nullable="true" type="id_Date"/>
-        <mapperTableEntries name="Accounting_date" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="Document_date" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Posting_date" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Accounting_date" nullable="true" type="id_String"/>
         <mapperTableEntries name="Reference" nullable="true" type="id_String"/>
         <mapperTableEntries name="Delivery" nullable="true" type="id_String"/>
         <mapperTableEntries name="Movement_type" nullable="true" type="id_String"/>
@@ -596,116 +428,41 @@
         <mapperTableEntries name="Order_Item_Number" nullable="true" type="id_String"/>
         <mapperTableEntries name="Amount_in_Local_Currency" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries name="Currency_Key_Original" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Division" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Sales_Organization" type="id_String"/>
       </inputTables>
-      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
-        <mapperTableEntries name="GSAP" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row1.Customer_number " name="Customer_old" nullable="true" operator="=" type="id_String"/>
-      </inputTables>
-      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row3" sizeState="INTERMEDIATE">
-        <mapperTableEntries expression="row1.Material_number " name="KEY_FROM" nullable="true" operator="=" type="id_String"/>
-        <mapperTableEntries name="KEY_TO" nullable="true" type="id_String"/>
+      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
+        <mapperTableEntries expression="row1.Sales_Organization " name="Sales_Organization" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries expression="row1.Division " name="Distribution_Channel" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries expression="row1.Customer_number " name="Sold_to_party" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries expression="row1.Material_number " name="Material_Number" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries name="Sales_reference" nullable="true" type="id_String"/>
+        <mapperTableEntries name="KDMAT" nullable="true" type="id_String"/>
+        <mapperTableEntries name="POSTX" nullable="true" type="id_String"/>
+        <mapperTableEntries name="PRODH" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Profit_Center" nullable="true" type="id_String"/>
+        <mapperTableEntries name="MAKTX" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Customer_description" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Plant" nullable="true" type="id_String"/>
+        <mapperTableEntries name="LAND1" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Matched" nullable="true" type="id_String"/>
+        <mapperTableEntries name="SO_final" nullable="true" type="id_String"/>
+        <mapperTableEntries name="DC_final" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Cust_final" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Mat_final" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Div_final" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Grandparent_company__final" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Grandparent_company_name" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Add_Grandparent_company" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Parent_company__final" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Parent_company_name" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Add_Parent_company" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Sales_agent__final" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Sales_agent_name" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Add_Sales_agent" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Add_Customer" nullable="true" type="id_String"/>
       </inputTables>
     </nodeData>
-  </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="-32">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
-    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:WlDZroLFqY4ZzlKnG8JOkCIk8D/UBxlH2XGxd88XsTTGnN7QKsbOzXyMrFiSQi2lGO7AFxM="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg - Customer_Mapping"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Customer_Mapping&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Mapping.GSAP,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Mapping.\&quot;Customer old\&quot;&quot;&#10;+&quot;&#10;FROM&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Mapping&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="GSAP"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Customer_old"/>
-      <elementValue elementRef="TRIM" value="false"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="Customer_Mapping" name="tDBInput_2">
-      <column comment="" key="false" length="255" name="GSAP" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="255" name="Customer_old" nullable="true" originalDbColumnName="Customer old" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-    </metadata>
-  </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="-32">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
-    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:YDEs9k9O5SQn47wly9ZlB7Rv5sH/+yN/X4f2Qe0IeojmWEQgBTfRYKC5IxT7z5QnH1jCCYg="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg - Material_Mapping"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Material_Mapping&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Material_Mapping.KEY_FROM,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Material_Mapping.KEY_TO&quot;&#10;+&quot;&#10;FROM&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Material_Mapping&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="KEY_FROM"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="KEY_TO"/>
-      <elementValue elementRef="TRIM" value="false"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="Material_Mapping" name="tDBInput_3">
-      <column comment="" key="false" length="255" name="KEY_FROM" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="255" name="KEY_TO" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-    </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="672" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
@@ -1068,6 +825,201 @@
       </column>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="384" posY="-32">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
+    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
+    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
+    <elementParameter field="CHECK" name="START" show="false" value="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
+    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:lf+h6/6Z8OsuJYAD5gImokfzFK2pOC79tknGTFakdBVWipdpV3Nx/O7JmMqiBZs+SU/RAKA="/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg - Customer_Material_Mapping"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Customer_Material_Mapping&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales Organization\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Distribution Channel\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sold-to party\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Material Number\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales reference\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.KDMAT,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.POSTX,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.PRODH,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Profit Center\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.MAKTX,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Customer description\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.Plant,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.LAND1,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.Matched,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;SO final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;DC final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Cust final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Mat final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Div final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Grandparent company -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Grandparent company name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Grandparent company\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Parent company -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Parent company name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Parent company\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales agent -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales agent name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Sales agent\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Customer\&quot;&quot;&#10;+&quot;&#10;FROM&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Organization"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Distribution_Channel"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sold_to_party"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Material_Number"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_reference"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="KDMAT"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="POSTX"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PRODH"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Profit_Center"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="MAKTX"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Customer_description"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Plant"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="LAND1"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Matched"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SO_final"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DC_final"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Cust_final"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Mat_final"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Div_final"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Grandparent_company__final"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Grandparent_company_name"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Add_Grandparent_company"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Parent_company__final"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Parent_company_name"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Add_Parent_company"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_agent__final"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sales_agent_name"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Add_Sales_agent"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Add_Customer"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="Customer_Material_Mapping" name="tDBInput_2">
+      <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="40" name="Sales_reference" nullable="true" originalDbColumnName="Sales reference" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="35" name="KDMAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="40" name="POSTX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="18" name="PRODH" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Profit_Center" nullable="true" originalDbColumnName="Profit Center" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="40" name="MAKTX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="35" name="Customer_description" nullable="true" originalDbColumnName="Customer description" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="4" name="Plant" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="3" name="LAND1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="1" name="Matched" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="4" name="SO_final" nullable="true" originalDbColumnName="SO final" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="2" name="DC_final" nullable="true" originalDbColumnName="DC final" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Cust_final" nullable="true" originalDbColumnName="Cust final" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="18" name="Mat_final" nullable="true" originalDbColumnName="Mat final" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="2" name="Div_final" nullable="true" originalDbColumnName="Div final" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Grandparent_company__final" nullable="true" originalDbColumnName="Grandparent company -final" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="35" name="Grandparent_company_name" nullable="true" originalDbColumnName="Grandparent company name" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="1" name="Add_Grandparent_company" nullable="true" originalDbColumnName="Add Grandparent company" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="255" name="Parent_company__final" nullable="true" originalDbColumnName="Parent company -final" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="35" name="Parent_company_name" nullable="true" originalDbColumnName="Parent company name" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="1" name="Add_Parent_company" nullable="true" originalDbColumnName="Add Parent company" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Sales_agent__final" nullable="true" originalDbColumnName="Sales agent -final" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="35" name="Sales_agent_name" nullable="true" originalDbColumnName="Sales agent name" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="1" name="Add_Sales_agent" nullable="true" originalDbColumnName="Add Sales agent" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="1" name="Add_Customer" nullable="true" originalDbColumnName="Add Customer" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="224">
@@ -1437,123 +1389,31 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
-  <connection connectorName="FLOW" label="MaterialDocumentMigration" lineStyle="0" metaname="MaterialDocumentMigration" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_1" target="tDBOutput_1">
+  <connection connectorName="FLOW" label="MaterialDocumentMigration" lineStyle="0" metaname="MaterialDocumentMigration" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tDBOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="MaterialDocumentMigration"/>
-  </connection>
-  <connection connectorName="FLOW" label="out1" lineStyle="0" metaname="out1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tMap_1" target="tDBOutput_2">
-    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="Material_Document_Year"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Line_number"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Item_Number_in_Sales_Order"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Accounting_date"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Order_Item_Number"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Posting_date"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Base_Unit_of_Measure"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Currency_Key"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Item_Number_of_Purchasing_Document"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Plant"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Order_Number"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Customer_old"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Sales_Order_Number"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Amount_in_Local_Currency"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Reference"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Amount"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Quantity"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Purchase_Order_Number"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Document_date"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KEY_FROM"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Storage_Location"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Movement_type"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Batch_Number"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Debit_Credit_Indicator"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Special_Stock_Indicator"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Delivery"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Currency_Key_Original"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Customer_number"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Material_number"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="out1"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="8" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
-  </connection>
-  <connection connectorName="FLOW" label="row3" lineStyle="8" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tMap_1">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b99868a2-f484-4b93-99a2-57d6a0eb8fa9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ewpVYY5fF616f7SkROmGWWwRlzxmRWF9R86Zgw7HGJOFIryaoKfWgLvjF84Ko6GZoL1MDCtVuHkC&#13;
-Lrpms4R7Jg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_dac777f1-84dc-4e2b-88f2-470fca952271"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>GlmCpoRwzrwH2qXg9W8P16t+ReRU99oXlu2yVikSB9avF0qosP2TOdBFi/TfectUswm35une2VMT&#13;
-CNesy4Dv/w==</DigestValue></Reference></SignedInfo><SignatureValue>kNwdMwo4+S2iQAhiYq2etIO+IFOweO/umisyAY/GfTcm3wVt8/3027lBYkVe67t5xxUwXOSKnVCw&#13;
-/Z0k1nWs/XjLk+p5HEmDyk46j4qb+mXROGsv9oqnfMfBu6CKRqvSRZcCA/IWWBqbu5PrgCcAIpna&#13;
-bcSwMROadcxrFM/osdvy9LIMYzeYH1N4PWlBmVLNWAPeyGFzbpuJeb0+YbMWOzruT5NYyPPwBY2r&#13;
-iX4+hXtQfji+z1tCXShm57LahfffV3q5VnLCjevAs3jYohpyo75T6Tb9iFCiiq7XtyxldZDsA1w9&#13;
-0VePAPA0qt++QxHbL+mJS4Fffu/58uboQge1sw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_d8180f73-0fda-46f9-be87-2226b782c507"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>zRA0HNtOusVdcpHv7feJXMln6CyagJ1eJ75oN3UUl5UtuKD29QTKb0oMEBzYN9E6EzuHSptqhXlo&#13;
++WBvgs1OeA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_d556479d-0826-43db-877f-3c00f926fabd"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Y55NWlh/9LuI8v0u+aT07jXJZbN2rY610Mkyh0W9p4/Ztf8tWg2YxU8AZBG4j8+BhVGUOY0WG1Ji&#13;
+NInmrB3TaQ==</DigestValue></Reference></SignedInfo><SignatureValue>E0Gt6smC5pXf0FRT0m+zG38s5xzNWj0j7Gp1w6irENxFKsYdV4K8Ub7GN7za/R7O2T8CaTEETwbr&#13;
+oXf8zILsW5+jE5zKB9sx68poZ7aGK47EFCoVUwNe4d3nY/JQkoyaPCpEXVZtiZkmBWdQZT1CZDZS&#13;
+8Z/Wq6j+SWXUTWnwkERYia4+e/UbiEdyVKCEsaORCrJEhmFQ+trNLoA7U3sdpvzZzFDNcwPqILav&#13;
+sS47dfERoUNeVa71yjxQD1mhDlmLrn/sFEmonKomz8f+5cIhsxTusPnFVcm9HLXVUrxqZYCO8uGS&#13;
+2SJy5yt74CUm0BW8PNS0YMduE02MYjy7n4ORvg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1575,4 +1435,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_dac777f1-84dc-4e2b-88f2-470fca952271" Target="#_b99868a2-f484-4b93-99a2-57d6a0eb8fa9"><Timestamp>2024-01-19 17:03:42</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_d556479d-0826-43db-877f-3c00f926fabd" Target="#_d8180f73-0fda-46f9-be87-2226b782c507"><Timestamp>2024-01-19 18:35:20</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
