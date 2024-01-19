@@ -125,16 +125,6 @@
   </parameters>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -152,7 +142,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [SO final] [Sales Organization]&#13;&#10;&#9;  ,[DC final] [Distribution Channel]&#13;&#10;&#9;  ,[Div final] [Division]&#13;&#10;&#9;  ,[Cust final] [Customer number]&#13;&#10;&#9;  ,[Mat final] [Material number]&#13;&#10;&#9;  ,[Parent company -final] [Parent company]&#13;&#10;&#9;  ,[Sales Reference] [Sales reference]&#13;&#10;&#9;  ,[KDMAT] [Customer's material number]&#13;&#10;&#9;  ,[POSTX] [Customer's material description]&#13;&#10;&#9;  ,[Sales Reference] [Sales code]&#13;&#10;&#9;  ,[Sales agent -final] [Sales agent]&#13;&#10;&#9;  ,[Profit Center]&#13;&#10;&#9;  ,[Grandparent company -final] [Grandparent company]&#13;&#10;&#9;  ,[Division Segment] [Cust Mat Category Lvl 1] &#13;&#10;&#9;  ,MS.[Segment] [Cust Mat Category Lvl 2] &#13;&#10;&#9;  ,[Sub Segment] [Cust Mat Category Lvl 3]&#13;&#10;&#9;  ,[Level 4] [Cust Mat Category Lvl 4]&#13;&#10;&#9;  ,CASE WHEN [Material Number] Like 'V6%' THEN  'X' END [Tolling]&#13;&#10;&#9;  ,[Material Number] [Bulk Material]&#13;&#10;&#9;  ,[Plant]&#13;&#10;FROM [SAP_HANA].[dbo].[Customer_Material_Mapping] CM&#13;&#10;&#9;LEFT JOIN [SAP_HANA].[dbo].[Market_Segment_Mapping] MSM&#13;&#10;&#9;&#9;ON CM.[PRODH] = MSM.[Old Hierarchies]&#13;&#10;&#9;LEFT JOIN [SOP].[dbo].[Market Segment] MS&#13;&#10;&#9;&#9;ON MSM.[New Hierarchies] = MS.[Product Hierarchy]&#13;&#10;WHERE [Matched] IS NULL&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [SO final] [Sales Organization]&#13;&#10;&#9;  ,[DC final] [Distribution Channel]&#13;&#10;&#9;  ,[Div final] [Division]&#13;&#10;&#9;  ,[Cust final] [Customer number]&#13;&#10;&#9;  ,[Mat final] [Material number]&#13;&#10;&#9;  ,[Parent company -final] [Parent company]&#13;&#10;&#9;  ,[Sales Reference] [Sales reference]&#13;&#10;&#9;  ,[KDMAT] [Customer's material number]&#13;&#10;&#9;  ,[POSTX] [Customer's material description]&#13;&#10;&#9;  ,[Sales Reference] [Sales code]&#13;&#10;&#9;  ,[Sales agent -final] [Sales agent]&#13;&#10;&#9;  ,[Profit Center]&#13;&#10;&#9;  ,[Grandparent company -final] [Grandparent company]&#13;&#10;&#9;  ,[Division Segment] [Cust Mat Category Lvl 1] &#13;&#10;&#9;  ,MS.[Segment] [Cust Mat Category Lvl 2] &#13;&#10;&#9;  ,[Sub Segment] [Cust Mat Category Lvl 3]&#13;&#10;&#9;  ,[Level 4] [Cust Mat Category Lvl 4]&#13;&#10;&#9;  ,CASE WHEN [Material Number] Like 'V6%' THEN  'X' END [Tolling]&#13;&#10;&#9;  ,[Material Number] [Bulk Material]&#13;&#10;&#9;  ,[Plant]&#13;&#10;&#9;  ,'X' [Legacy Imported]&#13;&#10;FROM [SAP_HANA].[dbo].[Customer_Material_Mapping] CM&#13;&#10;&#9;LEFT JOIN [SAP_HANA].[dbo].[Market_Segment_Mapping] MSM&#13;&#10;&#9;&#9;ON CM.[PRODH] = MSM.[Old Hierarchies]&#13;&#10;&#9;LEFT JOIN [SOP].[dbo].[Market Segment] MS&#13;&#10;&#9;&#9;ON MSM.[New Hierarchies] = MS.[Product Hierarchy]&#13;&#10;WHERE [Matched] IS NULL&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -203,6 +193,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Plant"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Legacy_Imported"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
@@ -220,15 +212,16 @@
       <column comment="" key="false" length="40" name="Customer_s_material_description" nullable="true" originalDbColumnName="Customer's material description" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="Sales_code" nullable="true" originalDbColumnName="Sales code" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sales_agent" nullable="true" originalDbColumnName="Sales agent" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="Profit_Center" nullable="true" originalDbColumnName="Profit Center" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="Grandparent_company" nullable="true" originalDbColumnName="Grandparent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_1" nullable="true" originalDbColumnName="Cust Mat Category Lvl 1" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_2" nullable="true" originalDbColumnName="Cust Mat Category Lvl 2" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_3" nullable="true" originalDbColumnName="Cust Mat Category Lvl 3" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_4" nullable="true" originalDbColumnName="Cust Mat Category Lvl 4" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="1" name="Tolling" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="18" name="Bulk_Material" nullable="true" originalDbColumnName="Bulk Material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Profit_Center" nullable="true" originalDbColumnName="Profit Center" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Grandparent_company" nullable="true" originalDbColumnName="Grandparent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_1" nullable="true" originalDbColumnName="Cust Mat Category Lvl 1" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_2" nullable="true" originalDbColumnName="Cust Mat Category Lvl 2" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_3" nullable="true" originalDbColumnName="Cust Mat Category Lvl 3" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_4" nullable="true" originalDbColumnName="Cust Mat Category Lvl 4" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Tolling" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Bulk_Material" nullable="true" originalDbColumnName="Bulk Material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Legacy_Imported" nullable="true" originalDbColumnName="Legacy Imported" originalLength="1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="384" posY="128">
@@ -369,6 +362,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Legacy_Imported"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -391,15 +389,16 @@
       <column comment="" key="false" length="40" name="Customer_s_material_description" nullable="true" originalDbColumnName="Customer's material description" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="Sales_code" nullable="true" originalDbColumnName="Sales code" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sales_agent" nullable="true" originalDbColumnName="Sales agent" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="Profit_Center" nullable="true" originalDbColumnName="Profit Center" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="Grandparent_company" nullable="true" originalDbColumnName="Grandparent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_1" nullable="true" originalDbColumnName="Cust Mat Category Lvl 1" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_2" nullable="true" originalDbColumnName="Cust Mat Category Lvl 2" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_3" nullable="true" originalDbColumnName="Cust Mat Category Lvl 3" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_4" nullable="true" originalDbColumnName="Cust Mat Category Lvl 4" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="1" name="Tolling" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="18" name="Bulk_Material" nullable="true" originalDbColumnName="Bulk Material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Profit_Center" nullable="true" originalDbColumnName="Profit Center" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Grandparent_company" nullable="true" originalDbColumnName="Grandparent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_1" nullable="true" originalDbColumnName="Cust Mat Category Lvl 1" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_2" nullable="true" originalDbColumnName="Cust Mat Category Lvl 2" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_3" nullable="true" originalDbColumnName="Cust Mat Category Lvl 3" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_4" nullable="true" originalDbColumnName="Cust Mat Category Lvl 4" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Tolling" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Bulk_Material" nullable="true" originalDbColumnName="Bulk Material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Legacy_Imported" nullable="true" originalDbColumnName="Legacy Imported" originalLength="1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -413,20 +412,26 @@
       <column comment="" key="false" length="40" name="Customer_s_material_description" nullable="true" originalDbColumnName="Customer's material description" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="Sales_code" nullable="true" originalDbColumnName="Sales code" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sales_agent" nullable="true" originalDbColumnName="Sales agent" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="Profit_Center" nullable="true" originalDbColumnName="Profit Center" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="Grandparent_company" nullable="true" originalDbColumnName="Grandparent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_1" nullable="true" originalDbColumnName="Cust Mat Category Lvl 1" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_2" nullable="true" originalDbColumnName="Cust Mat Category Lvl 2" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_3" nullable="true" originalDbColumnName="Cust Mat Category Lvl 3" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="40" name="Cust_Mat_Category_Lvl_4" nullable="true" originalDbColumnName="Cust Mat Category Lvl 4" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="1" name="Tolling" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="18" name="Bulk_Material" nullable="true" originalDbColumnName="Bulk Material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Profit_Center" nullable="true" originalDbColumnName="Profit Center" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Grandparent_company" nullable="true" originalDbColumnName="Grandparent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_1" nullable="true" originalDbColumnName="Cust Mat Category Lvl 1" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_2" nullable="true" originalDbColumnName="Cust Mat Category Lvl 2" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_3" nullable="true" originalDbColumnName="Cust Mat Category Lvl 3" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="40" name="Cust_Mat_Category_Lvl_4" nullable="true" originalDbColumnName="Cust Mat Category Lvl 4" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Tolling" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Bulk_Material" nullable="true" originalDbColumnName="Bulk Material" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Legacy_Imported" nullable="true" originalDbColumnName="Legacy Imported" originalLength="1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tDBOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="Legacy_Imported"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
@@ -435,13 +440,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_8e5b3485-0530-468e-b2b7-3420720cc491"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>kk9LoVTFCYYJcVHkmPaGdqHTA4LUa/oCDXW1dPJpOmvMka6mdKLleHFYO3zlHVK0KF4XoyxHI1QC&#13;
-J0iXxCbh5g==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_5ec15596-e3af-413f-b004-c8713a3729cc"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>NHx6G6ycQ8FoWb1eXYJDndo99wEzj3Nbnpsv9/qmYZ4MdK/TVRaX3ECyxnCRBV36n/AG+ZBeWllB&#13;
-mNjCwq+qSg==</DigestValue></Reference></SignedInfo><SignatureValue>ed6jYDNXWEvSH4QHuQZt6UAJ4zcO2ms1jAMHtqIuuDC3mjb6FNcY0IAjdCw/Hc48AeabPxAdz5Rv&#13;
-ieHeN4wGLpgiUTOUjvmlW8AYGI4W5qqELt7iR/rONF1sY3GCHEw/BSCyKFuj7RexgfrZWeNeUMXS&#13;
-NzuPUueUvF+FsmCNMm1FA5rfK3u0FSWpZ0JbPkpJcDUZU5UF9mFTRY/B/4ksT0CKwJ8PkUaWBK7B&#13;
-ZYFSVvW4ki/HfxiXusiHd+GaaSvDhY1FRP2Uc7bgz3MZXTCp80unqWh9L7XkIBzjWVdoes1TepeJ&#13;
-rhUUBHmWE2/l3EoXWGcYa1Kv/2bEPW83JTtlgw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_3a70ae66-8deb-4d1b-9e48-983a8528ec98"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>sQBxqfVNdUt4eET+18tYQGmOGMs+/1UYZ0MTls40udoduV3jBh6bG4pG9VwuY8vYR7pg7jQPdLDp&#13;
+Jo+lkaFJLg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f462377e-9e73-442d-be4d-783afd41507d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>YmKbg/Pr9/jzvBMq0+2ua61+raQo1zOYTTQKS5Ty1bG7sYyYvRe/h0M0nf9SHqY5RH52F6W4wT0b&#13;
+53U9dFqmJQ==</DigestValue></Reference></SignedInfo><SignatureValue>dQzIVm27eTmzxUcog9QMm0/eBWBPozO/OsGxEoOGp7XbM2FGwdIE8dbkJTmisa3Ao8Le2uLibYBd&#13;
+OHsmG9H0xS1kQLvioVW80i0hFrT3je1cF/HdeNenIaip1n19reGgRfTOuhRa2JIweiWBzX443Ch6&#13;
+Pi2GsNpo4U7ySETrMJGg8gDFB8r0Pmh5kqqwlSsxXE3SkUkN75krVuYcAm5FSIAyg58mRH8MfbsV&#13;
+YwhO9rdygInm5uNGAgWL9hVCLbw5qOPRyfMZCnPzho1K1n6m/lK5J7lTP4JxJtMXmG5sRUwPersF&#13;
+o5y1NHkSLcgfhTM/TsAAZnakHQYkZNHo4zZnIA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -463,4 +468,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_5ec15596-e3af-413f-b004-c8713a3729cc" Target="#_8e5b3485-0530-468e-b2b7-3420720cc491"><Timestamp>2023-12-15 17:48:05</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f462377e-9e73-442d-be4d-783afd41507d" Target="#_3a70ae66-8deb-4d1b-9e48-983a8528ec98"><Timestamp>2024-01-19 17:02:02</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
