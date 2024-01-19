@@ -446,9 +446,6 @@
       <column comment="" key="false" length="3" name="Movement_type" nullable="true" originalDbColumnName="Movement type" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" key="false" length="255" name="KEY_FROM" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
       <column comment="" key="false" length="4" name="Plant" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -459,9 +456,6 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="1" name="Special_Stock_Indicator" nullable="true" originalDbColumnName="Special Stock Indicator" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="255" name="Customer_old" nullable="true" originalDbColumnName="Customer old" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="10" name="Sales_Order_Number" nullable="true" originalDbColumnName="Sales Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -501,6 +495,12 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="5" name="Currency_Key_Original" nullable="true" originalDbColumnName="Currency Key Original" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
     </metadata>
@@ -547,12 +547,10 @@
         <mapperTableEntries expression="row1.Reference " name="Reference" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Delivery " name="Delivery" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Movement_type " name="Movement_type" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row3.KEY_FROM " name="KEY_FROM" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Plant " name="Plant" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Storage_Location " name="Storage_Location" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Batch_Number " name="Batch_Number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Special_Stock_Indicator " name="Special_Stock_Indicator" nullable="true" type="id_String"/>
-        <mapperTableEntries expression="row2.Customer_old " name="Customer_old" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Sales_Order_Number " name="Sales_Order_Number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Item_Number_in_Sales_Order " name="Item_Number_in_Sales_Order" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Debit_Credit_Indicator " name="Debit_Credit_Indicator" nullable="true" type="id_String"/>
@@ -566,6 +564,8 @@
         <mapperTableEntries expression="row1.Order_Item_Number " name="Order_Item_Number" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row1.Amount_in_Local_Currency " name="Amount_in_Local_Currency" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries expression="row1.Currency_Key_Original " name="Currency_Key_Original" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.Material_number " name="Material_number" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.Customer_number " name="Customer_number" nullable="true" type="id_String"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row1" sizeState="INTERMEDIATE">
         <mapperTableEntries name="Number_of_Material_Document" type="id_String"/>
@@ -1153,11 +1153,6 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="KEY_FROM"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Plant"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
@@ -1174,11 +1169,6 @@
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Special_Stock_Indicator"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Customer_old"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
@@ -1248,6 +1238,16 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Material_number"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Customer_number"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -1286,9 +1286,6 @@
       <column comment="" key="false" length="3" name="Movement_type" nullable="true" originalDbColumnName="Movement type" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" key="false" length="255" name="KEY_FROM" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
       <column comment="" key="false" length="4" name="Plant" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -1299,9 +1296,6 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="1" name="Special_Stock_Indicator" nullable="true" originalDbColumnName="Special Stock Indicator" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="255" name="Customer_old" nullable="true" originalDbColumnName="Customer old" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="10" name="Sales_Order_Number" nullable="true" originalDbColumnName="Sales Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1341,6 +1335,12 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="5" name="Currency_Key_Original" nullable="true" originalDbColumnName="Currency Key Original" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
     </metadata>
@@ -1372,9 +1372,6 @@
       <column comment="" key="false" length="3" name="Movement_type" nullable="true" originalDbColumnName="Movement type" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" key="false" length="255" name="KEY_FROM" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
       <column comment="" key="false" length="4" name="Plant" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -1385,9 +1382,6 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="1" name="Special_Stock_Indicator" nullable="true" originalDbColumnName="Special Stock Indicator" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" key="false" length="255" name="Customer_old" nullable="true" originalDbColumnName="Customer old" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="10" name="Sales_Order_Number" nullable="true" originalDbColumnName="Sales Order Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1427,6 +1421,12 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="5" name="Currency_Key_Original" nullable="true" originalDbColumnName="Currency Key Original" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -1524,6 +1524,12 @@
       <elementValue elementRef="TRACE_COLUMN" value="Currency_Key_Original"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Customer_number"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Material_number"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="out1"/>
@@ -1541,13 +1547,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_3ccb09dc-453b-4cfa-8e99-51483c3f1241"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>dVdV46pVSpVt2QET0M2L9Kg7nj4boP0Us1AtEhY5pDL47i1JDyTVLxmPyy7eOm2ONnN1/Iqetesb&#13;
-8t+s+eK70g==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_0269f6ec-ea40-436f-8805-4a7d4e5148a6"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>4zTCpW8LnUfNbtdRRWvc3vaojK5jjI7ukGEM3tMiYjPrDvAA3OsfC+Jnon6FH73tAtDeT3GmQGVU&#13;
-wTeT8X2H6A==</DigestValue></Reference></SignedInfo><SignatureValue>npIQPldXYkwqOYjIcJj/3yCjY8hCsMf1j76dDNMIKmlkA9e96E2HQq9NsMN4lziNyntdlVjqN+Sf&#13;
-VMqMSFxI5/4wpZqiQr5OpEt9+YZvmsHuuagnb3UZcDO6ZYeM8f+ylCPPqJm/K17w/sXWD758P2TQ&#13;
-kcR162IyzVPFdCduei6qLbzQO3R+1ObYWMOcrNf10sM0CyyBJQ7Nz8fZIJXq8GaZRFQAUE1W8Fgd&#13;
-t0h7d7tto/y22Kk8WNxMmPFbFutYATPwFTjjoC2hBcfTIJaB2lPCehXTTqiEgWc3+0L08dmTzfir&#13;
-DDh80YtaXZbc58BM7GiVwJj+6x/RlQHPg5SBVA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b99868a2-f484-4b93-99a2-57d6a0eb8fa9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ewpVYY5fF616f7SkROmGWWwRlzxmRWF9R86Zgw7HGJOFIryaoKfWgLvjF84Ko6GZoL1MDCtVuHkC&#13;
+Lrpms4R7Jg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_dac777f1-84dc-4e2b-88f2-470fca952271"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>GlmCpoRwzrwH2qXg9W8P16t+ReRU99oXlu2yVikSB9avF0qosP2TOdBFi/TfectUswm35une2VMT&#13;
+CNesy4Dv/w==</DigestValue></Reference></SignedInfo><SignatureValue>kNwdMwo4+S2iQAhiYq2etIO+IFOweO/umisyAY/GfTcm3wVt8/3027lBYkVe67t5xxUwXOSKnVCw&#13;
+/Z0k1nWs/XjLk+p5HEmDyk46j4qb+mXROGsv9oqnfMfBu6CKRqvSRZcCA/IWWBqbu5PrgCcAIpna&#13;
+bcSwMROadcxrFM/osdvy9LIMYzeYH1N4PWlBmVLNWAPeyGFzbpuJeb0+YbMWOzruT5NYyPPwBY2r&#13;
+iX4+hXtQfji+z1tCXShm57LahfffV3q5VnLCjevAs3jYohpyo75T6Tb9iFCiiq7XtyxldZDsA1w9&#13;
+0VePAPA0qt++QxHbL+mJS4Fffu/58uboQge1sw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1569,4 +1575,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_0269f6ec-ea40-436f-8805-4a7d4e5148a6" Target="#_3ccb09dc-453b-4cfa-8e99-51483c3f1241"><Timestamp>2024-01-19 16:59:44</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_dac777f1-84dc-4e2b-88f2-470fca952271" Target="#_b99868a2-f484-4b93-99a2-57d6a0eb8fa9"><Timestamp>2024-01-19 17:03:42</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
