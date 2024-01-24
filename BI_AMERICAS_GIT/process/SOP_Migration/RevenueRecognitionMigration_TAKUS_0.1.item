@@ -149,7 +149,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Billing Document]&#13;&#10;      ,[Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,[Revenue Recognition Date]&#13;&#10;      ,[Invoice Date]&#13;&#10;      ,[Sales Document]&#13;&#10;      ,[Billing Type]&#13;&#10;      ,[Sales unit]&#13;&#10;      ,[Net Value in Document Currency]&#13;&#10;      ,[Cost in document currency]&#13;&#10;      ,[Order Crt Date]&#13;&#10;      ,[Gross weight]&#13;&#10;      ,[Source]&#13;&#10;      ,[Delete Target]&#13;&#10;      ,[SOP_DW]&#13;&#10;      ,[Product Hierarchy]&#13;&#10;      ,[Ship-to party]&#13;&#10;      ,[Freight costs]&#13;&#10;      ,[Type]&#13;&#10;      ,[Exchange Rate]&#13;&#10;      ,[Exchange Rate Date]&#13;&#10;      ,[Do not affect MXN]&#13;&#10;  FROM [dbo].[Revenue Recognition]&#13;&#10;  WHERE [Sales Organization] = '0001'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Billing Document]&#13;&#10;      ,[Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,[Revenue Recognition Date]&#13;&#10;      ,[Invoice Date]&#13;&#10;      ,[Sales Document]&#13;&#10;      ,[Billing Type]&#13;&#10;      ,[Sales unit]&#13;&#10;      ,[Net Value in Document Currency]&#13;&#10;      ,[Cost in document currency]&#13;&#10;      ,[Order Crt Date]&#13;&#10;      ,[Gross weight]&#13;&#10;      ,[Source]&#13;&#10;      ,[Delete Target]&#13;&#10;      ,[SOP_DW]&#13;&#10;      ,[Product Hierarchy]&#13;&#10;      ,[Ship-to party]&#13;&#10;      ,[Freight costs]&#13;&#10;      ,[Type]&#13;&#10;      ,[Exchange Rate]&#13;&#10;      ,[Exchange Rate Date]&#13;&#10;      ,[Do not affect MXN]&#13;&#10;      ,CASE WHEN [Distribution Channel] = 'CH' THEN 'AI' ELSE [Distribution Channel] END [Division]&#13;&#10;  FROM [dbo].[Revenue Recognition]&#13;&#10;  WHERE [Sales Organization] = '0001'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -208,6 +208,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Do_not_affect_MXN"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
@@ -238,6 +240,7 @@
       <column comment="" defaultValue="" key="false" length="9" name="Exchange_Rate" nullable="true" originalDbColumnName="Exchange Rate" originalLength="-1" pattern="" precision="5" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Exchange_Rate_Date" nullable="true" originalDbColumnName="Exchange Rate Date" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="Do_not_affect_MXN" nullable="true" originalDbColumnName="Do not affect MXN" originalLength="-1" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="448" posY="256">
@@ -458,13 +461,14 @@
         <mapperTableEntries name="Exchange_Rate" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries name="Exchange_Rate_Date" nullable="true" type="id_Date"/>
         <mapperTableEntries name="Do_not_affect_MXN" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Division" nullable="true" type="id_String"/>
       </inputTables>
       <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Sales_Organization " name="Sales_Organization" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Distribution_Channel " name="Distribution_Channel" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Sold_to_party " name="Sold_to_party" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Material_Number " name="Material_Number" nullable="true" operator="=" type="id_String"/>
-        <mapperTableEntries expression="row1.Distribution_Channel " name="Division" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries expression="row1.Division  " name="Division" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries name="Sales_reference" nullable="true" type="id_String"/>
         <mapperTableEntries name="KDMAT" nullable="true" type="id_String"/>
         <mapperTableEntries name="POSTX" nullable="true" type="id_String"/>
@@ -1302,6 +1306,11 @@
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMap_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="Division"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
@@ -1335,13 +1344,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_28510ae8-d7ad-4149-870e-e082955c96ac"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>++f76wEdYR+vSC7qL6MUdTlYofO5f7N1F7jFs9a7N2W5tTartYN5GqqW38ri7MYHY/13Mc/ZkT9U&#13;
-pTSfgkUzxg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_666f68cb-590f-4e68-8b89-ba55a6a66241"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>4sOF38ttjt+1NsH65U251/NWJkc1BBopx3Gsbm4T4YKd6vbZLGwBGZ3+JtSfFymwfZS1/HiF00Zt&#13;
-4yDlNB0cuA==</DigestValue></Reference></SignedInfo><SignatureValue>cONLEF/+Xr/+24BLaqxGfpWmBZiPdsdxjJj4KDcsoJinUzyj2FEMjTuvZUfP8ODcSSFloSjKi0yc&#13;
-L7E5mUcBnUEd2UwQyDk+NxLZBN6AQgPSQT5HBTFukVXsVsMjSg1eUGGsg2kRalF8/YZ6doTzoZsB&#13;
-+ijvqGAbCcOzIDrsRh1XCSKvvyXWBANMdGpPZdRLCEbBWdo8HJmMwoxbEEiYSUwIPrEbvFJ350DV&#13;
-3scoLWAhLXupWDwtjZWF/8yuNsqILeILWDo5Wz88DTjxyTm/gD21Wz3dPpX0CsHxYCWnr/tK6T9G&#13;
-8BsJlf/Gl9TuuUs0QVDzYjB8Z5olFhXpK1HLcg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_2cd88d51-89ff-4b09-8220-2ccc34678f0e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>32/4LsRpi7/LZkjH5AT+dsKZZTGzsezXTWXFW2b9F/hZVjNXQCxIBKEokhjRkNC3/a1Ba1yqAJZB&#13;
+j/34M+A9GA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_29f2921f-b425-4f1a-bc12-5e9342082c2d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>SaiI5HWhXPJyNhOSup1rnHVx5pfrnE+3yBYFzKOPfHrN3gjW5BTxhk4djQBVvbORfYB7iBwaax85&#13;
+hRscXCa0AQ==</DigestValue></Reference></SignedInfo><SignatureValue>LKkx2+cRlFlhiStWNbEKRA3HBvCHJDRo7YBkR53BkkWpGAx4nh1t5lDhrAf2EJUybTa90IfpbtCq&#13;
+tAjTcc8my1jCFHSMwpFuf+5KfMk4qwIjLHK/B82DIaO/+peyEJNNViI9bFQKzhfav99xP2X2kJH4&#13;
++vYJIdz46wIPv9x+oykVWv2infPnW50rFRElQRlutEm5qOOGfjEm4n3hu/CfNgqqmpmj35cW6oE7&#13;
+PcLtSlRnYHO+RmitUUPJE08ErhXzaUI8QGJtLs6ke/GHOKJ0vPZvPwoQ3y8Dn+3vdKzYDO7qdogb&#13;
+aqVKgsLxmMH73yZ3XUqlyjS+I33lWIgFKFyYpA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1363,4 +1372,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_666f68cb-590f-4e68-8b89-ba55a6a66241" Target="#_28510ae8-d7ad-4149-870e-e082955c96ac"><Timestamp>2024-01-23 22:45:46</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_29f2921f-b425-4f1a-bc12-5e9342082c2d" Target="#_2cd88d51-89ff-4b09-8220-2ccc34678f0e"><Timestamp>2024-01-24 17:46:11</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
