@@ -149,7 +149,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Billing Document]&#13;&#10;      ,[Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,[Revenue Recognition Date]&#13;&#10;      ,[Invoice Date]&#13;&#10;      ,[Sales Document]&#13;&#10;      ,[Billing Type]&#13;&#10;      ,[Sales unit]&#13;&#10;      ,[Net Value in Document Currency]&#13;&#10;      ,[Cost in document currency]&#13;&#10;      ,[Order Crt Date]&#13;&#10;      ,[Gross weight]&#13;&#10;      ,[Source]&#13;&#10;      ,[Delete Target]&#13;&#10;      ,[SOP_DW]&#13;&#10;      ,[Product Hierarchy]&#13;&#10;      ,[Ship-to party]&#13;&#10;      ,[Freight costs]&#13;&#10;      ,[Type]&#13;&#10;      ,[Exchange Rate]&#13;&#10;      ,[Exchange Rate Date]&#13;&#10;      ,[Do not affect MXN]&#13;&#10;      ,CASE WHEN [Distribution Channel] = 'CH' THEN 'AI' ELSE [Distribution Channel] END [Division]&#13;&#10;  FROM [dbo].[Revenue Recognition]&#13;&#10;  WHERE [Sales Organization] = '0001'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT RR.[Billing Document]&#13;&#10;      ,RR.[Sales Organization]&#13;&#10;      ,RR.[Distribution Channel]&#13;&#10;      ,RR.[Sold-to party]&#13;&#10;      ,RR.[Material Number]&#13;&#10;      ,RR.[Revenue Recognition Date]&#13;&#10;      ,RR.[Invoice Date]&#13;&#10;      ,RR.[Sales Document]&#13;&#10;      ,RR.[Billing Type]&#13;&#10;      ,RR.[Sales unit]&#13;&#10;      ,RR.[Net Value in Document Currency]&#13;&#10;      ,RR.[Cost in document currency]&#13;&#10;      ,RR.[Order Crt Date]&#13;&#10;      ,RR.[Gross weight]&#13;&#10;      ,RR.[Source]&#13;&#10;      ,RR.[Delete Target]&#13;&#10;      ,RR.[SOP_DW]&#13;&#10;      ,RR.[Product Hierarchy]&#13;&#10;      ,RR.[Ship-to party]&#13;&#10;      ,RR.[Freight costs]&#13;&#10;      ,RR.[Type]&#13;&#10;      ,RR.[Exchange Rate]&#13;&#10;      ,RR.[Exchange Rate Date]&#13;&#10;      ,RR.[Do not affect MXN]&#13;&#10;&#9;  ,CASE WHEN RR.[Distribution Channel] = 'CH'&#13;&#10;&#9;        THEN CASE CM.[Profit Center] WHEN '0000003000' THEN 'AI' WHEN '0000004000' THEN 'FC' WHEN '0000007000' THEN 'FC' END &#13;&#10;&#9;        ELSE CASE WHEN RR.[Distribution Channel] = 'FL' OR RR.[Distribution Channel] = 'EX' AND CM.[Profit Center] = '0000004000' &#13;&#10;&#9;&#9;&#9;          THEN 'FL' &#13;&#10;&#9;&#9;&#9;&#9;&#9;  ELSE CASE WHEN RR.[Distribution Channel] = 'FR' OR RR.[Distribution Channel] = 'EX' AND CM.[Profit Center] = '0000004001' &#13;&#10;&#9;&#9;&#9;&#9;&#9;            THEN 'FR' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   END&#13;&#10;&#9;&#9;&#9;&#9; END&#13;&#10;&#9;   END [Division]&#13;&#10;  FROM [dbo].[Revenue Recognition] RR&#13;&#10;&#9;INNER JOIN [dbo].[Customer Material] CM&#13;&#10;&#9;  ON RR.[Sales Organization] = CM.[Sales Organization]&#13;&#10;      AND RR.[Distribution Channel] = CM.[Distribution Channel] &#13;&#10;&#9;  AND RR.[Material Number] = CM.[Material number]&#13;&#10;&#9;  AND RR.[Sold-to party] = CM.[Customer number]&#13;&#10;WHERE RR.[Sales Organization] = '0001'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -388,7 +388,7 @@
       </column>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="RevRec" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Billing_Document" name="Billing_Document" type="id_String"/>
@@ -1344,13 +1344,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_2cd88d51-89ff-4b09-8220-2ccc34678f0e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>32/4LsRpi7/LZkjH5AT+dsKZZTGzsezXTWXFW2b9F/hZVjNXQCxIBKEokhjRkNC3/a1Ba1yqAJZB&#13;
-j/34M+A9GA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_29f2921f-b425-4f1a-bc12-5e9342082c2d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>SaiI5HWhXPJyNhOSup1rnHVx5pfrnE+3yBYFzKOPfHrN3gjW5BTxhk4djQBVvbORfYB7iBwaax85&#13;
-hRscXCa0AQ==</DigestValue></Reference></SignedInfo><SignatureValue>LKkx2+cRlFlhiStWNbEKRA3HBvCHJDRo7YBkR53BkkWpGAx4nh1t5lDhrAf2EJUybTa90IfpbtCq&#13;
-tAjTcc8my1jCFHSMwpFuf+5KfMk4qwIjLHK/B82DIaO/+peyEJNNViI9bFQKzhfav99xP2X2kJH4&#13;
-+vYJIdz46wIPv9x+oykVWv2infPnW50rFRElQRlutEm5qOOGfjEm4n3hu/CfNgqqmpmj35cW6oE7&#13;
-PcLtSlRnYHO+RmitUUPJE08ErhXzaUI8QGJtLs6ke/GHOKJ0vPZvPwoQ3y8Dn+3vdKzYDO7qdogb&#13;
-aqVKgsLxmMH73yZ3XUqlyjS+I33lWIgFKFyYpA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e965b5e7-cb5d-4d6c-a14d-164e41ab6d0f"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5MA1YDcRDSKGh1S3Hkc1ZyUlQhaerMOVKpmkAccv765D3b2/nSZQZMLoMppW1lCMJS90UDEYHzbv&#13;
+ym9KtZf4xw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_e1f27ddc-26fe-4d67-9a91-199f3b6aa2c8"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>jV5Q8ZWjBW5uuyZkvGBdx4Lg3ui/lIAT0t0wtMiLmTlN/Ursul5NwDGyiVQx+9K0nr97+Mqa6yJY&#13;
+1yZvgh7o5g==</DigestValue></Reference></SignedInfo><SignatureValue>DR1gZsKQ5E2KJ0Vr8uOm2aHXXY/q7Acd0PnD/wMgliro0w5m+Aiqx/eoNdMKEXUCyoYgGiX0BKKE&#13;
+Efk3NEk+xUr26iD2Jz792XyGwXbIMxCKWhCCGx/OxTnqnt4GD1rXfZgwwQ89kj/jom4it7FpjM7X&#13;
+niuMm6NTV5o6j/AozfmlsSh+pxpoY22gNX0ynSyDnSpr/PTZMVW2zP/pUQvILqWmriJza+OMksRK&#13;
+i3UBEaY7wLVl4XHKtbWCJ/Am/zl/Ki5yB26TzzrHD70bLm0ML9G1+icHzdfMotNeycQpB7Th53XY&#13;
+oQbDbWilXxb+MU41VgQMGytq5Cx2nQh9napwjA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1372,4 +1372,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_29f2921f-b425-4f1a-bc12-5e9342082c2d" Target="#_2cd88d51-89ff-4b09-8220-2ccc34678f0e"><Timestamp>2024-01-24 17:46:11</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_e1f27ddc-26fe-4d67-9a91-199f3b6aa2c8" Target="#_e965b5e7-cb5d-4d6c-a14d-164e41ab6d0f"><Timestamp>2024-01-24 19:26:36</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
