@@ -224,6 +224,7 @@
       <column comment="Approved Batch Record Required" key="false" length="1" name="XGCHP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Expiration Date" key="false" length="1" name="SLED_BBD" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Material Group: Packaging Materials" key="false" length="4" name="MAGRV" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="608" posY="128">
@@ -354,6 +355,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PSTAT"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -383,6 +389,7 @@
       <column comment="Approved Batch Record Required" key="false" length="1" name="XGCHP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Expiration Date" key="false" length="1" name="SLED_BBD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Material Group: Packaging Materials" key="false" length="4" name="MAGRV" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="MARA" name="REJECT">
       <column comment="Material Number" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -403,6 +410,7 @@
       <column comment="Approved Batch Record Required" key="false" length="1" name="XGCHP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Expiration Date" key="false" length="1" name="SLED_BBD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Material Group: Packaging Materials" key="false" length="4" name="MAGRV" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -852,6 +860,11 @@
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tDBOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="PSTAT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
@@ -918,13 +931,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_3f92f0e2-cd94-4631-afde-32f1a7ab3248"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Q3Nk6RJevpdL23rF09yILSnvk/kaj6hfe+TC9ar76gZ/gQrrOwf3MPk4C00KP3NUaZlHCHEo18Sh&#13;
-fJp4z1LuPA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_3f5babb0-e8e1-4842-8ff5-f8aae9e130fb"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HImoy/ONkInnKMk+bAwKPpCY6+6sjPGiPjlTmu85QTO3nBLXuJW8VlUXXlPrtsUaf+04XoN/NppV&#13;
-NZkp1R19yQ==</DigestValue></Reference></SignedInfo><SignatureValue>T9EWn9bhJ9Uo245wlY5J2xWlIt8OkhaMHHYqGOWW0U2phNYhnfWd2Oo2/9ReOCOCBJ4UWgUGk4dl&#13;
-WplSL6vWNp7JOWGCU320sE9qwYiitMzIpOzcdzeOw+EDZr29wCvbJZtYG9XVE4mRg/HrPwqSBCEV&#13;
-4QaoX5nGu+3ZJE0YaWqPzEfZlxcjveONXP/3T2I2pC/R/tAm1s/JNTH1rmODg9K/Gbl1L/aAmqc8&#13;
-a4OMwqMCvBH2LvAYo4jRJ5W33VZ7BX4Zm6K9e6dfkf1xcYljSRgH2F05RJZg9NAL6yms14oSPgbS&#13;
-PAKNPf4Or1VBVx9LbRmnT6p14pOxQraHL5tAkA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_4330adc6-d929-40d5-8605-8dc5c55f4212"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>WtbmSJXJdnYWWXCp2vczmCYWm4AfRxMKefFVXafZW4jt+09SpfxajgiHcKpc4FR7MSfidd9JuMCv&#13;
+ncPjLSnVyw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_60828a11-ab5c-416b-b1b6-c9fc47a4afb7"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>b6uycNylDWXJCW6YFLTOpLY4D5bpDKMXiRCkmSdxelbuooHyCWq/Uqp0XGKn89lT2v8r0YcwLUDJ&#13;
+l73dE+0J+g==</DigestValue></Reference></SignedInfo><SignatureValue>VdOFxebDjb5XN5tMvcRsurYYUoK9oC5I1S9LGxp5NbvdjlwFyXPiBd9bk4RJYgHMDhLiKaFVTDP9&#13;
+jX0ILTtnpGDMUSy+Hax0a5YpTILkfjM+OZKLBXX20B00TzE0HywH1vk5Hng3l+uzqmepOUOUboEn&#13;
+tLYL5Z0f8Ri5RotP9FAaPFU2Eh93Y+is8jiWBGuFsNCFyp1WiCB4vCi5fgjg++aSZYOsuI6vMx16&#13;
+aTwnkoqnVrpKQgY9P3wHi8jeUl2KRRmowBCrNz0Xo8LqQamob7OmRqCHzH1sGrUyahqA/jR7fzb3&#13;
+M4Ka5xQNV5RfQl3IK2hrqpmrk1xGa5UiYoRqJw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -946,4 +959,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_3f5babb0-e8e1-4842-8ff5-f8aae9e130fb" Target="#_3f92f0e2-cd94-4631-afde-32f1a7ab3248"><Timestamp>2024-01-04 22:46:55</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_60828a11-ab5c-416b-b1b6-c9fc47a4afb7" Target="#_4330adc6-d929-40d5-8605-8dc5c55f4212"><Timestamp>2024-01-25 17:34:33</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
