@@ -149,7 +149,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Version]&#13;&#10;&#9;  ,[Type]&#13;&#10;&#9;  ,[Sales Organization]&#13;&#10;&#9;  ,[Distribution Channel]&#13;&#10;&#9;  ,[Material number]&#13;&#10;&#9;  ,[Customer number]&#13;&#10;&#9;  ,[Period]&#13;&#10;&#9;  ,[Period Rank]&#13;&#10;&#9;  ,[Quantity]&#13;&#10;&#9;  ,[Amount]&#13;&#10;&#9;  ,[Expected Date of First Sale]&#13;&#10;&#9;  ,[Expected Date of First Sale Original]&#13;&#10;FROM [dbo].[Forecast Info]&#13;&#10;WHERE [Sales Organization] = '0001'&#13;&#10;  AND [Version] &lt;= '2023-01-01'&#13;&#10;  AND [Type] IN ('BD','BN')&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Version]&#13;&#10;&#9;  ,FI.[Type]&#13;&#10;&#9;  ,FI.[Sales Organization]&#13;&#10;&#9;  ,FI.[Distribution Channel]&#13;&#10;&#9;  ,CASE WHEN FI.[Distribution Channel] = 'CH'&#13;&#10;&#9;&#9;&#9;&#9;THEN CASE CM.[Profit Center] WHEN '0000003000' THEN 'AI' WHEN '0000004000' THEN 'FC' WHEN '0000007000' THEN 'FC' END &#13;&#10;&#9;&#9;&#9;&#9;ELSE CASE WHEN FI.[Distribution Channel] = 'FL' OR FI.[Distribution Channel] = 'EX' AND CM.[Profit Center] = '0000004000' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;  THEN 'FL' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;  ELSE CASE WHEN FI.[Distribution Channel] = 'FR' OR FI.[Distribution Channel] = 'EX' AND CM.[Profit Center] = '0000004001' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;THEN 'FR' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   END&#13;&#10;&#9;&#9;&#9;&#9;&#9; END&#13;&#10;&#9;   END [Division]&#13;&#10;&#9;  ,FI.[Material number]&#13;&#10;&#9;  ,FI.[Customer number]&#13;&#10;&#9;  ,[Period]&#13;&#10;&#9;  ,[Period Rank]&#13;&#10;&#9;  ,[Quantity]&#13;&#10;&#9;  ,[Amount]&#13;&#10;&#9;  ,[Expected Date of First Sale]&#13;&#10;&#9;  ,[Expected Date of First Sale Original]&#13;&#10;FROM [dbo].[Forecast Info] FI&#13;&#10;INNER JOIN [dbo].[Customer Material] CM&#13;&#10;&#9;  ON FI.[Sales Organization] = CM.[Sales Organization]&#13;&#10;      AND FI.[Distribution Channel] = CM.[Distribution Channel] &#13;&#10;&#9;  AND FI.[Material Number] = CM.[Material number]&#13;&#10;&#9;  AND FI.[Customer number] = CM.[Customer number]&#13;&#10;WHERE FI.[Sales Organization] = '0001'&#13;&#10;  AND [Version] &lt;= '2023-01-01'&#13;&#10;  AND FI.[Type] IN ('BD','BN')&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -167,6 +167,8 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Organization"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Distribution_Channel"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Material_number"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -190,18 +192,19 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_1">
-      <column comment="" key="false" length="10" name="Version" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Version" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Type" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="false" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="false" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_number" nullable="false" originalDbColumnName="Material number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Customer_number" nullable="false" originalDbColumnName="Customer number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Period" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Period" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="Period_Rank" nullable="false" originalDbColumnName="Period Rank" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="13" name="Quantity" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="15" name="Amount" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Expected_Date_of_First_Sale" nullable="true" originalDbColumnName="Expected Date of First Sale" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Expected_Date_of_First_Sale_Original" nullable="true" originalDbColumnName="Expected Date of First Sale Original" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Expected_Date_of_First_Sale" nullable="true" originalDbColumnName="Expected Date of First Sale" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Expected_Date_of_First_Sale_Original" nullable="true" originalDbColumnName="Expected Date of First Sale Original" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="448" posY="256">
@@ -298,7 +301,7 @@
       </column>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="Forecast_Info" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Version" name="Version" type="id_Date"/>
@@ -330,24 +333,26 @@
         <mapperTableEntries expression="row1.Expected_Date_of_First_Sale_Original" name="Expected_Date_of_First_Sale_Original" nullable="true" type="id_Date"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row1" sizeState="INTERMEDIATE">
-        <mapperTableEntries name="Version" type="id_Date"/>
+        <mapperTableEntries name="Version" type="id_String"/>
         <mapperTableEntries name="Type" type="id_String"/>
         <mapperTableEntries name="Sales_Organization" type="id_String"/>
         <mapperTableEntries name="Distribution_Channel" type="id_String"/>
+        <mapperTableEntries name="Division" nullable="true" type="id_String"/>
         <mapperTableEntries name="Material_number" type="id_String"/>
         <mapperTableEntries name="Customer_number" type="id_String"/>
-        <mapperTableEntries name="Period" type="id_Date"/>
+        <mapperTableEntries name="Period" type="id_String"/>
         <mapperTableEntries name="Period_Rank" type="id_Integer"/>
         <mapperTableEntries name="Quantity" nullable="true" type="id_BigDecimal"/>
         <mapperTableEntries name="Amount" nullable="true" type="id_BigDecimal"/>
-        <mapperTableEntries name="Expected_Date_of_First_Sale" nullable="true" type="id_Date"/>
-        <mapperTableEntries name="Expected_Date_of_First_Sale_Original" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="Expected_Date_of_First_Sale" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Expected_Date_of_First_Sale_Original" nullable="true" type="id_String"/>
       </inputTables>
       <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Sales_Organization " name="Sales_Organization" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Distribution_Channel " name="Distribution_Channel" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Customer_number " name="Sold_to_party" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Material_number " name="Material_Number" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries expression="row1.Division " name="Division" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries name="Sales_reference" nullable="true" type="id_String"/>
         <mapperTableEntries name="KDMAT" nullable="true" type="id_String"/>
         <mapperTableEntries name="POSTX" nullable="true" type="id_String"/>
@@ -394,7 +399,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,[Sales reference]&#13;&#10;      ,[KDMAT]&#13;&#10;      ,[POSTX]&#13;&#10;      ,[PRODH]&#13;&#10;      ,[Profit Center]&#13;&#10;      ,[MAKTX]&#13;&#10;      ,[Customer description]&#13;&#10;      ,[Plant]&#13;&#10;      ,[LAND1]&#13;&#10;      ,[Matched]&#13;&#10;      ,[SO final]&#13;&#10;      ,[DC final]&#13;&#10;      ,[Cust final]&#13;&#10;      ,[Mat final]&#13;&#10;      ,[Div final]&#13;&#10;      ,[Grandparent company -final]&#13;&#10;      ,[Grandparent company name]&#13;&#10;      ,[Add Grandparent company]&#13;&#10;      ,[Parent company -final]&#13;&#10;      ,[Parent company name]&#13;&#10;      ,[Add Parent company]&#13;&#10;      ,[Sales agent -final]&#13;&#10;      ,[Sales agent name]&#13;&#10;      ,[Add Sales agent]&#13;&#10;  FROM [dbo].[Customer_Material_Mapping]&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,[Division]&#13;&#10;      ,[Sales reference]&#13;&#10;      ,[KDMAT]&#13;&#10;      ,[POSTX]&#13;&#10;      ,[PRODH]&#13;&#10;      ,[Profit Center]&#13;&#10;      ,[MAKTX]&#13;&#10;      ,[Customer description]&#13;&#10;      ,[Plant]&#13;&#10;      ,[LAND1]&#13;&#10;      ,[Matched]&#13;&#10;      ,[SO final]&#13;&#10;      ,[DC final]&#13;&#10;      ,[Cust final]&#13;&#10;      ,[Mat final]&#13;&#10;      ,[Div final]&#13;&#10;      ,[Grandparent company -final]&#13;&#10;      ,[Grandparent company name]&#13;&#10;      ,[Add Grandparent company]&#13;&#10;      ,[Parent company -final]&#13;&#10;      ,[Parent company name]&#13;&#10;      ,[Add Parent company]&#13;&#10;      ,[Sales agent -final]&#13;&#10;      ,[Sales agent name]&#13;&#10;      ,[Add Sales agent]&#13;&#10;  FROM [dbo].[Customer_Material_Mapping]&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -412,6 +417,8 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="Sold_to_party"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Material_Number"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sales_reference"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -471,6 +478,7 @@
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="Sales_reference" nullable="true" originalDbColumnName="Sales reference" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="35" name="KDMAT" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="POSTX" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -492,9 +500,9 @@
       <column comment="" key="false" length="255" name="Parent_company__final" nullable="true" originalDbColumnName="Parent company -final" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="35" name="Parent_company_name" nullable="true" originalDbColumnName="Parent company name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="Add_Parent_company" nullable="true" originalDbColumnName="Add Parent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Sales_agent__final" nullable="true" originalDbColumnName="Sales agent -final" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="35" name="Sales_agent_name" nullable="true" originalDbColumnName="Sales agent name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="Add_Sales_agent" nullable="true" originalDbColumnName="Add Sales agent" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="Sales_agent__final" nullable="true" originalDbColumnName="Sales agent -final" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="35" name="Sales_agent_name" nullable="true" originalDbColumnName="Sales agent name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="1" name="Add_Sales_agent" nullable="true" originalDbColumnName="Add Sales agent" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="928" posY="256">
@@ -905,13 +913,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_caea7e24-1f69-46cb-86b4-0d1a7b69996a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>2GHkStKLPA2xBx+8ADbBU/2kLCJlWcD6dpbYMRvuAcRJdFUr6foXbSdXG53zdfBCMumm8u8V5+Az&#13;
-wua9JEbRhA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_8fc28afc-4e48-4d4f-8643-9c551ac1914e"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>z3qjfIcNzxQtUS0DvWLgAZCHl6p4uAqJhoQifSF7uruPZgpplxEbMncQtyMvRsIDIbSeXk4kU6dm&#13;
-VvauOvVq8Q==</DigestValue></Reference></SignedInfo><SignatureValue>R3+aN6pKxibjrFnGMSq2JWdv/3H+C9oa932MBX1yf28fwIZXrLAgcRNDugm8BMcP8FlgYYOWy6pS&#13;
-Xvg1eWufT6BgsClV03Eu+ojiDBq/myrAXr6sxOEC9H/xXopojCpHejw68YOdzi+vNZp3eIDsh9Mp&#13;
-B8pBPdIWOYCfjypMwtSOiSwHGGc4o4w9UeV08ve3U7vh6RJ0ICb2TDD3PGEavhCjqj5G/xoFavwr&#13;
-OB7P34dFMy36oSZQRk7K/hrHulZS75Ggbr5RmqQcTs+hAeuTrzz9X/EG7qUxfOfbB77fRb1VxGIK&#13;
-rk22v8T3xgtxJWybPlbted3Id2WJOyU269+OSw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_16dad532-ea13-468e-a1a7-9f29429080b9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>H4Tn7nVf7rR2B+K/3LuCCR2dGwaKdTa/C8Gv4cx+DMyadGewokSciz1l+7XylS08Kv9hv7CVHTb6&#13;
+VirMZ9Wa3A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_5f7df253-37a3-47c4-870a-9e238a2d2bc7"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>CaqV7dGR+aTHqbCXjE48jhARZginQ4h/yxuZRT5pT9LFhf+Rdv1IOaB1sw315OHHUF3k4P8trSPe&#13;
+jt7ZQClSYQ==</DigestValue></Reference></SignedInfo><SignatureValue>kvykSootiW7HYNziIw42VhYbWIjcC4k13UU/irQgoraI0ce5+1+BUfuRN0iiKD8U3Jfr2rwGkIb0&#13;
+2puxFojo07UaxCzL+xIREot0Rx1TPFiCzAtqRxVqi+ZGN7RvNRWkXPO0G99irzL2IoBK6/zDu7Dl&#13;
+LfuOclQsZEcbofE438QeLNDJtiI+sVxlfZYxOcszUYnzG69QhdtU3VR9FXXyP5sxva/lYEoKZV26&#13;
+It4OsCrSwbfbSsfhsATZqbO2hQfVuK3mtlJTYj7lrQrzPM12eNKJ1QmO2g6obpzsdAsft7nXy4yJ&#13;
+5/2pdD7eX4M/pv5RUAvy9BVOhU98nu/QcNxVig==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -933,4 +941,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_8fc28afc-4e48-4d4f-8643-9c551ac1914e" Target="#_caea7e24-1f69-46cb-86b4-0d1a7b69996a"><Timestamp>2024-01-18 18:07:54</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_5f7df253-37a3-47c4-870a-9e238a2d2bc7" Target="#_16dad532-ea13-468e-a1a7-9f29429080b9"><Timestamp>2024-01-25 15:16:13</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
