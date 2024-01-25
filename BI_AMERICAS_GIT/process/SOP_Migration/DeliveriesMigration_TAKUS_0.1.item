@@ -149,7 +149,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT 'L'+RIGHT(D.[Delivery],9) [Delivery]&#13;&#10;      ,D.[Date on Which Record Was Created]&#13;&#10;      ,D.[Shipping Point/Receiving Point]&#13;&#10;      ,D.[Sales Organization]--&#13;&#10;      ,D.[Delivery Type]&#13;&#10;      ,D.[Planned goods movement date]&#13;&#10;      ,D.[Loading Date]&#13;&#10;      ,D.[Transportation Planning Date]&#13;&#10;      ,D.[Delivery Date]&#13;&#10;      ,D.[Picking Date]&#13;&#10;      ,D.[Incoterms (Part 1)]&#13;&#10;      ,D.[Incoterms (Part 2)]&#13;&#10;      ,D.[Export indicator]&#13;&#10;      ,D.[Route]&#13;&#10;      ,D.[Shipping Conditions]&#13;&#10;      ,D.[Ship-to party]---&#13;&#10;      ,D.[Sold-to party]--&#13;&#10;      ,D.[Total Weight]&#13;&#10;      ,D.[Net weight]&#13;&#10;      ,D.[Weight Unit]&#13;&#10;      ,D.[Total number of packages in delivery]&#13;&#10;      ,D.[Billing date for billing index and printout]&#13;&#10;      ,D.[Number of the document condition]&#13;&#10;      ,D.[SD Document Currency]&#13;&#10;      ,D.[Statistics currency]&#13;&#10;      ,D.[Exchange rate for statistics]&#13;&#10;      ,D.[Changed On]&#13;&#10;      ,D.[Warehouse Number / Warehouse Complex]&#13;&#10;      ,D.[Billing type for intercompany billing]&#13;&#10;      ,D.[Billing date for intercompany billing]&#13;&#10;      ,D.[Actual Goods Movement Date]&#13;&#10;      ,D.[Reference Document Number]&#13;&#10;&#9;  ,'L'+RIGHT(DI.[Delivery],9) [Delivery]&#13;&#10;      ,DI.[Delivery Item]&#13;&#10;      ,DI.[Delivery item category]&#13;&#10;      ,DI.[Date on Which Record Was Created]&#13;&#10;      ,DI.[Material Number]--&#13;&#10;      ,DI.[Material Group]&#13;&#10;      ,CASE WHEN DI.[Plant] IS NULL  THEN 'NA'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '1000' THEN '3101'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '2000' THEN '3102'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '3000' THEN '3103'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '4000' AND DI.[Profit Center] IS NULL THEN '3104'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '4000' AND DI.[Profit Center] = '0000004000' THEN '3101'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '4000' AND DI.[Profit Center] = '0000004001' THEN '3102'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '8000' THEN '3101'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '9000' THEN '3101'&#13;&#10;&#9;&#9;END [Plant]&#13;&#10;      ,DI.[Storage Location]&#13;&#10;      ,DI.[Batch Number]&#13;&#10;      ,DI.[Vendor Batch Number]&#13;&#10;      ,DI.[Material belonging to the customer]&#13;&#10;      ,DI.[Product hierarchy]---&#13;&#10;      ,DI.[Actual quantity delivered (in sales units)]&#13;&#10;      ,DI.[Base Unit of Measure]&#13;&#10;      ,DI.[Sales unit]&#13;&#10;      ,DI.[Numerator (factor) for conversion of sales quantity into SKU]&#13;&#10;      ,DI.[Denominator (Divisor) for Conversion of Sales Qty into SKU]&#13;&#10;      ,DI.[Net weight]&#13;&#10;      ,DI.[Gross weight]&#13;&#10;      ,DI.[Weight Unit]&#13;&#10;      ,DI.[Block]&#13;&#10;      ,DI.[Material Staging/Availability Date]&#13;&#10;      ,DI.[Actual quantity delivered in stockkeeping units]&#13;&#10;      ,DI.[Short text for sales order item]&#13;&#10;      ,DI.[Storage Bin 1]&#13;&#10;      ,DI.[Originating document]&#13;&#10;      ,DI.[Originating item]&#13;&#10;      ,DI.[SD document category]&#13;&#10;      ,DI.[Document number of the reference document]&#13;&#10;      ,DI.[Item number of the reference item]&#13;&#10;      ,DI.[Warehouse Number / Warehouse Complex]&#13;&#10;      ,DI.[Storage Type]&#13;&#10;      ,DI.[Storage Bin 2]&#13;&#10;      ,DI.[Movement Type (Inventory Management)]&#13;&#10;      ,DI.[Movement Type for Warehouse Management]&#13;&#10;      ,DI.[Material Type]&#13;&#10;      ,DI.[Valuation Type]&#13;&#10;      ,DI.[Distribution Channel]--&#13;&#10;      ,DI.[Division]&#13;&#10;      ,DI.[Changed On]&#13;&#10;      ,DI.[Profit Center]&#13;&#10;      ,DI.[Order Number]&#13;&#10;      ,DI.[Order Item Number]&#13;&#10;      ,DI.[Sales Order Number]&#13;&#10;      ,DI.[Item Number in Sales Order]&#13;&#10;      ,DI.[Returns Item]&#13;&#10;      ,DI.[Document No. of a Reference Document]&#13;&#10;      ,DI.[Item of a Reference Document]&#13;&#10;FROM [dbo].[Delivery] D&#13;&#10;INNER JOIN [dbo].[Delivery Item] DI&#13;&#10;&#9;ON D.[Delivery] = DI.[Delivery]&#13;&#10;WHERE D.[Sales Organization] = '0001'&#13;&#10;  AND [Movement Type (Inventory Management)] IN ('601','602','631','632')&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT 'L'+RIGHT(D.[Delivery],9) [Delivery]&#13;&#10;      ,D.[Date on Which Record Was Created]&#13;&#10;      ,D.[Shipping Point/Receiving Point]&#13;&#10;      ,D.[Sales Organization]&#13;&#10;&#9;  ,CASE WHEN DI.[Distribution Channel] = 'CH'&#13;&#10;&#9;        THEN CASE CM.[Profit Center] WHEN '0000003000' THEN 'AI' WHEN '0000004000' THEN 'FC' WHEN '0000007000' THEN 'FC' END &#13;&#10;&#9;        ELSE CASE WHEN DI.[Distribution Channel] = 'FL' OR DI.[Distribution Channel] = 'EX' AND CM.[Profit Center] = '0000004000' &#13;&#10;&#9;&#9;&#9;          THEN 'FL' &#13;&#10;&#9;&#9;&#9;&#9;&#9;  ELSE CASE WHEN DI.[Distribution Channel] = 'FR' OR DI.[Distribution Channel] = 'EX' AND CM.[Profit Center] = '0000004001' &#13;&#10;&#9;&#9;&#9;&#9;&#9;            THEN 'FR' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   END&#13;&#10;&#9;&#9;&#9;&#9; END&#13;&#10;&#9;   END [Division]&#13;&#10;      ,D.[Delivery Type]&#13;&#10;      ,D.[Planned goods movement date]&#13;&#10;      ,D.[Loading Date]&#13;&#10;      ,D.[Transportation Planning Date]&#13;&#10;      ,D.[Delivery Date]&#13;&#10;      ,D.[Picking Date]&#13;&#10;      ,D.[Incoterms (Part 1)]&#13;&#10;      ,D.[Incoterms (Part 2)]&#13;&#10;      ,D.[Export indicator]&#13;&#10;      ,D.[Route]&#13;&#10;      ,D.[Shipping Conditions]&#13;&#10;      ,D.[Ship-to party]---&#13;&#10;      ,D.[Sold-to party]--&#13;&#10;      ,D.[Total Weight]&#13;&#10;      ,D.[Net weight]&#13;&#10;      ,D.[Weight Unit]&#13;&#10;      ,D.[Total number of packages in delivery]&#13;&#10;      ,D.[Billing date for billing index and printout]&#13;&#10;      ,D.[Number of the document condition]&#13;&#10;      ,D.[SD Document Currency]&#13;&#10;      ,D.[Statistics currency]&#13;&#10;      ,D.[Exchange rate for statistics]&#13;&#10;      ,D.[Changed On]&#13;&#10;      ,D.[Warehouse Number / Warehouse Complex]&#13;&#10;      ,D.[Billing type for intercompany billing]&#13;&#10;      ,D.[Billing date for intercompany billing]&#13;&#10;      ,D.[Actual Goods Movement Date]&#13;&#10;      ,D.[Reference Document Number]&#13;&#10;&#9;  ,'L'+RIGHT(DI.[Delivery],9) [Delivery]&#13;&#10;      ,DI.[Delivery Item]&#13;&#10;      ,DI.[Delivery item category]&#13;&#10;      ,DI.[Date on Which Record Was Created]&#13;&#10;      ,DI.[Material Number]--&#13;&#10;      ,DI.[Material Group]&#13;&#10;      ,CASE WHEN DI.[Plant] IS NULL  THEN 'NA'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '1000' THEN '3101'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '2000' THEN '3102'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '3000' THEN '3103'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '4000' AND DI.[Profit Center] IS NULL THEN '3104'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '4000' AND DI.[Profit Center] = '0000004000' THEN '3101'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '4000' AND DI.[Profit Center] = '0000004001' THEN '3102'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '8000' THEN '3101'&#13;&#10;&#9;&#9;&#9;WHEN DI.[Plant] = '9000' THEN '3101'&#13;&#10;&#9;&#9;END [Plant]&#13;&#10;      ,DI.[Storage Location]&#13;&#10;      ,DI.[Batch Number]&#13;&#10;      ,DI.[Vendor Batch Number]&#13;&#10;      ,DI.[Material belonging to the customer]&#13;&#10;      ,DI.[Product hierarchy]---&#13;&#10;      ,DI.[Actual quantity delivered (in sales units)]&#13;&#10;      ,DI.[Base Unit of Measure]&#13;&#10;      ,DI.[Sales unit]&#13;&#10;      ,DI.[Numerator (factor) for conversion of sales quantity into SKU]&#13;&#10;      ,DI.[Denominator (Divisor) for Conversion of Sales Qty into SKU]&#13;&#10;      ,DI.[Net weight]&#13;&#10;      ,DI.[Gross weight]&#13;&#10;      ,DI.[Weight Unit]&#13;&#10;      ,DI.[Block]&#13;&#10;      ,DI.[Material Staging/Availability Date]&#13;&#10;      ,DI.[Actual quantity delivered in stockkeeping units]&#13;&#10;      ,DI.[Short text for sales order item]&#13;&#10;      ,DI.[Storage Bin 1]&#13;&#10;      ,DI.[Originating document]&#13;&#10;      ,DI.[Originating item]&#13;&#10;      ,DI.[SD document category]&#13;&#10;      ,DI.[Document number of the reference document]&#13;&#10;      ,DI.[Item number of the reference item]&#13;&#10;      ,DI.[Warehouse Number / Warehouse Complex]&#13;&#10;      ,DI.[Storage Type]&#13;&#10;      ,DI.[Storage Bin 2]&#13;&#10;      ,DI.[Movement Type (Inventory Management)]&#13;&#10;      ,DI.[Movement Type for Warehouse Management]&#13;&#10;      ,DI.[Material Type]&#13;&#10;      ,DI.[Valuation Type]&#13;&#10;      ,DI.[Distribution Channel]--&#13;&#10;      ,DI.[Division] [DivisionDI]&#13;&#10;      ,DI.[Changed On]&#13;&#10;      ,DI.[Profit Center]&#13;&#10;      ,DI.[Order Number]&#13;&#10;      ,DI.[Order Item Number]&#13;&#10;      ,DI.[Sales Order Number]&#13;&#10;      ,DI.[Item Number in Sales Order]&#13;&#10;      ,DI.[Returns Item]&#13;&#10;      ,DI.[Document No. of a Reference Document]&#13;&#10;      ,DI.[Item of a Reference Document]&#13;&#10;FROM [dbo].[Delivery] D&#13;&#10;INNER JOIN [dbo].[Delivery Item] DI&#13;&#10;&#9;ON D.[Delivery] = DI.[Delivery]&#13;&#10;INNER JOIN [dbo].[Customer Material] CM&#13;&#10;&#9;  ON D.[Sales Organization] = CM.[Sales Organization]&#13;&#10;      AND DI.[Distribution Channel] = CM.[Distribution Channel] &#13;&#10;&#9;  AND DI.[Material Number] = CM.[Material number]&#13;&#10;&#9;  AND D.[Sold-to party] = CM.[Customer number]&#13;&#10;WHERE D.[Sales Organization] = '0001'&#13;&#10;  AND [Movement Type (Inventory Management)] IN ('601','602','631','632')&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -167,6 +167,8 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="Shipping_Point_Receiving_Point"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Organization"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Delivery_Type"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -300,7 +302,7 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Distribution_Channel"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DivisionDI"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Changed_On1"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -330,6 +332,7 @@
       <column comment="" key="false" length="10" name="Date_on_Which_Record_Was_Created" nullable="true" originalDbColumnName="Date on Which Record Was Created" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Shipping_Point_Receiving_Point" nullable="true" originalDbColumnName="Shipping Point/Receiving Point" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Delivery_Type" nullable="true" originalDbColumnName="Delivery Type" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Planned_goods_movement_date" nullable="true" originalDbColumnName="Planned goods movement date" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Loading_Date" nullable="true" originalDbColumnName="Loading Date" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
@@ -396,7 +399,7 @@
       <column comment="" key="false" length="4" name="Material_Type" nullable="true" originalDbColumnName="Material Type" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Valuation_Type" nullable="true" originalDbColumnName="Valuation Type" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="DivisionDI" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Changed_On1" nullable="true" originalDbColumnName="Changed On" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="NVARCHAR" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Profit_Center" nullable="true" originalDbColumnName="Profit Center" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="12" name="Order_Number" nullable="true" originalDbColumnName="Order Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -587,7 +590,7 @@
       <column comment="" key="false" length="4" name="Item_of_a_Reference_Document" nullable="true" originalDbColumnName="Item of a Reference Document" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables activateCondensedTool="true" name="Delivery_and_Item" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Delivery " name="Delivery" nullable="true" type="id_String"/>
@@ -758,6 +761,7 @@
         <mapperTableEntries name="Date_on_Which_Record_Was_Created" nullable="true" type="id_Date"/>
         <mapperTableEntries name="Shipping_Point_Receiving_Point" nullable="true" type="id_String"/>
         <mapperTableEntries name="Sales_Organization" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Division" nullable="true" type="id_String"/>
         <mapperTableEntries name="Delivery_Type" nullable="true" type="id_String"/>
         <mapperTableEntries name="Planned_goods_movement_date" nullable="true" type="id_Date"/>
         <mapperTableEntries name="Loading_Date" nullable="true" type="id_Date"/>
@@ -824,7 +828,7 @@
         <mapperTableEntries name="Material_Type" nullable="true" type="id_String"/>
         <mapperTableEntries name="Valuation_Type" nullable="true" type="id_String"/>
         <mapperTableEntries name="Distribution_Channel" nullable="true" type="id_String"/>
-        <mapperTableEntries name="Division" nullable="true" type="id_String"/>
+        <mapperTableEntries name="DivisionDI" nullable="true" type="id_String"/>
         <mapperTableEntries name="Changed_On1" nullable="true" type="id_Date"/>
         <mapperTableEntries name="Profit_Center" nullable="true" type="id_String"/>
         <mapperTableEntries name="Order_Number" nullable="true" type="id_String"/>
@@ -851,6 +855,7 @@
         <mapperTableEntries expression="row1.Distribution_Channel " name="Distribution_Channel" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Sold_to_party " name="Sold_to_party" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Material_Number " name="Material_Number" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries expression="row1.Division " name="Division" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries name="Sales_reference" nullable="true" type="id_String"/>
         <mapperTableEntries name="KDMAT" nullable="true" type="id_String"/>
         <mapperTableEntries name="POSTX" nullable="true" type="id_String"/>
@@ -994,7 +999,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,[Sales reference]&#13;&#10;      ,[KDMAT]&#13;&#10;      ,[POSTX]&#13;&#10;      ,[PRODH]&#13;&#10;      ,[Profit Center]&#13;&#10;      ,[MAKTX]&#13;&#10;      ,[Customer description]&#13;&#10;      ,[Plant]&#13;&#10;      ,[LAND1]&#13;&#10;      ,[Matched]&#13;&#10;      ,[SO final]&#13;&#10;      ,[DC final]&#13;&#10;      ,[Cust final]&#13;&#10;      ,[Mat final]&#13;&#10;      ,[Div final]&#13;&#10;      ,[Grandparent company -final]&#13;&#10;      ,[Grandparent company name]&#13;&#10;      ,[Add Grandparent company]&#13;&#10;      ,[Parent company -final]&#13;&#10;      ,[Parent company name]&#13;&#10;      ,[Add Parent company]&#13;&#10;      ,[Sales agent -final]&#13;&#10;      ,[Sales agent name]&#13;&#10;      ,[Add Sales agent]&#13;&#10;  FROM [dbo].[Customer_Material_Mapping]&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,[Division]&#13;&#10;      ,[Sales reference]&#13;&#10;      ,[KDMAT]&#13;&#10;      ,[POSTX]&#13;&#10;      ,[PRODH]&#13;&#10;      ,[Profit Center]&#13;&#10;      ,[MAKTX]&#13;&#10;      ,[Customer description]&#13;&#10;      ,[Plant]&#13;&#10;      ,[LAND1]&#13;&#10;      ,[Matched]&#13;&#10;      ,[SO final]&#13;&#10;      ,[DC final]&#13;&#10;      ,[Cust final]&#13;&#10;      ,[Mat final]&#13;&#10;      ,[Div final]&#13;&#10;      ,[Grandparent company -final]&#13;&#10;      ,[Grandparent company name]&#13;&#10;      ,[Add Grandparent company]&#13;&#10;      ,[Parent company -final]&#13;&#10;      ,[Parent company name]&#13;&#10;      ,[Add Parent company]&#13;&#10;      ,[Sales agent -final]&#13;&#10;      ,[Sales agent name]&#13;&#10;      ,[Add Sales agent]&#13;&#10;  FROM [dbo].[Customer_Material_Mapping]&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -1012,6 +1017,8 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="Sold_to_party"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Material_Number"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sales_reference"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -1071,6 +1078,7 @@
       <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Sold_to_party" nullable="true" originalDbColumnName="Sold-to party" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="Sales_reference" nullable="true" originalDbColumnName="Sales reference" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="35" name="KDMAT" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="40" name="POSTX" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -1087,14 +1095,14 @@
       <column comment="" key="false" length="18" name="Mat_final" nullable="true" originalDbColumnName="Mat final" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Div_final" nullable="true" originalDbColumnName="Div final" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="Grandparent_company__final" nullable="true" originalDbColumnName="Grandparent company -final" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="35" name="Grandparent_company_name" nullable="true" originalDbColumnName="Grandparent company name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="Add_Grandparent_company" nullable="true" originalDbColumnName="Add Grandparent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="255" name="Parent_company__final" nullable="true" originalDbColumnName="Parent company -final" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="35" name="Parent_company_name" nullable="true" originalDbColumnName="Parent company name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="Add_Parent_company" nullable="true" originalDbColumnName="Add Parent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Sales_agent__final" nullable="true" originalDbColumnName="Sales agent -final" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="35" name="Sales_agent_name" nullable="true" originalDbColumnName="Sales agent name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="Add_Sales_agent" nullable="true" originalDbColumnName="Add Sales agent" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="35" name="Grandparent_company_name" nullable="true" originalDbColumnName="Grandparent company name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="1" name="Add_Grandparent_company" nullable="true" originalDbColumnName="Add Grandparent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="255" name="Parent_company__final" nullable="true" originalDbColumnName="Parent company -final" originalLength="-1" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="35" name="Parent_company_name" nullable="true" originalDbColumnName="Parent company name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="1" name="Add_Parent_company" nullable="true" originalDbColumnName="Add Parent company" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="Sales_agent__final" nullable="true" originalDbColumnName="Sales agent -final" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="35" name="Sales_agent_name" nullable="true" originalDbColumnName="Sales agent name" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="1" name="Add_Sales_agent" nullable="true" originalDbColumnName="Add Sales agent" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="736" posY="256">
@@ -3151,6 +3159,11 @@
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMap_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="Division"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
@@ -3285,13 +3298,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_29ed6431-69d4-4f1b-a99a-6252bcbb9f8a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>L1HaO8/MTimqjhv4Dyy9DPdvE8O+igJ9LfERp6MnsM4DK66vOwkdf0MqUOQYknhNjqvyYUb25vT5&#13;
-wWGAar04Iw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_2e813fd9-3d2d-48a4-b679-02a88949c96e"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>lBZ15IFMqbtjloMTATGYjHp5VclJIa0WiPSEl4u3o2d/XHLE9/Djb6NbJpYnGOyTYQj3tP4rNMRN&#13;
-yMZabg7KYg==</DigestValue></Reference></SignedInfo><SignatureValue>cuo5Dm8tCdy97csgPzm2N9BxCmOIHy4bRJq1AxOawdla1waFpiTtSmN3ZVO2C3yIq+SnlACXGKOK&#13;
-H55BwHCcawC3cVnWmiP+GkZpnqf57UHgXTcoeCsV0hQZ076iFO+TOLLzKYKYXRvPGZORnl6QIU8F&#13;
-FuAT9xrpPuP253aifB4XcZhge/1Lgp9szE+jCUkS9kazRfhaYBIQMI67Ffrv2OLjXiWEqH8mjOvN&#13;
-dGcN4sKt7yV4CyfErs9OPKbPCjgLZDKAoQHs+ZhbyzWMpP0XnC+X25EuL37aG0WCapAAfuq44oft&#13;
-GOtF5WBmtG8uQpNRBYitDkuMifFvCRK9jKvU8Q==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_07d5e2b5-89f1-4e24-8861-956ba50cd921"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>PZYC3dcayVcNsskzqSmGBLymocE9sidfacCyQUelsGkLtz1BTBz89eGwwQh95Kal/c2spPIhKjfv&#13;
+QBYhu59mzw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_8ee77b28-feb6-44e8-a330-7cc00b4d4c95"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>6O5Ki8bJYFqP03Lf37SITRT4fNIXbD7bGk0ww0r9LCjIAopFX8bD+dD75rrwXOnxRZrV0AHKs7p2&#13;
+2FKy9Fsbzg==</DigestValue></Reference></SignedInfo><SignatureValue>j1CSK2y2DpPyJXa7Tg/7lB9pYwhpV0WT8hkXW5DbMRZ2NbmNKWydjPzK/+OgsvtVDu5IMKRfid2O&#13;
+5uDHTXh0ccOs+h6sBMh54OLMgSP9JdSH6lYrhyT2o+E0aIj8L2XLot7ho4jFo7CxCO4wh3+GVdp+&#13;
+wTeMUpoqlqfALuFWSZtGGM1pEwtpRxYkhUXlD77JBnpl3kmFb/A5FpfC3j1rJi2S4jFNpbbgLeUY&#13;
+klpi4Q/W8Swi81Y/F3g1TYt05RFRSySDIEPumM93wg4lmsCB9zEKBtLv7Oa0joLohpdAe1/wUNyC&#13;
+NHx53pFwyHNIrgjxmJtfLw1g5iUfn/WXg02y+w==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -3313,4 +3326,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_2e813fd9-3d2d-48a4-b679-02a88949c96e" Target="#_29ed6431-69d4-4f1b-a99a-6252bcbb9f8a"><Timestamp>2024-01-24 16:30:54</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_8ee77b28-feb6-44e8-a330-7cc00b4d4c95" Target="#_07d5e2b5-89f1-4e24-8861-956ba50cd921"><Timestamp>2024-01-25 15:27:48</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
