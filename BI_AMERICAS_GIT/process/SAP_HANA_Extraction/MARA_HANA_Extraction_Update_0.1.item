@@ -292,6 +292,7 @@
       <column comment="Approved Batch Record Required" key="false" length="1" name="XGCHP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Expiration Date" key="false" length="1" name="SLED_BBD" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Material Group: Packaging Materials" key="false" length="4" name="MAGRV" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="512" posY="224">
@@ -327,11 +328,12 @@
       <column comment="Approved Batch Record Required" key="false" length="1" name="XGCHP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Expiration Date" key="false" length="1" name="SLED_BBD" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Material Group: Packaging Materials" key="false" length="4" name="MAGRV" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
-      <outputTables activateExpressionFilter="true" expressionFilter="((Relational.ISNULL(row2.ERSDA) &amp;&amp; Relational.ISNULL(row3.ERSDA)) ? false : ((!Relational.ISNULL(row2.ERSDA) &amp;&amp; !Relational.ISNULL(row3.ERSDA)) ? (TalendDate.compareDate(row2.ERSDA,row3.ERSDA) != 0) : true )) || ((Relational.ISNULL(row2.LAEDA) &amp;&amp; Relational.ISNULL(row3.LAEDA)) ? false : ((!Relational.ISNULL(row2.LAEDA) &amp;&amp; !Relational.ISNULL(row3.LAEDA)) ? (TalendDate.compareDate(row2.LAEDA,row3.LAEDA) != 0) : true )) || ((Relational.ISNULL(row2.LVORM) &amp;&amp; Relational.ISNULL(row3.LVORM)) ? false : ((!Relational.ISNULL(row2.LVORM) &amp;&amp; !Relational.ISNULL(row3.LVORM)) ? (!row2.LVORM.equals(row3.LVORM)) : true )) || ((Relational.ISNULL(row2.MTART) &amp;&amp; Relational.ISNULL(row3.MTART)) ? false : ((!Relational.ISNULL(row2.MTART) &amp;&amp; !Relational.ISNULL(row3.MTART)) ? (!row2.MTART.equals(row3.MTART)) : true )) || ((Relational.ISNULL(row2.MBRSH) &amp;&amp; Relational.ISNULL(row3.MBRSH)) ? false : ((!Relational.ISNULL(row2.MBRSH) &amp;&amp; !Relational.ISNULL(row3.MBRSH)) ? (!row2.MBRSH.equals(row3.MBRSH)) : true )) || ((Relational.ISNULL(row2.MATKL) &amp;&amp; Relational.ISNULL(row3.MATKL)) ? false : ((!Relational.ISNULL(row2.MATKL) &amp;&amp; !Relational.ISNULL(row3.MATKL)) ? (!row2.MATKL.equals(row3.MATKL)) : true )) || ((Relational.ISNULL(row2.BISMT) &amp;&amp; Relational.ISNULL(row3.BISMT)) ? false : ((!Relational.ISNULL(row2.BISMT) &amp;&amp; !Relational.ISNULL(row3.BISMT)) ? (!row2.BISMT.equals(row3.BISMT)) : true )) || ((Relational.ISNULL(row2.MEINS) &amp;&amp; Relational.ISNULL(row3.MEINS)) ? false : ((!Relational.ISNULL(row2.MEINS) &amp;&amp; !Relational.ISNULL(row3.MEINS)) ? (!row2.MEINS.equals(row3.MEINS)) : true )) || ((Relational.ISNULL(row2.RAUBE) &amp;&amp; Relational.ISNULL(row3.RAUBE)) ? false : ((!Relational.ISNULL(row2.RAUBE) &amp;&amp; !Relational.ISNULL(row3.RAUBE)) ? (!row2.RAUBE.equals(row3.RAUBE)) : true )) || ((Relational.ISNULL(row2.TEMPB) &amp;&amp; Relational.ISNULL(row3.TEMPB)) ? false : ((!Relational.ISNULL(row2.TEMPB) &amp;&amp; !Relational.ISNULL(row3.TEMPB)) ? (!row2.TEMPB.equals(row3.TEMPB)) : true )) || ((Relational.ISNULL(row2.SPART) &amp;&amp; Relational.ISNULL(row3.SPART)) ? false : ((!Relational.ISNULL(row2.SPART) &amp;&amp; !Relational.ISNULL(row3.SPART)) ? (!row2.SPART.equals(row3.SPART)) : true )) || ((Relational.ISNULL(row2.PRDHA) &amp;&amp; Relational.ISNULL(row3.PRDHA)) ? false : ((!Relational.ISNULL(row2.PRDHA) &amp;&amp; !Relational.ISNULL(row3.PRDHA)) ? (!row2.PRDHA.equals(row3.PRDHA)) : true )) || ((Relational.ISNULL(row2.MHDRZ) &amp;&amp; Relational.ISNULL(row3.MHDRZ)) ? false : ((!Relational.ISNULL(row2.MHDRZ) &amp;&amp; !Relational.ISNULL(row3.MHDRZ)) ? (!row2.MHDRZ.equals(row3.MHDRZ)) : true )) || ((Relational.ISNULL(row2.MHDHB) &amp;&amp; Relational.ISNULL(row3.MHDHB)) ? false : ((!Relational.ISNULL(row2.MHDHB) &amp;&amp; !Relational.ISNULL(row3.MHDHB)) ? (!row2.MHDHB.equals(row3.MHDHB)) : true )) || ((Relational.ISNULL(row2.XGCHP) &amp;&amp; Relational.ISNULL(row3.XGCHP)) ? false : ((!Relational.ISNULL(row2.XGCHP) &amp;&amp; !Relational.ISNULL(row3.XGCHP)) ? (!row2.XGCHP.equals(row3.XGCHP)) : true )) || ((Relational.ISNULL(row2.SLED_BBD) &amp;&amp; Relational.ISNULL(row3.SLED_BBD)) ? false : ((!Relational.ISNULL(row2.SLED_BBD) &amp;&amp; !Relational.ISNULL(row3.SLED_BBD)) ? (!row2.SLED_BBD.equals(row3.SLED_BBD)) : true )) || ((Relational.ISNULL(row2.MAGRV) &amp;&amp; Relational.ISNULL(row3.MAGRV)) ? false : ((!Relational.ISNULL(row2.MAGRV) &amp;&amp; !Relational.ISNULL(row3.MAGRV)) ? (!row2.MAGRV.equals(row3.MAGRV)) : true ))" name="UpdateMaterial" sizeState="INTERMEDIATE">
+      <outputTables activateExpressionFilter="true" expressionFilter="((Relational.ISNULL(row2.ERSDA) &amp;&amp; Relational.ISNULL(row3.ERSDA)) ? false : ((!Relational.ISNULL(row2.ERSDA) &amp;&amp; !Relational.ISNULL(row3.ERSDA)) ? (TalendDate.compareDate(row2.ERSDA,row3.ERSDA) != 0) : true )) || ((Relational.ISNULL(row2.LAEDA) &amp;&amp; Relational.ISNULL(row3.LAEDA)) ? false : ((!Relational.ISNULL(row2.LAEDA) &amp;&amp; !Relational.ISNULL(row3.LAEDA)) ? (TalendDate.compareDate(row2.LAEDA,row3.LAEDA) != 0) : true )) || ((Relational.ISNULL(row2.LVORM) &amp;&amp; Relational.ISNULL(row3.LVORM)) ? false : ((!Relational.ISNULL(row2.LVORM) &amp;&amp; !Relational.ISNULL(row3.LVORM)) ? (!row2.LVORM.equals(row3.LVORM)) : true )) || ((Relational.ISNULL(row2.MTART) &amp;&amp; Relational.ISNULL(row3.MTART)) ? false : ((!Relational.ISNULL(row2.MTART) &amp;&amp; !Relational.ISNULL(row3.MTART)) ? (!row2.MTART.equals(row3.MTART)) : true )) || ((Relational.ISNULL(row2.MBRSH) &amp;&amp; Relational.ISNULL(row3.MBRSH)) ? false : ((!Relational.ISNULL(row2.MBRSH) &amp;&amp; !Relational.ISNULL(row3.MBRSH)) ? (!row2.MBRSH.equals(row3.MBRSH)) : true )) || ((Relational.ISNULL(row2.MATKL) &amp;&amp; Relational.ISNULL(row3.MATKL)) ? false : ((!Relational.ISNULL(row2.MATKL) &amp;&amp; !Relational.ISNULL(row3.MATKL)) ? (!row2.MATKL.equals(row3.MATKL)) : true )) || ((Relational.ISNULL(row2.BISMT) &amp;&amp; Relational.ISNULL(row3.BISMT)) ? false : ((!Relational.ISNULL(row2.BISMT) &amp;&amp; !Relational.ISNULL(row3.BISMT)) ? (!row2.BISMT.equals(row3.BISMT)) : true )) || ((Relational.ISNULL(row2.MEINS) &amp;&amp; Relational.ISNULL(row3.MEINS)) ? false : ((!Relational.ISNULL(row2.MEINS) &amp;&amp; !Relational.ISNULL(row3.MEINS)) ? (!row2.MEINS.equals(row3.MEINS)) : true )) || ((Relational.ISNULL(row2.RAUBE) &amp;&amp; Relational.ISNULL(row3.RAUBE)) ? false : ((!Relational.ISNULL(row2.RAUBE) &amp;&amp; !Relational.ISNULL(row3.RAUBE)) ? (!row2.RAUBE.equals(row3.RAUBE)) : true )) || ((Relational.ISNULL(row2.TEMPB) &amp;&amp; Relational.ISNULL(row3.TEMPB)) ? false : ((!Relational.ISNULL(row2.TEMPB) &amp;&amp; !Relational.ISNULL(row3.TEMPB)) ? (!row2.TEMPB.equals(row3.TEMPB)) : true )) || ((Relational.ISNULL(row2.SPART) &amp;&amp; Relational.ISNULL(row3.SPART)) ? false : ((!Relational.ISNULL(row2.SPART) &amp;&amp; !Relational.ISNULL(row3.SPART)) ? (!row2.SPART.equals(row3.SPART)) : true )) || ((Relational.ISNULL(row2.PRDHA) &amp;&amp; Relational.ISNULL(row3.PRDHA)) ? false : ((!Relational.ISNULL(row2.PRDHA) &amp;&amp; !Relational.ISNULL(row3.PRDHA)) ? (!row2.PRDHA.equals(row3.PRDHA)) : true )) || ((Relational.ISNULL(row2.MHDRZ) &amp;&amp; Relational.ISNULL(row3.MHDRZ)) ? false : ((!Relational.ISNULL(row2.MHDRZ) &amp;&amp; !Relational.ISNULL(row3.MHDRZ)) ? (!row2.MHDRZ.equals(row3.MHDRZ)) : true )) || ((Relational.ISNULL(row2.MHDHB) &amp;&amp; Relational.ISNULL(row3.MHDHB)) ? false : ((!Relational.ISNULL(row2.MHDHB) &amp;&amp; !Relational.ISNULL(row3.MHDHB)) ? (!row2.MHDHB.equals(row3.MHDHB)) : true )) || ((Relational.ISNULL(row2.XGCHP) &amp;&amp; Relational.ISNULL(row3.XGCHP)) ? false : ((!Relational.ISNULL(row2.XGCHP) &amp;&amp; !Relational.ISNULL(row3.XGCHP)) ? (!row2.XGCHP.equals(row3.XGCHP)) : true )) || ((Relational.ISNULL(row2.SLED_BBD) &amp;&amp; Relational.ISNULL(row3.SLED_BBD)) ? false : ((!Relational.ISNULL(row2.SLED_BBD) &amp;&amp; !Relational.ISNULL(row3.SLED_BBD)) ? (!row2.SLED_BBD.equals(row3.SLED_BBD)) : true )) || ((Relational.ISNULL(row2.MAGRV) &amp;&amp; Relational.ISNULL(row3.MAGRV)) ? false : ((!Relational.ISNULL(row2.MAGRV) &amp;&amp; !Relational.ISNULL(row3.MAGRV)) ? (!row2.MAGRV.equals(row3.MAGRV)) : true )) || ((Relational.ISNULL(row2.PSTAT) &amp;&amp; Relational.ISNULL(row3.PSTAT)) ? false : ((!Relational.ISNULL(row2.PSTAT) &amp;&amp; !Relational.ISNULL(row3.PSTAT)) ? (!row2.PSTAT.equals(row3.PSTAT)) : true ))" name="UpdateMaterial" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row2.MATNR " name="MATNR" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.ERSDA " name="ERSDA" nullable="true" type="id_Date"/>
         <mapperTableEntries expression="row2.LAEDA " name="LAEDA" nullable="true" type="id_Date"/>
@@ -350,6 +352,7 @@
         <mapperTableEntries expression="row2.XGCHP " name="XGCHP" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.SLED_BBD " name="SLED_BBD" nullable="true" type="id_String"/>
         <mapperTableEntries expression="row2.MAGRV " name="MAGRV" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row2.PSTAT " name="PSTAT" nullable="true" type="id_String"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
         <mapperTableEntries name="MATNR" nullable="true" type="id_String"/>
@@ -370,6 +373,7 @@
         <mapperTableEntries name="XGCHP" nullable="true" type="id_String"/>
         <mapperTableEntries name="SLED_BBD" nullable="true" type="id_String"/>
         <mapperTableEntries name="MAGRV" nullable="true" type="id_String"/>
+        <mapperTableEntries name="PSTAT" nullable="true" type="id_String"/>
       </inputTables>
       <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row3" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row2.MATNR" name="MATNR" type="id_String"/>
@@ -390,6 +394,7 @@
         <mapperTableEntries name="XGCHP" nullable="true" type="id_String"/>
         <mapperTableEntries name="SLED_BBD" nullable="true" type="id_String"/>
         <mapperTableEntries name="MAGRV" nullable="true" type="id_String"/>
+        <mapperTableEntries name="PSTAT" nullable="true" type="id_String"/>
       </inputTables>
     </nodeData>
   </node>
@@ -521,6 +526,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PSTAT"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
@@ -532,7 +542,7 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="UpdateMaterial" name="tDBOutput_1">
-      <column comment="Material Number" key="true" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Material Number" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Created On" key="false" length="8" name="ERSDA" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="Date of Last Change" key="false" length="8" name="LAEDA" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="Flag Material for Deletion at Client Level" key="false" length="1" name="LVORM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -550,9 +560,10 @@
       <column comment="Approved Batch Record Required" key="false" length="1" name="XGCHP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Expiration Date" key="false" length="1" name="SLED_BBD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Material Group: Packaging Materials" key="false" length="4" name="MAGRV" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="UpdateMaterial" name="REJECT">
-      <column comment="Material Number" key="true" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Material Number" key="false" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Created On" key="false" length="8" name="ERSDA" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="Date of Last Change" key="false" length="8" name="LAEDA" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="Flag Material for Deletion at Client Level" key="false" length="1" name="LVORM" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
@@ -570,6 +581,7 @@
       <column comment="Approved Batch Record Required" key="false" length="1" name="XGCHP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Expiration Date" key="false" length="1" name="SLED_BBD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Material Group: Packaging Materials" key="false" length="4" name="MAGRV" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Maintenance status" key="false" length="15" name="PSTAT" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -593,7 +605,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [MATNR] ,&#13;&#10;[ERSDA] ,&#13;&#10;[LAEDA] ,&#13;&#10;[LVORM] ,&#13;&#10;[MTART] ,&#13;&#10;[MBRSH] ,&#13;&#10;[MATKL] ,&#13;&#10;[BISMT] ,&#13;&#10;[MEINS] ,&#13;&#10;[RAUBE] ,&#13;&#10;[TEMPB] ,&#13;&#10;[SPART] ,&#13;&#10;[PRDHA] ,&#13;&#10;[MHDRZ] ,&#13;&#10;[MHDHB] ,&#13;&#10;[XGCHP] ,&#13;&#10;[SLED_BBD] ,&#13;&#10;[MAGRV] &#13;&#10;FROM [dbo].[MARA_HANA] &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [MATNR] ,&#13;&#10;[ERSDA] ,&#13;&#10;[LAEDA] ,&#13;&#10;[LVORM] ,&#13;&#10;[MTART] ,&#13;&#10;[MBRSH] ,&#13;&#10;[MATKL] ,&#13;&#10;[BISMT] ,&#13;&#10;[MEINS] ,&#13;&#10;[RAUBE] ,&#13;&#10;[TEMPB] ,&#13;&#10;[SPART] ,&#13;&#10;[PRDHA] ,&#13;&#10;[MHDRZ] ,&#13;&#10;[MHDHB] ,&#13;&#10;[XGCHP] ,&#13;&#10;[SLED_BBD] ,&#13;&#10;[MAGRV] ,&#13;&#10;[PSTAT]&#13;&#10;FROM [dbo].[MARA_HANA] &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -640,6 +652,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MAGRV"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PSTAT"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
@@ -664,6 +678,7 @@
       <column comment="" key="false" length="1" name="XGCHP" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="SLED_BBD" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="MAGRV" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="PSTAT" nullable="true" originalLength="15" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="384" posY="352">
@@ -963,6 +978,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tMap_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="PSTAT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
@@ -970,10 +990,20 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
   </connection>
   <connection connectorName="FLOW" label="UpdateMaterial" lineStyle="0" metaname="UpdateMaterial" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tDBOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="PSTAT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="UpdateMaterial"/>
   </connection>
   <connection connectorName="FLOW" label="row3" lineStyle="8" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tMap_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="PSTAT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
   </connection>
@@ -1018,13 +1048,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_ed481fa7-7afe-4140-ba2e-55d839ac20e9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>lGdRmy7ALhXnDAEc3I2FOTsV/QsCVP+Z8bUYC7dlkIjLtyp3m7Z4+/IsfzKHMFL6S/sBH0n3PEB1&#13;
-iJYaF32iyw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_04ed6608-1dd7-479b-8f4c-cce35d1b8a0f"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>WkK2OGueL3zeJlfnL3wBuUs+UtC038ULwvHAEDwyMQv6obmXhzSdPM0IoA19FSb7a+aTnJ/MNi06&#13;
-ibVJRXB2Ow==</DigestValue></Reference></SignedInfo><SignatureValue>iyp1KgVdxLrpg3zx2bOMRXtbrf8V9FP7bUnjtSjh8FynW6Y6xeSmxj6rd9Di1QHmiL5hQ6Yaw3/r&#13;
-yMo9fIfSuNXsqxaUEQDE1F1tuz7D0JH0Vtl3pXVyHUcllG/u2p9LDkx9S9AFvwDJ19yXAIQueXE/&#13;
-8FX7PZ6A9Yl1mPXonz+Qfy4xyFkZNgEmQEhhGLXlzI2aC0cnfd6K2JoxS6knlr1JiEbuwydoNZUp&#13;
-zLwLSctFOxczK4RosUE8PdrM07DohGJP81zuAQfhLPNFLmg/HAuibaGQMXDawmdhE6KuO9OJdn1J&#13;
-39xZ0Xfiw0KHCRIf6kQtZdwhp5NouOu1RGWfkg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_d50bd322-04a4-4985-b773-554dd3218aae"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>JwxctAlY351wSeIuxi77E2+giMhbW0YAB4lpBGUMh5Vd1MNVK4je20fG7VUyEBcv2zuXnOPp7AKH&#13;
+f4MHwq/3Yg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_866e1fa1-0b0d-4d13-b4cf-cc510e22ddc1"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5i/YOEXWfKaLGuCm6pFM1BmvdySPpyxZc33dPLDGd6IWD48v7UG7tYNUGNGhtkLQiXFRK+cKLXlM&#13;
+A8t+YwRX4w==</DigestValue></Reference></SignedInfo><SignatureValue>gx0lowIfG6bUuCQH1VAjjTsCf36hxaJijgT+5d3YRNCWXU3gcYyNZZ/VzL+U+uMd3cbvi2jNO6ke&#13;
+BXzdruodMC6MN6nHTRMf0EV6Ky8LmlwC1Uz6iPDdka0mpYe7AUJ/DxIwTkh2502kocYqDVfL8JZ+&#13;
+IcG3VfiCCsilAeSlKvCLGembOvZkcr+rMkdssT3qa4a1m635TSKcZGELxmPrs9g5JngcBdWZ8Qp8&#13;
+YGAYNmSfmQmVqSfwFstEA7JyAYIcvaG3IK62PU58IEDf4DC0kO5nqJoXbd++sPkzMEPTN6T/qzX2&#13;
+n1CE6sr2hrUw/LlBmFqX/dRQuX8aAnmojmd13g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1046,4 +1076,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_04ed6608-1dd7-479b-8f4c-cce35d1b8a0f" Target="#_ed481fa7-7afe-4140-ba2e-55d839ac20e9"><Timestamp>2024-01-04 22:56:52</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_866e1fa1-0b0d-4d13-b4cf-cc510e22ddc1" Target="#_d50bd322-04a4-4985-b773-554dd3218aae"><Timestamp>2024-01-25 17:49:09</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
