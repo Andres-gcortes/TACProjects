@@ -32,7 +32,7 @@
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="96"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="64"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" show="false" value=""/>
@@ -227,6 +227,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sales_Organization"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Distribution_Channel"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
@@ -263,6 +265,7 @@
       <column comment="" key="false" length="5" name="Currency_Key_Original" nullable="true" originalDbColumnName="Currency Key Original" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="4" name="Sales_Organization" nullable="false" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
@@ -367,7 +370,7 @@
       </column>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables activateCondensedTool="true" name="MaterialDocumentMigration" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Number_of_Material_Document " name="Number_of_Material_Document" type="id_String"/>
@@ -430,12 +433,14 @@
         <mapperTableEntries name="Currency_Key_Original" nullable="true" type="id_String"/>
         <mapperTableEntries name="Division" nullable="true" type="id_String"/>
         <mapperTableEntries name="Sales_Organization" type="id_String"/>
+        <mapperTableEntries name="Distribution_Channel" nullable="true" type="id_String"/>
       </inputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row1.Sales_Organization " name="Sales_Organization" nullable="true" operator="=" type="id_String"/>
-        <mapperTableEntries expression="row1.Division " name="Distribution_Channel" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries expression="row1.Distribution_Channel " name="Distribution_Channel" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Customer_number " name="Sold_to_party" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries expression="row1.Material_number " name="Material_Number" nullable="true" operator="=" type="id_String"/>
+        <mapperTableEntries expression="row1.Division " name="Division" nullable="true" operator="=" type="id_String"/>
         <mapperTableEntries name="Sales_reference" nullable="true" type="id_String"/>
         <mapperTableEntries name="KDMAT" nullable="true" type="id_String"/>
         <mapperTableEntries name="POSTX" nullable="true" type="id_String"/>
@@ -848,7 +853,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales Organization\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Distribution Channel\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sold-to party\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Material Number\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales reference\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.KDMAT,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.POSTX,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.PRODH,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Profit Center\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.MAKTX,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Customer description\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.Plant,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.LAND1,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.Matched,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;SO final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;DC final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Cust final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Mat final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Div final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Grandparent company -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Grandparent company name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Grandparent company\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Parent company -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Parent company name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Parent company\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales agent -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales agent name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Sales agent\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Customer\&quot;&quot;&#10;+&quot;&#10;FROM&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales Organization\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Distribution Channel\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sold-to party\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Material Number\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.Division,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales reference\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.KDMAT,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.POSTX,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.PRODH,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Profit Center\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.MAKTX,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Customer description\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.Plant,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.LAND1,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.Matched,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;SO final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;DC final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Cust final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Mat final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Div final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Grandparent company -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Grandparent company name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Grandparent company\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Parent company -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Parent company name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Parent company\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales agent -final\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Sales agent name\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Sales agent\&quot;,&#10;&#9;&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping.\&quot;Add Customer\&quot;&quot;&#10;+&quot;&#10;FROM&#9;\&quot;&quot;+context.SAP_Test_Schema+&quot;\&quot;.Customer_Material_Mapping&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -866,6 +871,8 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="Sold_to_party"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Material_Number"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Sales_reference"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -933,6 +940,9 @@
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="18" name="Material_Number" nullable="true" originalDbColumnName="Material Number" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="2" name="Division" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="false" length="40" name="Sales_reference" nullable="true" originalDbColumnName="Sales reference" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1013,6 +1023,11 @@
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMap_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="Distribution_Channel"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
@@ -1029,13 +1044,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_63f82294-ad69-4faa-a6df-e9db6843138e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>WyYS0fJbHZH3XnU9rstkNmdOBiFSazSK7Ojv44tVy48U1T2eZmEciG1hfDVB9dv89cuNVcoVV9J3&#13;
-qS4HVJbMdQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_05650a5b-8a0e-41c0-abc8-91be3ee18bd8"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>KqMxEKGa8sR1W3vt1xeQ13nFKZAukoZhgB60iLuLlv/MEFVTnL6FhpVCNGegNQdIabK8wA3NN6sI&#13;
-XaRcRqqFUg==</DigestValue></Reference></SignedInfo><SignatureValue>cncIjP2VJjb26UqFpv6MZxyoQ+QYmiiUXBtPfabALCSxgEmh0cTPOQyyljZ8Xd/llAHlUjNax6i9&#13;
-ptf8td/ie4Y8AMWx+5iB8Y4M3J9PvrdvkZ8Eac9eYBB287GxvcooUouLTkAWKY7KkqtSOaD9SgeV&#13;
-ALsVSZjvicx4eLY026pKVovxKrX+Bwk9SP44vKiYc+6FX7KnreOktmbwmIgyKnfgYZM4q7DIJGwv&#13;
-Oe8ji+bWKqWLYIitxhgBiJXmPprqZCpMyYqqw4G1zkalusl3y7e6DaD7Vd7mb4MXgX91V5B1+LKP&#13;
-DvsDVqLmssoP5qx6l5M37E67p7QbArax59oFgw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_8e648fc7-73f0-494c-a63c-cdf113285d4a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>qIq2K7exAPBT9UUPTVvHvfuqBhk7+Z0v3hi9++n3Y6zXHVIVA4qEJtf7+TigcQIFJhmV4njKzxJv&#13;
+mjsfuwJ/9A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_59451d13-0cc4-40f2-90cf-b35ac0375211"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>+UaugwgF/MG1AVj/XF58TBfpf20vZ9+C6/6htGMSs9hTPsXvFT19UCu1rUMlL25ubXYR9fVuy4w/&#13;
+eUAQkIuFLA==</DigestValue></Reference></SignedInfo><SignatureValue>DerSL/kPiU0QNMb43WzC/irRWmLibru32xjCpH1l67npfivyZjjKEz1hK/yqys+6w+lPAovJjHB3&#13;
+ffak3GvWM4hFeF/j+MpQETt1VHWWcpz9sn+rbMDgGhRLMA62/AFsgNocs4KFY5I4N7LECk2ft/e7&#13;
+vMUYvkG4I+xNjnd//QBkPZPGYq3Qrx4pvfUDqeq72lcs+BHO7dMIz0HNCT6L3upvmHsvsXDGunNo&#13;
+n1sS2YskK4lng8aUK1pKf1z8/KvV+wwBjq0/JPv2Lm2o1ebXLQAP7cZH9EoarVhVXPuvjz1N+bx+&#13;
+HNNoSoAEkBBe/nullUoeBdl721zvxJQpe0VaKw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1057,4 +1072,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_05650a5b-8a0e-41c0-abc8-91be3ee18bd8" Target="#_63f82294-ad69-4faa-a6df-e9db6843138e"><Timestamp>2024-01-25 15:37:17</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_59451d13-0cc4-40f2-90cf-b35ac0375211" Target="#_8e648fc7-73f0-494c-a63c-cdf113285d4a"><Timestamp>2024-01-25 15:59:23</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
