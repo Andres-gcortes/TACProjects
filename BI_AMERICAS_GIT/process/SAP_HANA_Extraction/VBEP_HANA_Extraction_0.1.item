@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultContext="Default" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Default">
     <contextParameter comment="" internalId="_UOPtMH5nEe6eXckuL28m3g" name="SAP_S4_HANA_PROD_1001_Client" prompt="SAP_S4_HANA_PROD_1001_Client?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_String" value="100"/>
     <contextParameter comment="" internalId="_UOPtMX5nEe6eXckuL28m3g" name="SAP_S4_HANA_PROD_1001_Password" prompt="SAP_S4_HANA_PROD_1001_Password?" promptNeeded="false" repositoryContextId="_XH8RIHOFEe6MW4JQH4ksQw" type="id_Password" value="enc:system.encryption.key.v1:RScMn5ppmFaCKd22t1P1dyt9u87fM9OyD0EoZSAFyS6MzM+hcMj5C4rM"/>
@@ -124,7 +124,7 @@
     <routinesParameter id="_mRQJ4G60Ee6C8KFjr_RzHg" name="TalendStringUtil"/>
     <routinesParameter id="_mRLRYG60Ee6C8KFjr_RzHg" name="TalendString"/>
   </parameters>
-  <node componentName="tSAPTableInput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="512" posY="160">
+  <node componentName="tSAPTableInput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSAPTableInput_1"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_TNzosG9lEe6VfNVSxuXxPA"/>
@@ -209,7 +209,95 @@
       <column comment="Denominator (Divisor) for Conversion of Sales Qty into SKU" key="false" length="5" name="UMVKN" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="704" posY="160">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="928" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMap_1"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_8exHgH5jEe6eXckuL28m3g-tMap_1-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="true"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" show="false" value="0"/>
+    <elementParameter field="TEXT" name="JACCARD" show="false" value="0"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="VBEP" name="VBEP_output">
+      <column comment="Sales Document" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Sales Document Item" key="true" length="6" name="POSNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Schedule Line Number" key="true" length="4" name="ETENR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Schedule line category" key="false" length="2" name="ETTYP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Item is relevant for delivery" key="false" length="1" name="LFREL" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Schedule line date" key="false" length="8" name="EDATU" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="Order Quantity in Sales Units" key="false" length="13" name="WMENG" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Confirmed Quantity" key="false" length="13" name="BMENG" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Sales unit" key="false" length="3" name="VRKME" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Required quantity for mat.management in stockkeeping units" key="false" length="13" name="LMENG" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Base Unit of Measure" key="false" length="3" name="MEINS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Requirement date (deadline for procurement)" key="false" length="8" name="BDDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="Transportation Planning Date" key="false" length="8" name="TDDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="Material Staging/Availability Date" key="false" length="8" name="MBDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="Loading Date" key="false" length="8" name="LDDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="Goods Issue Date" key="false" length="8" name="WADAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="Corrected quantity in sales unit" key="false" length="13" name="CMENG" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Schedule Line Blocked for Delivery" key="false" length="2" name="LIFSP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Numerator (factor) for conversion of sales quantity into SKU" key="false" length="5" name="UMVKZ" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="Denominator (Divisor) for Conversion of Sales Qty into SKU" key="false" length="5" name="UMVKN" nullable="true" pattern="" precision="0" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties shellMaximized="true"/>
+      <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
+      <outputTables name="VBEP_output" sizeState="INTERMEDIATE">
+        <mapperTableEntries expression="row1.VBELN" name="VBELN" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.POSNR" name="POSNR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.ETENR" name="ETENR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.ETTYP" name="ETTYP" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.LFREL" name="LFREL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.EDATU" name="EDATU" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row1.WMENG" name="WMENG" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row1.BMENG" name="BMENG" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row1.VRKME" name="VRKME" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.LMENG" name="LMENG" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row1.MEINS" name="MEINS" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.BDDAT" name="BDDAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row1.TDDAT" name="TDDAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row1.MBDAT" name="MBDAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row1.LDDAT" name="LDDAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row1.WADAT" name="WADAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row1.CMENG" name="CMENG" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row1.LIFSP" name="LIFSP" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row1.UMVKZ" name="UMVKZ" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row1.UMVKN" name="UMVKN" nullable="true" type="id_BigDecimal"/>
+      </outputTables>
+      <inputTables lookupMode="LOAD_ONCE" matchingMode="ALL_ROWS" name="row1" sizeState="INTERMEDIATE">
+        <mapperTableEntries name="VBELN" nullable="true" type="id_String"/>
+        <mapperTableEntries name="POSNR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ETENR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ETTYP" nullable="true" type="id_String"/>
+        <mapperTableEntries name="LFREL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="EDATU" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="WMENG" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="BMENG" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="VRKME" nullable="true" type="id_String"/>
+        <mapperTableEntries name="LMENG" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="MEINS" nullable="true" type="id_String"/>
+        <mapperTableEntries name="BDDAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="TDDAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="MBDAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="LDDAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="WADAT" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="CMENG" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="LIFSP" nullable="true" type="id_String"/>
+        <mapperTableEntries name="UMVKZ" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="UMVKN" nullable="true" type="id_BigDecimal"/>
+      </inputTables>
+      <inputTables activateCondensedTool="true" innerJoin="true" lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row3" sizeState="INTERMEDIATE">
+        <mapperTableEntries expression="row1.VBELN " name="VBELN" nullable="true" operator="=" type="id_String"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1152" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
@@ -404,6 +492,57 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="928" posY="288">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
+    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
+    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
+    <elementParameter field="CHECK" name="START" show="false" value="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
+    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:mE7/wAR+DiCuN+AaJs5sdmNrLFiFd9MfhmXFNTauOtPTcUy61UIDQFHUaxxTqtZm71qthm0="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;VBAK_HANA&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [VBELN]&#13;&#10;  FROM [dbo].[VBAK_HANA] &#13;&#10;WHERE [VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="VBELN"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_3">
+      <column comment="" key="false" length="10" name="VBELN" nullable="true" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="192" posY="32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -472,7 +611,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
-  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="288">
+  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_1"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -753,12 +892,20 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tDBOutput_1">
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tDBRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk2"/>
+  </connection>
+  <connection connectorName="FLOW" label="VBEP_output" lineStyle="0" metaname="VBEP_output" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tDBOutput_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="VBEP_output"/>
+  </connection>
+  <connection connectorName="FLOW" label="row3" lineStyle="8" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tMap_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFlowToIterate_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -816,13 +963,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_f4b20ca1-69e0-426a-9a7c-1e102be2e3c7"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7kQ0x2mKiXIEFMCtSpiqUQveZPciA5YWel3mpl/gCjtq7BKq7gI5s8AeAFP/xf2Coh3W/X1MRa47&#13;
-6iBsblLn9w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_5fbf4128-0948-4e7c-ac40-7a6e44e925c2"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>2NHhVdDAgWi0o6B7A0Jp3qigHpE6EzAodTfeJeTCrMefgMJvTqbtTYyCroWPqDxb0PEl9XAmi3t1&#13;
-UFDm1Oyzww==</DigestValue></Reference></SignedInfo><SignatureValue>NmMLiM+BYlVVUx7XRA0A6ixOOSVOOqPgPS5VD8Yl1jXB9HoRlDJxn9uDWs77F5C65CvLxG0NoI4q&#13;
-KudKMU9TR4hen4H5d7gfjA7AbjU0/tOJnXNhwHw7pITSv0Mqc9xZUQDlTaaxMqtqTq2hD6KsMKI4&#13;
-VEielE/GEyuJuctdEIEuVOUlUtXqNF1meBWd8RLTrBCg81jkucF1SALAL+MJbI6PzfUu7GgCCqA0&#13;
-tRNf9wrknKOTxcr34KY9Y3N/Pyf6OFlXFt8M6wZrcntGZYnx5hr9DLiFn2um8v6U/Qv/lqHpY36+&#13;
-E8Qy9W8hzc5Q/f2m9ySWuBNwkUw59EAEHpnphA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_74d6e2f7-991d-4fd7-957b-e2de254877c0"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ibTCFEWyx0IuYV9E7H5HbODHty0x9Z8IPH+Uvy1PtqKM6ZLG55li43BwGkvqS5Oi3Lhqz138sQt7&#13;
+OU3qXTdEfg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_042268e6-3cdd-4c7d-b983-4812e0340c4d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>66AHWdRxgUL0bTXzghS41B7l/EUYMXj8fW+oVbFEpvNvM15k9sxipPo5HAK8CfGZSN7MIxR4j6Ha&#13;
+Obw3ofoVaw==</DigestValue></Reference></SignedInfo><SignatureValue>LDC8jMYx6YZV4bkLKwITeKCVo9Sek3xXpRyKTeECB2cmXEMwrOMS2/GMn1O/KzvSAEoiRwOdA6b2&#13;
+CfZ3GlEVCLDr3/vp8qpanp3Jeh1d8ZoB5VqhH8rK7Uz9/EAecEWVbeObYj/AGqhb0NsQ3cbcWLWB&#13;
+DWfFz/CY4/9ZCWDRHQD5BiSJF9b7GXKgULCZqsmqYWJkPC3FC0YvCdE5j/UzBuK4dH3bn1DGM7gu&#13;
+RZ0HHTX+cc6NdSrkKqp8uEXJ3B2c2ZTnX/51X62RNkjhH8+GLmgm4iQOAieflSubVuS2ByLHNlwI&#13;
+J4+amKBCWXoUqY1yOf6TVrzH/DEOH2/bbhYoOA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -844,4 +991,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_5fbf4128-0948-4e7c-ac40-7a6e44e925c2" Target="#_f4b20ca1-69e0-426a-9a7c-1e102be2e3c7"><Timestamp>2024-01-05 18:58:24</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_042268e6-3cdd-4c7d-b983-4812e0340c4d" Target="#_74d6e2f7-991d-4fd7-957b-e2de254877c0"><Timestamp>2024-01-29 18:13:22</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
