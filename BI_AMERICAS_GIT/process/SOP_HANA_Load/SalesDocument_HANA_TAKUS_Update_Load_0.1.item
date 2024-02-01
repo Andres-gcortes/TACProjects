@@ -164,7 +164,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [IdEjecucion]&#13;&#10;      ,[ERDAT_INI]&#13;&#10;      ,[ERDAT_FIN]&#13;&#10;  FROM [dbo].[CTRL_VBAK_HANA]&#13;&#10;WHERE [SOP_VBAK_UPD] IS NULL&#13;&#10;AND [AUART] NOT IN ('ZRP')&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [IdEjecucion]&#13;&#10;      ,[ERDAT_INI]&#13;&#10;      ,[ERDAT_FIN]&#13;&#10;      ,[AUART]&#13;&#10;  FROM [dbo].[CTRL_VBAK_HANA]&#13;&#10;WHERE [SOP_VBAK_UPD] IS NULL&#13;&#10;AND [AUART] NOT IN ('ZRP')&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -181,6 +181,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ERDAT_FIN"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="AUART"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
@@ -190,6 +192,7 @@
       <column comment="" defaultValue="" key="false" length="10" name="IdEjecucion" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="ERDAT_INI" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="ERDAT_FIN" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="AUART" nullable="true" originalLength="4" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="192">
@@ -202,6 +205,8 @@
       <elementValue elementRef="VALUE" value="ERDAT_INI"/>
       <elementValue elementRef="KEY" value="&quot;ERDAT_FIN&quot;"/>
       <elementValue elementRef="VALUE" value="ERDAT_FIN"/>
+      <elementValue elementRef="KEY" value="&quot;AUART&quot;"/>
+      <elementValue elementRef="VALUE" value="AUART"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFlowToIterate_2"/>
@@ -232,7 +237,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT V1.[VBELN] [Sales Document],&#13;&#10;&#9;&#9;V1.[ERDAT] [Date on Which Record Was Created],&#13;&#10;&#9;&#9;[AUDAT] [Document Date (Date Received/Sent)],&#13;&#10;&#9;&#9;V1.[VBTYP] [SD document category],&#13;&#10;&#9;&#9;[AUART] [Sales Document Type],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN V1.[NETWR] ELSE (-1)*ABS(V1.[NETWR]) END [Net Value of the Sales Order in Document Currency],&#13;&#10;&#9;&#9;V1.[WAERK] [SD Document Currency],&#13;&#10;&#9;&#9;[VKORG] [Sales Organization],&#13;&#10;&#9;&#9;[VTWEG] [Distribution Channel],&#13;&#10;&#9;&#9;[KNUMV] [Number of the document condition],&#13;&#10;&#9;&#9;[VDATU] [Requested delivery date],&#13;&#10;&#9;&#9;[VSBED] [Shipping Conditions],&#13;&#10;&#9;&#9;[IHREZ] [Your Reference],&#13;&#10;&#9;&#9;V1.[KUNNR] [Sold-to party],&#13;&#10;&#9;&#9;[KOSTL] [Cost Center],&#13;&#10;&#9;&#9;[STWAE] [Statistics currency],&#13;&#10;&#9;&#9;V1.[AEDAT] [Changed On],&#13;&#10;&#9;&#9;[CMNGV] [Next date],&#13;&#10;&#9;&#9;V1.[VGBEL] [Document number of the reference document],&#13;&#10;&#9;&#9;[XBLNR] [Reference Document Number],&#13;&#10;&#9;&#9;[VGTYP] [Document category of preceding SD document],&#13;&#10;&#9;&#9;V1.[AUFNR] [Order Number],&#13;&#10;&#9;&#9;[ABHOD] [Pick up date],&#13;&#10;&#9;&#9;[ABHOV] [Pick up time 1],&#13;&#10;&#9;&#9;[ABHOB] [Pick up time 2],&#13;&#10;&#9;&#9;[FMBDAT] [Material Staging/Availability Date],&#13;&#10;&#9;&#9;VB.[KUNNR] [Ship-to party],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN V1.[NETWR] ELSE (-1)*ABS(V1.[NETWR]) END [Net Value of the Sales Order in Document Currency Original],&#13;&#10;&#9;&#9;V1.[WAERK] [SD Document Currency Original],&#13;&#10;&#9;&#9;NULL [Sales Document has been invoiced],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN V1.[NETWR] ELSE (-1)*ABS(V1.[NETWR]) END [Net Value of the Sales Order in Local Currency],&#13;&#10;&#9;&#9;V1.[SPART] [Division],&#13;&#10;&#9;&#9;[ABSTK] [Overall rejection status of all document items],&#13;&#10;&#9;&#9;[GBSTK] [Overall processing status of document],&#13;&#10;&#9;&#9;[LFGSK] [Overall delivery status for all items],&#13;&#10;&#9;&#9;[LFSTK] [Delivery status]&#13;&#10;  FROM [dbo].[VBAK_HANA] V1&#13;&#10;    INNER JOIN [dbo].[VBAP_HANA] VP&#13;&#10;&#9;  ON V1.[VBELN] = VP.[VBELN]&#13;&#10;    LEFT JOIN [dbo].[VBPA_HANA] VB&#13;&#10;&#9;  ON V1.[VBELN] = VB.[VBELN]&#13;&#10;&#9;  AND VB.[POSNR] = '0'&#13;&#10;&#9;  AND VB.[PARVW] = 'WE'&#13;&#10;WHERE [VKORG] = '3100' &#13;&#10;AND V1.[VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' &#13;&#10;AND  '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;AND (([ABSTK] != 'C'  OR [ABSTK] IS NULL) AND VP.[ABGRU] IS NULL) &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT V1.[VBELN] [Sales Document],&#13;&#10;&#9;&#9;V1.[ERDAT] [Date on Which Record Was Created],&#13;&#10;&#9;&#9;[AUDAT] [Document Date (Date Received/Sent)],&#13;&#10;&#9;&#9;V1.[VBTYP] [SD document category],&#13;&#10;&#9;&#9;[AUART] [Sales Document Type],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN V1.[NETWR] ELSE (-1)*ABS(V1.[NETWR]) END [Net Value of the Sales Order in Document Currency],&#13;&#10;&#9;&#9;V1.[WAERK] [SD Document Currency],&#13;&#10;&#9;&#9;[VKORG] [Sales Organization],&#13;&#10;&#9;&#9;[VTWEG] [Distribution Channel],&#13;&#10;&#9;&#9;[KNUMV] [Number of the document condition],&#13;&#10;&#9;&#9;[VDATU] [Requested delivery date],&#13;&#10;&#9;&#9;[VSBED] [Shipping Conditions],&#13;&#10;&#9;&#9;[IHREZ] [Your Reference],&#13;&#10;&#9;&#9;V1.[KUNNR] [Sold-to party],&#13;&#10;&#9;&#9;[KOSTL] [Cost Center],&#13;&#10;&#9;&#9;[STWAE] [Statistics currency],&#13;&#10;&#9;&#9;V1.[AEDAT] [Changed On],&#13;&#10;&#9;&#9;[CMNGV] [Next date],&#13;&#10;&#9;&#9;V1.[VGBEL] [Document number of the reference document],&#13;&#10;&#9;&#9;[XBLNR] [Reference Document Number],&#13;&#10;&#9;&#9;[VGTYP] [Document category of preceding SD document],&#13;&#10;&#9;&#9;V1.[AUFNR] [Order Number],&#13;&#10;&#9;&#9;[ABHOD] [Pick up date],&#13;&#10;&#9;&#9;[ABHOV] [Pick up time 1],&#13;&#10;&#9;&#9;[ABHOB] [Pick up time 2],&#13;&#10;&#9;&#9;[FMBDAT] [Material Staging/Availability Date],&#13;&#10;&#9;&#9;VB.[KUNNR] [Ship-to party],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN V1.[NETWR] ELSE (-1)*ABS(V1.[NETWR]) END [Net Value of the Sales Order in Document Currency Original],&#13;&#10;&#9;&#9;V1.[WAERK] [SD Document Currency Original],&#13;&#10;&#9;&#9;NULL [Sales Document has been invoiced],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN V1.[NETWR] ELSE (-1)*ABS(V1.[NETWR]) END [Net Value of the Sales Order in Local Currency],&#13;&#10;&#9;&#9;V1.[SPART] [Division],&#13;&#10;&#9;&#9;[ABSTK] [Overall rejection status of all document items],&#13;&#10;&#9;&#9;[GBSTK] [Overall processing status of document],&#13;&#10;&#9;&#9;[LFGSK] [Overall delivery status for all items],&#13;&#10;&#9;&#9;[LFSTK] [Delivery status]&#13;&#10;  FROM [dbo].[VBAK_HANA] V1&#13;&#10;    INNER JOIN [dbo].[VBAP_HANA] VP&#13;&#10;&#9;  ON V1.[VBELN] = VP.[VBELN]&#13;&#10;    LEFT JOIN [dbo].[VBPA_HANA] VB&#13;&#10;&#9;  ON V1.[VBELN] = VB.[VBELN]&#13;&#10;&#9;  AND VB.[POSNR] = '0'&#13;&#10;&#9;  AND VB.[PARVW] = 'WE'&#13;&#10;WHERE [VKORG] = '3100' &#13;&#10;AND V1.[VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' &#13;&#10;AND  '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;AND [AUART] = '&quot; + (String)globalMap.get(&quot;AUART&quot;) + &quot;'&#13;&#10;AND (([ABSTK] != 'C'  OR [ABSTK] IS NULL) AND VP.[ABGRU] IS NULL) &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -688,7 +693,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT&#9;VP.[VBELN] [Sales Document],&#13;&#10;&#9;&#9;VP.[POSNR] [Sales Document Item],&#13;&#10;&#9;&#9;[MATNR] [Material Number],&#13;&#10;&#9;&#9;[CHARG] [Batch Number],&#13;&#10;&#9;&#9;[ARKTX] [Short text for sales order item],&#13;&#10;&#9;&#9;[PSTYV] [Sales document item category],&#13;&#10;&#9;&#9;[PRODH] [Product hierarchy],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [ZMENG] ELSE (-1)*ABS([ZMENG]) END [Target quantity in sales units],&#13;&#10;&#9;&#9;[ZIEME] [Target quantity UoM],&#13;&#10;&#9;&#9;[UMZIZ] [Numerator (factor) for converting sales units to base units (target qty)],&#13;&#10;&#9;&#9;[UMZIN] [Denominator (factor) for converting sales units to base units (target qty)],&#13;&#10;&#9;&#9;[MEINS] [Base Unit of Measure],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [SMENG] ELSE (-1)*ABS([SMENG]) END [Scale quantity in base unit of measure],&#13;&#10;&#9;&#9;[ABDAT] [Reconciliation Date for Agreed Cumulative Quantity],&#13;&#10;&#9;&#9;[KDMAT] [Material Number Used by Customer],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN VP.[NETWR] ELSE (-1)*ABS(VP.[NETWR]) END [Net value of the order item in document currency] ,&#13;&#10;&#9;&#9;VP.[WAERK] [SD Document Currency],&#13;&#10;&#9;&#9;[KZTLF] [Partial delivery at item level],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN [KWMENG] * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN [KWMENG] * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE [KWMENG]&#13;&#10;&#9;&#9;&#9;END&#13;&#10;&#9;&#9;ELSE &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN (-1) * ABS([KWMENG]) * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN (-1) * ABS([KWMENG]) * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE (-1) * ABS([KWMENG])&#13;&#10;&#9;&#9;&#9;END  &#13;&#10;&#9;&#9;END [Cumulative Order Quantity in Sales Units],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN [LSMENG] * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN [LSMENG] * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE [LSMENG]&#13;&#10;&#9;&#9;&#9;END&#13;&#10;&#9;&#9;ELSE &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN (-1) * ABS([LSMENG]) * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN (-1) * ABS([LSMENG]) * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE (-1) * ABS([LSMENG])&#13;&#10;&#9;&#9;&#9;END  &#13;&#10;&#9;&#9;END [Cumulative required delivery qty (all dlv-relev.sched.lines)],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN [KBMENG] * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN [KBMENG] * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE [KBMENG]&#13;&#10;&#9;&#9;&#9;END&#13;&#10;&#9;&#9;ELSE &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN (-1) * ABS([KBMENG]) * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN (-1) * ABS([KBMENG]) * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE (-1) * ABS([KBMENG])&#13;&#10;&#9;&#9;&#9;END  &#13;&#10;&#9;&#9;END [Cumulative confirmed quantity in sales unit],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [KLMENG] ELSE (-1)*ABS([KLMENG]) END [Cumulative confirmed quantity in base unit] ,&#13;&#10;&#9;&#9;CASE WHEN [VRKME] IN ('LB','GLL','L') THEN 'KG' ELSE [VRKME] END [Sales unit],&#13;&#10;&#9;&#9;[UMVKZ] [Numerator (factor) for conversion of sales quantity into SKU],&#13;&#10;&#9;&#9;[UMVKN] [Denominator (Divisor) for Conversion of Sales Qty into SKU],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [BRGEW] ELSE (-1)*ABS([BRGEW]) END [Gross Weight of the Item] ,&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [NTGEW] ELSE (-1)*ABS([NTGEW]) END [Net Weight of the Item] ,&#13;&#10;&#9;&#9;[GEWEI] [Weight Unit],&#13;&#10;&#9;&#9;[VBELV] [Originating document],&#13;&#10;&#9;&#9;[POSNV] [Originating item],&#13;&#10;&#9;&#9;VP.[VGBEL] [Document number of the reference document],&#13;&#10;&#9;&#9;[VGPOS] [Item number of the reference item],&#13;&#10;&#9;&#9;[VOREF] [Complete reference indicator],&#13;&#10;&#9;&#9;[WERKS] [Plant (Own or External)],&#13;&#10;&#9;&#9;[LGORT] [Storage Location],&#13;&#10;&#9;&#9;[VSTEL] [Shipping Point/Receiving Point],&#13;&#10;&#9;&#9;[ROUTE] [Route],&#13;&#10;&#9;&#9;VP.[ERDAT] [Date on Which Record Was Created],&#13;&#10;&#9;&#9;[NETPR] [Net price],&#13;&#10;&#9;&#9;[KPEIN] [Condition pricing unit],&#13;&#10;&#9;&#9;[KMEIN] [Condition unit],&#13;&#10;&#9;&#9;[SHKZG] [Returns Item],&#13;&#10;&#9;&#9;[BWTAR] [Valuation Type],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [WAVWR] ELSE (-1)*ABS([WAVWR]) END [Cost in document currency],&#13;&#10;&#9;&#9;[STCUR] [Exchange rate for statistics (Exch.rate at time of creation)],&#13;&#10;&#9;&#9;VP.[AEDAT] [Changed On],&#13;&#10;&#9;&#9;[PRCTR] [Profit Center],&#13;&#10;&#9;&#9;VP.[AUFNR] [Order Number],&#13;&#10;&#9;&#9;[VPMAT] [Planning material],&#13;&#10;&#9;&#9;[VPWRK] [Planning plant],&#13;&#10;&#9;&#9;[LFSTA] [Delivery status] ,&#13;&#10;&#9;&#9;[LFGSA] [Overall delivery status of the item],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN VP.[NETWR] ELSE (-1)*ABS(VP.[NETWR]) END [Net value of the order item in document currency Original] ,&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [ZMENG] ELSE (-1)*ABS([ZMENG]) END [Target quantity in sales units Original] ,&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [KLMENG] ELSE (-1)*ABS([KLMENG]) END [Cumulative confirmed quantity in base unit Original] ,&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN VP.[NETWR] ELSE (-1)*ABS(VP.[NETWR]) END [Net value of the order item in local currency],&#13;&#10;        VP.[ABGRU] [Reason for rejection of quotations and sales orders],&#13;&#10;        [FKSAA] [Billing Status for Order-Related Billing Documents],&#13;&#10;&#9;&#9;[GBSTA] [Overall processing status of the SD document item],&#13;&#10;&#9;&#9;KD.[IHREZ] [Your Reference]&#13;&#10;  FROM [dbo].[VBAP_HANA] VP&#13;&#10;    INNER JOIN [dbo].[VBAK_HANA] VK&#13;&#10;&#9;  ON VP.[VBELN] = VK.[VBELN]&#13;&#10;&#9;LEFT JOIN [dbo].[VBKD_HANA] KD&#13;&#10;&#9;  ON VP.[VBELN] = KD.[VBELN]&#13;&#10;&#9;  AND VP.[POSNR] = KD.[POSNR] &#13;&#10;WHERE [VKORG] = '3100' &#13;&#10;AND VK.[VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' &#13;&#10;AND  '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;AND (([ABSTK] != 'C' OR [ABSTK] IS NULL) AND VP.[ABGRU] IS NULL) &#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT&#9;VP.[VBELN] [Sales Document],&#13;&#10;&#9;&#9;VP.[POSNR] [Sales Document Item],&#13;&#10;&#9;&#9;[MATNR] [Material Number],&#13;&#10;&#9;&#9;[CHARG] [Batch Number],&#13;&#10;&#9;&#9;[ARKTX] [Short text for sales order item],&#13;&#10;&#9;&#9;[PSTYV] [Sales document item category],&#13;&#10;&#9;&#9;[PRODH] [Product hierarchy],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [ZMENG] ELSE (-1)*ABS([ZMENG]) END [Target quantity in sales units],&#13;&#10;&#9;&#9;[ZIEME] [Target quantity UoM],&#13;&#10;&#9;&#9;[UMZIZ] [Numerator (factor) for converting sales units to base units (target qty)],&#13;&#10;&#9;&#9;[UMZIN] [Denominator (factor) for converting sales units to base units (target qty)],&#13;&#10;&#9;&#9;[MEINS] [Base Unit of Measure],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [SMENG] ELSE (-1)*ABS([SMENG]) END [Scale quantity in base unit of measure],&#13;&#10;&#9;&#9;[ABDAT] [Reconciliation Date for Agreed Cumulative Quantity],&#13;&#10;&#9;&#9;[KDMAT] [Material Number Used by Customer],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN VP.[NETWR] ELSE (-1)*ABS(VP.[NETWR]) END [Net value of the order item in document currency] ,&#13;&#10;&#9;&#9;VP.[WAERK] [SD Document Currency],&#13;&#10;&#9;&#9;[KZTLF] [Partial delivery at item level],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN [KWMENG] * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN [KWMENG] * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE [KWMENG]&#13;&#10;&#9;&#9;&#9;END&#13;&#10;&#9;&#9;ELSE &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN (-1) * ABS([KWMENG]) * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN (-1) * ABS([KWMENG]) * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE (-1) * ABS([KWMENG])&#13;&#10;&#9;&#9;&#9;END  &#13;&#10;&#9;&#9;END [Cumulative Order Quantity in Sales Units],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN [LSMENG] * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN [LSMENG] * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE [LSMENG]&#13;&#10;&#9;&#9;&#9;END&#13;&#10;&#9;&#9;ELSE &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN (-1) * ABS([LSMENG]) * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN (-1) * ABS([LSMENG]) * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE (-1) * ABS([LSMENG])&#13;&#10;&#9;&#9;&#9;END  &#13;&#10;&#9;&#9;END [Cumulative required delivery qty (all dlv-relev.sched.lines)],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN [KBMENG] * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN [KBMENG] * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE [KBMENG]&#13;&#10;&#9;&#9;&#9;END&#13;&#10;&#9;&#9;ELSE &#13;&#10;&#9;&#9;&#9;CASE WHEN [VRKME] = 'LB' THEN (-1) * ABS([KBMENG]) * (0.4536) &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;WHEN [VRKME] IN ('GLL','L') THEN (-1) * ABS([KBMENG]) * [UMVKZ] / [UMVKN]&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;ELSE (-1) * ABS([KBMENG])&#13;&#10;&#9;&#9;&#9;END  &#13;&#10;&#9;&#9;END [Cumulative confirmed quantity in sales unit],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [KLMENG] ELSE (-1)*ABS([KLMENG]) END [Cumulative confirmed quantity in base unit] ,&#13;&#10;&#9;&#9;CASE WHEN [VRKME] IN ('LB','GLL','L') THEN 'KG' ELSE [VRKME] END [Sales unit],&#13;&#10;&#9;&#9;[UMVKZ] [Numerator (factor) for conversion of sales quantity into SKU],&#13;&#10;&#9;&#9;[UMVKN] [Denominator (Divisor) for Conversion of Sales Qty into SKU],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [BRGEW] ELSE (-1)*ABS([BRGEW]) END [Gross Weight of the Item] ,&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [NTGEW] ELSE (-1)*ABS([NTGEW]) END [Net Weight of the Item] ,&#13;&#10;&#9;&#9;[GEWEI] [Weight Unit],&#13;&#10;&#9;&#9;[VBELV] [Originating document],&#13;&#10;&#9;&#9;[POSNV] [Originating item],&#13;&#10;&#9;&#9;VP.[VGBEL] [Document number of the reference document],&#13;&#10;&#9;&#9;[VGPOS] [Item number of the reference item],&#13;&#10;&#9;&#9;[VOREF] [Complete reference indicator],&#13;&#10;&#9;&#9;[WERKS] [Plant (Own or External)],&#13;&#10;&#9;&#9;[LGORT] [Storage Location],&#13;&#10;&#9;&#9;[VSTEL] [Shipping Point/Receiving Point],&#13;&#10;&#9;&#9;[ROUTE] [Route],&#13;&#10;&#9;&#9;VP.[ERDAT] [Date on Which Record Was Created],&#13;&#10;&#9;&#9;[NETPR] [Net price],&#13;&#10;&#9;&#9;[KPEIN] [Condition pricing unit],&#13;&#10;&#9;&#9;[KMEIN] [Condition unit],&#13;&#10;&#9;&#9;[SHKZG] [Returns Item],&#13;&#10;&#9;&#9;[BWTAR] [Valuation Type],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [WAVWR] ELSE (-1)*ABS([WAVWR]) END [Cost in document currency],&#13;&#10;&#9;&#9;[STCUR] [Exchange rate for statistics (Exch.rate at time of creation)],&#13;&#10;&#9;&#9;VP.[AEDAT] [Changed On],&#13;&#10;&#9;&#9;[PRCTR] [Profit Center],&#13;&#10;&#9;&#9;VP.[AUFNR] [Order Number],&#13;&#10;&#9;&#9;[VPMAT] [Planning material],&#13;&#10;&#9;&#9;[VPWRK] [Planning plant],&#13;&#10;&#9;&#9;[LFSTA] [Delivery status] ,&#13;&#10;&#9;&#9;[LFGSA] [Overall delivery status of the item],&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN VP.[NETWR] ELSE (-1)*ABS(VP.[NETWR]) END [Net value of the order item in document currency Original] ,&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [ZMENG] ELSE (-1)*ABS([ZMENG]) END [Target quantity in sales units Original] ,&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN [KLMENG] ELSE (-1)*ABS([KLMENG]) END [Cumulative confirmed quantity in base unit Original] ,&#13;&#10;&#9;&#9;CASE WHEN [SHKZG] IS NULL THEN VP.[NETWR] ELSE (-1)*ABS(VP.[NETWR]) END [Net value of the order item in local currency],&#13;&#10;        VP.[ABGRU] [Reason for rejection of quotations and sales orders],&#13;&#10;        [FKSAA] [Billing Status for Order-Related Billing Documents],&#13;&#10;&#9;&#9;[GBSTA] [Overall processing status of the SD document item],&#13;&#10;&#9;&#9;KD.[IHREZ] [Your Reference]&#13;&#10;  FROM [dbo].[VBAP_HANA] VP&#13;&#10;    INNER JOIN [dbo].[VBAK_HANA] VK&#13;&#10;&#9;  ON VP.[VBELN] = VK.[VBELN]&#13;&#10;&#9;LEFT JOIN [dbo].[VBKD_HANA] KD&#13;&#10;&#9;  ON VP.[VBELN] = KD.[VBELN]&#13;&#10;&#9;  AND VP.[POSNR] = KD.[POSNR] &#13;&#10;WHERE [VKORG] = '3100' &#13;&#10;AND VK.[VBELN] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' &#13;&#10;AND  '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;AND [AUART] = '&quot; + (String)globalMap.get(&quot;AUART&quot;) + &quot;'&#13;&#10;AND (([ABSTK] != 'C' OR [ABSTK] IS NULL) AND VP.[ABGRU] IS NULL) &#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -1384,7 +1389,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE T1 FROM [dbo].[Sales Document Item] T1&#13;&#10;  INNER JOIN [dbo].[Sales Document] T2&#13;&#10;    ON T1.[Sales Document] = T2.[Sales Document]&#13;&#10;WHERE [Sales Organization] = '3100'&#13;&#10;AND T1.[Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' &#13;&#10;AND  '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE T1 FROM [dbo].[Sales Document Item] T1&#13;&#10;  INNER JOIN [dbo].[Sales Document] T2&#13;&#10;    ON T1.[Sales Document] = T2.[Sales Document]&#13;&#10;WHERE [Sales Organization] = '3100'&#13;&#10;AND T1.[Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' &#13;&#10;AND  '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;AND T2.[Sales Document Type] = '&quot; + (String)globalMap.get(&quot;AUART&quot;) + &quot;'&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -1427,7 +1432,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[Sales Document]&#13;&#10;WHERE [Sales Organization] = '3100'&#13;&#10;AND [Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' &#13;&#10;AND  '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM [dbo].[Sales Document]&#13;&#10;WHERE [Sales Organization] = '3100'&#13;&#10;AND [Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' &#13;&#10;AND  '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;' &#13;&#10;AND [Sales Document Type] = '&quot; + (String)globalMap.get(&quot;AUART&quot;) + &quot;'&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -1451,382 +1456,6 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tSAPTableInput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="576" posY="320">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSAPTableInput_1"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_TNzosG9lEe6VfNVSxuXxPA"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="CLOSED_LIST" name="SERVERTYPE" value="ApplicationServer"/>
-    <elementParameter field="TEXT" name="CLIENT" value="context.SAP_S4_HANA_PROD_1001_Client"/>
-    <elementParameter field="TEXT" name="USERID" value="context.SAP_S4_HANA_PROD_1001_UserName"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:W9qRj+/8HKTBEbX378yrcwrbLyfj0fhmBPry+Qe9h7ZVN+OjjlrgMe92p+q9TT7esgLOhUGn1wbKsCKRoqDOSxIa"/>
-    <elementParameter field="TEXT" name="LANGUAGE" value="context.SAP_S4_HANA_PROD_1001_Language"/>
-    <elementParameter field="TEXT" name="HOSTNAME" value="context.SAP_S4_HANA_PROD_1001_Host"/>
-    <elementParameter field="TEXT" name="SYSTEMNUMBER" value="context.SAP_S4_HANA_PROD_1001_SystemNumber"/>
-    <elementParameter field="TEXT" name="SYSTEMID" show="false" value="&quot;PRD&quot;"/>
-    <elementParameter field="TEXT" name="GROUPNAME" show="false" value="&quot;tGroup&quot;"/>
-    <elementParameter field="TEXT" name="RFC_SERVER_URL" show="false" value="&quot;http://localhost:8080&quot;"/>
-    <elementParameter field="TEXT" name="CONNECTION_ID" show="false" value="&quot;default&quot;"/>
-    <elementParameter field="TEXT" name="PACKAGE_SIZE" show="false" value="10000"/>
-    <elementParameter field="TEXT" name="THREAD_COUNT" show="false" value="2"/>
-    <elementParameter field="TEXT" name="TOPIC_PARTITION_COUNT" show="false" value="2"/>
-    <elementParameter field="TEXT" name="MAX_TIME_TO_WAIT" show="false" value="60"/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;VBAK&quot;"/>
-    <elementParameter field="CHECK" name="CDS_VIEWS" value="false"/>
-    <elementParameter field="TABLE" name="CDS_VIEW_PARAMETERS" show="false"/>
-    <elementParameter field="TEXT" name="FROM_STATEMENT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FILTER" value="&quot; MANDT = '100' AND VKORG = '3100' AND AEDAT BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ERDAT_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ERDAT_FIN&quot;)) + &quot;'  &quot;"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_DYNAMIC" show="false" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="DYNAMIC" show="false" value=""/>
-    <elementParameter field="TEXT" name="START_ROW" value="-1"/>
-    <elementParameter field="TEXT" name="MAX_ROW_COUNT" value="-1"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="sap_id"/>
-    <elementParameter field="LABEL" name="NOTE_DATASOURCE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="SAP_DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="USE_FTP_BATCH" value="false"/>
-    <elementParameter field="CLOSED_LIST" name="FILE_PROTOCOL" show="false" value="FTP"/>
-    <elementParameter field="TEXT" name="FTP_HOST" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="FTP_PORT" show="false" value="21"/>
-    <elementParameter field="TEXT" name="FTP_USER" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="FTP_PASS" show="false" value="enc:system.encryption.key.v1:xL8xvs3Su3nOmEN8NDQwHZ5Yr56V1Yr21kU+/eMo"/>
-    <elementParameter field="CHECK" name="USE_SERVER_LOGICAL_PATH" show="false" value="false"/>
-    <elementParameter field="TEXT" name="FTP_DIR" show="false" value="&quot;/usr/sap/talend/ftp/&quot;"/>
-    <elementParameter field="TEXT" name="GENERATED_FILENAME_PREFIX" show="false" value="&quot;current_data_file&quot;"/>
-    <elementParameter field="CHECK" name="STREAMING_MODE" value="false"/>
-    <elementParameter field="CHECK" name="NUMC_AS_STRING" value="false"/>
-    <elementParameter field="CHECK" name="DATE_AS_STRING" value="false"/>
-    <elementParameter field="CHECK" name="TRIM_SPACES" value="true"/>
-    <elementParameter field="TABLE" name="SAP_PROPERTIES">
-      <elementValue elementRef="PROPERTY" value="&quot;jco.destination.peak_limit&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;80&quot;"/>
-      <elementValue elementRef="PROPERTY" value="&quot;jco.destination.pool_capacity&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;0&quot;"/>
-    </elementParameter>
-    <elementParameter field="TABLE" name="KAFKA_PROPERTIES" show="false"/>
-    <elementParameter field="CHECK" name="USE_CUSTOM_MAXLENGTH_FOR_VARIABLE_LENGTH" value="false"/>
-    <elementParameter field="TEXT" name="CUSTOM_MAXLENGTH_FOR_VARIABLE_LENGTH" show="false" value="100"/>
-    <elementParameter field="TEXT" name="FETCH_SIZE" show="false" value="10000"/>
-    <elementParameter field="CHECK" name="EXTRACT_REMOTE_PATH" show="false" value="false"/>
-    <elementParameter field="TEXT" name="REMOTE_DIR" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="REPLACE_CONTROL_CHARACTERS" show="false" value="true"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tSAPTableInput_1">
-      <column comment="Sales Document" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Date on which the record was created" key="false" length="8" name="ERDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Document Date (Date Received/Sent)" key="false" length="8" name="AUDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="SD Document Category" key="false" length="4" name="VBTYP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Document Type" key="false" length="4" name="AUART" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Net Value of the Sales Order in Document Currency" key="false" length="15" name="NETWR" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="SD document currency" key="false" length="5" name="WAERK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="false" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Number of the Document Condition" key="false" length="10" name="KNUMV" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Requested Delivery Date" key="false" length="8" name="VDATU" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="false" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Group" key="false" length="3" name="VKGRP" nullable="true" originalLength="3" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="false" length="2" name="SPART" nullable="true" originalLength="2" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Shipping Conditions" key="false" length="2" name="VSBED" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Your Reference" key="false" length="12" name="IHREZ" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Sold-To Party" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Cost Center" key="false" length="10" name="KOSTL" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Statistics Currency" key="false" length="5" name="STWAE" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Date of Last Change" key="false" length="8" name="AEDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Next date" key="false" length="8" name="CMNGV" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Document number of the reference document" key="false" length="10" name="VGBEL" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Reference Document Number" key="false" length="16" name="XBLNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Document Category of Preceding SD Document" key="false" length="4" name="VGTYP" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Order Number" key="false" length="12" name="AUFNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Pick-Up Date" key="false" length="8" name="ABHOD" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Pick-Up Time" key="false" length="6" name="ABHOV" nullable="true" pattern="&quot;HH:mm:ss&quot;" precision="0" sourceType="TIME" type="id_Date" usefulColumn="true"/>
-      <column comment="Pick-Up Time" key="false" length="6" name="ABHOB" nullable="true" pattern="&quot;HH:mm:ss&quot;" precision="0" sourceType="TIME" type="id_Date" usefulColumn="true"/>
-      <column comment="Material Staging/Availability Date" key="false" length="8" name="FMBDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Rejection Status (All Items)" key="false" length="1" name="ABSTK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Overall Processing Status (Header/All Items)" key="false" length="1" name="GBSTK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Overall Delivery Status (All Items)" key="false" length="1" name="LFGSK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Delivery Status (All Items)" key="false" length="1" name="LFSTK" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="768" posY="320">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_m-1j4AVREe6y69Em2goVAg"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SAP_Test_Server"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SAP_Test_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SAP_Test_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SAP_Test_Database"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="USER" value="context.SAP_Test_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:+X+aeUCAG2fuFt4M5AzNmPiOKU0ySk6oqYgU6b6lU5YciB+cdVt72hATm/xw6mm3ET2MRm8="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;VBAK_HANA&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
-    <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
-    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
-    <elementParameter field="LABEL" name="NOTE" show="false" value="NOTE: batch size must be less than or equal to total number of parameter markers divided by number of columns"/>
-    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" show="false" value="false"/>
-    <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="VBELN"/>
-    <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
-    <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SAP_Test_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="CHECK" name="USE_ALTERNATE_SCHEMA" show="false" value="false"/>
-    <elementParameter field="TEXT" name="ALTERNATE_SCHEMA" show="false" value="&quot;&quot;"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
-    <elementParameter field="TABLE" name="ADD_COLS"/>
-    <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
-    <elementParameter field="TABLE" name="FIELD_OPTIONS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="VBELN"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ERDAT"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="AUDAT"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VBTYP"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="AUART"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NETWR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="WAERK"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VKORG"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="KNUMV"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VDATU"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VTWEG"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VKGRP"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SPART"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VSBED"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="IHREZ"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="KUNNR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="KOSTL"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="STWAE"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="AEDAT"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CMNGV"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VGBEL"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="XBLNR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VGTYP"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="AUFNR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ABHOD"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ABHOV"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ABHOB"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FMBDAT"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ABSTK"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="GBSTK"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="LFGSK"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="LFSTK"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
-    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
-    <elementParameter field="CHECK" name="SUPPORT_NULL_WHERE" value="false"/>
-    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
-    <elementParameter field="TEXT" name="BATCH_SIZE" value="10000"/>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBOutput_1">
-      <column comment="Sales Document" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Date on which the record was created" key="false" length="8" name="ERDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Document Date (Date Received/Sent)" key="false" length="8" name="AUDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="SD Document Category" key="false" length="4" name="VBTYP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Document Type" key="false" length="4" name="AUART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Net Value of the Sales Order in Document Currency" key="false" length="15" name="NETWR" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="SD document currency" key="false" length="5" name="WAERK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="false" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Number of the Document Condition" key="false" length="10" name="KNUMV" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Requested Delivery Date" key="false" length="8" name="VDATU" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="false" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Group" key="false" length="3" name="VKGRP" nullable="true" originalLength="3" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="false" length="2" name="SPART" nullable="true" originalLength="2" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Shipping Conditions" key="false" length="2" name="VSBED" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Your Reference" key="false" length="12" name="IHREZ" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sold-To Party" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Cost Center" key="false" length="10" name="KOSTL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Statistics Currency" key="false" length="5" name="STWAE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Date of Last Change" key="false" length="8" name="AEDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Next date" key="false" length="8" name="CMNGV" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Document number of the reference document" key="false" length="10" name="VGBEL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Reference Document Number" key="false" length="16" name="XBLNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Document Category of Preceding SD Document" key="false" length="4" name="VGTYP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Order Number" key="false" length="12" name="AUFNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Pick-Up Date" key="false" length="8" name="ABHOD" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Pick-Up Time" key="false" length="6" name="ABHOV" nullable="true" pattern="&quot;HH:mm:ss&quot;" precision="0" sourceType="TIME" type="id_Date" usefulColumn="true"/>
-      <column comment="Pick-Up Time" key="false" length="6" name="ABHOB" nullable="true" pattern="&quot;HH:mm:ss&quot;" precision="0" sourceType="TIME" type="id_Date" usefulColumn="true"/>
-      <column comment="Material Staging/Availability Date" key="false" length="8" name="FMBDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Rejection Status (All Items)" key="false" length="1" name="ABSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Overall Processing Status (Header/All Items)" key="false" length="1" name="GBSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Overall Delivery Status (All Items)" key="false" length="1" name="LFGSK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Delivery Status (All Items)" key="false" length="1" name="LFSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-    </metadata>
-    <metadata connector="REJECT" name="REJECT">
-      <column comment="Sales Document" key="true" length="10" name="VBELN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Date on which the record was created" key="false" length="8" name="ERDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Document Date (Date Received/Sent)" key="false" length="8" name="AUDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="SD Document Category" key="false" length="4" name="VBTYP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Document Type" key="false" length="4" name="AUART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Net Value of the Sales Order in Document Currency" key="false" length="15" name="NETWR" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="SD document currency" key="false" length="5" name="WAERK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="false" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Number of the Document Condition" key="false" length="10" name="KNUMV" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Requested Delivery Date" key="false" length="8" name="VDATU" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="false" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Group" key="false" length="3" name="VKGRP" nullable="true" originalLength="3" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="false" length="2" name="SPART" nullable="true" originalLength="2" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Shipping Conditions" key="false" length="2" name="VSBED" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Your Reference" key="false" length="12" name="IHREZ" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sold-To Party" key="false" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Cost Center" key="false" length="10" name="KOSTL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Statistics Currency" key="false" length="5" name="STWAE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Date of Last Change" key="false" length="8" name="AEDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Next date" key="false" length="8" name="CMNGV" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Document number of the reference document" key="false" length="10" name="VGBEL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Reference Document Number" key="false" length="16" name="XBLNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Document Category of Preceding SD Document" key="false" length="4" name="VGTYP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Order Number" key="false" length="12" name="AUFNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Pick-Up Date" key="false" length="8" name="ABHOD" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Pick-Up Time" key="false" length="6" name="ABHOV" nullable="true" pattern="&quot;HH:mm:ss&quot;" precision="0" sourceType="TIME" type="id_Date" usefulColumn="true"/>
-      <column comment="Pick-Up Time" key="false" length="6" name="ABHOB" nullable="true" pattern="&quot;HH:mm:ss&quot;" precision="0" sourceType="TIME" type="id_Date" usefulColumn="true"/>
-      <column comment="Material Staging/Availability Date" key="false" length="8" name="FMBDAT" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="Rejection Status (All Items)" key="false" length="1" name="ABSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Overall Processing Status (Header/All Items)" key="false" length="1" name="GBSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Overall Delivery Status (All Items)" key="false" length="1" name="LFGSK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Delivery Status (All Items)" key="false" length="1" name="LFSTK" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -1846,7 +1475,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT MAX([VBELN]) [VBELN_FIN]&#13;&#10;, MIN([VBELN]) [VBELN_INI]&#13;&#10;,SUBSTRING([VBELN],1,4) [FOLIO_AGRUPADOR]&#13;&#10;FROM [dbo].[VBAK_HANA] &#13;&#10;WHERE [AEDAT] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ERDAT_INI&quot;)) + &quot;' &#13;&#10;AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ERDAT_FIN&quot;)) + &quot;' &#13;&#10;GROUP BY SUBSTRING([VBELN],1,4) &#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT MAX([VBELN]) [VBELN_FIN]&#13;&#10;, MIN([VBELN]) [VBELN_INI]&#13;&#10;,SUBSTRING([VBELN],1,4) [FOLIO_AGRUPADOR]&#13;&#10;FROM [dbo].[VBAK_HANA] &#13;&#10;WHERE [AEDAT] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ERDAT_INI&quot;)) + &quot;' &#13;&#10;AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;ERDAT_FIN&quot;)) + &quot;' &#13;&#10;AND [AUART] = '&quot; + (String)globalMap.get(&quot;AUART&quot;) + &quot;'&#13;&#10;GROUP BY SUBSTRING([VBELN],1,4) &#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -2177,6 +1806,11 @@
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tMSSqlInput_2" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_2" target="tFlowToIterate_2">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="AUART"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
@@ -2188,7 +1822,7 @@
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate2"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tSAPTableInput_1">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tDBInput_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tMSSqlInput_4" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_4" target="tMSSqlOutput_2">
@@ -2215,111 +1849,6 @@
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tMSSqlRow_3" offsetLabelX="0" offsetLabelY="0" source="tMSSqlRow_3" target="tMSSqlInput_4">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk5"/>
-  </connection>
-  <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tDBOutput_1">
-    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="LFSTK"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VBELN"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="STWAE"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VGBEL"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="CMNGV"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VGTYP"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="GBSTK"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VDATU"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="XBLNR"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="ERDAT"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VTWEG"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="WAERK"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="ABHOV"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KUNNR"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KOSTL"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VBTYP"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VSBED"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="AEDAT"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="ABHOB"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="LFGSK"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="AUFNR"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="IHREZ"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VKGRP"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="ABHOD"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VKORG"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="SPART"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="NETWR"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="FMBDAT"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="AUART"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="AUDAT"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="ABSTK"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="KNUMV"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row5"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tSAPTableInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPTableInput_1" target="tDBInput_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk7"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFlowToIterate_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -2378,11 +1907,6 @@
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSAPTableInput_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
-  </subjob>
-  <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
@@ -2402,13 +1926,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_d4c57f7f-e235-430a-8fde-eb765cbbfe4e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>/WgI7bhdXZBTinab4ZAMX9m2PyeRLSjtsSPR8KjazBGLoyR/eIv4uRXCLZ6UaEwGa0BdA+185seH&#13;
-89oINpYU2A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f50af339-c7a7-4098-b81b-5fd1093f8b4f"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>4zzbJm4vwqyIsJ/y/yqCJPcyJEGa8GspGLqE+oX7b1sAQykn0ehm8PRN7GtmZJOKmgR5BIDt4xR4&#13;
-z+KP5m+y0w==</DigestValue></Reference></SignedInfo><SignatureValue>G3bH7VmP/t2YS1LZuvKwhhKFEMSPeiGvp3Y7ftkbXDLSUPKw0FwS0PmRdZ9dLBeQCrp4f05VdTny&#13;
-InPD+z24c4NRExe/A4rMA4QeKb51cjPkf4d4+YLfiTzFaw0jxyeRXSU3vp+rgwOPKNEtSOeY00qe&#13;
-zATSVi/Fa1VBClxsQP7LVEpTbWL0M3FbnYiVw+daVjxI3Zin5Z3XtMAf5o6mae6C4Nm8o6I0O1IQ&#13;
-ft9H/3NvYv5lG3+D5IkN0qhR+RLgFQaTu2erfn2Ujyb4fG+w2z4ynXcIr4r+1qW7Yve+T8Lr92Vo&#13;
-er7wG2TmgY3cZivJGc1BQXCLaMbwaNCY+T6EYQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_5c6b3e1f-2c20-46f0-90e1-8e90613e4224"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>n/viCNp784BIj3yNjsO6LNSjUen2tILLRo7DXza0kW2YnGhyzivHhmU8bz4+pmKqFHlA+CBku/ag&#13;
+7dwds7+jhw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_4240bc01-19e0-4b70-b0be-fb14e517b212"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Ab4tpxa9KsbOcrc7TpuwRChNiTHUkZAvCE/9Max5TI6ey32jgYrBdwCnJJ+OsNLvMQClFhA2Yxqh&#13;
+98KjSRVxJA==</DigestValue></Reference></SignedInfo><SignatureValue>gxjjQMpXpFwl+n/ASu5VAXi+JCwb2OwatIMNqJFXimkfZGemr3Ob+FPKxixWn+i7UcINSI7zOiUb&#13;
+pZox8mTcxiIsCDaEGNU79Ygej9KJGnx7ileEdXA/NKFx+hCDbw+wdIGjADpSQ6V28zExDLMYYniH&#13;
+3Rph7vZKLtq7AG6+Mhi6v/X51blUiA/LndBrnhk/DvwMSo3IdijMF38oRLSNPXhFnROkccPwopEU&#13;
+dkL1i/hZc9/Hy5vvT1Q0dBFfQMaZRlJstuLVwbHzAxsS0VCQn5mFX7+E6XkQak0RfupZr4aZf/gT&#13;
+vZ9cdEaNtskyv7oKf5f0Gl1yhDfUmihQ4f+8lQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2430,4 +1954,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f50af339-c7a7-4098-b81b-5fd1093f8b4f" Target="#_d4c57f7f-e235-430a-8fde-eb765cbbfe4e"><Timestamp>2024-01-16 18:08:11</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_4240bc01-19e0-4b70-b0be-fb14e517b212" Target="#_5c6b3e1f-2c20-46f0-90e1-8e90613e4224"><Timestamp>2024-02-01 21:14:12</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
