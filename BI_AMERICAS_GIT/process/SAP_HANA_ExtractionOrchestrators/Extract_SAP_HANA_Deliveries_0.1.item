@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Test" jobType="Standard" xmi:version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Production" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Production">
     <contextParameter comment="" internalId="_cLmrgMUXEe6SgsvsUVVeug" name="SAP_Test_Login" prompt="SAP_Test_Login?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_String" value="SAP_Test_usr"/>
     <contextParameter comment="" internalId="_cLmrgcUXEe6SgsvsUVVeug" name="SAP_Test_Server" prompt="SAP_Test_Server?" promptNeeded="false" repositoryContextId="_24g50HQUEe6vK59-LbUdKg" type="id_String" value="tus-cgs-s4db01"/>
@@ -118,6 +118,7 @@
   </parameters>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="96" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="LIKP_HANA_Extraction"/>
@@ -146,6 +147,7 @@
   </node>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="LIPS_HANA_Extraction"/>
@@ -174,6 +176,7 @@
   </node>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_3"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="LIKP_HANA_Extraction_Update"/>
@@ -439,12 +442,15 @@
     </metadata>
   </node>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tRunJob_2">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tRunJob_3">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk2"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_3" offsetLabelX="0" offsetLabelY="0" source="tRunJob_3" target="tDBRow_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk4"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFlowToIterate_1">
@@ -452,6 +458,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tRunJob_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk3"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_1" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_1" target="tRowGenerator_1">
@@ -488,13 +495,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_2152bcfb-06fc-4487-b1d5-6da113fd8739"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>TYDCW9C8nLp8ANuA23Vmhhr/+fv/6gHpv1uNHPlu2vota4L0xQYaxvdQ6HNE6f3ta4Mx5sFuDzEH&#13;
-MEp26CgeDQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_8a920d41-2a7f-42e2-b985-325d0e786ab0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>q2ZUQ8SbRj1/qlPoeGi3gCJ06bCD7yOM2WoT3SDAOKEP/L8OcoHPpVSb8Yq0Y7xuslvkNhux96SO&#13;
-IQJGJK8FgQ==</DigestValue></Reference></SignedInfo><SignatureValue>J/qchhfXHycVOuJBcmj1RW87lrHLcmDcn+p8At3jeKiIZGp2yg5AKtkFjTULFQq8LofGPfAFCPUI&#13;
-+O+zMDVm9XxB/J300yGk2Xbp8KTE7uJ3noOc4z704UrJbDn/8JeMOKrc3o66KBhq8bL4Ff83uBoR&#13;
-uFyYZvkloqtAfdSKH43DKfTH518EMUmURsjzH63DNX56sR1/wimwZ4Y5M7WYlv7qqWaYNalkmBU3&#13;
-igfvf3sDhQDTzCwj96MDXS+2pBVDetOhbTpj2b3TGg4zDK2V+5tDamQ0+a2k461i6y3LyF0+YV09&#13;
-4lzZJypCtZGqFhYvEYpoTiLq2u7S0UwqfoI2OA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_68b726fb-0636-4217-ab53-1bbac068e83a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>m7RK+u7JZ+erR8J8fuE07cgVfw2pboKEfUhHDP2dUIgjdlLXrqQFJuYzcqBQoIj14G/kJbiHo/lc&#13;
+xQ7hxAmg/w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_042d879d-37c5-4076-966d-de351e075822"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>0h00NhCYAhGMJt44tKtUKlh6jEy9XArY0GSQk0vJo716mS1Tj2Ip7f/WF+d7UenOBPEggaC9/+9k&#13;
+QkTmSGn8ww==</DigestValue></Reference></SignedInfo><SignatureValue>V3EGf3gmrlKo47FHMyuv3VQ0I61hTr8/puN6hxZy/C2mf7DLoWG4nV+tIwwOj/0wY99xHMEa//Kr&#13;
+jvnsrS+xap7yJTVhU/l3x4u+KtqHD/ZLbAQV66KJ4+Sk2OM/Kr6llRE5GnKSvdUfJou5Pf0qdMFL&#13;
+Rk7Z7QBKo6rZL7fPwJEyU8y2wq9KWi9iHZJhG5HtRjRmQABPLmhJUteRkllKyLOYuhbVl3OkaFZO&#13;
+OPrsOBm7Su2eAbTStcxtRddUjckeRXsQvRqE5AHTgI80C97M8JWpyx3bPmnXUlK5fBAZr+TxmBAX&#13;
+ebpzjaE81AYC1xUcfoa5evFRdWpHRPdsDzFA8g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -516,4 +523,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_8a920d41-2a7f-42e2-b985-325d0e786ab0" Target="#_2152bcfb-06fc-4487-b1d5-6da113fd8739"><Timestamp>2024-02-06 18:47:00</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_042d879d-37c5-4076-966d-de351e075822" Target="#_68b726fb-0636-4217-ab53-1bbac068e83a"><Timestamp>2024-02-06 20:04:40</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
