@@ -153,6 +153,7 @@
   </parameters>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -218,6 +219,7 @@
   </node>
   <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="288" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
       <elementValue elementRef="KEY" value="&quot;IdEjecucion&quot;"/>
@@ -244,6 +246,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="512" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -268,7 +271,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT SD.[Sales Document]&#13;&#10;      ,[Sales Document Item]&#13;&#10;      ,[Sales Document Type]&#13;&#10;      ,[Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;&#9;  ,[Division]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,CAST(CONVERT(VARCHAR(8),SD.[Date on Which Record Was Created],112) AS INT) [SK_CreateDate]&#13;&#10;      ,CAST(CONVERT(VARCHAR(8),[Document Date (Date Received/Sent)],112) AS INT) [SK_Date]&#13;&#10;      ,CASE WHEN [Requested delivery date] IS NOT NULL THEN CAST(CONVERT(VARCHAR(8),[Requested delivery date],112) AS INT) ELSE CAST(CONVERT(VARCHAR(8),[Document Date (Date Received/Sent)],112) AS INT) END [SK_DeliveryDate]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SD.[SD Document Currency]&#13;&#10;      ,ISNULL([Ship-to party],'NA') [Ship-to party]&#13;&#10;      ,ISNULL([Product hierarchy],'NA') [Product hierarchy]&#13;&#10;      ,CASE WHEN [Next date] IS NOT NULL THEN CAST(CONVERT(VARCHAR(8),[Next date],112) AS INT) ELSE 19000101 END [SK_NextDate]&#13;&#10;      ,[Net value of the order item in document currency]&#13;&#10;      ,[Cumulative Order Quantity in Sales Units]&#13;&#10;      ,[Cumulative confirmed quantity in base unit]&#13;&#10;      ,[Returns Item]&#13;&#10;      ,SDI.[Delivery status]&#13;&#10;      ,[Overall delivery status of the item]&#13;&#10;      ,[Sales Document has been invoiced]&#13;&#10;      ,[Net Value of the Sales Order in Local Currency]&#13;&#10;      ,[Sales document item category]&#13;&#10;      ,SDI.[Reason for rejection of quotations and sales orders]&#13;&#10;      ,SDI.[Billing Status for Order-Related Billing Documents]&#13;&#10;  FROM [dbo].[Sales Document] SD&#13;&#10;    INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;WHERE [Sales Organization] = '&quot; + (String)globalMap.get(&quot;VKORG&quot;) + &quot;'&#13;&#10;AND [Distribution Channel] = '&quot; + (String)globalMap.get(&quot;VTWEG&quot;) + &quot;'&#13;&#10;AND SD.[Sales Document] BETWEEN '&quot; + (String)globalMap.get(&quot;VBELN_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;VBELN_FIN&quot;) + &quot;'&#13;&#10;AND [Sales Document Type] = '&quot; + (String)globalMap.get(&quot;AUART&quot;) + &quot;' &#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="SELECT SD.[Sales Document]&#13;&#10;      ,[Sales Document Item]&#13;&#10;      ,[Sales Document Type]&#13;&#10;      ,[Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;&#9;  ,[Division]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material Number]&#13;&#10;      ,CAST(CONVERT(VARCHAR(8),SD.[Date on Which Record Was Created],112) AS INT) [SK_CreateDate]&#13;&#10;      ,CAST(CONVERT(VARCHAR(8),[Document Date (Date Received/Sent)],112) AS INT) [SK_Date]&#13;&#10;      ,CASE WHEN [Requested delivery date] IS NOT NULL THEN CAST(CONVERT(VARCHAR(8),[Requested delivery date],112) AS INT) ELSE CAST(CONVERT(VARCHAR(8),[Document Date (Date Received/Sent)],112) AS INT) END [SK_DeliveryDate]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SD.[SD Document Currency]&#13;&#10;      ,ISNULL([Ship-to party],'NA') [Ship-to party]&#13;&#10;      ,ISNULL([Product hierarchy],'NA') [Product hierarchy]&#13;&#10;      ,CASE WHEN [Next date] IS NOT NULL THEN CAST(CONVERT(VARCHAR(8),[Next date],112) AS INT) ELSE 19000101 END [SK_NextDate]&#13;&#10;      ,[Net value of the order item in document currency]&#13;&#10;      ,[Cumulative Order Quantity in Sales Units]&#13;&#10;      ,[Cumulative confirmed quantity in base unit]&#13;&#10;      ,[Returns Item]&#13;&#10;      ,SDI.[Delivery status]&#13;&#10;      ,[Overall delivery status of the item]&#13;&#10;      ,[Sales Document has been invoiced]&#13;&#10;      ,[Net Value of the Sales Order in Local Currency]&#13;&#10;      ,[Sales document item category]&#13;&#10;      ,SDI.[Reason for rejection of quotations and sales orders]&#13;&#10;      ,SDI.[Billing Status for Order-Related Billing Documents]&#13;&#10;  FROM [dbo].[Sales Document] SD&#13;&#10;    INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;WHERE  SD.[Sales Document] IN ('3101002761', 'TK421296')&#13;&#10;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -2441,6 +2444,7 @@
   </node>
   <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="832">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -2484,6 +2488,7 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -2534,6 +2539,7 @@
   </node>
   <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="416" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
       <elementValue elementRef="KEY" value="&quot;Log_IdEjecucion&quot;"/>
@@ -2550,6 +2556,7 @@
   </node>
   <node componentName="tRowGenerator" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="672" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRowGenerator_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="NB_ROWS" show="false" value="1"/>
     <elementParameter field="TABLE" name="VALUES" show="false">
       <elementValue elementRef="SCHEMA_COLUMN" value="Log_IdEjecucion"/>
@@ -2580,6 +2587,7 @@
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="928" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -2679,6 +2687,7 @@
   </node>
   <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="352">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -2722,17 +2731,21 @@
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tMSSqlInput_1" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_1" target="tFlowToIterate_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tMSSqlInput_1" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_1" target="tDBRow_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk3"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_1" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_1" target="tJava_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate1"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tMSSqlInput_2">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tMSSqlInput_2" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_2" target="tMap_1">
@@ -2763,6 +2776,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tMSSqlInput_2" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_2" target="tMSSqlRow_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
   </connection>
   <connection connectorName="FLOW" label="SK_SalesOrder" lineStyle="0" metaname="SK_SalesOrder" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_1" target="tMap_4">
@@ -2912,18 +2926,22 @@
   </connection>
   <connection connectorName="FLOW" label="row10" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFlowToIterate_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row10"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMSSqlInput_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk2"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_2" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_2" target="tRowGenerator_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate2"/>
   </connection>
   <connection connectorName="FLOW" label="row11" lineStyle="0" metaname="tRowGenerator_1" offsetLabelX="0" offsetLabelY="0" source="tRowGenerator_1" target="tDBOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row11"/>
   </connection>
   <subjob>
@@ -2951,13 +2969,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_83bb0ce4-ac6c-4c4d-af7f-e55f9f034138"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>xXzOh4KHDpJ37K6x4p+wtWT3LPM/+cdNZsqWAcCkmJD1TZGHm5SbymhEWuiFDi+RLWQVLjY14qy5&#13;
-pqAAWakwJg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_1c1c3123-aee2-431c-b476-3d746a95efd8"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>CMLm8hVwJIpFvXep5K310GK2fRI4XGC2cwUZCRrpj+0ZmhoW1Ml0SY5HXSZSi5twvfTlZU8pjC3S&#13;
-dLnwWPrKRw==</DigestValue></Reference></SignedInfo><SignatureValue>Y5MUc7L3MGCTsCqT4fUDO+Z8uOUVwrYWvuf1oaw8stpYVjyYuJBNEeVXrzIGNEXqKMna48185Sil&#13;
-1LQmmpXb0wQhjDckDzfyluskY9pGjGbFTYg2+60vnYuuoBc8nd4pFI7hDstPbOWd5GZe8FYbaZsP&#13;
-zgCCV3fRTJw58g3Esq8nEKY0a81SCOq7SAJi45p3/vg7MbulW0rI+YdBRY7s9G00EvQXkUvpxPL/&#13;
-VkRPM72oZWm9Rcy39dpugxjGhz4atMmRdD3mS51srVZuB1Wa00jlyjGJCGx3aBpPFJchYW+rV97N&#13;
-tmPRpmkNwsTYssK87L75+hAkERRpl9LueZQI/g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_828e9e6e-6391-4cc9-a87c-2da5f8963994"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Re1s//xos+uoWGznxUlwV2xz22hKuqfBkmpRFYhr4G6RAI5/Ity6ONS3pX7to8UxTaSnPZgfD2AN&#13;
+KASnW38ujg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_15ba257b-f967-4fd0-a843-373e2741712b"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7yMPkWdlRGOI4ioMZcJyQvf5kKJJZb+PRJxuSPWI4D+3USkFTCjjKcqSWv0LfG1AZEuHhuRAfg27&#13;
+jGFBUAHq4g==</DigestValue></Reference></SignedInfo><SignatureValue>Gr9rpDEFaY7CVzhytP4wNhG1jMolrRx2yEVlN4JNnSDmPjewHFOJdzdGeqc/9fZNP6aboUupkcVh&#13;
+jc1sLBgOdDwYfhQt92EThwMV8QLR7FH1anlByqkIB3IvoezQDzV7ruFk93LeRUVxM3jx8JK83RsS&#13;
++cbLNC4dsGIn27gR8Qiw4MCDO6kkJKoIbfP/ed2lucH36kIgjlnPWrrxL/NRKFymAnhuFd+cz6xR&#13;
+EKvmgKT427v61HvnBV0x6b9G0CZD1rlrWPZ9hMQO6j32pY8z4eYGW5SW7JvbqlFLp5eHcO2UcgZW&#13;
+KCs5YAR1ATi2bb/lMnXvdUZNM19SJu0CU1rd2A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2979,4 +2997,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_1c1c3123-aee2-431c-b476-3d746a95efd8" Target="#_83bb0ce4-ac6c-4c4d-af7f-e55f9f034138"><Timestamp>2024-02-08 17:08:07</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_15ba257b-f967-4fd0-a843-373e2741712b" Target="#_828e9e6e-6391-4cc9-a87c-2da5f8963994"><Timestamp>2024-02-08 19:08:54</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
