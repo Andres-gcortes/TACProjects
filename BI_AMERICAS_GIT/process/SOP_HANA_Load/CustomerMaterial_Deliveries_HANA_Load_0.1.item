@@ -130,12 +130,12 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
     <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:8/FNm3vUkcHYVS9uxTKE4eQo11v+PmW674PJ5F6WiYAAd32niEDOrXkhWERW6xRS7vtceyVH7naVNjw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Material Document&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Delivery&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;SELECT TV.[VKORG] [Sales Organization]&#13;&#10;      ,TV.[VTWEG] [Distribution Channel]&#13;&#10;&#9;  ,TV.[SPART] [Division]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,CASE WHEN CHARINDEX('-',MD.[Material number],1) != 0 THEN SUBSTRING(MD.[Material number],1,CHARINDEX('-',MD.[Material number],1)-1) ELSE MD.[Material number] END [Bulk material]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVTA_HANA] TV&#13;&#10;&#9;  ON MD.[Plant] = TV.[KKBER]&#13;&#10;EXCEPT&#13;&#10;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Division]&#13;&#10;      ,[Customer number]&#13;&#10;      ,[Material number]&#13;&#10;      ,[Plant]&#13;&#10;&#9;  ,[Bulk material]&#13;&#10;  FROM [dbo].[Customer Material]&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Division]&#13;&#10;      ,[Sold-to party]&#13;&#10;      ,[Material number]&#13;&#10;      ,[Plant]&#13;&#10;&#9;  ,CASE WHEN CHARINDEX('-',DI.[Material number],1) != 0 THEN SUBSTRING(DI.[Material number],1,CHARINDEX('-',DI.[Material number],1)-1) ELSE DI.[Material number] END [Bulk material]&#13;&#10;FROM [SOP].[dbo].[Delivery] D&#13;&#10;INNER JOIN [SOP].[dbo].[Delivery Item] DI&#13;&#10;&#9;ON D.[Delivery] = DI.[Delivery]&#13;&#10;WHERE D.[Delivery] NOT LIKE 'L%'&#13;&#10;EXCEPT&#13;&#10;SELECT [Sales Organization]&#13;&#10;      ,[Distribution Channel]&#13;&#10;      ,[Division]&#13;&#10;      ,[Customer number]&#13;&#10;      ,[Material number]&#13;&#10;      ,[Plant]&#13;&#10;&#9;  ,[Bulk material]&#13;&#10;  FROM [dbo].[Customer Material]&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -555,13 +555,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_961d99e3-ee6c-469a-ba5e-8901f5dcabff"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>rs6LRJ4tJvZwLCC1A9IIXdsU/YfC9YloFw6xsLIVIJhHkvcvmgM9vMYwTRxUroUM1lB/EPv+otbt&#13;
-SpjYp9WeKQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_07df4716-b7f0-41eb-8637-94d0bba1a10e"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>/3MNB5xCEdmb02+n0juwQruP4HoQYGHywc+wlWUotmrbDBMscIjBVD3ZMWuQPlNGfftDpCWLhcWO&#13;
-XdpqLPmfKg==</DigestValue></Reference></SignedInfo><SignatureValue>Tao3LrLzXvXeeco5i3A3uTolLQz17mGFfcEx0N25DLhH3S1zpmURfgubGxP6t8/PdSJI1insJ6+L&#13;
-UfRtvemDCIszNZhITnvLb/QMgaSLyYnbqbIWqNK0DxBHISq11aNdCm0VzBTiTjk0rO/gcAf5VjNY&#13;
-oXmKSrB8yGoJicjyML1m7AGibhb/mSBWEU9t1ICBdR98VzMUjVMajprg8/8ej0bnAYeJwla+lP90&#13;
-vrSDti61MG7o0K6NDv9mDz5JlNcVZLfzAbomtKqMUVMzaaXmtLTOO3+KnK3ipad5Wv4zd/WdArKm&#13;
-ozGnTR4/jBoNUbmaWAswEcxH64jESH3GYMMXPg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_5f78c0f5-fa70-4bbc-ada2-75464af302b6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>EP0nXR6CmNb/wbJLa6gS1RhDmk+l8TqWfrbxX6RECWosI21nxfGq6j2jP/mKP9sa6XSRuIObf6KB&#13;
+s4ND5tcjQw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_8bf3ef0f-3eee-40e3-8cd2-cd55ba82dc34"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>92yhdXW1+QieSCK3SfoG4+J8sWclp0JXukIXGUzzZuanuLCm1Zqty3asYNcV2qXA7l1bQURZ/lT7&#13;
+AfuU4jVTOw==</DigestValue></Reference></SignedInfo><SignatureValue>PuUbS1XRjc5oQsvcuFeOfrr34fa4Ci6lgPcvkijSPni2Xh5PCg7mzlg5d865CwbECciaeSs9Gtip&#13;
+3PDX8j+Oy/wKd6WFo+niuDhmq25O2KuBKW04oB3+PCEI0nTe5ohvZKB6C5NH5rvrKzKKhvZ3m76O&#13;
+GMx1YFr1Kx0ZmBc0fHQpDEZ4ZPfRCAETTVvD813+Jn+CKUPbqKpbUkRq2ALNFCP0CjxGw5PrRZ18&#13;
+21xBLKXE7gM3L1vxo3Axk3jTPm9n4MiwTxklbg+laESNlPf61Vuo1xSju8EnH+3wfhfijKxKco08&#13;
+LBwDlnNkAYMkgHOUgx79bPc89+6UIJCJaZ1scA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -583,4 +583,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_07df4716-b7f0-41eb-8637-94d0bba1a10e" Target="#_961d99e3-ee6c-469a-ba5e-8901f5dcabff"><Timestamp>2024-02-08 17:29:49</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_8bf3ef0f-3eee-40e3-8cd2-cd55ba82dc34" Target="#_5f78c0f5-fa70-4bbc-ada2-75464af302b6"><Timestamp>2024-02-08 17:47:08</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
