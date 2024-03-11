@@ -132,6 +132,7 @@
   </parameters>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -188,6 +189,7 @@
   </node>
   <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="288" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
       <elementValue elementRef="KEY" value="&quot;IdEjecucion&quot;"/>
@@ -208,6 +210,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="448" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -215,6 +218,7 @@
   </node>
   <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="896" posY="640">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -275,7 +279,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot; SELECT [VKORG] [Sales Organization]&#13;&#10;      ,[VTWEG] [Distribution Channel]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END [Division]&#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SUM([Quantity]) [Quantity]&#13;&#10;      ,SUM([Amount]) [Amount]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVKWZ_HANA] T1&#13;&#10;      ON MD.[Plant] = T1.[WERKS]&#13;&#10;   &#9;INNER JOIN [SOP_DW].[dbo].[Customer Material] CM &#13;&#10;&#9;&#9;ON MD.[Material Number] = CM.[Material Number]&#13;&#10;&#9;&#9;AND MD.[Customer Number] = CM.[Customer Number]&#13;&#10;&#9;&#9;AND T1.[VKORG] = CM.[Sales Organization]&#13;&#10;&#9;&#9;AND T1.[VTWEG] = CM.[Distribution Channel]&#13;&#10;WHERE [Movement type] = '&quot; + (String)globalMap.get(&quot;BWART&quot;) + &quot;'&#13;&#10;AND MD.[Plant] = '&quot; + (String)globalMap.get(&quot;Planta&quot;) + &quot;'&#13;&#10;AND [Posting date] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;Posting_date_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;, (Date)globalMap.get(&quot;Posting_date_FIN&quot;)) + &quot;'&#13;&#10;GROUP BY [VKORG] &#13;&#10;      ,[VTWEG]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END &#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure] &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot; SELECT [VKORG] [Sales Organization]&#13;&#10;      ,[VTWEG] [Distribution Channel]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END [Division]&#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SUM([Quantity]) [Quantity]&#13;&#10;      ,SUM([Amount]) [Amount]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVKWZ_HANA] T1&#13;&#10;      ON MD.[Plant] = T1.[WERKS]&#13;&#10;   &#9;INNER JOIN [SOP_DW].[dbo].[Customer Material] CM &#13;&#10;&#9;&#9;ON MD.[Material Number] = CM.[Material Number]&#13;&#10;&#9;&#9;AND MD.[Customer Number] = CM.[Customer Number]&#13;&#10;&#9;&#9;AND T1.[VKORG] = CM.[Sales Organization]&#13;&#10;&#9;&#9;AND T1.[VTWEG] = CM.[Distribution Channel]&#13;&#10;WHERE [Movement type] = '601'&#13;&#10;AND MD.[Plant] = '3102'&#13;&#10;AND [Posting date] BETWEEN '2023-11-06' AND '2024-01-11'&#13;&#10;AND MD.[Material number] = '50010015-2ZE1984LB'&#9;&#13;&#10;AND MD.[Customer number] = '0070003787'&#13;&#10;GROUP BY [VKORG] &#13;&#10;      ,[VTWEG]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END &#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure] &quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -362,7 +366,7 @@
       <column comment="" defaultValue="" key="false" length="13" name="Amount" nullable="true" originalLength="13" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="AddedSurrogatedKeys" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row3.SK_Customer_Material " name="SK_Customer_Material" type="id_Integer"/>
@@ -1499,6 +1503,7 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="352">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_9"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -1543,6 +1548,7 @@
   </node>
   <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="352">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_3"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
       <elementValue elementRef="KEY" value="&quot;Posting_date_INI&quot;"/>
@@ -1555,6 +1561,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="352">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -1562,6 +1569,7 @@
   </node>
   <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -1612,6 +1620,7 @@
   </node>
   <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
     <elementParameter field="TABLE" name="MAP">
       <elementValue elementRef="KEY" value="&quot;Log_IdEjecucion&quot;"/>
@@ -1628,6 +1637,7 @@
   </node>
   <node componentName="tRowGenerator" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRowGenerator_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="NB_ROWS" show="false" value="1"/>
     <elementParameter field="TABLE" name="VALUES" show="false">
       <elementValue elementRef="SCHEMA_COLUMN" value="Log_IdEjecucion"/>
@@ -1658,6 +1668,7 @@
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="896" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -1757,6 +1768,7 @@
   </node>
   <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="352">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -1800,17 +1812,21 @@
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tMSSqlInput_1" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_1" target="tFlowToIterate_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tMSSqlInput_1" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_1" target="tDBRow_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk3"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_1" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_1" target="tJava_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate1"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tMSSqlInput_9">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tMSSqlInput_2" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_2" target="tMap_1">
@@ -1832,6 +1848,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tMSSqlInput_2" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_2" target="tMSSqlRow_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
   </connection>
   <connection connectorName="FLOW" label="AddedSurrogatedKeys" lineStyle="0" metaname="AddedSurrogatedKeys" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_1" target="tAggregateRow_1">
@@ -1893,30 +1910,37 @@
   </connection>
   <connection connectorName="FLOW" label="row11" lineStyle="0" metaname="tMSSqlInput_9" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_9" target="tFlowToIterate_3">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row11"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_3" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_3" target="tJava_2">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate3"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tMSSqlInput_2">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="FLOW" label="row9" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFlowToIterate_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row9"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMSSqlInput_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk2"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_2" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_2" target="tRowGenerator_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate2"/>
   </connection>
   <connection connectorName="FLOW" label="row12" lineStyle="0" metaname="tRowGenerator_1" offsetLabelX="0" offsetLabelY="0" source="tRowGenerator_1" target="tDBOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row12"/>
   </connection>
   <subjob>
@@ -1949,13 +1973,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_7720bc0b-80d5-46cc-81d2-bc8d2bd2e981"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>cZHUn8sq7a/jTHuv2BWwJav1LCQL+4dL5puOd+BGL7i1IdmsHEk8GVogLEm79C+w9OL2LmITtGti&#13;
-mo2l3cXJGA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_027c7ad3-9762-4bd5-bf3e-5e1eb2111d97"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>yOCOT1WnWjB6dgCDKmKPJtyzu9MimQaa2EtnyG2twPGf97NpxO1b1AsR4ksAtzPxh+jKPCg+kRcQ&#13;
-ghVx2qAcvg==</DigestValue></Reference></SignedInfo><SignatureValue>bg5PBRF1j0CYvDUS5hXIGHk4dt3uaj9qZB4uuMioOnlruqkMhPXzItraLmKjS+LaQJGDuFxexNrb&#13;
-fEunHSNFf7agkmoL+hMGLhuTwnPKBXPvJ2ssrX9jVV4e74t2yjhK3sLkJ6Of4byONMRqcqigT42J&#13;
-OiV5kcnIB0UZpGsWWSn2c0YnxCm1z3dkErY2dmChtia83w3hieJ5rl2SOMr8szD2iN22CBlJiEI8&#13;
-AY/VjqIrivX5f2LzrOhGrtExz7llEXmAMG00rftcALe8uSy+AsN6YPdW+4nz+5PKji8gv97TOLV1&#13;
-lTL9ZE7aV8D3opZnwK3nkKGm/wQVazkFZgi9QQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_059680d2-f5b1-407f-8541-ad96858a29f6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>kQVQ7D4H2YTNHqngLKAgALWWVAsitGnhDNwO8ExqMqsJOYyLvC+mbNKM3rx0cVf6s9E0LUvi4a58&#13;
+iQ0f2LT/yA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_1cebd495-2907-44ff-9191-084f21983dbe"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HMjPf5Ht0fN9GzubIkN4ObNomjEK3PYTgXueVyZvOX3Fz6nsCMu4INpgsNgNcPn5l00n/PkKy/1m&#13;
+mhi7XNlBeA==</DigestValue></Reference></SignedInfo><SignatureValue>CMiV5s7ZahDkgahf0CZigZj2Y9834dOUX/xobQC/jQPPYNsxrzQZpCBvR2l+XgwTb8CCTcL7SiNq&#13;
+Ca3tnNn/jXubg2jvIPz7pcNmzQh25+XYdFC+vtq/N/0ueOgdV3y5GYimmduQS/acsdll0r0IkZkq&#13;
+gCELoH4FmHT4VBzHMo92R1fqO1oS4+EO82D5k7k0qOTV0LlKyv5NOUxiVaiG2Q3L27C+cPx4BI0L&#13;
+Z/bjWdsec7aISxL2H+3OsC4mWwSxY2eQttioZX/ynwEvdhELLgFXVpIsIfOKZs+tbhtF725uQPNa&#13;
+V45kA2yuHws52pX/u5k8GdPjqXVEZrA69U/nzA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1977,4 +2001,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_027c7ad3-9762-4bd5-bf3e-5e1eb2111d97" Target="#_7720bc0b-80d5-46cc-81d2-bc8d2bd2e981"><Timestamp>2024-03-06 22:37:29</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_1cebd495-2907-44ff-9191-084f21983dbe" Target="#_059680d2-f5b1-407f-8541-ad96858a29f6"><Timestamp>2024-03-11 19:37:35</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
