@@ -24,7 +24,7 @@
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="13"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="0"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
@@ -290,15 +290,15 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Distribution_Channel"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Customer_number"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Plant"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Material_number"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Customer_number"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Division"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Posting_date"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Plant"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Movement_type"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -314,17 +314,17 @@
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tMSSqlInput_2">
-      <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="4" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="2" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="2" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" originalLength="18" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" originalLength="10" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="Posting_date" nullable="true" originalDbColumnName="Posting date" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="4" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="Movement_type" nullable="true" originalDbColumnName="Movement type" originalLength="3" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="Base_Unit_of_Measure" nullable="true" originalDbColumnName="Base Unit of Measure" originalLength="3" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="13" name="Quantity" nullable="true" originalLength="13" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="13" name="Amount" nullable="true" originalLength="13" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Sales_Organization" nullable="true" originalDbColumnName="Sales Organization" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Distribution_Channel" nullable="true" originalDbColumnName="Distribution Channel" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Customer_number" nullable="true" originalDbColumnName="Customer number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="Plant" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="18" name="Material_number" nullable="true" originalDbColumnName="Material number" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Division" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Posting_date" nullable="true" originalDbColumnName="Posting date" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="Movement_type" nullable="true" originalDbColumnName="Movement type" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="Base_Unit_of_Measure" nullable="true" originalDbColumnName="Base Unit of Measure" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="38" name="Quantity" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="38" name="Amount" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
@@ -386,11 +386,11 @@
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row2" sizeState="INTERMEDIATE">
         <mapperTableEntries name="Sales_Organization" nullable="true" type="id_String"/>
         <mapperTableEntries name="Distribution_Channel" nullable="true" type="id_String"/>
-        <mapperTableEntries name="Division" nullable="true" type="id_String"/>
-        <mapperTableEntries name="Material_number" nullable="true" type="id_String"/>
         <mapperTableEntries name="Customer_number" nullable="true" type="id_String"/>
-        <mapperTableEntries name="Posting_date" nullable="true" type="id_Date"/>
         <mapperTableEntries name="Plant" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Material_number" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Division" nullable="true" type="id_String"/>
+        <mapperTableEntries name="Posting_date" nullable="true" type="id_Date"/>
         <mapperTableEntries name="Movement_type" nullable="true" type="id_String"/>
         <mapperTableEntries name="Base_Unit_of_Measure" nullable="true" type="id_String"/>
         <mapperTableEntries name="Quantity" nullable="true" type="id_BigDecimal"/>
@@ -1698,13 +1698,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_38e766a3-d8cc-435d-8126-17dbdd843ef2"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>tG5HH0dqiNTL1rHCwV15spGrRchpiSA/BUbMNk8mW0jNTIkqJliz0B3gF78VnokDUC6BOXXJvYon&#13;
-32hEjo1cJQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_62976d3a-14eb-472e-8819-a23a378ab177"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Fv1LNw2L5Q6KrTXE+dYsNM5BEAj+Zrrm9Mou2CB+uYX808CVNBVKR7ylzF94O6flnX+gOa+OB7nt&#13;
-l7zPTh8r9g==</DigestValue></Reference></SignedInfo><SignatureValue>Fbuz7nHteIELfT9Xj1naa3rMPxcCrYql9Q2RiuDBRRmMa7taiJDV//9ODzrdTJs/NQ1OjwNeyNy5&#13;
-oz0yGCLmpOcPTvAJQcdLKdlf/ehZ3cx2DzSchZd+3+W1zPwPAEy8o6hup3xjHx9ewxH7YiYWbPCF&#13;
-FZZSPFDh+cBDCsek2PLDXihfkAA0E0xHa6erz9xtyEednWRvS1dj5StbmNKcu9Q23MN+OWMhdP3I&#13;
-27yYc3Ev/ywqzmgCm0t9NtF/ui2huIfOAB4ArhzdCUqYlNVkEVbheetlywUy+rM2pWfGW5mm8t+h&#13;
-15Kpz0SLyg8/cGIV64ux+SbuS4dsgqLrUbcI0Q==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_a7306bd4-a4e0-4a63-9665-eefab6de3b02"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>8ZzzOOmKHeEFdoqCxDTQVbh42HK+8ehOB/ciu7Xg2wy/ERRM+OxSo35I9Xb1PzcDRN1PtkhVbJlr&#13;
+qIzfiBVJoQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_7293b11d-e5df-4c8a-8521-8575f59903ef"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5ooLuBqT8eXUFzH6eMZFcnczLAmFpQs7yPu8lx2Z13hLL85HhmW0e8w2aIh3x3i15+nA9aAmORs1&#13;
+Gyp62ESdiQ==</DigestValue></Reference></SignedInfo><SignatureValue>dCC5vkxqsbyge+9Fde7eUG9z2WQp/rlzTO3MN6dwW0Wv/9s8xHISzabrA4q3wGZyFae6ZTDBgkZ1&#13;
+7ewIJN9lYCB4sf4Lykse7rcciVgHk/3ki7535mnTX152oTLS5fr4eer/6479J71WQTZmZ6mZuCwV&#13;
+7TNh5tWxRJQJC5OVxgmhkti6OVlD1hjZ7tg1cWJWv9jkiGSjMFWmoFiiuS1U1+aqInjw24gabaY/&#13;
+G9YyDBm55J4SYmEVuCL2pGmRz37b9jYI+iIJbLxFZ0GwsFyTAOyt49BlscYMh2gFeJ7rXZqQ7s+d&#13;
+5HiQFmNYcxHexgfRIOJjSe5I6AA0KlXIoTHN1A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1726,4 +1726,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_62976d3a-14eb-472e-8819-a23a378ab177" Target="#_38e766a3-d8cc-435d-8126-17dbdd843ef2"><Timestamp>2024-03-13 22:20:53</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_7293b11d-e5df-4c8a-8521-8575f59903ef" Target="#_a7306bd4-a4e0-4a63-9665-eefab6de3b02"><Timestamp>2024-03-13 23:11:48</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
