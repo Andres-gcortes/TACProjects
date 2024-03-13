@@ -24,7 +24,7 @@
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="116"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="0"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
@@ -275,7 +275,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Final Sales Organization] [Sales Organization]&#13;&#10;      ,[Final Distribution Channel] [Distribution Channel]&#13;&#10;&#9;  ,[Final Sold-to party] [Customer number]&#13;&#10;&#9;  ,[Final Plant] [Plant]&#13;&#10;&#9;  ,[Final Material Number] [Material number]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END [Division]&#13;&#10;      ,[Posting date]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SUM([Quantity]) [Quantity]&#13;&#10;      ,SUM([Amount]) [Amount]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVKWZ_HANA] T6&#13;&#10;      ON MD.[Plant] = T6.[WERKS]&#13;&#10;INNER JOIN (&#13;&#10;SELECT ISNULL(ISNULL(T2.[Sales Organization], T3.[Sales Organization]), T4.[Sales Organization]) [Final Sales Organization]&#13;&#10;      ,ISNULL(ISNULL(T2.[Distribution Channel], T3.[Distribution Channel]), T4.[Distribution Channel]) [Final Distribution Channel]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Sold-to party], T3.[Sold-to party]), T4.[Customer number]) [Final Sold-to party]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Plant], T3.[Plant]),T4.[Plant]) [Final Plant]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Material Number], T3.[Material Number]), T4.[Material Number]) [Final Material Number]&#13;&#10;  FROM (&#13;&#10;&#9;SELECT DISTINCT [Customer number]&#13;&#10;&#9;&#9;  ,[Material number]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;  FROM [dbo].[Material Document]&#13;&#10;&#9;WHERE &#13;&#10;&#9;[Movement type] IN ('601','602','631','632')&#13;&#10;&#9;AND [Number of Material Document] NOT LIKE '6%'&#13;&#10;&#9;AND [Number of Material Document] NOT LIKE '8%'&#13;&#10;  ) T1 LEFT JOIN (&#13;&#10;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Billing Document] BD&#13;&#10;&#9;&#9;INNER JOIN [dbo].[Billing Document Item] BDI&#13;&#10;&#9;&#9;  ON BD.[Billing Document] = BDI.[Billing Document]&#13;&#10;&#9;WHERE BD.[Billing Document] LIKE '31%'&#13;&#10;&#9;AND BD.[Billing document is cancelled] IS NULL&#13;&#10;  ) T2&#13;&#10;    ON T1.[Customer number] = T2.[Sold-to party]&#13;&#10;&#9;AND T1.[Material number] = T2.[Material Number]&#13;&#10;&#9;AND T1.Plant = T2.Plant&#13;&#10;  LEFT JOIN (&#13;&#10;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;  ,CASE [Division] WHEN 'FL' THEN '3101' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FR' THEN '3102'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'AI' THEN '3103'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FC' THEN '3104'&#13;&#10;&#9;&#9;   END [Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Sales Document] SD&#13;&#10;&#9;&#9;INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;&#9;WHERE SD.[Sales Document] LIKE '31%'&#13;&#10;  ) T3&#13;&#10;    ON T1.[Customer number] = T3.[Sold-to party]&#13;&#10;&#9;AND T1.[Material number] = T3.[Material Number]&#13;&#10;&#9;AND T1.Plant = T3.Plant&#13;&#10;  LEFT JOIN (&#13;&#10;&#9;SELECT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Customer number]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Customer Material]&#13;&#10;&#9;EXCEPT&#13;&#10;&#9;(&#13;&#10;&#9;&#9;SELECT [Sales Organization]&#13;&#10;&#9;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;&#9;  FROM [dbo].[Billing Document] BD&#13;&#10;&#9;&#9;&#9;INNER JOIN [dbo].[Billing Document Item] BDI&#13;&#10;&#9;&#9;&#9;  ON BD.[Billing Document] = BDI.[Billing Document]&#13;&#10;&#9;&#9;WHERE BD.[Billing Document] LIKE '31%'&#13;&#10;&#9;&#9;UNION&#13;&#10;&#9;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;&#9;  ,CASE [Division] WHEN 'FL' THEN '3101' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FR' THEN '3102'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'AI' THEN '3103'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FC' THEN '3104'&#13;&#10;&#9;&#9;&#9;   END [Plant]&#13;&#10;&#9;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;&#9;  FROM [dbo].[Sales Document] SD&#13;&#10;&#9;&#9;&#9;INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;&#9;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;&#9;&#9;WHERE SD.[Sales Document] LIKE '31%'&#13;&#10;&#9;)&#13;&#10;  ) T4&#13;&#10;    ON T1.[Customer number] = T4.[Customer number]&#13;&#10;&#9;AND T1.[Material number] = T4.[Material Number]&#13;&#10;&#9;AND T1.Plant = T4.Plant&#13;&#10; ) T5&#13;&#10;&#9;ON T5.[Final Sales Organization] = T6.[VKORG]&#13;&#10;&#9;AND T5.[Final Distribution Channel] = T6.[VTWEG]&#13;&#10;&#9;AND T5.[Final Sold-to party] = MD.[Customer Number]&#13;&#10;&#9;AND T5.[Final Plant] =  T6.[WERKS]&#13;&#10;&#9;AND T5.[Final Material Number] = MD.[Material Number]&#13;&#10;WHERE [Movement type] = '&quot; + (String)globalMap.get(&quot;BWART&quot;) + &quot;'&#13;&#10;AND MD.[Plant] = '&quot; + (String)globalMap.get(&quot;Planta&quot;) + &quot;'&#13;&#10;AND [Posting date] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;Posting_date_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;, (Date)globalMap.get(&quot;Posting_date_FIN&quot;)) + &quot;'&#13;&#10;GROUP BY [VKORG] &#13;&#10;      ,[VTWEG]&#13;&#10;&#9;  ,[Final Sales Organization]&#13;&#10;      ,[Final Distribution Channel]&#13;&#10;&#9;  ,[Final Sold-to party]&#13;&#10;&#9;  ,[Final Plant]&#13;&#10;&#9;  ,[Final Material Number]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END &#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&#13;&#10;&quot;SELECT [Final Sales Organization] [Sales Organization]&#13;&#10;      ,[Final Distribution Channel] [Distribution Channel]&#13;&#10;&#9;  ,[Final Sold-to party] [Customer number]&#13;&#10;&#9;  ,[Final Plant] [Plant]&#13;&#10;&#9;  ,[Final Material Number] [Material number]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END [Division]&#13;&#10;      ,[Posting date]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SUM([Quantity]) [Quantity]&#13;&#10;      ,SUM([Amount]) [Amount]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVKWZ_HANA] T6&#13;&#10;      ON MD.[Plant] = T6.[WERKS]&#13;&#10;INNER JOIN (&#13;&#10;SELECT ISNULL(ISNULL(T2.[Sales Organization], T3.[Sales Organization]), T4.[Sales Organization]) [Final Sales Organization]&#13;&#10;      ,ISNULL(ISNULL(T2.[Distribution Channel], T3.[Distribution Channel]), T4.[Distribution Channel]) [Final Distribution Channel]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Sold-to party], T3.[Sold-to party]), T4.[Customer number]) [Final Sold-to party]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Plant], T3.[Plant]),T4.[Plant]) [Final Plant]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Material Number], T3.[Material Number]), T4.[Material Number]) [Final Material Number]&#13;&#10;  FROM (&#13;&#10;&#9;SELECT DISTINCT [Customer number]&#13;&#10;&#9;&#9;  ,[Material number]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;  FROM [dbo].[Material Document]&#13;&#10;&#9;WHERE &#13;&#10;&#9;[Movement type] IN ('601','602','631','632')&#13;&#10;&#9;AND [Number of Material Document] NOT LIKE '6%'&#13;&#10;&#9;AND [Number of Material Document] NOT LIKE '8%'&#13;&#10;  ) T1 LEFT JOIN (&#13;&#10;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Billing Document] BD&#13;&#10;&#9;&#9;INNER JOIN [dbo].[Billing Document Item] BDI&#13;&#10;&#9;&#9;  ON BD.[Billing Document] = BDI.[Billing Document]&#13;&#10;&#9;WHERE BD.[Billing Document] LIKE '31%'&#13;&#10;&#9;AND BD.[Billing document is cancelled] IS NULL&#13;&#10;  ) T2&#13;&#10;    ON T1.[Customer number] = T2.[Sold-to party]&#13;&#10;&#9;AND T1.[Material number] = T2.[Material Number]&#13;&#10;&#9;AND T1.Plant = T2.Plant&#13;&#10;  LEFT JOIN (&#13;&#10;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;  ,CASE [Division] WHEN 'FL' THEN '3101' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FR' THEN '3102'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'AI' THEN '3103'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FC' THEN '3104'&#13;&#10;&#9;&#9;   END [Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Sales Document] SD&#13;&#10;&#9;&#9;INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;&#9;WHERE SD.[Sales Document] LIKE '31%'&#13;&#10;  ) T3&#13;&#10;    ON T1.[Customer number] = T3.[Sold-to party]&#13;&#10;&#9;AND T1.[Material number] = T3.[Material Number]&#13;&#10;&#9;AND T1.Plant = T3.Plant&#13;&#10;  LEFT JOIN (&#13;&#10;&#9;SELECT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Customer number]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Customer Material]&#13;&#10;&#9;EXCEPT&#13;&#10;&#9;(&#13;&#10;&#9;&#9;SELECT [Sales Organization]&#13;&#10;&#9;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;&#9;  FROM [dbo].[Billing Document] BD&#13;&#10;&#9;&#9;&#9;INNER JOIN [dbo].[Billing Document Item] BDI&#13;&#10;&#9;&#9;&#9;  ON BD.[Billing Document] = BDI.[Billing Document]&#13;&#10;&#9;&#9;WHERE BD.[Billing Document] LIKE '31%'&#13;&#10;&#9;&#9;UNION&#13;&#10;&#9;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;&#9;  ,CASE [Division] WHEN 'FL' THEN '3101' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FR' THEN '3102'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'AI' THEN '3103'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FC' THEN '3104'&#13;&#10;&#9;&#9;&#9;   END [Plant]&#13;&#10;&#9;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;&#9;  FROM [dbo].[Sales Document] SD&#13;&#10;&#9;&#9;&#9;INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;&#9;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;&#9;&#9;WHERE SD.[Sales Document] LIKE '31%'&#13;&#10;&#9;)&#13;&#10;  ) T4&#13;&#10;    ON T1.[Customer number] = T4.[Customer number]&#13;&#10;&#9;AND T1.[Material number] = T4.[Material Number]&#13;&#10;&#9;AND T1.Plant = T4.Plant&#13;&#10; ) T5&#13;&#10;&#9;ON T5.[Final Sales Organization] = T6.[VKORG]&#13;&#10;&#9;AND T5.[Final Distribution Channel] = T6.[VTWEG]&#13;&#10;&#9;AND T5.[Final Sold-to party] = MD.[Customer Number]&#13;&#10;&#9;AND T5.[Final Plant] =  T6.[WERKS]&#13;&#10;&#9;AND T5.[Final Material Number] = MD.[Material Number]&#13;&#10;WHERE [Movement type] = '&quot; + (String)globalMap.get(&quot;BWART&quot;) + &quot;'&#13;&#10;AND MD.[Plant] = '&quot; + (String)globalMap.get(&quot;Planta&quot;) + &quot;'&#13;&#10;AND [Posting date] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;Posting_date_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;, (Date)globalMap.get(&quot;Posting_date_FIN&quot;)) + &quot;'&#13;&#10;GROUP BY [VKORG] &#13;&#10;      ,[VTWEG]&#13;&#10;&#9;  ,[Final Sales Organization]&#13;&#10;      ,[Final Distribution Channel]&#13;&#10;&#9;  ,[Final Sold-to party]&#13;&#10;&#9;  ,[Final Plant]&#13;&#10;&#9;  ,[Final Material Number]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END &#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -1026,28 +1026,28 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
-  <node componentName="tAggregateRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1632" posY="352">
+  <node componentName="tAggregateRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1536" posY="352">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tAggregateRow_1"/>
     <elementParameter field="TABLE" name="GROUPBYS">
       <elementValue elementRef="OUTPUT_COLUMN" value="SK_Customer_Material"/>
       <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
       <elementValue elementRef="OUTPUT_COLUMN" value="SK_DateMonth"/>
-      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_DateMonth"/>
       <elementValue elementRef="OUTPUT_COLUMN" value="SK_Plant"/>
-      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Plant"/>
       <elementValue elementRef="OUTPUT_COLUMN" value="SK_Movement_Type"/>
-      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Movement_Type"/>
       <elementValue elementRef="OUTPUT_COLUMN" value="SK_Base_Unit_of_Measure"/>
-      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Base_Unit_of_Measure"/>
     </elementParameter>
     <elementParameter field="TABLE" name="OPERATIONS">
       <elementValue elementRef="OUTPUT_COLUMN" value="Quantity"/>
       <elementValue elementRef="FUNCTION" value="sum"/>
-      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="INPUT_COLUMN" value="Quantity"/>
       <elementValue elementRef="IGNORE_NULL" value="true"/>
       <elementValue elementRef="OUTPUT_COLUMN" value="Amount"/>
       <elementValue elementRef="FUNCTION" value="sum"/>
-      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="INPUT_COLUMN" value="Amount"/>
       <elementValue elementRef="IGNORE_NULL" value="true"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LIST_DELIMITER" value="&quot;,&quot;"/>
@@ -1066,7 +1066,7 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
-  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="1952" posY="352">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="1984" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMap_2"/>
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
     <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
@@ -1169,7 +1169,7 @@
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1952" posY="224">
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1984" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_7"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -1229,7 +1229,7 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2176" posY="256">
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2176" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlOutput_2"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
@@ -1586,6 +1586,27 @@
       <elementValue elementRef="TRACE_COLUMN" value="Division"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Material_number"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Customer_number"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Posting_date"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Plant"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Movement_type"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Base_Unit_of_Measure"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Quantity"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
@@ -1677,13 +1698,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_74179060-e86c-436b-bad7-df7262b65f0c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>MjLZRzndy8pGICi8nhbQuda4SvZj+SUSIn+htCz85/+/jutTlPofZ37HI4fGMZx4RA4uSfHkq0yL&#13;
-2gbpsI+pBA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_944ef1ab-3c18-4930-bfac-41c94f3969cc"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Aa/aRRWx/1x09ul/gAyfk/zhnV57zkWEM/F2iR4k2zNpDhFOW6nh0Uc3l7NoTZUfuZxGnLGgvUyC&#13;
-AzTSB5o/aw==</DigestValue></Reference></SignedInfo><SignatureValue>SDo4Yl8VGh7OPQQNrt6YqytLcxBSw+QAHuZpTvPJgp8FmvVuVrnF1pfosKIcXvpPmHwYxnKLrdMn&#13;
-ZAqQibMWy418eL4IzOx1nZRByB5E59XZa63v+tlaHwwKOdT9yhgxI9DvO/u8JIQJoKxLQlOJA3jm&#13;
-DNuSKqVJE9nj1mBCRAIJz3p+vDtvXFsg8ah1IR5PZqr6poB2lp/vIHxGBXLEfUdi+k1ozgTuhFJI&#13;
-KxdPA/fRdGdTJuiTNUKCkTuS73urb7fY8WuCjlHocXyUTaF/qixJ6zpys4mu9P6G6sM43/p6flCG&#13;
-zos95rk6yrCWGdWwY4aXZ9tATGeDJymFV+wKgg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_62b94554-e06f-4594-8021-5541f7ae94bd"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>vMoSQiOePtj5PXuj57yFkBHvU5W8hyWz6RUbSyn0ece2qhxYNeyfIfGZh2gQ8ylm02YhyICjs94S&#13;
+1GeYfIv6Pg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_edbf642f-5afc-48bd-a408-3009aa2f1956"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>h3yrCbG663KzWmDYfyGhQqtq4hvI6KsvFhZHCgDZ6R6rf5wQrl7vtHjR84UkvRQDchqWOiK55YFV&#13;
+SxMIb9HYVA==</DigestValue></Reference></SignedInfo><SignatureValue>HpoIg73sKkowmgVJMiS8R4NRScouUGRcCuHhz5YG+5pfULzma+vRrjnmuKaeaPpiz8aCLUIpdtLQ&#13;
+xp/uXq9yrOF/gNB+YFXe4O0bNXtn7oarfblEdpUd4etSf7UCbYjGy7LblUihnFR52JjCx6ju+bOP&#13;
+1RtPaB6sYUWRp8loMNZiRWk8LZk8Ym7cwSfyJnxgQlN9HOcaHGkrgQWrVBkyvcEzbIqdyHObEcLJ&#13;
+3IgQxXsbAon5LR0Ei0YBGmPQ7yTiiC6KaBQzuj1J0X1GvmqJaz4Sc1ZQAunAv389hg7Zp7AOS8cF&#13;
+/5MMvGyXLTJJH9EIxJl/rwGzNI3mYos7FfALCw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1705,4 +1726,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_944ef1ab-3c18-4930-bfac-41c94f3969cc" Target="#_74179060-e86c-436b-bad7-df7262b65f0c"><Timestamp>2024-03-13 19:24:53</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_edbf642f-5afc-48bd-a408-3009aa2f1956" Target="#_62b94554-e06f-4594-8021-5541f7ae94bd"><Timestamp>2024-03-13 19:39:51</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
