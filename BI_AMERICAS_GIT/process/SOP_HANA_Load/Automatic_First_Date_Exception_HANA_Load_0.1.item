@@ -396,7 +396,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [VKORG] [Sales Organization]&#13;&#10;&#9;&#9;&#9;   ,[VTWEG] [Distribution Channel]&#13;&#10;&#9;&#9;&#9;   ,[SPART] [Division]&#13;&#10;&#9;&#9;&#9;   ,[Bulk material] [Material number ST]&#13;&#10;&#9;&#9;&#9;   ,[KUNNR] [Parent Company ST]&#13;&#10;&#9;&#9;&#9;   ,CONVERT(DATE,CONVERT(VARCHAR,[FOIM])+'01') [Sample date]&#13;&#10;&#9;&#9;&#9;   ,'A' [Source]&#13;&#10;FROM [SAP_HANA].[dbo].[ZDP_T_BBUCK_HANA] TBB&#13;&#10;LEFT JOIN [SAP_HANA].[dbo].[ZDP_DP_MAT_ASS_HANA] DPM&#13;&#10;&#9;ON CASE WHEN CHARINDEX('-',TBB.[MATNR],1) &gt; 0 THEN SUBSTRING(TBB.[MATNR],1,CHARINDEX('-',TBB.[MATNR],1)-1) ELSE TBB.[MATNR] END = DPM.[DPMAT]&#13;&#10;LEFT JOIN [SOP].[dbo].[Customer Material] CM&#13;&#10;&#9;ON CM.[Sales Organization] = TBB.[VKORG]&#13;&#10;   AND CM.[Distribution Channel] = TBB.[VTWEG]&#13;&#10;   AND CM.[Division] = TBB.[SPART]&#13;&#10;   AND CM.[Parent company ST] = TBB.[KUNNR]&#13;&#10;   AND CM.[Bulk material] = CASE WHEN CHARINDEX('-',DPM.[MATNR],1) &gt; 0 THEN SUBSTRING(DPM.[MATNR],1,CHARINDEX('-',DPM.[MATNR],1)-1) ELSE&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;CASE WHEN CHARINDEX('-',TBB.[MATNR],1) &gt; 0 THEN SUBSTRING(TBB.[MATNR],1,CHARINDEX('-',TBB.[MATNR],1)-1) ELSE TBB.[MATNR] END&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;END&#13;&#10;WHERE [FOIM] &lt;&gt; 0&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DISTINCT [VKORG] [Sales Organization]&#13;&#10;&#9;&#9;&#9;   ,[VTWEG] [Distribution Channel]&#13;&#10;&#9;&#9;&#9;   ,[SPART] [Division]&#13;&#10;&#9;&#9;&#9;   ,[Bulk material] [Material number ST]&#13;&#10;&#9;&#9;&#9;   ,[KUNNR] [Parent Company ST]&#13;&#10;&#9;&#9;&#9;   ,CONVERT(DATE,CONVERT(VARCHAR,[FOIM])+'01') [Sample date]&#13;&#10;&#9;&#9;&#9;   ,'A' [Source]&#13;&#10;FROM [SAP_HANA].[dbo].[ZDP_T_BBUCK_HANA] TBB&#13;&#10;LEFT JOIN [SAP_HANA].[dbo].[ZDP_DP_MAT_ASS_HANA] DPM&#13;&#10;&#9;ON CASE WHEN CHARINDEX('-',TBB.[MATNR],1) &gt; 0 THEN SUBSTRING(TBB.[MATNR],1,CHARINDEX('-',TBB.[MATNR],1)-1) ELSE TBB.[MATNR] END = DPM.[DPMAT]&#13;&#10;LEFT JOIN [SOP].[dbo].[Customer Material] CM&#13;&#10;&#9;ON CM.[Sales Organization] = TBB.[VKORG]&#13;&#10;   AND CM.[Distribution Channel] = TBB.[VTWEG]&#13;&#10;   AND CM.[Division] = TBB.[SPART]&#13;&#10;   AND CM.[Parent company ST] = TBB.[KUNNR]&#13;&#10;   AND CM.[Bulk material] = CASE WHEN CHARINDEX('-',DPM.[MATNR],1) &gt; 0 THEN SUBSTRING(DPM.[MATNR],1,CHARINDEX('-',DPM.[MATNR],1)-1) ELSE&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;CASE WHEN CHARINDEX('-',TBB.[MATNR],1) &gt; 0 THEN SUBSTRING(TBB.[MATNR],1,CHARINDEX('-',TBB.[MATNR],1)-1) ELSE TBB.[MATNR] END&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;END&#13;&#10;WHERE [FOIM] &lt;&gt; 0&#13;&#10;AND [Bulk material] IS NOT NULL&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -583,6 +583,49 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tMSSqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="704" posY="416">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_3"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SOP_AmericasBI_Server"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SOP_AmericasBI_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SOP_AmericasBI_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:O95jHxBu4cNSOstAXaR960WMjKYvFG9jS81tw0DNOU4usyIfimrXqiBkTMt3TtjBdbOBQM3iNieo/kY="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Update_Automatic_First_Date_Of_Sale_Exception&quot;"/>
+    <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;EXEC [Update_Automatic_First_Date_Of_Sale_Exception]&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SOP_AmericasBI_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" show="false" value=""/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBRow_3"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFlowToIterate_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
@@ -602,6 +645,9 @@
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tDBOutput_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBOutput_2" offsetLabelX="0" offsetLabelY="0" source="tDBOutput_2" target="tDBRow_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tDBRow_2" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tDBRow_2" target="tDBInput_2">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
@@ -629,13 +675,18 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_38c8a1b3-71c7-4c45-99ed-0cbdf0bc0d55"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>xC4SDL1dlmu5Q10TPfSUI4L8dTSZYlma/52q2CPSrpqdttXTYtBY1BxuJ4FreSMQBaEn40ybOj4B&#13;
-D4tgh6Q6iQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_bd918871-a72a-4655-a7f5-f60f4baad1b7"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>zeywdlvY0QUAlMX0aFkJpebp5s+hir93REOC6eGD4zelA5+zcmpSlV/SpMMucTQB3diOL7B0xA6I&#13;
-vhsQWdvJPQ==</DigestValue></Reference></SignedInfo><SignatureValue>AFvvz4+8GO4WqmFfwx8zR0yRrpvyyC374iA6XlQYESOMtUUKh86zT1DZjkKx/00CuPwAL7fMQcOP&#13;
-4UGB92ADLJMTA8Jl641j0+/E/xl9hKFEMUfUGfik2tmfQZ4OqhW1DSBc95iAPofL5FnoLU3JBPkv&#13;
-AgOAFk1hnma03qW8NpkH+Ba5m8qotgFdyYKvA/XQKVdxF+AIgSJ4IZ8jzheY1lWGfRtG2YQwAYI+&#13;
-oD09cxUoe09SI5uKgraAal80erUWSKMEGTEhDYUN0B2ccBvm0j/PVkS3zbhrkcqXHA8M2lwwGQfK&#13;
-touAr8bzC8VKqCjl1h+dgWmMq2oSHTGxjLAy6Q==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBRow_3"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e58f2be5-8110-431b-9590-d359140fe0bb"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>LE3tILlns3z8oqO//Aez2x/Zh8CHs9AKQn1MAb6rhlRdljn7WPqlmt+HOWb3QzVKl0VGc0cYdYvD&#13;
+tzn0HbXi/w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_d02d3c6e-6bb9-4b97-8568-a1d6ac7e6932"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>mHMqwSjBsV4gBI0XmqpV2eOjQYmy5OSL9lVVjq3qTU5sDn7T2S5DKJbEvNq4ITn5wk82G5rr8CZy&#13;
+5YvI1N4Qqw==</DigestValue></Reference></SignedInfo><SignatureValue>VF/Zlji9TLswsciNyHHPrKWsHhVaUi9QRrqNB+3pYE8X4fmJlf+R61cSeqE/CYQvTf5HFDkGj3xT&#13;
+e/oLQLiZ2HdgMF3PDyFrDFLRsDnlzScBerm9ZYQKVFY53k3hp/NkOQeR3MfEWYRtZl+YAmrjpCpb&#13;
+LOJu1OfaWM5R8oyHgF7xnP97XtXjc2F/Ie4Thg75ITFgbZEltglXtOHIw6CodQab3aVsUDu6LeP3&#13;
+g/ebk2eXgZuOr+xwo24GoblyzuqqhAA9Qjx36Cy8yH72aZxWqQRVIAI9pIFJJggf43q1bxzEXgxJ&#13;
++NwIpWYS/57WI2a+IALIC9gi399rna8fjf3YfA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -657,4 +708,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_bd918871-a72a-4655-a7f5-f60f4baad1b7" Target="#_38c8a1b3-71c7-4c45-99ed-0cbdf0bc0d55"><Timestamp>2024-03-13 21:02:44</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_d02d3c6e-6bb9-4b97-8568-a1d6ac7e6932" Target="#_e58f2be5-8110-431b-9590-d359140fe0bb"><Timestamp>2024-03-13 22:55:58</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
