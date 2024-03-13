@@ -137,6 +137,8 @@
     <elementParameter field="TEXT" name="SYSTEMNUMBER" value="context.SAP_S4_HANA_PROD_1001_SystemNumber"/>
     <elementParameter field="TEXT" name="SYSTEMID" show="false" value="&quot;PRD&quot;"/>
     <elementParameter field="TEXT" name="GROUPNAME" show="false" value="&quot;tGroup&quot;"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_TNzosG9lEe6VfNVSxuXxPA - ZDP_T_BBUCK_OV"/>
     <elementParameter field="TEXT" name="RFC_SERVER_URL" show="false" value="&quot;http://localhost:8080&quot;"/>
     <elementParameter field="TEXT" name="CONNECTION_ID" show="false" value="&quot;default&quot;"/>
     <elementParameter field="TEXT" name="PACKAGE_SIZE" show="false" value="10000"/>
@@ -184,7 +186,8 @@
     <elementParameter field="CHECK" name="REPLACE_CONTROL_CHARACTERS" show="false" value="true"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="ZDP_T_BBUCK" name="tSAPTableInput_1">
+    <metadata connector="FLOW" label="ZDP_T_BBUCK_OV" name="tSAPTableInput_1">
+      <column comment="Client" key="true" length="3" name="MANDT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Plant" key="true" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Sales Organization" key="true" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Distribution Channel" key="true" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
@@ -192,21 +195,9 @@
       <column comment="Customer Number" key="true" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Material number, without search help" key="true" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="Business Bucket" key="false" length="1" name="PCAT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Packed material where shipping unit contains one mat.only" key="false" length="40" name="VMAT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Material Long Text" key="false" length="70" name="VKTXTDE" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Material Long Text" key="false" length="70" name="VKTXTEN" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Text" key="false" length="70" name="SLSTEXT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Reference Code" key="false" length="40" name="SAREF" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Material Category" key="false" length="18" name="ZZPRODH" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Net Value of Invoiced Sales" key="false" length="19" name="UMNETWR" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Statistics currency" key="false" length="5" name="STWAE" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Business Won Last Year with impact to this Year" key="false" length="1" name="BWLY" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Existing Business Declining" key="false" length="1" name="EXBDEC" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column comment="First order in Month" key="false" length="6" name="FOIM" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="SO qty from 12 months converted in local curr and DP number" key="false" length="15" name="KWMENG" nullable="true" pattern="" precision="3" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Base Unit of Measure" key="false" length="3" name="MEINS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="Average Selling Price" key="false" length="11" name="ASPRICE" nullable="true" pattern="" precision="2" sourceType="BIG_DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Statistics currency" key="false" length="5" name="ASPWAERS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Reason" key="false" length="2" name="RECHA" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Remark Text" key="false" length="64" name="COMMENTS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="288">
@@ -229,7 +220,7 @@
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="LABEL" name="NOTE" show="false" value="NOTE: batch size must be less than or equal to total number of parameter markers divided by number of columns"/>
     <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" value="false"/>
-    <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="WERKS"/>
+    <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="MANDT"/>
     <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
@@ -247,6 +238,11 @@
     <elementParameter field="TABLE" name="ADD_COLS"/>
     <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
     <elementParameter field="TABLE" name="FIELD_OPTIONS" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="MANDT"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="WERKS"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
@@ -282,77 +278,17 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VMAT"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VKTXTDE"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VKTXTEN"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SLSTEXT"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SAREF"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ZZPRODH"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="UMNETWR"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="STWAE"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="BWLY"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="EXBDEC"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="FOIM"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="KWMENG"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="RECHA"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MEINS"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ASPRICE"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ASPWAERS"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COMMENTS"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
@@ -367,53 +303,31 @@
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="ZDP_T_BBUCK" name="tDBOutput_1">
-      <column comment="Plant" key="true" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="true" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="true" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="true" length="2" name="SPART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Number" key="true" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material number, without search help" key="true" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Business Bucket" key="false" length="1" name="PCAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Packed material where shipping unit contains one mat.only" key="false" length="40" name="VMAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material Long Text" key="false" length="70" name="VKTXTDE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material Long Text" key="false" length="70" name="VKTXTEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Text" key="false" length="70" name="SLSTEXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Reference Code" key="false" length="40" name="SAREF" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Material Category" key="false" length="18" name="ZZPRODH" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Net Value of Invoiced Sales" key="false" length="19" name="UMNETWR" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Statistics currency" key="false" length="5" name="STWAE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Business Won Last Year with impact to this Year" key="false" length="1" name="BWLY" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Existing Business Declining" key="false" length="1" name="EXBDEC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="First order in Month" key="false" length="6" name="FOIM" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="SO qty from 12 months converted in local curr and DP number" key="false" length="15" name="KWMENG" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Base Unit of Measure" key="false" length="3" name="MEINS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Average Selling Price" key="false" length="11" name="ASPRICE" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Statistics currency" key="false" length="5" name="ASPWAERS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    <metadata connector="FLOW" label="ZDP_T_BBUCK_OV" name="tDBOutput_1">
+      <column comment="Client" key="true" length="3" name="MANDT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Plant" key="true" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Sales Organization" key="true" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Distribution Channel" key="true" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Division" key="true" length="2" name="SPART" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Customer Number" key="true" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Material number, without search help" key="true" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Business Bucket" key="false" length="1" name="PCAT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="First order in Month" key="false" length="6" name="FOIM" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="Reason" key="false" length="2" name="RECHA" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Remark Text" key="false" length="64" name="COMMENTS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
-    <metadata connector="REJECT" label="ZDP_T_BBUCK" name="REJECT">
-      <column comment="Plant" key="true" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Organization" key="true" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Distribution Channel" key="true" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Division" key="true" length="2" name="SPART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Number" key="true" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material number, without search help" key="true" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Business Bucket" key="false" length="1" name="PCAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Packed material where shipping unit contains one mat.only" key="false" length="40" name="VMAT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material Long Text" key="false" length="70" name="VKTXTDE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Material Long Text" key="false" length="70" name="VKTXTEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Text" key="false" length="70" name="SLSTEXT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Sales Reference Code" key="false" length="40" name="SAREF" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Customer Material Category" key="false" length="18" name="ZZPRODH" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Net Value of Invoiced Sales" key="false" length="19" name="UMNETWR" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Statistics currency" key="false" length="5" name="STWAE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Business Won Last Year with impact to this Year" key="false" length="1" name="BWLY" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Existing Business Declining" key="false" length="1" name="EXBDEC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="First order in Month" key="false" length="6" name="FOIM" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="SO qty from 12 months converted in local curr and DP number" key="false" length="15" name="KWMENG" nullable="true" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Base Unit of Measure" key="false" length="3" name="MEINS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Average Selling Price" key="false" length="11" name="ASPRICE" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="Statistics currency" key="false" length="5" name="ASPWAERS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    <metadata connector="REJECT" label="ZDP_T_BBUCK_OV" name="REJECT">
+      <column comment="Client" key="true" length="3" name="MANDT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Plant" key="true" length="4" name="WERKS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Sales Organization" key="true" length="4" name="VKORG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Distribution Channel" key="true" length="2" name="VTWEG" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Division" key="true" length="2" name="SPART" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Customer Number" key="true" length="10" name="KUNNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Material number, without search help" key="true" length="40" name="MATNR" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Business Bucket" key="false" length="1" name="PCAT" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="First order in Month" key="false" length="6" name="FOIM" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="Reason" key="false" length="2" name="RECHA" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="Remark Text" key="false" length="64" name="COMMENTS" nullable="true" pattern="" precision="0" sourceType="STRING" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -694,13 +608,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_65675030-765b-4fe0-85b0-07012ef169db"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>vZC/CJ90QjAt249HcIFNYZ8I8V1ydS3fT+lINGHQcIIWnb8zQrY5zqY1uPxwsSmC8H5xNDOfNWO/&#13;
-BAvuNhpJHw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_278d532e-8ae2-4977-a5aa-bf6d72ca0feb"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>vNk/K/YcTg6O02xM8afWgfGcsnCquD6CxJS8u1xTxm0iQKVvrNX/B2PQk5f2QGNcgNaA35dhaZg0&#13;
-R4WdYjJmkQ==</DigestValue></Reference></SignedInfo><SignatureValue>k2av5FGTtVsWY2HOjjStooqjagvCuPGXQc/WGNMudA8rOjCDPaL+M+LrqqQawjiadg+v/0eo2UGQ&#13;
-ttlkbEQwwrXuS2aML6Y3w3N1Bii4ilsn53zavh7Zhpavo/0dU0ZJfcBdUK9ONyHxUQUz8Mw5QUy5&#13;
-bPz4iDVGuhzJ1/MNrTAhG3ZWyeX2iHKfgp7TmluJZBs8FOABa+HyBLCCqD+cUmJcU/JUSZaOztuP&#13;
-UDrlSs05ZbCs0TnrSXaX8nr5XvJbY/UG1512JHhluax9iEk+vTMqldUp1X8CMn/GXEi32hfJt3CJ&#13;
-vJAnOQr/Kv+Pfo+Zi95qSZ41fRnkEZWVFOYE3A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_66fb3258-addc-4a71-960d-6cc78d37b18c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ZAfdoyg7+gLbVXANjWThDSef9W2Nd6zSxAEd9YXEnMAHWBew4GZ02HKw2FmkqiTyt5HIvAqmfaAQ&#13;
+rHnzA6gLUA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_96e6ce84-b683-4e8f-8729-b218fe92da06"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>zCQIXldP76qV6QJu6afACbhmeQumzGUM/4fbTI4SEa+khralvRwEm+wej0rlTc3l6rqyZafMy4oB&#13;
+PpkMBdvkBw==</DigestValue></Reference></SignedInfo><SignatureValue>UNjzLuDjLkE9QkedCRnYMtesHH89dNzA2xefyCTXUP7JSge5HEntev9ZVGaGXl2+2/K6xO5bwl8c&#13;
+c1PaV3mOgrAqrUylNUVDZLoDnDKb/1RRjHTHpLrizZGh0DLUKIGt5vfMviTlClmBWgIMVfBj8MIc&#13;
+S1TNbt49TN/c9AM/em6VTwL62uJkcLhPA8ir6AMDwxhCXjp6/qwgriEPYEhvV2fLiXtcuGTKygMB&#13;
+zZD0O6+uVZ7E4AnlEBBVgNqPWyX7qzftWp6x6wwsRwOvrcCo+0q1XR/h8knGFxedRZgWRcPPWEXx&#13;
+80F4y+nZFR4QtKvf5lcw2PZY4PFA0d2EeVe38g==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -722,4 +636,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_278d532e-8ae2-4977-a5aa-bf6d72ca0feb" Target="#_65675030-765b-4fe0-85b0-07012ef169db"><Timestamp>2024-03-13 19:00:53</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_96e6ce84-b683-4e8f-8729-b218fe92da06" Target="#_66fb3258-addc-4a71-960d-6cc78d37b18c"><Timestamp>2024-03-13 19:05:08</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
