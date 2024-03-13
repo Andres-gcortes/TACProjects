@@ -275,7 +275,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot; SELECT [VKORG] [Sales Organization]&#13;&#10;      ,[VTWEG] [Distribution Channel]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END [Division]&#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SUM([Quantity]) [Quantity]&#13;&#10;      ,SUM([Amount]) [Amount]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVKWZ_HANA] T1&#13;&#10;      ON MD.[Plant] = T1.[WERKS]&#13;&#10;   &#9;INNER JOIN [SOP_DW].[dbo].[Customer Material] CM &#13;&#10;&#9;&#9;ON MD.[Material Number] = CM.[Material Number]&#13;&#10;&#9;&#9;AND MD.[Customer Number] = CM.[Customer Number]&#13;&#10;&#9;&#9;AND T1.[VKORG] = CM.[Sales Organization]&#13;&#10;&#9;&#9;AND T1.[VTWEG] = CM.[Distribution Channel]&#13;&#10;WHERE [Movement type] = '&quot; + (String)globalMap.get(&quot;BWART&quot;) + &quot;'&#13;&#10;AND MD.[Plant] = '&quot; + (String)globalMap.get(&quot;Planta&quot;) + &quot;'&#13;&#10;AND [Posting date] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;Posting_date_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;, (Date)globalMap.get(&quot;Posting_date_FIN&quot;)) + &quot;'&#13;&#10;GROUP BY [VKORG] &#13;&#10;      ,[VTWEG]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END &#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure] &quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [Final Sales Organization] [Sales Organization]&#13;&#10;      ,[Final Distribution Channel] [Distribution Channel]&#13;&#10;&#9;  ,[Final Sold-to party] [Customer number]&#13;&#10;&#9;  ,[Final Plant] [Plant]&#13;&#10;&#9;  ,[Final Material Number] [Material number]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END [Division]&#13;&#10;      ,[Posting date]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;      ,SUM([Quantity]) [Quantity]&#13;&#10;      ,SUM([Amount]) [Amount]&#13;&#10;  FROM [dbo].[Material Document] MD&#13;&#10;    INNER JOIN [SAP_HANA].[dbo].[TVKWZ_HANA] T6&#13;&#10;      ON MD.[Plant] = T6.[WERKS]&#13;&#10;INNER JOIN (&#13;&#10;SELECT ISNULL(ISNULL(T2.[Sales Organization], T3.[Sales Organization]), T4.[Sales Organization]) [Final Sales Organization]&#13;&#10;      ,ISNULL(ISNULL(T2.[Distribution Channel], T3.[Distribution Channel]), T4.[Distribution Channel]) [Final Distribution Channel]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Sold-to party], T3.[Sold-to party]), T4.[Customer number]) [Final Sold-to party]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Plant], T3.[Plant]),T4.[Plant]) [Final Plant]&#13;&#10;&#9;  ,ISNULL(ISNULL(T2.[Material Number], T3.[Material Number]), T4.[Material Number]) [Final Material Number]&#13;&#10;  FROM (&#13;&#10;&#9;SELECT DISTINCT [Customer number]&#13;&#10;&#9;&#9;  ,[Material number]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;  FROM [dbo].[Material Document]&#13;&#10;&#9;WHERE &#13;&#10;&#9;[Movement type] IN ('601','602','631','632')&#13;&#10;&#9;AND [Number of Material Document] NOT LIKE '6%'&#13;&#10;&#9;AND [Number of Material Document] NOT LIKE '8%'&#13;&#10;  ) T1 LEFT JOIN (&#13;&#10;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Billing Document] BD&#13;&#10;&#9;&#9;INNER JOIN [dbo].[Billing Document Item] BDI&#13;&#10;&#9;&#9;  ON BD.[Billing Document] = BDI.[Billing Document]&#13;&#10;&#9;WHERE BD.[Billing Document] LIKE '31%'&#13;&#10;&#9;AND BD.[Billing document is cancelled] IS NULL&#13;&#10;  ) T2&#13;&#10;    ON T1.[Customer number] = T2.[Sold-to party]&#13;&#10;&#9;AND T1.[Material number] = T2.[Material Number]&#13;&#10;&#9;AND T1.Plant = T2.Plant&#13;&#10;  LEFT JOIN (&#13;&#10;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;  ,CASE [Division] WHEN 'FL' THEN '3101' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FR' THEN '3102'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'AI' THEN '3103'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FC' THEN '3104'&#13;&#10;&#9;&#9;   END [Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Sales Document] SD&#13;&#10;&#9;&#9;INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;&#9;WHERE SD.[Sales Document] LIKE '31%'&#13;&#10;  ) T3&#13;&#10;    ON T1.[Customer number] = T3.[Sold-to party]&#13;&#10;&#9;AND T1.[Material number] = T3.[Material Number]&#13;&#10;&#9;AND T1.Plant = T3.Plant&#13;&#10;  LEFT JOIN (&#13;&#10;&#9;SELECT [Sales Organization]&#13;&#10;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;  ,[Customer number]&#13;&#10;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;  FROM [dbo].[Customer Material]&#13;&#10;&#9;EXCEPT&#13;&#10;&#9;(&#13;&#10;&#9;&#9;SELECT [Sales Organization]&#13;&#10;&#9;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;&#9;  ,[Plant]&#13;&#10;&#9;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;&#9;  FROM [dbo].[Billing Document] BD&#13;&#10;&#9;&#9;&#9;INNER JOIN [dbo].[Billing Document Item] BDI&#13;&#10;&#9;&#9;&#9;  ON BD.[Billing Document] = BDI.[Billing Document]&#13;&#10;&#9;&#9;WHERE BD.[Billing Document] LIKE '31%'&#13;&#10;&#9;&#9;UNION&#13;&#10;&#9;&#9;SELECT DISTINCT [Sales Organization]&#13;&#10;&#9;&#9;&#9;  ,[Distribution Channel]&#13;&#10;&#9;&#9;&#9;  ,[Sold-to party]&#13;&#10;&#9;&#9;&#9;  ,CASE [Division] WHEN 'FL' THEN '3101' &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FR' THEN '3102'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'AI' THEN '3103'&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   WHEN 'FC' THEN '3104'&#13;&#10;&#9;&#9;&#9;   END [Plant]&#13;&#10;&#9;&#9;&#9;  ,[Material Number]&#13;&#10;&#9;&#9;  FROM [dbo].[Sales Document] SD&#13;&#10;&#9;&#9;&#9;INNER JOIN [dbo].[Sales Document Item] SDI&#13;&#10;&#9;&#9;&#9;  ON SD.[Sales Document] = SDI.[Sales Document]&#13;&#10;&#9;&#9;WHERE SD.[Sales Document] LIKE '31%'&#13;&#10;&#9;)&#13;&#10;  ) T4&#13;&#10;    ON T1.[Customer number] = T4.[Customer number]&#13;&#10;&#9;AND T1.[Material number] = T4.[Material Number]&#13;&#10;&#9;AND T1.Plant = T4.Plant&#13;&#10; ) T5&#13;&#10;&#9;ON T5.[Final Sales Organization] = T6.[VKORG]&#13;&#10;&#9;AND T5.[Final Distribution Channel] = T6.[VTWEG]&#13;&#10;&#9;AND T5.[Final Sold-to party] = MD.[Customer Number]&#13;&#10;&#9;AND T5.[Final Plant] =  T6.[WERKS]&#13;&#10;&#9;AND T5.[Final Material Number] = MD.[Material Number]&#13;&#10;WHERE [Movement type] = '&quot; + (String)globalMap.get(&quot;BWART&quot;) + &quot;'&#13;&#10;AND MD.[Plant] = '&quot; + (String)globalMap.get(&quot;Planta&quot;) + &quot;'&#13;&#10;AND [Posting date] BETWEEN '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;,(Date)globalMap.get(&quot;Posting_date_INI&quot;)) + &quot;' AND '&quot; + TalendDate.formatDate(&quot;yyyyMMdd&quot;, (Date)globalMap.get(&quot;Posting_date_FIN&quot;)) + &quot;'&#13;&#10;GROUP BY [VKORG] &#13;&#10;      ,[VTWEG]&#13;&#10;&#9;  ,[Final Sales Organization]&#13;&#10;      ,[Final Distribution Channel]&#13;&#10;&#9;  ,[Final Sold-to party]&#13;&#10;&#9;  ,[Final Plant]&#13;&#10;&#9;  ,[Final Material Number]&#13;&#10;&#9;  ,CASE WHEN [WERKS] = '3101' THEN 'FL' WHEN [WERKS] = '3102' THEN 'FR' WHEN [WERKS] = '3103' THEN 'AI' WHEN [WERKS] = '3104' THEN 'FC' END &#13;&#10;      ,MD.[Material number]&#13;&#10;      ,MD.[Customer number]&#13;&#10;      ,[Posting date]&#13;&#10;      ,MD.[Plant]&#13;&#10;&#9;  ,[Movement type]&#13;&#10;      ,[Base Unit of Measure]&#13;&#10;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
@@ -1026,99 +1026,36 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1568" posY="352">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlOutput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="true"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlOutput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SOP_DW_AmericasBI_Server"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SOP_DW_AmericasBI_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SOP_DW_AmericasBI_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SOP_DW_AmericasBI_Database"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="USER" value="context.SOP_DW_AmericasBI_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:c9vEcAs0W62u5dX7dHa0SIcWNo6FpmOclPHDLgUosGUjqcVQ7HOA+aAUTA0lv6pW5fWfp7M31WVkXBZZa9E="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Fact Shipment ST&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
-    <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
-    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
-    <elementParameter field="LABEL" name="NOTE" show="false" value="NOTE: batch size must be less than or equal to total number of parameter markers divided by number of columns"/>
-    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" show="false" value="false"/>
-    <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" show="false" value="SK_Customer_Material"/>
-    <elementParameter field="TEXT" name="START_VALUE" show="false" value="1"/>
-    <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SOP_DW_AmericasBI_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="CHECK" name="USE_ALTERNATE_SCHEMA" show="false" value="false"/>
-    <elementParameter field="TEXT" name="ALTERNATE_SCHEMA" show="false" value="&quot;&quot;"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
-    <elementParameter field="TABLE" name="ADD_COLS"/>
-    <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
-    <elementParameter field="TABLE" name="FIELD_OPTIONS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_Customer_Material"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_DateMonth"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_Plant"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_Base_Unit_of_Measure"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_Movement_Type"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Quantity"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Amount"/>
-      <elementValue elementRef="UPDATE_KEY" value="false"/>
-      <elementValue elementRef="DELETE_KEY" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
+  <node componentName="tAggregateRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1632" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tAggregateRow_1"/>
+    <elementParameter field="TABLE" name="GROUPBYS">
+      <elementValue elementRef="OUTPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="OUTPUT_COLUMN" value="SK_DateMonth"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="OUTPUT_COLUMN" value="SK_Plant"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="OUTPUT_COLUMN" value="SK_Movement_Type"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="OUTPUT_COLUMN" value="SK_Base_Unit_of_Measure"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
     </elementParameter>
-    <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
-    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
-    <elementParameter field="CHECK" name="SUPPORT_NULL_WHERE" value="false"/>
-    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
-    <elementParameter field="TEXT" name="BATCH_SIZE" value="10000"/>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TABLE" name="OPERATIONS">
+      <elementValue elementRef="OUTPUT_COLUMN" value="Quantity"/>
+      <elementValue elementRef="FUNCTION" value="sum"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="IGNORE_NULL" value="true"/>
+      <elementValue elementRef="OUTPUT_COLUMN" value="Amount"/>
+      <elementValue elementRef="FUNCTION" value="sum"/>
+      <elementValue elementRef="INPUT_COLUMN" value="SK_Customer_Material"/>
+      <elementValue elementRef="IGNORE_NULL" value="true"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LIST_DELIMITER" value="&quot;,&quot;"/>
+    <elementParameter field="CHECK" name="USE_FINANCIAL_PRECISION" value="true"/>
+    <elementParameter field="CHECK" name="CHECK_TYPE_OVERFLOW" value="false"/>
+    <elementParameter field="CHECK" name="CHECK_ULP" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBOutput_1">
+    <metadata connector="FLOW" name="tAggregateRow_1">
       <column comment="" key="true" length="0" name="SK_Customer_Material" nullable="false" originalDbColumnName="SK_Customer Material" pattern="" precision="1" sourceType="INT IDENTITY" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="true" length="10" name="SK_DateMonth" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="true" length="10" name="SK_Plant" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
@@ -1126,152 +1063,10 @@
       <column comment="" key="true" length="10" name="SK_Movement_Type" nullable="false" originalDbColumnName="SK_Movement Type" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="13" name="Quantity" nullable="true" originalLength="13" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="13" name="Amount" nullable="true" originalLength="13" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-    </metadata>
-    <metadata connector="REJECT" name="REJECT">
-      <column comment="" key="true" length="0" name="SK_Customer_Material" nullable="false" originalDbColumnName="SK_Customer Material" pattern="" precision="1" sourceType="INT IDENTITY" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="true" length="10" name="SK_DateMonth" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="true" length="10" name="SK_Plant" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="true" length="10" name="SK_Base_Unit_of_Measure" nullable="false" originalDbColumnName="SK_Base Unit of Measure" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="true" length="10" name="SK_Movement_Type" nullable="false" originalDbColumnName="SK_Movement Type" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="13" name="Quantity" nullable="true" originalLength="13" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="13" name="Amount" nullable="true" originalLength="13" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="352">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_9"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SOP_AmericasBI_Server"/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SOP_AmericasBI_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SOP_AmericasBI_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
-    <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:TGqcFKCAQHntug4lrzND9dBBOgYm7U338mPtidWKOvMT5xcIAxIxbRQkOEItXlDLho39WNbIqgOs+3E="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Material Document&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT MIN([Posting date]) [Posting date_INI]&#13;&#10;      ,MAX([Posting date]) [Posting date_FIN]&#13;&#10;  FROM [dbo].[Material Document]&#13;&#10;WHERE [Number of Material Document] BETWEEN '&quot; + (String)globalMap.get(&quot;MBLNR_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;MBLNR_FIN&quot;) + &quot;'&#13;&#10;AND [Movement type] = '&quot; + (String)globalMap.get(&quot;BWART&quot;) + &quot;'&#13;&#10;AND [Plant] = '&quot; + (String)globalMap.get(&quot;Planta&quot;) + &quot;'&#13;&#10;&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SOP_AmericasBI_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="Posting_date_INI"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Posting_date_FIN"/>
-      <elementValue elementRef="TRIM" value="false"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tMSSqlInput_9">
-      <column comment="" key="false" length="10" name="Posting_date_INI" nullable="true" originalDbColumnName="Posting date_INI" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Posting_date_FIN" nullable="true" originalDbColumnName="Posting date_FIN" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="352">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_3"/>
-    <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
-    <elementParameter field="TABLE" name="MAP">
-      <elementValue elementRef="KEY" value="&quot;Posting_date_INI&quot;"/>
-      <elementValue elementRef="VALUE" value="Posting_date_INI"/>
-      <elementValue elementRef="KEY" value="&quot;Posting_date_FIN&quot;"/>
-      <elementValue elementRef="VALUE" value="Posting_date_FIN"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tFlowToIterate_3"/>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="352">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJava_2"/>
-  </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1856" posY="352">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tMSSqlInput"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/MS_SQL_Server"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tMSSqlInput"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
-    <elementParameter field="TEXT" name="HOST" value="context.SOP_DW_AmericasBI_Server"/>
-    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
-    <elementParameter field="TEXT" name="PORT" value="context.SOP_DW_AmericasBI_Port"/>
-    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SOP_DW_AmericasBI_Schema"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.SOP_DW_AmericasBI_Database"/>
-    <elementParameter field="TEXT" name="USER" value="context.SOP_DW_AmericasBI_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ErUou7mlDEKTPz9FKCbWxohEE+HXBRS5wcfkMif6vud7i+1HPYhlQLFfO9Y677gPy47cSIlOqGxFYE9bw7c="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Fact Shipment ST&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT [SK_Customer Material], [SK_DateMonth], [SK_Plant], [SK_Base Unit of Measure], [SK_Movement Type], SUM([Quantity]) [Quantity] , SUM([Amount]) [Amount]&#13;&#10;FROM [Fact Shipment ST]&#13;&#10;WHERE [Quantity] IS NOT NULL&#13;&#10;AND [Amount] IS NOT NULL&#13;&#10;GROUP BY [SK_Customer Material], [SK_DateMonth], [SK_Plant], [SK_Base Unit of Measure], [SK_Movement Type]&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="context.SOP_DW_AmericasBI_AdditionalParams"/>
-    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_Customer_Material"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_DateMonth"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_Plant"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_Base_Unit_of_Measure"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SK_Movement_Type"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Quantity"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Amount"/>
-      <elementValue elementRef="TRIM" value="false"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
-    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
-    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_1">
-      <column comment="" defaultValue="" key="false" length="10" name="SK_Customer_Material" nullable="false" originalDbColumnName="SK_Customer Material" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="SK_DateMonth" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="SK_Plant" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="SK_Base_Unit_of_Measure" nullable="false" originalDbColumnName="SK_Base Unit of Measure" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="SK_Movement_Type" nullable="false" originalDbColumnName="SK_Movement Type" originalLength="-1" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="38" name="Quantity" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="38" name="Amount" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="1984" posY="320">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="1952" posY="352">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMap_2"/>
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
     <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
@@ -1334,7 +1129,7 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables activateCondensedTool="true" name="NewShipments" rejectInnerJoin="true" sizeState="INTERMEDIATE">
         <mapperTableEntries expression="row8.SK_Customer_Material " name="SK_Customer_Material" type="id_Integer"/>
@@ -1374,7 +1169,7 @@
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1984" posY="192">
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1952" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_7"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
@@ -1434,7 +1229,7 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
-  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2176" posY="320">
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2176" posY="256">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlOutput_2"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_QwCs0I4REe6mULJy9GyzKw"/>
@@ -1702,6 +1497,69 @@
       <additionalProperties key="Comment" value=""/>
     </metadata>
   </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_9"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_gYtQYHmwEe6wH9_-xje71w"/>
+    <elementParameter field="TEXT" name="HOST" value="context.SOP_AmericasBI_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="MSSQL"/>
+    <elementParameter field="TEXT" name="PORT" value="context.SOP_AmericasBI_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.SOP_AmericasBI_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.SOP_AmericasBI_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.SOP_AmericasBI_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:TGqcFKCAQHntug4lrzND9dBBOgYm7U338mPtidWKOvMT5xcIAxIxbRQkOEItXlDLho39WNbIqgOs+3E="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Material Document&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT CAST(CONVERT(VARCHAR(6),MIN([Posting date]),112) + '01' AS DATE) [Posting date_INI]&#13;&#10;      ,EOMONTH(MAX([Posting date])) [Posting date_FIN]&#13;&#10;  FROM [dbo].[Material Document]&#13;&#10;WHERE [Number of Material Document] BETWEEN '&quot; + (String)globalMap.get(&quot;MBLNR_INI&quot;) + &quot;' AND '&quot; + (String)globalMap.get(&quot;MBLNR_FIN&quot;) + &quot;'&#13;&#10;AND [Movement type] = '&quot; + (String)globalMap.get(&quot;BWART&quot;) + &quot;'&#13;&#10;AND [Plant] = '&quot; + (String)globalMap.get(&quot;Planta&quot;) + &quot;'&#13;&#10;&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="id_MSSQL"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.SOP_AmericasBI_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Posting_date_INI"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Posting_date_FIN"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tMSSqlInput_9">
+      <column comment="" key="false" length="10" name="Posting_date_INI" nullable="true" originalDbColumnName="Posting date_INI" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Posting_date_FIN" nullable="true" originalDbColumnName="Posting date_FIN" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tFlowToIterate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFlowToIterate_3"/>
+    <elementParameter field="CHECK" name="DEFAULT_MAP" value="false"/>
+    <elementParameter field="TABLE" name="MAP">
+      <elementValue elementRef="KEY" value="&quot;Posting_date_INI&quot;"/>
+      <elementValue elementRef="VALUE" value="Posting_date_INI"/>
+      <elementValue elementRef="KEY" value="&quot;Posting_date_FIN&quot;"/>
+      <elementValue elementRef="VALUE" value="Posting_date_FIN"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFlowToIterate_3"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJava_2"/>
+  </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tMSSqlInput_1" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_1" target="tFlowToIterate_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
@@ -1735,7 +1593,7 @@
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tMSSqlInput_2" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_2" target="tMSSqlRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
   </connection>
-  <connection connectorName="FLOW" label="AddedSurrogatedKeys" lineStyle="0" metaname="AddedSurrogatedKeys" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_1" target="tDBOutput_1">
+  <connection connectorName="FLOW" label="AddedSurrogatedKeys" lineStyle="0" metaname="AddedSurrogatedKeys" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_1" target="tAggregateRow_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="AddedSurrogatedKeys"/>
   </connection>
@@ -1771,22 +1629,7 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row10"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBOutput_1" offsetLabelX="0" offsetLabelY="0" source="tDBOutput_1" target="tDBInput_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
-  </connection>
-  <connection connectorName="FLOW" label="row11" lineStyle="0" metaname="tMSSqlInput_9" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_9" target="tFlowToIterate_3">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row11"/>
-  </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_3" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_3" target="tJava_2">
-    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
-    <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate3"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tMSSqlInput_2">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
-  </connection>
-  <connection connectorName="FLOW" label="row8" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMap_2">
+  <connection connectorName="FLOW" label="row8" lineStyle="0" metaname="tAggregateRow_1" offsetLabelX="0" offsetLabelY="0" source="tAggregateRow_1" target="tMap_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row8"/>
   </connection>
@@ -1801,6 +1644,18 @@
   <connection connectorName="FLOW" label="row7" lineStyle="8" metaname="tMSSqlInput_7" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_7" target="tMap_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row7"/>
+  </connection>
+  <connection connectorName="FLOW" label="row11" lineStyle="0" metaname="tMSSqlInput_9" offsetLabelX="0" offsetLabelY="0" source="tMSSqlInput_9" target="tFlowToIterate_3">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row11"/>
+  </connection>
+  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFlowToIterate_3" offsetLabelX="0" offsetLabelY="0" source="tFlowToIterate_3" target="tJava_2">
+    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
+    <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate3"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tMSSqlInput_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMSSqlInput_1"/>
@@ -1822,18 +1677,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
-  </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_780faa83-8e1f-4800-b0c6-4b94d524b9c6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>wZ/PL80wD4sdnvHd2gQexjRqyd4KQQGwSqQhEMJeDHwQY+3WNpKJ2B3Xi6WD8fr6xu7IP4/xqjXz&#13;
-0EB8vyN1hw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f9e93a43-3229-4b25-8ae3-a520d642f572"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>3XrczcIYUeorFlV7Hmh83DEgttzdhcmMo9JYfrXUNsEogxz/8XEiCbRd6qPgXYl0CEtUGKkYB+k1&#13;
-EqfpPxdfjw==</DigestValue></Reference></SignedInfo><SignatureValue>M8IhqWMItbxiEh6hyoKvoLER92qdDicJCMjzXqugkjlwwF/363IMti3Gg0SbaHmozGCWybj7w8kZ&#13;
-VR02HPXPbTph20Enlar5wjUHN2P67kcSE2qKKW2iSo5oYKOgFOOOG3nUrzN7mJNR9tc7bEehXZ+H&#13;
-U9WT1T7pPK1Glzo3VM7M746NGQEmFGe4GK8ZsVszjJYzTAK6SpRFikbaam93TTZaPBb/GJf0As9j&#13;
-oCo5zD7io88DVs/D08u4J34eecyEU1Avo7EQEYXSsm5YFkzGAB2NHJuqNSVxf7MIbOs1/MSUeXo9&#13;
-j5Ub/Br8/qFZPF4mu4SIGkHE0/xCJ9LmQ+HzWw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_74179060-e86c-436b-bad7-df7262b65f0c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>MjLZRzndy8pGICi8nhbQuda4SvZj+SUSIn+htCz85/+/jutTlPofZ37HI4fGMZx4RA4uSfHkq0yL&#13;
+2gbpsI+pBA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_944ef1ab-3c18-4930-bfac-41c94f3969cc"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Aa/aRRWx/1x09ul/gAyfk/zhnV57zkWEM/F2iR4k2zNpDhFOW6nh0Uc3l7NoTZUfuZxGnLGgvUyC&#13;
+AzTSB5o/aw==</DigestValue></Reference></SignedInfo><SignatureValue>SDo4Yl8VGh7OPQQNrt6YqytLcxBSw+QAHuZpTvPJgp8FmvVuVrnF1pfosKIcXvpPmHwYxnKLrdMn&#13;
+ZAqQibMWy418eL4IzOx1nZRByB5E59XZa63v+tlaHwwKOdT9yhgxI9DvO/u8JIQJoKxLQlOJA3jm&#13;
+DNuSKqVJE9nj1mBCRAIJz3p+vDtvXFsg8ah1IR5PZqr6poB2lp/vIHxGBXLEfUdi+k1ozgTuhFJI&#13;
+KxdPA/fRdGdTJuiTNUKCkTuS73urb7fY8WuCjlHocXyUTaF/qixJ6zpys4mu9P6G6sM43/p6flCG&#13;
+zos95rk6yrCWGdWwY4aXZ9tATGeDJymFV+wKgg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1855,4 +1705,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f9e93a43-3229-4b25-8ae3-a520d642f572" Target="#_780faa83-8e1f-4800-b0c6-4b94d524b9c6"><Timestamp>2024-03-08 16:25:18</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_944ef1ab-3c18-4930-bfac-41c94f3969cc" Target="#_74179060-e86c-436b-bad7-df7262b65f0c"><Timestamp>2024-03-13 19:24:53</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
